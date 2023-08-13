@@ -39,8 +39,10 @@
             this.btnTicket_Sale = new FontAwesome.Sharp.IconButton();
             this.btnHome = new FontAwesome.Sharp.IconButton();
             this.pnlLogo = new System.Windows.Forms.Panel();
+            this.pnlFullBar = new System.Windows.Forms.Panel();
             this.pbxLogo = new System.Windows.Forms.PictureBox();
             this.pnlHeader = new System.Windows.Forms.Panel();
+            this.pnlControlBar = new System.Windows.Forms.Panel();
             this.btnMin = new FontAwesome.Sharp.IconButton();
             this.btnMax = new FontAwesome.Sharp.IconButton();
             this.btnClose = new FontAwesome.Sharp.IconButton();
@@ -48,13 +50,12 @@
             this.ipbSelectedIcon = new FontAwesome.Sharp.IconPictureBox();
             this.pnlEffect = new System.Windows.Forms.Panel();
             this.pnlMainContainer = new System.Windows.Forms.Panel();
-            this.pnlControlBar = new System.Windows.Forms.Panel();
             this.pnlMenu.SuspendLayout();
             this.pnlLogo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbxLogo)).BeginInit();
             this.pnlHeader.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ipbSelectedIcon)).BeginInit();
             this.pnlControlBar.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ipbSelectedIcon)).BeginInit();
             this.SuspendLayout();
             // 
             // pnlMenu
@@ -285,12 +286,22 @@
             // 
             // pnlLogo
             // 
+            this.pnlLogo.Controls.Add(this.pnlFullBar);
             this.pnlLogo.Controls.Add(this.pbxLogo);
             this.pnlLogo.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlLogo.Location = new System.Drawing.Point(0, 0);
             this.pnlLogo.Name = "pnlLogo";
             this.pnlLogo.Size = new System.Drawing.Size(220, 140);
             this.pnlLogo.TabIndex = 0;
+            // 
+            // pnlFullBar
+            // 
+            this.pnlFullBar.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pnlFullBar.Location = new System.Drawing.Point(0, 0);
+            this.pnlFullBar.Name = "pnlFullBar";
+            this.pnlFullBar.Size = new System.Drawing.Size(220, 22);
+            this.pnlFullBar.TabIndex = 1;
+            this.pnlFullBar.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pnlFullBar_MouseDown);
             // 
             // pbxLogo
             // 
@@ -315,6 +326,19 @@
             this.pnlHeader.TabIndex = 1;
             this.pnlHeader.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pnlHeader_MouseDown);
             // 
+            // pnlControlBar
+            // 
+            this.pnlControlBar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(67)))), ((int)(((byte)(100)))));
+            this.pnlControlBar.Controls.Add(this.btnMin);
+            this.pnlControlBar.Controls.Add(this.btnMax);
+            this.pnlControlBar.Controls.Add(this.btnClose);
+            this.pnlControlBar.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pnlControlBar.Location = new System.Drawing.Point(0, 0);
+            this.pnlControlBar.Name = "pnlControlBar";
+            this.pnlControlBar.Size = new System.Drawing.Size(686, 22);
+            this.pnlControlBar.TabIndex = 5;
+            this.pnlControlBar.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pnlControlBar_MouseDown);
+            // 
             // btnMin
             // 
             this.btnMin.Cursor = System.Windows.Forms.Cursors.Hand;
@@ -333,6 +357,8 @@
             this.btnMin.TabIndex = 4;
             this.btnMin.UseVisualStyleBackColor = true;
             this.btnMin.Click += new System.EventHandler(this.btnMin_Click);
+            this.btnMin.MouseEnter += new System.EventHandler(this.btnMin_MouseEnter);
+            this.btnMin.MouseLeave += new System.EventHandler(this.btnMin_MouseLeave);
             // 
             // btnMax
             // 
@@ -353,6 +379,8 @@
             this.btnMax.TextAlign = System.Drawing.ContentAlignment.TopLeft;
             this.btnMax.UseVisualStyleBackColor = true;
             this.btnMax.Click += new System.EventHandler(this.btnMax_Click);
+            this.btnMax.MouseEnter += new System.EventHandler(this.btnMax_MouseEnter);
+            this.btnMax.MouseLeave += new System.EventHandler(this.btnMax_MouseLeave);
             // 
             // btnClose
             // 
@@ -374,7 +402,6 @@
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             this.btnClose.MouseEnter += new System.EventHandler(this.btnClose_MouseEnter);
             this.btnClose.MouseLeave += new System.EventHandler(this.btnClose_MouseLeave);
-            this.btnClose.MouseHover += new System.EventHandler(this.btnClose_MouseHover);
             // 
             // lblSelected
             // 
@@ -417,17 +444,6 @@
             this.pnlMainContainer.Size = new System.Drawing.Size(686, 644);
             this.pnlMainContainer.TabIndex = 3;
             // 
-            // pnlControlBar
-            // 
-            this.pnlControlBar.Controls.Add(this.btnMin);
-            this.pnlControlBar.Controls.Add(this.btnMax);
-            this.pnlControlBar.Controls.Add(this.btnClose);
-            this.pnlControlBar.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pnlControlBar.Location = new System.Drawing.Point(0, 0);
-            this.pnlControlBar.Name = "pnlControlBar";
-            this.pnlControlBar.Size = new System.Drawing.Size(686, 22);
-            this.pnlControlBar.TabIndex = 5;
-            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -437,7 +453,7 @@
             this.Controls.Add(this.pnlEffect);
             this.Controls.Add(this.pnlHeader);
             this.Controls.Add(this.pnlMenu);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "frmMain";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.frmMain_Load);
@@ -446,8 +462,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.pbxLogo)).EndInit();
             this.pnlHeader.ResumeLayout(false);
             this.pnlHeader.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ipbSelectedIcon)).EndInit();
             this.pnlControlBar.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.ipbSelectedIcon)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -475,6 +491,7 @@
         private FontAwesome.Sharp.IconButton btnMax;
         private FontAwesome.Sharp.IconButton btnClose;
         private System.Windows.Forms.Panel pnlControlBar;
+        private System.Windows.Forms.Panel pnlFullBar;
     }
 }
 

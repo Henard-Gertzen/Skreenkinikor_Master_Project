@@ -46,6 +46,7 @@ namespace Skreenkinikor_Master_Project
 
             public static Color foregroundColor1 = Color.FromArgb(144, 194, 231);
             public static Color foregroundColor2 = Color.FromArgb(255, 87, 51);
+            public static Color foregroundColor3 = Color.FromArgb(11, 83, 81);
         }
         //Methods
         private void Active(object sendedButton, Color color)
@@ -169,15 +170,21 @@ namespace Skreenkinikor_Master_Project
         private extern static void ReleaseCapture();
         [DllImport("user32.DLL", EntryPoint = "SendMessage")]
         private extern static void SendMessage(System.IntPtr hWnd, int wMsg, int wParam, int lParam);
-        private void pnlHeader_MouseDown(object sender, MouseEventArgs e)
+        private void pnlControlBar_MouseDown(object sender, MouseEventArgs e)
         {
             ReleaseCapture();
             SendMessage(this.Handle, 0x112, 0xf012, 0);
         }
 
-        private void btnClose_MouseHover(object sender, EventArgs e)
+        private void pnlHeader_MouseDown(object sender, MouseEventArgs e)
         {
-            
+            ReleaseCapture();
+            SendMessage(this.Handle, 0x112, 0xf012, 0);
+        }
+        private void pnlFullBar_MouseDown(object sender, MouseEventArgs e)
+        {
+            ReleaseCapture();
+            SendMessage(this.Handle, 0x112, 0xf012, 0);
         }
 
         private void btnClose_MouseEnter(object sender, EventArgs e)
@@ -218,5 +225,26 @@ namespace Skreenkinikor_Master_Project
                 WindowState=FormWindowState.Minimized;
             }
         }
+
+        private void btnMax_MouseEnter(object sender, EventArgs e)
+        {
+            btnMax.BackColor = Colors.foregroundColor3;
+        }
+
+        private void btnMax_MouseLeave(object sender, EventArgs e)
+        {
+            btnMax.BackColor = Colors.secondaryBackColor2;
+        }
+
+        private void btnMin_MouseEnter(object sender, EventArgs e)
+        {
+            btnMin.BackColor = Colors.foregroundColor3;
+        }
+
+        private void btnMin_MouseLeave(object sender, EventArgs e)
+        {
+            btnMin.BackColor = Colors.secondaryBackColor2;
+        }
+
     }
 }
