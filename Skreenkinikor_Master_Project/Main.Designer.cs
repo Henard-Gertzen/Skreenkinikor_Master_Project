@@ -39,12 +39,20 @@
             this.btnTicket_Sale = new FontAwesome.Sharp.IconButton();
             this.btnHome = new FontAwesome.Sharp.IconButton();
             this.pnlLogo = new System.Windows.Forms.Panel();
+            this.pbxLogo = new System.Windows.Forms.PictureBox();
+            this.pnlHeader = new System.Windows.Forms.Panel();
+            this.ipbSelectedIcon = new FontAwesome.Sharp.IconPictureBox();
+            this.lblSelected = new System.Windows.Forms.Label();
             this.pnlMenu.SuspendLayout();
+            this.pnlLogo.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbxLogo)).BeginInit();
+            this.pnlHeader.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ipbSelectedIcon)).BeginInit();
             this.SuspendLayout();
             // 
             // pnlMenu
             // 
-            this.pnlMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(19)))), ((int)(((byte)(41)))), ((int)(((byte)(61)))));
+            this.pnlMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(67)))), ((int)(((byte)(100)))));
             this.pnlMenu.Controls.Add(this.btnSettings);
             this.pnlMenu.Controls.Add(this.btnReports);
             this.pnlMenu.Controls.Add(this.btnMovies);
@@ -58,7 +66,7 @@
             this.pnlMenu.Dock = System.Windows.Forms.DockStyle.Left;
             this.pnlMenu.Location = new System.Drawing.Point(0, 0);
             this.pnlMenu.Name = "pnlMenu";
-            this.pnlMenu.Size = new System.Drawing.Size(220, 682);
+            this.pnlMenu.Size = new System.Drawing.Size(220, 722);
             this.pnlMenu.TabIndex = 0;
             // 
             // btnSettings
@@ -82,6 +90,7 @@
             this.btnSettings.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnSettings.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnSettings.UseVisualStyleBackColor = true;
+            this.btnSettings.Click += new System.EventHandler(this.btnSettings_Click);
             // 
             // btnReports
             // 
@@ -104,6 +113,7 @@
             this.btnReports.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnReports.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnReports.UseVisualStyleBackColor = true;
+            this.btnReports.Click += new System.EventHandler(this.btnReports_Click);
             // 
             // btnMovies
             // 
@@ -126,6 +136,7 @@
             this.btnMovies.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnMovies.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnMovies.UseVisualStyleBackColor = true;
+            this.btnMovies.Click += new System.EventHandler(this.btnMovies_Click);
             // 
             // btnStock
             // 
@@ -148,6 +159,7 @@
             this.btnStock.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnStock.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnStock.UseVisualStyleBackColor = true;
+            this.btnStock.Click += new System.EventHandler(this.btnStock_Click);
             // 
             // btnActors
             // 
@@ -170,6 +182,7 @@
             this.btnActors.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnActors.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnActors.UseVisualStyleBackColor = true;
+            this.btnActors.Click += new System.EventHandler(this.btnActors_Click);
             // 
             // btnSchedule
             // 
@@ -192,6 +205,7 @@
             this.btnSchedule.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnSchedule.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnSchedule.UseVisualStyleBackColor = true;
+            this.btnSchedule.Click += new System.EventHandler(this.btnSchedule_Click);
             // 
             // btnCon_Sale
             // 
@@ -214,6 +228,7 @@
             this.btnCon_Sale.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnCon_Sale.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnCon_Sale.UseVisualStyleBackColor = true;
+            this.btnCon_Sale.Click += new System.EventHandler(this.btnCon_Sale_Click);
             // 
             // btnTicket_Sale
             // 
@@ -236,6 +251,7 @@
             this.btnTicket_Sale.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnTicket_Sale.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnTicket_Sale.UseVisualStyleBackColor = true;
+            this.btnTicket_Sale.Click += new System.EventHandler(this.btnTicket_Sale_Click);
             // 
             // btnHome
             // 
@@ -258,24 +274,78 @@
             this.btnHome.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnHome.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnHome.UseVisualStyleBackColor = true;
+            this.btnHome.Click += new System.EventHandler(this.btnHome_Click);
             // 
             // pnlLogo
             // 
+            this.pnlLogo.Controls.Add(this.pbxLogo);
             this.pnlLogo.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlLogo.Location = new System.Drawing.Point(0, 0);
             this.pnlLogo.Name = "pnlLogo";
             this.pnlLogo.Size = new System.Drawing.Size(220, 140);
             this.pnlLogo.TabIndex = 0;
             // 
+            // pbxLogo
+            // 
+            this.pbxLogo.Image = global::Skreenkinikor_Master_Project.Properties.Resources.SK_Logo;
+            this.pbxLogo.Location = new System.Drawing.Point(-27, 0);
+            this.pbxLogo.Name = "pbxLogo";
+            this.pbxLogo.Size = new System.Drawing.Size(269, 147);
+            this.pbxLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbxLogo.TabIndex = 0;
+            this.pbxLogo.TabStop = false;
+            // 
+            // pnlHeader
+            // 
+            this.pnlHeader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(67)))), ((int)(((byte)(100)))));
+            this.pnlHeader.Controls.Add(this.lblSelected);
+            this.pnlHeader.Controls.Add(this.ipbSelectedIcon);
+            this.pnlHeader.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pnlHeader.Location = new System.Drawing.Point(220, 0);
+            this.pnlHeader.Name = "pnlHeader";
+            this.pnlHeader.Size = new System.Drawing.Size(686, 70);
+            this.pnlHeader.TabIndex = 1;
+            this.pnlHeader.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pnlHeader_MouseDown);
+            // 
+            // ipbSelectedIcon
+            // 
+            this.ipbSelectedIcon.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(67)))), ((int)(((byte)(100)))));
+            this.ipbSelectedIcon.IconChar = FontAwesome.Sharp.IconChar.HomeLg;
+            this.ipbSelectedIcon.IconColor = System.Drawing.Color.White;
+            this.ipbSelectedIcon.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.ipbSelectedIcon.Location = new System.Drawing.Point(6, 17);
+            this.ipbSelectedIcon.Name = "ipbSelectedIcon";
+            this.ipbSelectedIcon.Size = new System.Drawing.Size(32, 32);
+            this.ipbSelectedIcon.TabIndex = 0;
+            this.ipbSelectedIcon.TabStop = false;
+            // 
+            // lblSelected
+            // 
+            this.lblSelected.AutoSize = true;
+            this.lblSelected.Font = new System.Drawing.Font("Montserrat", 8.249999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSelected.ForeColor = System.Drawing.Color.White;
+            this.lblSelected.Location = new System.Drawing.Point(39, 26);
+            this.lblSelected.Name = "lblSelected";
+            this.lblSelected.Size = new System.Drawing.Size(42, 15);
+            this.lblSelected.TabIndex = 1;
+            this.lblSelected.Text = "Home";
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(906, 682);
+            this.ClientSize = new System.Drawing.Size(906, 722);
+            this.Controls.Add(this.pnlHeader);
             this.Controls.Add(this.pnlMenu);
             this.Name = "frmMain";
             this.Text = "Form1";
+            this.Load += new System.EventHandler(this.frmMain_Load);
             this.pnlMenu.ResumeLayout(false);
+            this.pnlLogo.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pbxLogo)).EndInit();
+            this.pnlHeader.ResumeLayout(false);
+            this.pnlHeader.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ipbSelectedIcon)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -293,6 +363,10 @@
         private FontAwesome.Sharp.IconButton btnTicket_Sale;
         private FontAwesome.Sharp.IconButton btnHome;
         private System.Windows.Forms.Panel pnlLogo;
+        private System.Windows.Forms.PictureBox pbxLogo;
+        private System.Windows.Forms.Panel pnlHeader;
+        private FontAwesome.Sharp.IconPictureBox ipbSelectedIcon;
+        private System.Windows.Forms.Label lblSelected;
     }
 }
 
