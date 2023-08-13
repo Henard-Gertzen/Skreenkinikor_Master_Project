@@ -44,6 +44,7 @@
             this.pnlHeader = new System.Windows.Forms.Panel();
             this.pnlUser = new System.Windows.Forms.Panel();
             this.lblUserModel = new System.Windows.Forms.Label();
+            this.btnLogout = new FontAwesome.Sharp.IconButton();
             this.pnlUserBottomBuffer = new System.Windows.Forms.Panel();
             this.pnlUserTopBuffer = new System.Windows.Forms.Panel();
             this.pnlControlBar = new System.Windows.Forms.Panel();
@@ -54,7 +55,6 @@
             this.ipbSelectedIcon = new FontAwesome.Sharp.IconPictureBox();
             this.pnlEffect = new System.Windows.Forms.Panel();
             this.pnlMainContainer = new System.Windows.Forms.Panel();
-            this.btnLogout = new FontAwesome.Sharp.IconButton();
             this.pnlMenu.SuspendLayout();
             this.pnlLogo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbxLogo)).BeginInit();
@@ -355,15 +355,34 @@
             // 
             this.lblUserModel.AutoSize = true;
             this.lblUserModel.Dock = System.Windows.Forms.DockStyle.Right;
-            this.lblUserModel.Font = new System.Drawing.Font("Montserrat Medium", 9.749999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblUserModel.Font = new System.Drawing.Font("Montserrat", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblUserModel.ForeColor = System.Drawing.Color.White;
             this.lblUserModel.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.lblUserModel.Location = new System.Drawing.Point(298, 15);
+            this.lblUserModel.Location = new System.Drawing.Point(307, 15);
             this.lblUserModel.Name = "lblUserModel";
-            this.lblUserModel.Size = new System.Drawing.Size(78, 18);
+            this.lblUserModel.Size = new System.Drawing.Size(69, 18);
             this.lblUserModel.TabIndex = 0;
             this.lblUserModel.Text = "Welcome";
             this.lblUserModel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // btnLogout
+            // 
+            this.btnLogout.Dock = System.Windows.Forms.DockStyle.Right;
+            this.btnLogout.FlatAppearance.BorderSize = 0;
+            this.btnLogout.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnLogout.IconChar = FontAwesome.Sharp.IconChar.RightToBracket;
+            this.btnLogout.IconColor = System.Drawing.Color.White;
+            this.btnLogout.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnLogout.IconSize = 16;
+            this.btnLogout.Location = new System.Drawing.Point(376, 15);
+            this.btnLogout.Margin = new System.Windows.Forms.Padding(0);
+            this.btnLogout.Name = "btnLogout";
+            this.btnLogout.Size = new System.Drawing.Size(22, 18);
+            this.btnLogout.TabIndex = 2;
+            this.btnLogout.UseVisualStyleBackColor = true;
+            this.btnLogout.Click += new System.EventHandler(this.btnLogout_Click);
+            this.btnLogout.MouseEnter += new System.EventHandler(this.btnLogout_MouseEnter);
+            this.btnLogout.MouseLeave += new System.EventHandler(this.btnLogout_MouseLeave);
             // 
             // pnlUserBottomBuffer
             // 
@@ -498,25 +517,6 @@
             this.pnlMainContainer.Name = "pnlMainContainer";
             this.pnlMainContainer.Size = new System.Drawing.Size(686, 644);
             this.pnlMainContainer.TabIndex = 3;
-            // 
-            // btnLogout
-            // 
-            this.btnLogout.Dock = System.Windows.Forms.DockStyle.Right;
-            this.btnLogout.FlatAppearance.BorderSize = 0;
-            this.btnLogout.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnLogout.IconChar = FontAwesome.Sharp.IconChar.RightToBracket;
-            this.btnLogout.IconColor = System.Drawing.Color.White;
-            this.btnLogout.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.btnLogout.IconSize = 16;
-            this.btnLogout.Location = new System.Drawing.Point(376, 15);
-            this.btnLogout.Margin = new System.Windows.Forms.Padding(0);
-            this.btnLogout.Name = "btnLogout";
-            this.btnLogout.Size = new System.Drawing.Size(22, 18);
-            this.btnLogout.TabIndex = 2;
-            this.btnLogout.UseVisualStyleBackColor = true;
-            this.btnLogout.Click += new System.EventHandler(this.btnLogout_Click);
-            this.btnLogout.MouseEnter += new System.EventHandler(this.btnLogout_MouseEnter);
-            this.btnLogout.MouseLeave += new System.EventHandler(this.btnLogout_MouseLeave);
             // 
             // frmMain
             // 

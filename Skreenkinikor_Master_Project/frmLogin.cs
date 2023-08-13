@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.Sql;
 using System.Data.SqlClient;
+using Skreenkinikor_Master_Project.Child_Forms;
 
 namespace Skreenkinikor_Master_Project
 {
@@ -90,6 +91,7 @@ namespace Skreenkinikor_Master_Project
 
                     return isValid;
                 }
+                con.Close();
             }
         }
         //Check if user is admin
@@ -113,6 +115,7 @@ namespace Skreenkinikor_Master_Project
 
                     return false;
                 }
+                con.Close();
             }
         }
 
@@ -136,8 +139,15 @@ namespace Skreenkinikor_Master_Project
                         }
                     }
                 }
+                con.Close();
             }
             return string.Empty;
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+            var request = new frmResetPassword();
+            request.ShowDialog();
         }
     }
 }

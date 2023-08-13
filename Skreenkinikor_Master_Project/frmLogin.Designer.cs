@@ -28,42 +28,33 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.pbLogo = new System.Windows.Forms.PictureBox();
             this.lblLogin = new System.Windows.Forms.Label();
             this.pnlContent = new System.Windows.Forms.Panel();
             this.pnlPass = new System.Windows.Forms.Panel();
             this.txtPass = new System.Windows.Forms.TextBox();
             this.pnlBufferP = new System.Windows.Forms.Panel();
-            this.iconPass = new FontAwesome.Sharp.IconPictureBox();
             this.pnlPassBuffer = new System.Windows.Forms.Panel();
             this.pnlBuffer = new System.Windows.Forms.Panel();
             this.pnlUser = new System.Windows.Forms.Panel();
             this.txtUser = new System.Windows.Forms.TextBox();
             this.pnlBufferU = new System.Windows.Forms.Panel();
-            this.iconUser = new FontAwesome.Sharp.IconPictureBox();
             this.pnlUserBuffer = new System.Windows.Forms.Panel();
             this.btnLogin = new System.Windows.Forms.Button();
             this.lblError = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.lblRequest = new System.Windows.Forms.Label();
             this.btnMin = new FontAwesome.Sharp.IconButton();
             this.btnClose = new FontAwesome.Sharp.IconButton();
-            ((System.ComponentModel.ISupportInitialize)(this.pbLogo)).BeginInit();
+            this.iconPass = new FontAwesome.Sharp.IconPictureBox();
+            this.iconUser = new FontAwesome.Sharp.IconPictureBox();
+            this.pbLogo = new System.Windows.Forms.PictureBox();
             this.pnlContent.SuspendLayout();
             this.pnlPass.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.iconPass)).BeginInit();
             this.pnlUser.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.iconPass)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.iconUser)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbLogo)).BeginInit();
             this.SuspendLayout();
-            // 
-            // pbLogo
-            // 
-            this.pbLogo.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pbLogo.Image = global::Skreenkinikor_Master_Project.Properties.Resources.SK_Logo;
-            this.pbLogo.Location = new System.Drawing.Point(0, 0);
-            this.pbLogo.Name = "pbLogo";
-            this.pbLogo.Size = new System.Drawing.Size(292, 180);
-            this.pbLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pbLogo.TabIndex = 0;
-            this.pbLogo.TabStop = false;
             // 
             // lblLogin
             // 
@@ -119,20 +110,6 @@
             this.pnlBufferP.Size = new System.Drawing.Size(242, 5);
             this.pnlBufferP.TabIndex = 4;
             // 
-            // iconPass
-            // 
-            this.iconPass.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(19)))), ((int)(((byte)(41)))), ((int)(((byte)(61)))));
-            this.iconPass.Dock = System.Windows.Forms.DockStyle.Left;
-            this.iconPass.IconChar = FontAwesome.Sharp.IconChar.Lock;
-            this.iconPass.IconColor = System.Drawing.Color.White;
-            this.iconPass.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.iconPass.IconSize = 30;
-            this.iconPass.Location = new System.Drawing.Point(20, 0);
-            this.iconPass.Name = "iconPass";
-            this.iconPass.Size = new System.Drawing.Size(30, 30);
-            this.iconPass.TabIndex = 0;
-            this.iconPass.TabStop = false;
-            // 
             // pnlPassBuffer
             // 
             this.pnlPassBuffer.Dock = System.Windows.Forms.DockStyle.Left;
@@ -177,20 +154,6 @@
             this.pnlBufferU.Size = new System.Drawing.Size(242, 5);
             this.pnlBufferU.TabIndex = 5;
             // 
-            // iconUser
-            // 
-            this.iconUser.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(19)))), ((int)(((byte)(41)))), ((int)(((byte)(61)))));
-            this.iconUser.Dock = System.Windows.Forms.DockStyle.Left;
-            this.iconUser.IconChar = FontAwesome.Sharp.IconChar.User;
-            this.iconUser.IconColor = System.Drawing.Color.White;
-            this.iconUser.IconFont = FontAwesome.Sharp.IconFont.Solid;
-            this.iconUser.IconSize = 30;
-            this.iconUser.Location = new System.Drawing.Point(20, 0);
-            this.iconUser.Name = "iconUser";
-            this.iconUser.Size = new System.Drawing.Size(30, 30);
-            this.iconUser.TabIndex = 0;
-            this.iconUser.TabStop = false;
-            // 
             // pnlUserBuffer
             // 
             this.pnlUserBuffer.Dock = System.Windows.Forms.DockStyle.Left;
@@ -226,6 +189,30 @@
             this.lblError.TabIndex = 4;
             this.lblError.Text = "*Username/Password Incorrect!";
             this.lblError.Visible = false;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Montserrat Medium", 8.249999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.White;
+            this.label1.Location = new System.Drawing.Point(27, 444);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(121, 15);
+            this.label1.TabIndex = 8;
+            this.label1.Text = "Error with Login?";
+            // 
+            // lblRequest
+            // 
+            this.lblRequest.AutoSize = true;
+            this.lblRequest.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.lblRequest.Font = new System.Drawing.Font("Montserrat Medium", 8.249999F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblRequest.ForeColor = System.Drawing.Color.White;
+            this.lblRequest.Location = new System.Drawing.Point(145, 444);
+            this.lblRequest.Name = "lblRequest";
+            this.lblRequest.Size = new System.Drawing.Size(103, 15);
+            this.lblRequest.TabIndex = 9;
+            this.lblRequest.Text = "Log a Request";
+            this.lblRequest.Click += new System.EventHandler(this.label2_Click);
             // 
             // btnMin
             // 
@@ -267,12 +254,53 @@
             this.btnClose.MouseEnter += new System.EventHandler(this.btnClose_MouseEnter);
             this.btnClose.MouseLeave += new System.EventHandler(this.btnClose_MouseLeave);
             // 
+            // iconPass
+            // 
+            this.iconPass.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(19)))), ((int)(((byte)(41)))), ((int)(((byte)(61)))));
+            this.iconPass.Dock = System.Windows.Forms.DockStyle.Left;
+            this.iconPass.IconChar = FontAwesome.Sharp.IconChar.Lock;
+            this.iconPass.IconColor = System.Drawing.Color.White;
+            this.iconPass.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.iconPass.IconSize = 30;
+            this.iconPass.Location = new System.Drawing.Point(20, 0);
+            this.iconPass.Name = "iconPass";
+            this.iconPass.Size = new System.Drawing.Size(30, 30);
+            this.iconPass.TabIndex = 0;
+            this.iconPass.TabStop = false;
+            // 
+            // iconUser
+            // 
+            this.iconUser.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(19)))), ((int)(((byte)(41)))), ((int)(((byte)(61)))));
+            this.iconUser.Dock = System.Windows.Forms.DockStyle.Left;
+            this.iconUser.IconChar = FontAwesome.Sharp.IconChar.User;
+            this.iconUser.IconColor = System.Drawing.Color.White;
+            this.iconUser.IconFont = FontAwesome.Sharp.IconFont.Solid;
+            this.iconUser.IconSize = 30;
+            this.iconUser.Location = new System.Drawing.Point(20, 0);
+            this.iconUser.Name = "iconUser";
+            this.iconUser.Size = new System.Drawing.Size(30, 30);
+            this.iconUser.TabIndex = 0;
+            this.iconUser.TabStop = false;
+            // 
+            // pbLogo
+            // 
+            this.pbLogo.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pbLogo.Image = global::Skreenkinikor_Master_Project.Properties.Resources.SK_Logo;
+            this.pbLogo.Location = new System.Drawing.Point(0, 0);
+            this.pbLogo.Name = "pbLogo";
+            this.pbLogo.Size = new System.Drawing.Size(292, 180);
+            this.pbLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbLogo.TabIndex = 0;
+            this.pbLogo.TabStop = false;
+            // 
             // frmLogin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(19)))), ((int)(((byte)(41)))), ((int)(((byte)(61)))));
-            this.ClientSize = new System.Drawing.Size(292, 447);
+            this.ClientSize = new System.Drawing.Size(292, 473);
+            this.Controls.Add(this.lblRequest);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.btnMin);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.lblError);
@@ -284,14 +312,14 @@
             this.Name = "frmLogin";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmLogin";
-            ((System.ComponentModel.ISupportInitialize)(this.pbLogo)).EndInit();
             this.pnlContent.ResumeLayout(false);
             this.pnlPass.ResumeLayout(false);
             this.pnlPass.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.iconPass)).EndInit();
             this.pnlUser.ResumeLayout(false);
             this.pnlUser.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.iconPass)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.iconUser)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbLogo)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -317,5 +345,7 @@
         private System.Windows.Forms.Label lblError;
         private FontAwesome.Sharp.IconButton btnMin;
         private FontAwesome.Sharp.IconButton btnClose;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lblRequest;
     }
 }
