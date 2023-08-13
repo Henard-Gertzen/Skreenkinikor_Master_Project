@@ -45,6 +45,7 @@ namespace Skreenkinikor_Master_Project
             public static Color windBorderColor3 = Color.FromArgb(27, 152, 224);
 
             public static Color foregroundColor1 = Color.FromArgb(144, 194, 231);
+            public static Color foregroundColor2 = Color.FromArgb(255, 87, 51);
         }
         //Methods
         private void Active(object sendedButton, Color color)
@@ -85,7 +86,7 @@ namespace Skreenkinikor_Master_Project
 
         private void OpenChild(Form child)
         {
-            if(ipbSelectedIcon != null)
+            if(childCurrent != null)
             {
                 childCurrent.Close();
             }
@@ -95,19 +96,23 @@ namespace Skreenkinikor_Master_Project
             child.Dock = DockStyle.Fill;
             pnlMainContainer.Controls.Add(child);
             pnlMainContainer.Tag = child;
+            //Brings child form to active front and shows.
             child.BringToFront();
             child.Show();
-            lblSelected.Text = child.Text;
+            //Changes header text
+            lblSelected.Text = btnCurrent.Text;
         }
-
+        //Button Click events
         private void btnHome_Click(object sender, EventArgs e)
         {
             Active(sender, Colors.foregroundColor1);
+            OpenChild(new frmHome());
         }
 
         private void btnTicket_Sale_Click(object sender, EventArgs e)
         {
             Active(sender, Colors.foregroundColor1);
+            OpenChild(new frmTicket_Sale());
         }
 
         private void btnCon_Sale_Click(object sender, EventArgs e)
@@ -118,31 +123,37 @@ namespace Skreenkinikor_Master_Project
         private void btnSchedule_Click(object sender, EventArgs e)
         {
             Active(sender, Colors.foregroundColor1);
+            OpenChild(new frmSchedule());
         }
 
         private void btnActors_Click(object sender, EventArgs e)
         {
             Active(sender, Colors.foregroundColor1);
+            OpenChild(new frmActors());
         }
 
         private void btnStock_Click(object sender, EventArgs e)
         {
             Active(sender, Colors.foregroundColor1);
+            OpenChild(new frmStock());
         }
 
         private void btnMovies_Click(object sender, EventArgs e)
         {
             Active(sender, Colors.foregroundColor1);
+            OpenChild(new frmMovies());
         }
 
         private void btnReports_Click(object sender, EventArgs e)
         {
             Active(sender, Colors.foregroundColor1);
+            OpenChild(new frmReports());
         }
 
         private void btnSettings_Click(object sender, EventArgs e)
         {
             Active(sender, Colors.foregroundColor1);
+            OpenChild(new frmSettings());
         }
 
         private void frmMain_Load(object sender, EventArgs e)
@@ -150,6 +161,7 @@ namespace Skreenkinikor_Master_Project
             Active(btnHome, Colors.foregroundColor1);
             ipbSelectedIcon.IconChar = IconChar.HomeLg;
             lblSelected.Text = "Home";
+            OpenChild(new frmHome());
         }
         //Don't touch this, this adds drag functionality to the header panel
         //Explanation: Uses native libaries of the OS to move form
@@ -161,6 +173,50 @@ namespace Skreenkinikor_Master_Project
         {
             ReleaseCapture();
             SendMessage(this.Handle, 0x112, 0xf012, 0);
+        }
+
+        private void btnClose_MouseHover(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void btnClose_MouseEnter(object sender, EventArgs e)
+        {
+            btnClose.BackColor = Colors.foregroundColor2;
+        }
+
+        private void btnClose_MouseLeave(object sender, EventArgs e)
+        {
+            btnClose.BackColor = Colors.secondaryBackColor2;
+        }
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void btnMax_Click(object sender, EventArgs e)
+        {
+            if(WindowState == FormWindowState.Normal)
+            {
+                WindowState = FormWindowState.Maximized;
+                btnMax.ImageAlign = ContentAlignment.TopCenter;
+                btnMax.IconSize = 12;
+            }
+            else if(WindowState == FormWindowState.Maximized)
+            {
+                WindowState = FormWindowState.Normal;
+                btnMax.ImageAlign = ContentAlignment.TopCenter;
+                btnMax.IconSize = 14;
+            }
+        }
+
+        private void btnMin_Click(object sender, EventArgs e)
+        {
+            if(WindowState != FormWindowState.Minimized)
+            {
+                WindowState=FormWindowState.Minimized;
+            }
         }
     }
 }

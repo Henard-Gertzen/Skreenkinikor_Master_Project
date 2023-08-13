@@ -41,15 +41,20 @@
             this.pnlLogo = new System.Windows.Forms.Panel();
             this.pbxLogo = new System.Windows.Forms.PictureBox();
             this.pnlHeader = new System.Windows.Forms.Panel();
-            this.ipbSelectedIcon = new FontAwesome.Sharp.IconPictureBox();
+            this.btnMin = new FontAwesome.Sharp.IconButton();
+            this.btnMax = new FontAwesome.Sharp.IconButton();
+            this.btnClose = new FontAwesome.Sharp.IconButton();
             this.lblSelected = new System.Windows.Forms.Label();
+            this.ipbSelectedIcon = new FontAwesome.Sharp.IconPictureBox();
             this.pnlEffect = new System.Windows.Forms.Panel();
             this.pnlMainContainer = new System.Windows.Forms.Panel();
+            this.pnlControlBar = new System.Windows.Forms.Panel();
             this.pnlMenu.SuspendLayout();
             this.pnlLogo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbxLogo)).BeginInit();
             this.pnlHeader.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ipbSelectedIcon)).BeginInit();
+            this.pnlControlBar.SuspendLayout();
             this.SuspendLayout();
             // 
             // pnlMenu
@@ -300,6 +305,7 @@
             // pnlHeader
             // 
             this.pnlHeader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(67)))), ((int)(((byte)(100)))));
+            this.pnlHeader.Controls.Add(this.pnlControlBar);
             this.pnlHeader.Controls.Add(this.lblSelected);
             this.pnlHeader.Controls.Add(this.ipbSelectedIcon);
             this.pnlHeader.Dock = System.Windows.Forms.DockStyle.Top;
@@ -309,28 +315,89 @@
             this.pnlHeader.TabIndex = 1;
             this.pnlHeader.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pnlHeader_MouseDown);
             // 
-            // ipbSelectedIcon
+            // btnMin
             // 
-            this.ipbSelectedIcon.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(67)))), ((int)(((byte)(100)))));
-            this.ipbSelectedIcon.IconChar = FontAwesome.Sharp.IconChar.HomeLg;
-            this.ipbSelectedIcon.IconColor = System.Drawing.Color.White;
-            this.ipbSelectedIcon.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.ipbSelectedIcon.Location = new System.Drawing.Point(6, 17);
-            this.ipbSelectedIcon.Name = "ipbSelectedIcon";
-            this.ipbSelectedIcon.Size = new System.Drawing.Size(32, 32);
-            this.ipbSelectedIcon.TabIndex = 0;
-            this.ipbSelectedIcon.TabStop = false;
+            this.btnMin.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnMin.Dock = System.Windows.Forms.DockStyle.Right;
+            this.btnMin.FlatAppearance.BorderSize = 0;
+            this.btnMin.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnMin.ForeColor = System.Drawing.Color.White;
+            this.btnMin.IconChar = FontAwesome.Sharp.IconChar.WindowMinimize;
+            this.btnMin.IconColor = System.Drawing.Color.White;
+            this.btnMin.IconFont = FontAwesome.Sharp.IconFont.Regular;
+            this.btnMin.IconSize = 16;
+            this.btnMin.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnMin.Location = new System.Drawing.Point(620, 0);
+            this.btnMin.Name = "btnMin";
+            this.btnMin.Size = new System.Drawing.Size(22, 22);
+            this.btnMin.TabIndex = 4;
+            this.btnMin.UseVisualStyleBackColor = true;
+            this.btnMin.Click += new System.EventHandler(this.btnMin_Click);
+            // 
+            // btnMax
+            // 
+            this.btnMax.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnMax.Dock = System.Windows.Forms.DockStyle.Right;
+            this.btnMax.FlatAppearance.BorderSize = 0;
+            this.btnMax.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnMax.ForeColor = System.Drawing.Color.White;
+            this.btnMax.IconChar = FontAwesome.Sharp.IconChar.Square;
+            this.btnMax.IconColor = System.Drawing.Color.White;
+            this.btnMax.IconFont = FontAwesome.Sharp.IconFont.Regular;
+            this.btnMax.IconSize = 14;
+            this.btnMax.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnMax.Location = new System.Drawing.Point(642, 0);
+            this.btnMax.Name = "btnMax";
+            this.btnMax.Size = new System.Drawing.Size(22, 22);
+            this.btnMax.TabIndex = 3;
+            this.btnMax.TextAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.btnMax.UseVisualStyleBackColor = true;
+            this.btnMax.Click += new System.EventHandler(this.btnMax_Click);
+            // 
+            // btnClose
+            // 
+            this.btnClose.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnClose.Dock = System.Windows.Forms.DockStyle.Right;
+            this.btnClose.FlatAppearance.BorderSize = 0;
+            this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnClose.ForeColor = System.Drawing.Color.White;
+            this.btnClose.IconChar = FontAwesome.Sharp.IconChar.Xmark;
+            this.btnClose.IconColor = System.Drawing.Color.White;
+            this.btnClose.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnClose.IconSize = 17;
+            this.btnClose.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnClose.Location = new System.Drawing.Point(664, 0);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.Size = new System.Drawing.Size(22, 22);
+            this.btnClose.TabIndex = 2;
+            this.btnClose.UseVisualStyleBackColor = true;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
+            this.btnClose.MouseEnter += new System.EventHandler(this.btnClose_MouseEnter);
+            this.btnClose.MouseLeave += new System.EventHandler(this.btnClose_MouseLeave);
+            this.btnClose.MouseHover += new System.EventHandler(this.btnClose_MouseHover);
             // 
             // lblSelected
             // 
             this.lblSelected.AutoSize = true;
             this.lblSelected.Font = new System.Drawing.Font("Montserrat", 8.249999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblSelected.ForeColor = System.Drawing.Color.White;
-            this.lblSelected.Location = new System.Drawing.Point(39, 26);
+            this.lblSelected.Location = new System.Drawing.Point(39, 38);
             this.lblSelected.Name = "lblSelected";
             this.lblSelected.Size = new System.Drawing.Size(42, 15);
             this.lblSelected.TabIndex = 1;
             this.lblSelected.Text = "Home";
+            // 
+            // ipbSelectedIcon
+            // 
+            this.ipbSelectedIcon.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(67)))), ((int)(((byte)(100)))));
+            this.ipbSelectedIcon.IconChar = FontAwesome.Sharp.IconChar.HomeLg;
+            this.ipbSelectedIcon.IconColor = System.Drawing.Color.White;
+            this.ipbSelectedIcon.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.ipbSelectedIcon.Location = new System.Drawing.Point(6, 29);
+            this.ipbSelectedIcon.Name = "ipbSelectedIcon";
+            this.ipbSelectedIcon.Size = new System.Drawing.Size(32, 32);
+            this.ipbSelectedIcon.TabIndex = 0;
+            this.ipbSelectedIcon.TabStop = false;
             // 
             // pnlEffect
             // 
@@ -350,6 +417,17 @@
             this.pnlMainContainer.Size = new System.Drawing.Size(686, 644);
             this.pnlMainContainer.TabIndex = 3;
             // 
+            // pnlControlBar
+            // 
+            this.pnlControlBar.Controls.Add(this.btnMin);
+            this.pnlControlBar.Controls.Add(this.btnMax);
+            this.pnlControlBar.Controls.Add(this.btnClose);
+            this.pnlControlBar.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pnlControlBar.Location = new System.Drawing.Point(0, 0);
+            this.pnlControlBar.Name = "pnlControlBar";
+            this.pnlControlBar.Size = new System.Drawing.Size(686, 22);
+            this.pnlControlBar.TabIndex = 5;
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -359,6 +437,7 @@
             this.Controls.Add(this.pnlEffect);
             this.Controls.Add(this.pnlHeader);
             this.Controls.Add(this.pnlMenu);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "frmMain";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.frmMain_Load);
@@ -368,6 +447,7 @@
             this.pnlHeader.ResumeLayout(false);
             this.pnlHeader.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ipbSelectedIcon)).EndInit();
+            this.pnlControlBar.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -391,6 +471,10 @@
         private System.Windows.Forms.Label lblSelected;
         private System.Windows.Forms.Panel pnlEffect;
         private System.Windows.Forms.Panel pnlMainContainer;
+        private FontAwesome.Sharp.IconButton btnMin;
+        private FontAwesome.Sharp.IconButton btnMax;
+        private FontAwesome.Sharp.IconButton btnClose;
+        private System.Windows.Forms.Panel pnlControlBar;
     }
 }
 
