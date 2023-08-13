@@ -18,6 +18,9 @@ namespace Skreenkinikor_Master_Project
         private IconButton btnCurrent;
         private Panel pnlLeft;
         private Form childCurrent;
+        //Public variables
+        public bool bIsAdmin = false;
+        public string sUserModel = "";
         //Constructor
         public frmMain()
         {
@@ -103,6 +106,19 @@ namespace Skreenkinikor_Master_Project
             //Changes header text
             lblSelected.Text = btnCurrent.Text;
         }
+
+        private void isAdminTrue(bool admin)
+        {
+            if(admin == true)
+            {   btnSettings.Visible = true;
+                btnReports.Visible = true;
+                btnMovies.Visible = true;
+                btnStock.Visible = true;
+                btnActors.Visible = true;
+                btnSchedule.Visible = true;
+            }
+        }
+
         //Button Click events
         private void btnHome_Click(object sender, EventArgs e)
         {
@@ -162,6 +178,10 @@ namespace Skreenkinikor_Master_Project
             Active(btnHome, Colors.foregroundColor1);
             ipbSelectedIcon.IconChar = IconChar.HomeLg;
             lblSelected.Text = "Home";
+            //From login
+            Console.WriteLine("IsAdmin = " + bIsAdmin);
+            isAdminTrue(bIsAdmin);
+            lblUserModel.Text = "Welcome " + sUserModel;
             OpenChild(new frmHome());
         }
         //Don't touch this, this adds drag functionality to the header panel
@@ -246,5 +266,21 @@ namespace Skreenkinikor_Master_Project
             btnMin.BackColor = Colors.secondaryBackColor2;
         }
 
+        private void btnLogout_MouseEnter(object sender, EventArgs e)
+        {
+            btnLogout.BackColor = Colors.foregroundColor3;
+        }
+
+        private void btnLogout_MouseLeave(object sender, EventArgs e)
+        {
+            btnLogout.BackColor = Colors.secondaryBackColor2;
+        }
+
+        private void btnLogout_Click(object sender, EventArgs e)
+        {
+            var openLogin = new frmLogin();
+            openLogin.Show();
+            this.Hide();
+        }
     }
 }

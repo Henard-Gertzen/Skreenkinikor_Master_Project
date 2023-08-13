@@ -42,6 +42,10 @@
             this.pnlFullBar = new System.Windows.Forms.Panel();
             this.pbxLogo = new System.Windows.Forms.PictureBox();
             this.pnlHeader = new System.Windows.Forms.Panel();
+            this.pnlUser = new System.Windows.Forms.Panel();
+            this.lblUserModel = new System.Windows.Forms.Label();
+            this.pnlUserBottomBuffer = new System.Windows.Forms.Panel();
+            this.pnlUserTopBuffer = new System.Windows.Forms.Panel();
             this.pnlControlBar = new System.Windows.Forms.Panel();
             this.btnMin = new FontAwesome.Sharp.IconButton();
             this.btnMax = new FontAwesome.Sharp.IconButton();
@@ -50,10 +54,12 @@
             this.ipbSelectedIcon = new FontAwesome.Sharp.IconPictureBox();
             this.pnlEffect = new System.Windows.Forms.Panel();
             this.pnlMainContainer = new System.Windows.Forms.Panel();
+            this.btnLogout = new FontAwesome.Sharp.IconButton();
             this.pnlMenu.SuspendLayout();
             this.pnlLogo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbxLogo)).BeginInit();
             this.pnlHeader.SuspendLayout();
+            this.pnlUser.SuspendLayout();
             this.pnlControlBar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ipbSelectedIcon)).BeginInit();
             this.SuspendLayout();
@@ -98,6 +104,7 @@
             this.btnSettings.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnSettings.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnSettings.UseVisualStyleBackColor = true;
+            this.btnSettings.Visible = false;
             this.btnSettings.Click += new System.EventHandler(this.btnSettings_Click);
             // 
             // btnReports
@@ -121,6 +128,7 @@
             this.btnReports.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnReports.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnReports.UseVisualStyleBackColor = true;
+            this.btnReports.Visible = false;
             this.btnReports.Click += new System.EventHandler(this.btnReports_Click);
             // 
             // btnMovies
@@ -144,6 +152,7 @@
             this.btnMovies.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnMovies.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnMovies.UseVisualStyleBackColor = true;
+            this.btnMovies.Visible = false;
             this.btnMovies.Click += new System.EventHandler(this.btnMovies_Click);
             // 
             // btnStock
@@ -167,6 +176,7 @@
             this.btnStock.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnStock.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnStock.UseVisualStyleBackColor = true;
+            this.btnStock.Visible = false;
             this.btnStock.Click += new System.EventHandler(this.btnStock_Click);
             // 
             // btnActors
@@ -190,6 +200,7 @@
             this.btnActors.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnActors.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnActors.UseVisualStyleBackColor = true;
+            this.btnActors.Visible = false;
             this.btnActors.Click += new System.EventHandler(this.btnActors_Click);
             // 
             // btnSchedule
@@ -213,6 +224,7 @@
             this.btnSchedule.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnSchedule.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnSchedule.UseVisualStyleBackColor = true;
+            this.btnSchedule.Visible = false;
             this.btnSchedule.Click += new System.EventHandler(this.btnSchedule_Click);
             // 
             // btnCon_Sale
@@ -316,6 +328,7 @@
             // pnlHeader
             // 
             this.pnlHeader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(67)))), ((int)(((byte)(100)))));
+            this.pnlHeader.Controls.Add(this.pnlUser);
             this.pnlHeader.Controls.Add(this.pnlControlBar);
             this.pnlHeader.Controls.Add(this.lblSelected);
             this.pnlHeader.Controls.Add(this.ipbSelectedIcon);
@@ -325,6 +338,48 @@
             this.pnlHeader.Size = new System.Drawing.Size(686, 70);
             this.pnlHeader.TabIndex = 1;
             this.pnlHeader.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pnlHeader_MouseDown);
+            // 
+            // pnlUser
+            // 
+            this.pnlUser.Controls.Add(this.lblUserModel);
+            this.pnlUser.Controls.Add(this.btnLogout);
+            this.pnlUser.Controls.Add(this.pnlUserBottomBuffer);
+            this.pnlUser.Controls.Add(this.pnlUserTopBuffer);
+            this.pnlUser.Dock = System.Windows.Forms.DockStyle.Right;
+            this.pnlUser.Location = new System.Drawing.Point(288, 22);
+            this.pnlUser.Name = "pnlUser";
+            this.pnlUser.Size = new System.Drawing.Size(398, 48);
+            this.pnlUser.TabIndex = 6;
+            // 
+            // lblUserModel
+            // 
+            this.lblUserModel.AutoSize = true;
+            this.lblUserModel.Dock = System.Windows.Forms.DockStyle.Right;
+            this.lblUserModel.Font = new System.Drawing.Font("Montserrat Medium", 9.749999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblUserModel.ForeColor = System.Drawing.Color.White;
+            this.lblUserModel.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.lblUserModel.Location = new System.Drawing.Point(298, 15);
+            this.lblUserModel.Name = "lblUserModel";
+            this.lblUserModel.Size = new System.Drawing.Size(78, 18);
+            this.lblUserModel.TabIndex = 0;
+            this.lblUserModel.Text = "Welcome";
+            this.lblUserModel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // pnlUserBottomBuffer
+            // 
+            this.pnlUserBottomBuffer.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.pnlUserBottomBuffer.Location = new System.Drawing.Point(0, 33);
+            this.pnlUserBottomBuffer.Name = "pnlUserBottomBuffer";
+            this.pnlUserBottomBuffer.Size = new System.Drawing.Size(398, 15);
+            this.pnlUserBottomBuffer.TabIndex = 1;
+            // 
+            // pnlUserTopBuffer
+            // 
+            this.pnlUserTopBuffer.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pnlUserTopBuffer.Location = new System.Drawing.Point(0, 0);
+            this.pnlUserTopBuffer.Name = "pnlUserTopBuffer";
+            this.pnlUserTopBuffer.Size = new System.Drawing.Size(398, 15);
+            this.pnlUserTopBuffer.TabIndex = 0;
             // 
             // pnlControlBar
             // 
@@ -444,6 +499,25 @@
             this.pnlMainContainer.Size = new System.Drawing.Size(686, 644);
             this.pnlMainContainer.TabIndex = 3;
             // 
+            // btnLogout
+            // 
+            this.btnLogout.Dock = System.Windows.Forms.DockStyle.Right;
+            this.btnLogout.FlatAppearance.BorderSize = 0;
+            this.btnLogout.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnLogout.IconChar = FontAwesome.Sharp.IconChar.RightToBracket;
+            this.btnLogout.IconColor = System.Drawing.Color.White;
+            this.btnLogout.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnLogout.IconSize = 16;
+            this.btnLogout.Location = new System.Drawing.Point(376, 15);
+            this.btnLogout.Margin = new System.Windows.Forms.Padding(0);
+            this.btnLogout.Name = "btnLogout";
+            this.btnLogout.Size = new System.Drawing.Size(22, 18);
+            this.btnLogout.TabIndex = 2;
+            this.btnLogout.UseVisualStyleBackColor = true;
+            this.btnLogout.Click += new System.EventHandler(this.btnLogout_Click);
+            this.btnLogout.MouseEnter += new System.EventHandler(this.btnLogout_MouseEnter);
+            this.btnLogout.MouseLeave += new System.EventHandler(this.btnLogout_MouseLeave);
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -462,6 +536,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.pbxLogo)).EndInit();
             this.pnlHeader.ResumeLayout(false);
             this.pnlHeader.PerformLayout();
+            this.pnlUser.ResumeLayout(false);
+            this.pnlUser.PerformLayout();
             this.pnlControlBar.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.ipbSelectedIcon)).EndInit();
             this.ResumeLayout(false);
@@ -492,6 +568,11 @@
         private FontAwesome.Sharp.IconButton btnClose;
         private System.Windows.Forms.Panel pnlControlBar;
         private System.Windows.Forms.Panel pnlFullBar;
+        private System.Windows.Forms.Panel pnlUser;
+        private System.Windows.Forms.Label lblUserModel;
+        private System.Windows.Forms.Panel pnlUserBottomBuffer;
+        private System.Windows.Forms.Panel pnlUserTopBuffer;
+        private FontAwesome.Sharp.IconButton btnLogout;
     }
 }
 

@@ -31,27 +31,27 @@
             this.pbLogo = new System.Windows.Forms.PictureBox();
             this.lblLogin = new System.Windows.Forms.Label();
             this.pnlContent = new System.Windows.Forms.Panel();
-            this.pnlUser = new System.Windows.Forms.Panel();
-            this.pnlBuffer = new System.Windows.Forms.Panel();
             this.pnlPass = new System.Windows.Forms.Panel();
-            this.iconUser = new FontAwesome.Sharp.IconPictureBox();
+            this.txtPass = new System.Windows.Forms.TextBox();
+            this.pnlBufferP = new System.Windows.Forms.Panel();
             this.iconPass = new FontAwesome.Sharp.IconPictureBox();
-            this.pnlUserBuffer = new System.Windows.Forms.Panel();
             this.pnlPassBuffer = new System.Windows.Forms.Panel();
+            this.pnlBuffer = new System.Windows.Forms.Panel();
+            this.pnlUser = new System.Windows.Forms.Panel();
             this.txtUser = new System.Windows.Forms.TextBox();
             this.pnlBufferU = new System.Windows.Forms.Panel();
-            this.pnlBufferP = new System.Windows.Forms.Panel();
-            this.txtPass = new System.Windows.Forms.TextBox();
+            this.iconUser = new FontAwesome.Sharp.IconPictureBox();
+            this.pnlUserBuffer = new System.Windows.Forms.Panel();
             this.btnLogin = new System.Windows.Forms.Button();
             this.lblError = new System.Windows.Forms.Label();
             this.btnMin = new FontAwesome.Sharp.IconButton();
             this.btnClose = new FontAwesome.Sharp.IconButton();
             ((System.ComponentModel.ISupportInitialize)(this.pbLogo)).BeginInit();
             this.pnlContent.SuspendLayout();
-            this.pnlUser.SuspendLayout();
             this.pnlPass.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.iconUser)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.iconPass)).BeginInit();
+            this.pnlUser.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.iconUser)).BeginInit();
             this.SuspendLayout();
             // 
             // pbLogo
@@ -90,26 +90,6 @@
             this.pnlContent.Size = new System.Drawing.Size(292, 94);
             this.pnlContent.TabIndex = 2;
             // 
-            // pnlUser
-            // 
-            this.pnlUser.Controls.Add(this.txtUser);
-            this.pnlUser.Controls.Add(this.pnlBufferU);
-            this.pnlUser.Controls.Add(this.iconUser);
-            this.pnlUser.Controls.Add(this.pnlUserBuffer);
-            this.pnlUser.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pnlUser.Location = new System.Drawing.Point(0, 0);
-            this.pnlUser.Name = "pnlUser";
-            this.pnlUser.Size = new System.Drawing.Size(292, 30);
-            this.pnlUser.TabIndex = 0;
-            // 
-            // pnlBuffer
-            // 
-            this.pnlBuffer.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pnlBuffer.Location = new System.Drawing.Point(0, 30);
-            this.pnlBuffer.Name = "pnlBuffer";
-            this.pnlBuffer.Size = new System.Drawing.Size(292, 30);
-            this.pnlBuffer.TabIndex = 1;
-            // 
             // pnlPass
             // 
             this.pnlPass.Controls.Add(this.txtPass);
@@ -122,19 +102,22 @@
             this.pnlPass.Size = new System.Drawing.Size(292, 30);
             this.pnlPass.TabIndex = 2;
             // 
-            // iconUser
+            // txtPass
             // 
-            this.iconUser.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(19)))), ((int)(((byte)(41)))), ((int)(((byte)(61)))));
-            this.iconUser.Dock = System.Windows.Forms.DockStyle.Left;
-            this.iconUser.IconChar = FontAwesome.Sharp.IconChar.User;
-            this.iconUser.IconColor = System.Drawing.Color.White;
-            this.iconUser.IconFont = FontAwesome.Sharp.IconFont.Solid;
-            this.iconUser.IconSize = 30;
-            this.iconUser.Location = new System.Drawing.Point(20, 0);
-            this.iconUser.Name = "iconUser";
-            this.iconUser.Size = new System.Drawing.Size(30, 30);
-            this.iconUser.TabIndex = 0;
-            this.iconUser.TabStop = false;
+            this.txtPass.Dock = System.Windows.Forms.DockStyle.Left;
+            this.txtPass.Location = new System.Drawing.Point(50, 5);
+            this.txtPass.Name = "txtPass";
+            this.txtPass.Size = new System.Drawing.Size(222, 20);
+            this.txtPass.TabIndex = 6;
+            this.txtPass.UseSystemPasswordChar = true;
+            // 
+            // pnlBufferP
+            // 
+            this.pnlBufferP.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pnlBufferP.Location = new System.Drawing.Point(50, 0);
+            this.pnlBufferP.Name = "pnlBufferP";
+            this.pnlBufferP.Size = new System.Drawing.Size(242, 5);
+            this.pnlBufferP.TabIndex = 4;
             // 
             // iconPass
             // 
@@ -150,14 +133,6 @@
             this.iconPass.TabIndex = 0;
             this.iconPass.TabStop = false;
             // 
-            // pnlUserBuffer
-            // 
-            this.pnlUserBuffer.Dock = System.Windows.Forms.DockStyle.Left;
-            this.pnlUserBuffer.Location = new System.Drawing.Point(0, 0);
-            this.pnlUserBuffer.Name = "pnlUserBuffer";
-            this.pnlUserBuffer.Size = new System.Drawing.Size(20, 30);
-            this.pnlUserBuffer.TabIndex = 3;
-            // 
             // pnlPassBuffer
             // 
             this.pnlPassBuffer.Dock = System.Windows.Forms.DockStyle.Left;
@@ -165,6 +140,26 @@
             this.pnlPassBuffer.Name = "pnlPassBuffer";
             this.pnlPassBuffer.Size = new System.Drawing.Size(20, 30);
             this.pnlPassBuffer.TabIndex = 4;
+            // 
+            // pnlBuffer
+            // 
+            this.pnlBuffer.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pnlBuffer.Location = new System.Drawing.Point(0, 30);
+            this.pnlBuffer.Name = "pnlBuffer";
+            this.pnlBuffer.Size = new System.Drawing.Size(292, 30);
+            this.pnlBuffer.TabIndex = 1;
+            // 
+            // pnlUser
+            // 
+            this.pnlUser.Controls.Add(this.txtUser);
+            this.pnlUser.Controls.Add(this.pnlBufferU);
+            this.pnlUser.Controls.Add(this.iconUser);
+            this.pnlUser.Controls.Add(this.pnlUserBuffer);
+            this.pnlUser.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pnlUser.Location = new System.Drawing.Point(0, 0);
+            this.pnlUser.Name = "pnlUser";
+            this.pnlUser.Size = new System.Drawing.Size(292, 30);
+            this.pnlUser.TabIndex = 0;
             // 
             // txtUser
             // 
@@ -182,22 +177,27 @@
             this.pnlBufferU.Size = new System.Drawing.Size(242, 5);
             this.pnlBufferU.TabIndex = 5;
             // 
-            // pnlBufferP
+            // iconUser
             // 
-            this.pnlBufferP.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pnlBufferP.Location = new System.Drawing.Point(50, 0);
-            this.pnlBufferP.Name = "pnlBufferP";
-            this.pnlBufferP.Size = new System.Drawing.Size(242, 5);
-            this.pnlBufferP.TabIndex = 4;
+            this.iconUser.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(19)))), ((int)(((byte)(41)))), ((int)(((byte)(61)))));
+            this.iconUser.Dock = System.Windows.Forms.DockStyle.Left;
+            this.iconUser.IconChar = FontAwesome.Sharp.IconChar.User;
+            this.iconUser.IconColor = System.Drawing.Color.White;
+            this.iconUser.IconFont = FontAwesome.Sharp.IconFont.Solid;
+            this.iconUser.IconSize = 30;
+            this.iconUser.Location = new System.Drawing.Point(20, 0);
+            this.iconUser.Name = "iconUser";
+            this.iconUser.Size = new System.Drawing.Size(30, 30);
+            this.iconUser.TabIndex = 0;
+            this.iconUser.TabStop = false;
             // 
-            // txtPass
+            // pnlUserBuffer
             // 
-            this.txtPass.Dock = System.Windows.Forms.DockStyle.Left;
-            this.txtPass.Location = new System.Drawing.Point(50, 5);
-            this.txtPass.Name = "txtPass";
-            this.txtPass.Size = new System.Drawing.Size(222, 20);
-            this.txtPass.TabIndex = 6;
-            this.txtPass.UseSystemPasswordChar = true;
+            this.pnlUserBuffer.Dock = System.Windows.Forms.DockStyle.Left;
+            this.pnlUserBuffer.Location = new System.Drawing.Point(0, 0);
+            this.pnlUserBuffer.Name = "pnlUserBuffer";
+            this.pnlUserBuffer.Size = new System.Drawing.Size(20, 30);
+            this.pnlUserBuffer.TabIndex = 3;
             // 
             // btnLogin
             // 
@@ -213,6 +213,7 @@
             this.btnLogin.TabIndex = 3;
             this.btnLogin.Text = "Login";
             this.btnLogin.UseVisualStyleBackColor = false;
+            this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
             // 
             // lblError
             // 
@@ -285,12 +286,12 @@
             this.Text = "frmLogin";
             ((System.ComponentModel.ISupportInitialize)(this.pbLogo)).EndInit();
             this.pnlContent.ResumeLayout(false);
-            this.pnlUser.ResumeLayout(false);
-            this.pnlUser.PerformLayout();
             this.pnlPass.ResumeLayout(false);
             this.pnlPass.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.iconUser)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.iconPass)).EndInit();
+            this.pnlUser.ResumeLayout(false);
+            this.pnlUser.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.iconUser)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
