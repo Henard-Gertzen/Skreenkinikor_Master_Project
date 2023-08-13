@@ -43,6 +43,8 @@
             this.pnlHeader = new System.Windows.Forms.Panel();
             this.ipbSelectedIcon = new FontAwesome.Sharp.IconPictureBox();
             this.lblSelected = new System.Windows.Forms.Label();
+            this.pnlEffect = new System.Windows.Forms.Panel();
+            this.pnlMainContainer = new System.Windows.Forms.Panel();
             this.pnlMenu.SuspendLayout();
             this.pnlLogo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbxLogo)).BeginInit();
@@ -330,11 +332,31 @@
             this.lblSelected.TabIndex = 1;
             this.lblSelected.Text = "Home";
             // 
+            // pnlEffect
+            // 
+            this.pnlEffect.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(67)))), ((int)(((byte)(100)))));
+            this.pnlEffect.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pnlEffect.Location = new System.Drawing.Point(220, 70);
+            this.pnlEffect.Name = "pnlEffect";
+            this.pnlEffect.Size = new System.Drawing.Size(686, 8);
+            this.pnlEffect.TabIndex = 2;
+            // 
+            // pnlMainContainer
+            // 
+            this.pnlMainContainer.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(19)))), ((int)(((byte)(41)))), ((int)(((byte)(61)))));
+            this.pnlMainContainer.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnlMainContainer.Location = new System.Drawing.Point(220, 78);
+            this.pnlMainContainer.Name = "pnlMainContainer";
+            this.pnlMainContainer.Size = new System.Drawing.Size(686, 644);
+            this.pnlMainContainer.TabIndex = 3;
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(906, 722);
+            this.Controls.Add(this.pnlMainContainer);
+            this.Controls.Add(this.pnlEffect);
             this.Controls.Add(this.pnlHeader);
             this.Controls.Add(this.pnlMenu);
             this.Name = "frmMain";
@@ -367,6 +389,8 @@
         private System.Windows.Forms.Panel pnlHeader;
         private FontAwesome.Sharp.IconPictureBox ipbSelectedIcon;
         private System.Windows.Forms.Label lblSelected;
+        private System.Windows.Forms.Panel pnlEffect;
+        private System.Windows.Forms.Panel pnlMainContainer;
     }
 }
 

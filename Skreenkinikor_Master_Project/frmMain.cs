@@ -14,9 +14,10 @@ namespace Skreenkinikor_Master_Project
 {
     public partial class frmMain : Form
     {
-        //Fields
+        //Variables
         private IconButton btnCurrent;
         private Panel pnlLeft;
+        private Form childCurrent;
         //Constructor
         public frmMain()
         {
@@ -24,6 +25,11 @@ namespace Skreenkinikor_Master_Project
             pnlLeft = new Panel();
             pnlLeft.Size = new Size(9, 60);
             pnlMenu.Controls.Add(pnlLeft);
+            //Remove title bar
+            this.Text = String.Empty;
+            this.ControlBox = false;
+            this.DoubleBuffered = true;
+            this.MaximizedBounds = Screen.FromHandle(this.Handle).WorkingArea;
         }
         //Color Structure
         private struct Colors
@@ -61,7 +67,6 @@ namespace Skreenkinikor_Master_Project
                 pnlLeft.BringToFront();
                 //Selected Child form
                 ipbSelectedIcon.IconChar = btnCurrent.IconChar;
-                lblSelected.Text = btnCurrent.Text;
             }
         }
 
@@ -76,6 +81,23 @@ namespace Skreenkinikor_Master_Project
                 btnCurrent.TextImageRelation = TextImageRelation.ImageBeforeText;
                 btnCurrent.ImageAlign = ContentAlignment.MiddleLeft;
             }
+        }
+
+        private void OpenChild(Form child)
+        {
+            if(ipbSelectedIcon != null)
+            {
+                childCurrent.Close();
+            }
+            childCurrent = child;
+            child.TopLevel = false;
+            child.FormBorderStyle = FormBorderStyle.None;
+            child.Dock = DockStyle.Fill;
+            pnlMainContainer.Controls.Add(child);
+            pnlMainContainer.Tag = child;
+            child.BringToFront();
+            child.Show();
+            lblSelected.Text = child.Text;
         }
 
         private void btnHome_Click(object sender, EventArgs e)
