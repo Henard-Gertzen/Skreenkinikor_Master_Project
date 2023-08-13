@@ -1,0 +1,13 @@
+Color Palettes
+#1
+>13293D - Prussian Blue
+>006494 - Lapis Lazuli
+>247BA0 - Cerulean
+>1B98E0 - Celestial Blue
+>E8F1F2 - Alice Blue
+#2
+>092327 - Gunmetal
+>0B5351 - Dark Slate Gray
+>00A9A5 - Light Sea Green
+>4E8098 - Air Force Blue
+>90C2E7 - Light Sky Blue 
