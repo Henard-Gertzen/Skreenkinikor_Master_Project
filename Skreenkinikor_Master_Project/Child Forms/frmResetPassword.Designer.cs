@@ -46,11 +46,11 @@
             // lblTitle
             // 
             this.lblTitle.AutoSize = true;
-            this.lblTitle.Font = new System.Drawing.Font("Montserrat", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTitle.ForeColor = System.Drawing.Color.White;
             this.lblTitle.Location = new System.Drawing.Point(77, 25);
             this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(130, 21);
+            this.lblTitle.Size = new System.Drawing.Size(112, 18);
             this.lblTitle.TabIndex = 9;
             this.lblTitle.Text = "Error with Login";
             // 
@@ -141,7 +141,7 @@
             this.btnLogin.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnLogin.FlatAppearance.BorderSize = 0;
             this.btnLogin.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnLogin.Font = new System.Drawing.Font("Montserrat", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLogin.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnLogin.ForeColor = System.Drawing.Color.White;
             this.btnLogin.Location = new System.Drawing.Point(88, 133);
             this.btnLogin.Name = "btnLogin";
@@ -154,11 +154,11 @@
             // lblUserText
             // 
             this.lblUserText.AutoSize = true;
-            this.lblUserText.Font = new System.Drawing.Font("Montserrat", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblUserText.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblUserText.ForeColor = System.Drawing.Color.White;
             this.lblUserText.Location = new System.Drawing.Point(12, 62);
             this.lblUserText.Name = "lblUserText";
-            this.lblUserText.Size = new System.Drawing.Size(118, 18);
+            this.lblUserText.Size = new System.Drawing.Size(107, 16);
             this.lblUserText.TabIndex = 13;
             this.lblUserText.Text = "Enter Username:";
             // 

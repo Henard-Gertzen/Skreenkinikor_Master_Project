@@ -33,11 +33,13 @@
             this.pnlPass = new System.Windows.Forms.Panel();
             this.txtPass = new System.Windows.Forms.TextBox();
             this.pnlBufferP = new System.Windows.Forms.Panel();
+            this.iconPass = new FontAwesome.Sharp.IconPictureBox();
             this.pnlPassBuffer = new System.Windows.Forms.Panel();
             this.pnlBuffer = new System.Windows.Forms.Panel();
             this.pnlUser = new System.Windows.Forms.Panel();
             this.txtUser = new System.Windows.Forms.TextBox();
             this.pnlBufferU = new System.Windows.Forms.Panel();
+            this.iconUser = new FontAwesome.Sharp.IconPictureBox();
             this.pnlUserBuffer = new System.Windows.Forms.Panel();
             this.btnLogin = new System.Windows.Forms.Button();
             this.lblError = new System.Windows.Forms.Label();
@@ -45,13 +47,11 @@
             this.lblRequest = new System.Windows.Forms.Label();
             this.btnMin = new FontAwesome.Sharp.IconButton();
             this.btnClose = new FontAwesome.Sharp.IconButton();
-            this.iconPass = new FontAwesome.Sharp.IconPictureBox();
-            this.iconUser = new FontAwesome.Sharp.IconPictureBox();
             this.pbLogo = new System.Windows.Forms.PictureBox();
             this.pnlContent.SuspendLayout();
             this.pnlPass.SuspendLayout();
-            this.pnlUser.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.iconPass)).BeginInit();
+            this.pnlUser.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.iconUser)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbLogo)).BeginInit();
             this.SuspendLayout();
@@ -60,12 +60,12 @@
             // 
             this.lblLogin.AutoSize = true;
             this.lblLogin.Dock = System.Windows.Forms.DockStyle.Top;
-            this.lblLogin.Font = new System.Drawing.Font("Montserrat", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblLogin.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblLogin.ForeColor = System.Drawing.Color.White;
             this.lblLogin.Location = new System.Drawing.Point(0, 180);
             this.lblLogin.Name = "lblLogin";
             this.lblLogin.Padding = new System.Windows.Forms.Padding(33, 0, 21, 30);
-            this.lblLogin.Size = new System.Drawing.Size(289, 74);
+            this.lblLogin.Size = new System.Drawing.Size(271, 70);
             this.lblLogin.TabIndex = 1;
             this.lblLogin.Text = "Welcome to Skreenkinikor\r\nPlease Login";
             this.lblLogin.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -76,7 +76,7 @@
             this.pnlContent.Controls.Add(this.pnlBuffer);
             this.pnlContent.Controls.Add(this.pnlUser);
             this.pnlContent.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pnlContent.Location = new System.Drawing.Point(0, 254);
+            this.pnlContent.Location = new System.Drawing.Point(0, 250);
             this.pnlContent.Name = "pnlContent";
             this.pnlContent.Size = new System.Drawing.Size(292, 94);
             this.pnlContent.TabIndex = 2;
@@ -109,6 +109,20 @@
             this.pnlBufferP.Name = "pnlBufferP";
             this.pnlBufferP.Size = new System.Drawing.Size(242, 5);
             this.pnlBufferP.TabIndex = 4;
+            // 
+            // iconPass
+            // 
+            this.iconPass.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(19)))), ((int)(((byte)(41)))), ((int)(((byte)(61)))));
+            this.iconPass.Dock = System.Windows.Forms.DockStyle.Left;
+            this.iconPass.IconChar = FontAwesome.Sharp.IconChar.Lock;
+            this.iconPass.IconColor = System.Drawing.Color.White;
+            this.iconPass.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.iconPass.IconSize = 30;
+            this.iconPass.Location = new System.Drawing.Point(20, 0);
+            this.iconPass.Name = "iconPass";
+            this.iconPass.Size = new System.Drawing.Size(30, 30);
+            this.iconPass.TabIndex = 0;
+            this.iconPass.TabStop = false;
             // 
             // pnlPassBuffer
             // 
@@ -154,6 +168,20 @@
             this.pnlBufferU.Size = new System.Drawing.Size(242, 5);
             this.pnlBufferU.TabIndex = 5;
             // 
+            // iconUser
+            // 
+            this.iconUser.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(19)))), ((int)(((byte)(41)))), ((int)(((byte)(61)))));
+            this.iconUser.Dock = System.Windows.Forms.DockStyle.Left;
+            this.iconUser.IconChar = FontAwesome.Sharp.IconChar.User;
+            this.iconUser.IconColor = System.Drawing.Color.White;
+            this.iconUser.IconFont = FontAwesome.Sharp.IconFont.Solid;
+            this.iconUser.IconSize = 30;
+            this.iconUser.Location = new System.Drawing.Point(20, 0);
+            this.iconUser.Name = "iconUser";
+            this.iconUser.Size = new System.Drawing.Size(30, 30);
+            this.iconUser.TabIndex = 0;
+            this.iconUser.TabStop = false;
+            // 
             // pnlUserBuffer
             // 
             this.pnlUserBuffer.Dock = System.Windows.Forms.DockStyle.Left;
@@ -168,7 +196,7 @@
             this.btnLogin.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnLogin.FlatAppearance.BorderSize = 0;
             this.btnLogin.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnLogin.Font = new System.Drawing.Font("Montserrat SemiBold", 9.749999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLogin.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnLogin.ForeColor = System.Drawing.Color.White;
             this.btnLogin.Location = new System.Drawing.Point(63, 377);
             this.btnLogin.Name = "btnLogin";
@@ -181,11 +209,11 @@
             // lblError
             // 
             this.lblError.AutoSize = true;
-            this.lblError.Font = new System.Drawing.Font("Montserrat", 8.249999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblError.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.249999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblError.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(87)))), ((int)(((byte)(51)))));
             this.lblError.Location = new System.Drawing.Point(1, 355);
             this.lblError.Name = "lblError";
-            this.lblError.Size = new System.Drawing.Size(178, 15);
+            this.lblError.Size = new System.Drawing.Size(158, 13);
             this.lblError.TabIndex = 4;
             this.lblError.Text = "*Username/Password Incorrect!";
             this.lblError.Visible = false;
@@ -193,11 +221,11 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Montserrat Medium", 8.249999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.249999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(27, 444);
+            this.label1.Location = new System.Drawing.Point(39, 444);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(121, 15);
+            this.label1.Size = new System.Drawing.Size(103, 13);
             this.label1.TabIndex = 8;
             this.label1.Text = "Error with Login?";
             // 
@@ -205,11 +233,11 @@
             // 
             this.lblRequest.AutoSize = true;
             this.lblRequest.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.lblRequest.Font = new System.Drawing.Font("Montserrat Medium", 8.249999F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblRequest.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.249999F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblRequest.ForeColor = System.Drawing.Color.White;
-            this.lblRequest.Location = new System.Drawing.Point(145, 444);
+            this.lblRequest.Location = new System.Drawing.Point(147, 444);
             this.lblRequest.Name = "lblRequest";
-            this.lblRequest.Size = new System.Drawing.Size(103, 15);
+            this.lblRequest.Size = new System.Drawing.Size(90, 13);
             this.lblRequest.TabIndex = 9;
             this.lblRequest.Text = "Log a Request";
             this.lblRequest.Click += new System.EventHandler(this.label2_Click);
@@ -254,34 +282,6 @@
             this.btnClose.MouseEnter += new System.EventHandler(this.btnClose_MouseEnter);
             this.btnClose.MouseLeave += new System.EventHandler(this.btnClose_MouseLeave);
             // 
-            // iconPass
-            // 
-            this.iconPass.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(19)))), ((int)(((byte)(41)))), ((int)(((byte)(61)))));
-            this.iconPass.Dock = System.Windows.Forms.DockStyle.Left;
-            this.iconPass.IconChar = FontAwesome.Sharp.IconChar.Lock;
-            this.iconPass.IconColor = System.Drawing.Color.White;
-            this.iconPass.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.iconPass.IconSize = 30;
-            this.iconPass.Location = new System.Drawing.Point(20, 0);
-            this.iconPass.Name = "iconPass";
-            this.iconPass.Size = new System.Drawing.Size(30, 30);
-            this.iconPass.TabIndex = 0;
-            this.iconPass.TabStop = false;
-            // 
-            // iconUser
-            // 
-            this.iconUser.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(19)))), ((int)(((byte)(41)))), ((int)(((byte)(61)))));
-            this.iconUser.Dock = System.Windows.Forms.DockStyle.Left;
-            this.iconUser.IconChar = FontAwesome.Sharp.IconChar.User;
-            this.iconUser.IconColor = System.Drawing.Color.White;
-            this.iconUser.IconFont = FontAwesome.Sharp.IconFont.Solid;
-            this.iconUser.IconSize = 30;
-            this.iconUser.Location = new System.Drawing.Point(20, 0);
-            this.iconUser.Name = "iconUser";
-            this.iconUser.Size = new System.Drawing.Size(30, 30);
-            this.iconUser.TabIndex = 0;
-            this.iconUser.TabStop = false;
-            // 
             // pbLogo
             // 
             this.pbLogo.Dock = System.Windows.Forms.DockStyle.Top;
@@ -315,9 +315,9 @@
             this.pnlContent.ResumeLayout(false);
             this.pnlPass.ResumeLayout(false);
             this.pnlPass.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.iconPass)).EndInit();
             this.pnlUser.ResumeLayout(false);
             this.pnlUser.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.iconPass)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.iconUser)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbLogo)).EndInit();
             this.ResumeLayout(false);

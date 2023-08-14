@@ -88,7 +88,7 @@
             this.btnSettings.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnSettings.FlatAppearance.BorderSize = 0;
             this.btnSettings.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSettings.Font = new System.Drawing.Font("Montserrat", 8.249999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSettings.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.249999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSettings.ForeColor = System.Drawing.Color.White;
             this.btnSettings.IconChar = FontAwesome.Sharp.IconChar.Gears;
             this.btnSettings.IconColor = System.Drawing.Color.White;
@@ -112,7 +112,7 @@
             this.btnReports.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnReports.FlatAppearance.BorderSize = 0;
             this.btnReports.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnReports.Font = new System.Drawing.Font("Montserrat", 8.249999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnReports.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.249999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnReports.ForeColor = System.Drawing.Color.White;
             this.btnReports.IconChar = FontAwesome.Sharp.IconChar.FileText;
             this.btnReports.IconColor = System.Drawing.Color.White;
@@ -136,7 +136,7 @@
             this.btnMovies.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnMovies.FlatAppearance.BorderSize = 0;
             this.btnMovies.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnMovies.Font = new System.Drawing.Font("Montserrat", 8.249999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnMovies.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.249999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnMovies.ForeColor = System.Drawing.Color.White;
             this.btnMovies.IconChar = FontAwesome.Sharp.IconChar.VideoCamera;
             this.btnMovies.IconColor = System.Drawing.Color.White;
@@ -160,7 +160,7 @@
             this.btnStock.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnStock.FlatAppearance.BorderSize = 0;
             this.btnStock.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnStock.Font = new System.Drawing.Font("Montserrat", 8.249999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnStock.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.249999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnStock.ForeColor = System.Drawing.Color.White;
             this.btnStock.IconChar = FontAwesome.Sharp.IconChar.BoxOpen;
             this.btnStock.IconColor = System.Drawing.Color.White;
@@ -184,7 +184,7 @@
             this.btnActors.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnActors.FlatAppearance.BorderSize = 0;
             this.btnActors.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnActors.Font = new System.Drawing.Font("Montserrat", 8.249999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnActors.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.249999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnActors.ForeColor = System.Drawing.Color.White;
             this.btnActors.IconChar = FontAwesome.Sharp.IconChar.Person;
             this.btnActors.IconColor = System.Drawing.Color.White;
@@ -208,7 +208,7 @@
             this.btnSchedule.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnSchedule.FlatAppearance.BorderSize = 0;
             this.btnSchedule.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSchedule.Font = new System.Drawing.Font("Montserrat", 8.249999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSchedule.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.249999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSchedule.ForeColor = System.Drawing.Color.White;
             this.btnSchedule.IconChar = FontAwesome.Sharp.IconChar.Calendar;
             this.btnSchedule.IconColor = System.Drawing.Color.White;
@@ -232,7 +232,7 @@
             this.btnCon_Sale.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnCon_Sale.FlatAppearance.BorderSize = 0;
             this.btnCon_Sale.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCon_Sale.Font = new System.Drawing.Font("Montserrat", 8.249999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCon_Sale.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.249999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCon_Sale.ForeColor = System.Drawing.Color.White;
             this.btnCon_Sale.IconChar = FontAwesome.Sharp.IconChar.BowlFood;
             this.btnCon_Sale.IconColor = System.Drawing.Color.White;
@@ -255,7 +255,7 @@
             this.btnTicket_Sale.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnTicket_Sale.FlatAppearance.BorderSize = 0;
             this.btnTicket_Sale.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnTicket_Sale.Font = new System.Drawing.Font("Montserrat", 8.249999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnTicket_Sale.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.249999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnTicket_Sale.ForeColor = System.Drawing.Color.White;
             this.btnTicket_Sale.IconChar = FontAwesome.Sharp.IconChar.Ticket;
             this.btnTicket_Sale.IconColor = System.Drawing.Color.White;
@@ -278,7 +278,7 @@
             this.btnHome.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnHome.FlatAppearance.BorderSize = 0;
             this.btnHome.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnHome.Font = new System.Drawing.Font("Montserrat", 8.249999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnHome.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.249999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnHome.ForeColor = System.Drawing.Color.White;
             this.btnHome.IconChar = FontAwesome.Sharp.IconChar.HomeLg;
             this.btnHome.IconColor = System.Drawing.Color.White;
@@ -355,12 +355,12 @@
             // 
             this.lblUserModel.AutoSize = true;
             this.lblUserModel.Dock = System.Windows.Forms.DockStyle.Right;
-            this.lblUserModel.Font = new System.Drawing.Font("Montserrat", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblUserModel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblUserModel.ForeColor = System.Drawing.Color.White;
             this.lblUserModel.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.lblUserModel.Location = new System.Drawing.Point(307, 15);
+            this.lblUserModel.Location = new System.Drawing.Point(311, 15);
             this.lblUserModel.Name = "lblUserModel";
-            this.lblUserModel.Size = new System.Drawing.Size(69, 18);
+            this.lblUserModel.Size = new System.Drawing.Size(65, 16);
             this.lblUserModel.TabIndex = 0;
             this.lblUserModel.Text = "Welcome";
             this.lblUserModel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -480,11 +480,11 @@
             // lblSelected
             // 
             this.lblSelected.AutoSize = true;
-            this.lblSelected.Font = new System.Drawing.Font("Montserrat", 8.249999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSelected.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.249999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblSelected.ForeColor = System.Drawing.Color.White;
             this.lblSelected.Location = new System.Drawing.Point(39, 38);
             this.lblSelected.Name = "lblSelected";
-            this.lblSelected.Size = new System.Drawing.Size(42, 15);
+            this.lblSelected.Size = new System.Drawing.Size(39, 13);
             this.lblSelected.TabIndex = 1;
             this.lblSelected.Text = "Home";
             // 
