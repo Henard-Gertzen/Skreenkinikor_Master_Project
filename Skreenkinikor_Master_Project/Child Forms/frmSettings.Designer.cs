@@ -30,16 +30,22 @@
         {
             this.pnlleft = new System.Windows.Forms.Panel();
             this.pnlright = new System.Windows.Forms.Panel();
-            this.pnlbottom = new System.Windows.Forms.Panel();
             this.pnltop = new System.Windows.Forms.Panel();
-            this.pnlcenter = new System.Windows.Forms.Panel();
-            this.pnlDatagrid = new System.Windows.Forms.Panel();
+            this.dgSettings = new System.Windows.Forms.DataGridView();
+            this.pnlContainer = new System.Windows.Forms.Panel();
+            this.pnlBuffer = new System.Windows.Forms.Panel();
             this.pnlButton = new System.Windows.Forms.Panel();
-            this.btnRequests = new System.Windows.Forms.Button();
-            this.btnModifyUsers = new System.Windows.Forms.Button();
             this.pnlbtnbuffer = new System.Windows.Forms.Panel();
-            this.pnlcenter.SuspendLayout();
+            this.btnRequests = new System.Windows.Forms.Button();
+            this.btnView = new System.Windows.Forms.Button();
+            this.ipbSearch = new FontAwesome.Sharp.IconPictureBox();
+            this.txtSearch = new System.Windows.Forms.TextBox();
+            this.pnlsearch = new System.Windows.Forms.Panel();
+            ((System.ComponentModel.ISupportInitialize)(this.dgSettings)).BeginInit();
+            this.pnlContainer.SuspendLayout();
             this.pnlButton.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ipbSearch)).BeginInit();
+            this.pnlsearch.SuspendLayout();
             this.SuspendLayout();
             // 
             // pnlleft
@@ -47,106 +53,145 @@
             this.pnlleft.Dock = System.Windows.Forms.DockStyle.Left;
             this.pnlleft.Location = new System.Drawing.Point(0, 0);
             this.pnlleft.Name = "pnlleft";
-            this.pnlleft.Size = new System.Drawing.Size(20, 450);
+            this.pnlleft.Size = new System.Drawing.Size(20, 521);
             this.pnlleft.TabIndex = 0;
             // 
             // pnlright
             // 
             this.pnlright.Dock = System.Windows.Forms.DockStyle.Right;
-            this.pnlright.Location = new System.Drawing.Point(780, 0);
+            this.pnlright.Location = new System.Drawing.Point(666, 0);
             this.pnlright.Name = "pnlright";
-            this.pnlright.Size = new System.Drawing.Size(20, 450);
+            this.pnlright.Size = new System.Drawing.Size(20, 521);
             this.pnlright.TabIndex = 1;
-            // 
-            // pnlbottom
-            // 
-            this.pnlbottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.pnlbottom.Location = new System.Drawing.Point(20, 430);
-            this.pnlbottom.Name = "pnlbottom";
-            this.pnlbottom.Size = new System.Drawing.Size(760, 20);
-            this.pnlbottom.TabIndex = 2;
             // 
             // pnltop
             // 
             this.pnltop.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnltop.Location = new System.Drawing.Point(20, 0);
             this.pnltop.Name = "pnltop";
-            this.pnltop.Size = new System.Drawing.Size(760, 20);
+            this.pnltop.Size = new System.Drawing.Size(646, 20);
             this.pnltop.TabIndex = 1;
             // 
-            // pnlcenter
+            // dgSettings
             // 
-            this.pnlcenter.Controls.Add(this.pnlButton);
-            this.pnlcenter.Controls.Add(this.pnlDatagrid);
-            this.pnlcenter.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlcenter.Location = new System.Drawing.Point(20, 20);
-            this.pnlcenter.Name = "pnlcenter";
-            this.pnlcenter.Size = new System.Drawing.Size(760, 410);
-            this.pnlcenter.TabIndex = 3;
+            this.dgSettings.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgSettings.Dock = System.Windows.Forms.DockStyle.Top;
+            this.dgSettings.Location = new System.Drawing.Point(20, 20);
+            this.dgSettings.Name = "dgSettings";
+            this.dgSettings.Size = new System.Drawing.Size(646, 432);
+            this.dgSettings.TabIndex = 5;
             // 
-            // pnlDatagrid
+            // pnlContainer
             // 
-            this.pnlDatagrid.Dock = System.Windows.Forms.DockStyle.Right;
-            this.pnlDatagrid.Location = new System.Drawing.Point(120, 0);
-            this.pnlDatagrid.Name = "pnlDatagrid";
-            this.pnlDatagrid.Size = new System.Drawing.Size(640, 410);
-            this.pnlDatagrid.TabIndex = 0;
+            this.pnlContainer.Controls.Add(this.pnlsearch);
+            this.pnlContainer.Controls.Add(this.pnlButton);
+            this.pnlContainer.Controls.Add(this.pnlBuffer);
+            this.pnlContainer.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pnlContainer.Location = new System.Drawing.Point(20, 452);
+            this.pnlContainer.Name = "pnlContainer";
+            this.pnlContainer.Size = new System.Drawing.Size(646, 60);
+            this.pnlContainer.TabIndex = 6;
+            this.pnlContainer.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlContainer_Paint);
+            // 
+            // pnlBuffer
+            // 
+            this.pnlBuffer.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pnlBuffer.Location = new System.Drawing.Point(0, 0);
+            this.pnlBuffer.Name = "pnlBuffer";
+            this.pnlBuffer.Size = new System.Drawing.Size(646, 16);
+            this.pnlBuffer.TabIndex = 5;
             // 
             // pnlButton
             // 
-            this.pnlButton.Controls.Add(this.btnModifyUsers);
+            this.pnlButton.Controls.Add(this.btnView);
             this.pnlButton.Controls.Add(this.pnlbtnbuffer);
             this.pnlButton.Controls.Add(this.btnRequests);
-            this.pnlButton.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlButton.Location = new System.Drawing.Point(0, 0);
+            this.pnlButton.Dock = System.Windows.Forms.DockStyle.Left;
+            this.pnlButton.Location = new System.Drawing.Point(0, 16);
             this.pnlButton.Name = "pnlButton";
-            this.pnlButton.Size = new System.Drawing.Size(120, 410);
-            this.pnlButton.TabIndex = 0;
-            // 
-            // btnRequests
-            // 
-            this.btnRequests.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnRequests.Location = new System.Drawing.Point(0, 0);
-            this.btnRequests.Name = "btnRequests";
-            this.btnRequests.Size = new System.Drawing.Size(120, 40);
-            this.btnRequests.TabIndex = 0;
-            this.btnRequests.Text = "&See Requests";
-            this.btnRequests.UseVisualStyleBackColor = true;
-            // 
-            // btnModifyUsers
-            // 
-            this.btnModifyUsers.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnModifyUsers.Location = new System.Drawing.Point(0, 60);
-            this.btnModifyUsers.Name = "btnModifyUsers";
-            this.btnModifyUsers.Size = new System.Drawing.Size(120, 40);
-            this.btnModifyUsers.TabIndex = 1;
-            this.btnModifyUsers.Text = "&Modify Users";
-            this.btnModifyUsers.UseVisualStyleBackColor = true;
+            this.pnlButton.Size = new System.Drawing.Size(278, 44);
+            this.pnlButton.TabIndex = 6;
             // 
             // pnlbtnbuffer
             // 
-            this.pnlbtnbuffer.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pnlbtnbuffer.Location = new System.Drawing.Point(0, 40);
+            this.pnlbtnbuffer.Dock = System.Windows.Forms.DockStyle.Left;
+            this.pnlbtnbuffer.Location = new System.Drawing.Point(123, 0);
             this.pnlbtnbuffer.Name = "pnlbtnbuffer";
-            this.pnlbtnbuffer.Size = new System.Drawing.Size(120, 20);
-            this.pnlbtnbuffer.TabIndex = 2;
+            this.pnlbtnbuffer.Size = new System.Drawing.Size(17, 44);
+            this.pnlbtnbuffer.TabIndex = 7;
+            // 
+            // btnRequests
+            // 
+            this.btnRequests.Dock = System.Windows.Forms.DockStyle.Left;
+            this.btnRequests.Location = new System.Drawing.Point(0, 0);
+            this.btnRequests.Name = "btnRequests";
+            this.btnRequests.Size = new System.Drawing.Size(123, 44);
+            this.btnRequests.TabIndex = 0;
+            this.btnRequests.Text = "&View Requests";
+            this.btnRequests.UseVisualStyleBackColor = true;
+            // 
+            // btnView
+            // 
+            this.btnView.Dock = System.Windows.Forms.DockStyle.Left;
+            this.btnView.Location = new System.Drawing.Point(140, 0);
+            this.btnView.Name = "btnView";
+            this.btnView.Size = new System.Drawing.Size(123, 44);
+            this.btnView.TabIndex = 8;
+            this.btnView.Text = "&Modify Users";
+            this.btnView.UseVisualStyleBackColor = true;
+            // 
+            // ipbSearch
+            // 
+            this.ipbSearch.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(19)))), ((int)(((byte)(41)))), ((int)(((byte)(61)))));
+            this.ipbSearch.Dock = System.Windows.Forms.DockStyle.Left;
+            this.ipbSearch.IconChar = FontAwesome.Sharp.IconChar.MagnifyingGlass;
+            this.ipbSearch.IconColor = System.Drawing.Color.White;
+            this.ipbSearch.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.ipbSearch.IconSize = 20;
+            this.ipbSearch.Location = new System.Drawing.Point(0, 0);
+            this.ipbSearch.Name = "ipbSearch";
+            this.ipbSearch.Size = new System.Drawing.Size(26, 20);
+            this.ipbSearch.TabIndex = 7;
+            this.ipbSearch.TabStop = false;
+            // 
+            // txtSearch
+            // 
+            this.txtSearch.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txtSearch.Location = new System.Drawing.Point(26, 0);
+            this.txtSearch.Name = "txtSearch";
+            this.txtSearch.Size = new System.Drawing.Size(342, 20);
+            this.txtSearch.TabIndex = 7;
+            // 
+            // pnlsearch
+            // 
+            this.pnlsearch.Controls.Add(this.txtSearch);
+            this.pnlsearch.Controls.Add(this.ipbSearch);
+            this.pnlsearch.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pnlsearch.Location = new System.Drawing.Point(278, 16);
+            this.pnlsearch.Name = "pnlsearch";
+            this.pnlsearch.Size = new System.Drawing.Size(368, 20);
+            this.pnlsearch.TabIndex = 8;
             // 
             // frmSettings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(19)))), ((int)(((byte)(41)))), ((int)(((byte)(61)))));
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.pnlcenter);
+            this.ClientSize = new System.Drawing.Size(686, 521);
+            this.Controls.Add(this.pnlContainer);
+            this.Controls.Add(this.dgSettings);
             this.Controls.Add(this.pnltop);
-            this.Controls.Add(this.pnlbottom);
             this.Controls.Add(this.pnlright);
             this.Controls.Add(this.pnlleft);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "frmSettings";
             this.Text = "frmSettings";
-            this.pnlcenter.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgSettings)).EndInit();
+            this.pnlContainer.ResumeLayout(false);
             this.pnlButton.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.ipbSearch)).EndInit();
+            this.pnlsearch.ResumeLayout(false);
+            this.pnlsearch.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -155,13 +200,16 @@
 
         private System.Windows.Forms.Panel pnlleft;
         private System.Windows.Forms.Panel pnlright;
-        private System.Windows.Forms.Panel pnlbottom;
         private System.Windows.Forms.Panel pnltop;
-        private System.Windows.Forms.Panel pnlcenter;
+        private System.Windows.Forms.DataGridView dgSettings;
+        private System.Windows.Forms.Panel pnlContainer;
+        private System.Windows.Forms.Panel pnlBuffer;
         private System.Windows.Forms.Panel pnlButton;
-        private System.Windows.Forms.Panel pnlDatagrid;
-        private System.Windows.Forms.Button btnModifyUsers;
+        private System.Windows.Forms.Button btnView;
         private System.Windows.Forms.Panel pnlbtnbuffer;
         private System.Windows.Forms.Button btnRequests;
+        private System.Windows.Forms.Panel pnlsearch;
+        private System.Windows.Forms.TextBox txtSearch;
+        private FontAwesome.Sharp.IconPictureBox ipbSearch;
     }
 }

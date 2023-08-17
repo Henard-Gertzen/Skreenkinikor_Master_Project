@@ -1,20 +1,26 @@
 USE ScreenKinikor
 GO
 
+CREATE TABLE Confectionary_Item_Type
+(
+	Confectionary_Type_ID	int IDENTITY(1,1)PRIMARY KEY,
+	Confectionary_Type_Name	varchar(20),
+	Confectionary_Type_Desc	varchar(20)
+);
+
 CREATE TABLE Confectionary_Item
 (
 	Confectionary_ID	int	IDENTITY(1,1)PRIMARY KEY,
 	Confectionary_Type_ID	int	FOREIGN KEY REFERENCES Confectionary_Item_Type(Confectionary_Type_ID),
 	Confectionary_Name	varchar(20),
-	Confectionary_Price	double,
+	Confectionary_Price	decimal(19,4),
 	Confectionary_Stock	int
 );
 
-CREATE TABLE Confectionary_Item_Type
+CREATE TABLE Confectionary_Sale
 (
-	Confectionary_Type_ID	int IDENTITY(1,1)PRIMARY KEY,
-	Confectionary_Type_Name	varchar(20),
-	Confectionary_Type_Desc	verchar(20)
+	Confectionary_Sale_ID	int	IDENTITY(1,1)PRIMARY KEY,
+	Sale_Total	decimal(19,4)
 );
 
 CREATE TABLE Sale_Item
@@ -27,26 +33,22 @@ CREATE TABLE Sale_Item
 	FOREIGN KEY (Confectionary_Sale_ID) REFERENCES Confectionary_Sale(Confectionary_Sale_ID)
 );
 
-CREATE TABLE Ticket_Info
-(
-	Ticket_ID	int	IDENTITY(1,1)PRIMARY KEY,
-	Movie_ID	int	FOREIGN KEY REFERENCES Movie_Info(Movie_ID),
-	Ticket_Total	double
-);
 
 CREATE TABLE Movie_Info
 (
 	Movie_ID	int	IDENTITY(1,1)PRIMARY KEY,
 	Movie_Name	varchar(40),
 	Movie_Description	varchar(200),
-	Seat_Price	double
+	Seat_Price	decimal(19,4)
 );
 
-CREATE TABLE Confectionary_Sale
+CREATE TABLE Ticket_Info
 (
-	Confectionary_Sale_ID	int	IDENTITY(1,1)PRIMARY KEY,
-	Sale_Total	double
+	Ticket_ID	int	IDENTITY(1,1)PRIMARY KEY,
+	Movie_ID	int	FOREIGN KEY REFERENCES Movie_Info(Movie_ID),
+	Ticket_Total	decimal(19,4)
 );
+
 
 CREATE TABLE Actor_Info
 (
@@ -65,6 +67,13 @@ CREATE TABLE Actor_On_Movie
 	FOREIGN KEY (Movie_ID) REFERENCES Movie_Info(Movie_ID)
 );
 
+CREATE TABLE Schedule
+(
+	Schedule_ID	int	IDENTITY(1,1)PRIMARY KEY,
+	Timeslot_Info	varchar(13),
+	Day_Shown	datetime
+);
+
 CREATE TABLE Movie_On_Schedule
 (
 	Schedule_ID	int NOT NULL,
@@ -74,9 +83,3 @@ CREATE TABLE Movie_On_Schedule
 	FOREIGN KEY (Movie_ID) REFERENCES Movie_Info(Movie_ID)
 );
 
-CREATE TABLE Schedule
-(
-	Schedule_ID	int	IDENTITY(1,1)PRIMARY KEY,
-	Timeslot_Info	varchar(13),
-	Day_Shown	datetime
-);

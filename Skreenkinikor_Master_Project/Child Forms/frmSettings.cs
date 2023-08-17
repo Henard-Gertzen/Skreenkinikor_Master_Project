@@ -16,5 +16,15 @@ namespace Skreenkinikor_Master_Project
         {
             InitializeComponent();
         }
+
+        private void pnlUser_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void pnlContainer_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }
