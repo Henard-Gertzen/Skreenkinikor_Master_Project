@@ -57,7 +57,7 @@ namespace Skreenkinikor_Master_Project
             if(sendedButton != null)
             {
                 DisableButton();
-                //Button Modifyer if selected
+                //Button Modifier if selected
                 btnCurrent = (IconButton)sendedButton;
                 btnCurrent.BackColor = Color.FromArgb(9, 35, 39);
                 btnCurrent.ForeColor = color;
