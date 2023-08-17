@@ -1,0 +1,4 @@
+DROP DATABASE IF EXISTS ScreenKinikor
+GO
+CREATE DATABASE ScreenKinikor
+GO
