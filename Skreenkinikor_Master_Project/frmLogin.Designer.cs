@@ -112,7 +112,7 @@
             // 
             // iconPass
             // 
-            this.iconPass.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(19)))), ((int)(((byte)(41)))), ((int)(((byte)(61)))));
+            this.iconPass.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(100)))), ((int)(((byte)(148)))));
             this.iconPass.Dock = System.Windows.Forms.DockStyle.Left;
             this.iconPass.IconChar = FontAwesome.Sharp.IconChar.Lock;
             this.iconPass.IconColor = System.Drawing.Color.White;
@@ -170,7 +170,7 @@
             // 
             // iconUser
             // 
-            this.iconUser.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(19)))), ((int)(((byte)(41)))), ((int)(((byte)(61)))));
+            this.iconUser.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(100)))), ((int)(((byte)(148)))));
             this.iconUser.Dock = System.Windows.Forms.DockStyle.Left;
             this.iconUser.IconChar = FontAwesome.Sharp.IconChar.User;
             this.iconUser.IconColor = System.Drawing.Color.White;
@@ -192,7 +192,7 @@
             // 
             // btnLogin
             // 
-            this.btnLogin.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(152)))), ((int)(((byte)(224)))));
+            this.btnLogin.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(19)))), ((int)(((byte)(41)))), ((int)(((byte)(61)))));
             this.btnLogin.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnLogin.FlatAppearance.BorderSize = 0;
             this.btnLogin.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -209,11 +209,11 @@
             // lblError
             // 
             this.lblError.AutoSize = true;
-            this.lblError.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.249999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblError.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblError.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(87)))), ((int)(((byte)(51)))));
             this.lblError.Location = new System.Drawing.Point(1, 355);
             this.lblError.Name = "lblError";
-            this.lblError.Size = new System.Drawing.Size(158, 13);
+            this.lblError.Size = new System.Drawing.Size(187, 13);
             this.lblError.TabIndex = 4;
             this.lblError.Text = "*Username/Password Incorrect!";
             this.lblError.Visible = false;
@@ -297,7 +297,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(19)))), ((int)(((byte)(41)))), ((int)(((byte)(61)))));
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(100)))), ((int)(((byte)(148)))));
             this.ClientSize = new System.Drawing.Size(292, 473);
             this.Controls.Add(this.lblRequest);
             this.Controls.Add(this.label1);

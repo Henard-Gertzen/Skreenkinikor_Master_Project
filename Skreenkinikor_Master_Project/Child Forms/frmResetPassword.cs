@@ -35,6 +35,8 @@ namespace Skreenkinikor_Master_Project.Child_Forms
         private void btnClose_Click(object sender, EventArgs e)
         {
             this.Close();
+            var Login = new frmLogin();
+            Login.Show();
         }
 
         private void btnClose_MouseEnter(object sender, EventArgs e)
@@ -50,6 +52,8 @@ namespace Skreenkinikor_Master_Project.Child_Forms
         private void btnLogin_Click(object sender, EventArgs e)
         {
             LogUser();
+            var Login = new frmLogin();
+            Login.Show();
             this.Close();
         }
 

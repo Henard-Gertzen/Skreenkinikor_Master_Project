@@ -66,7 +66,7 @@
             // 
             // pnlMenu
             // 
-            this.pnlMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(67)))), ((int)(((byte)(100)))));
+            this.pnlMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(100)))), ((int)(((byte)(148)))));
             this.pnlMenu.Controls.Add(this.btnSettings);
             this.pnlMenu.Controls.Add(this.btnReports);
             this.pnlMenu.Controls.Add(this.btnMovies);
@@ -327,7 +327,7 @@
             // 
             // pnlHeader
             // 
-            this.pnlHeader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(67)))), ((int)(((byte)(100)))));
+            this.pnlHeader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(100)))), ((int)(((byte)(148)))));
             this.pnlHeader.Controls.Add(this.pnlUser);
             this.pnlHeader.Controls.Add(this.pnlControlBar);
             this.pnlHeader.Controls.Add(this.lblSelected);
@@ -386,6 +386,7 @@
             // 
             // pnlUserBottomBuffer
             // 
+            this.pnlUserBottomBuffer.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(100)))), ((int)(((byte)(148)))));
             this.pnlUserBottomBuffer.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.pnlUserBottomBuffer.Location = new System.Drawing.Point(0, 33);
             this.pnlUserBottomBuffer.Name = "pnlUserBottomBuffer";
@@ -402,7 +403,7 @@
             // 
             // pnlControlBar
             // 
-            this.pnlControlBar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(67)))), ((int)(((byte)(100)))));
+            this.pnlControlBar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(100)))), ((int)(((byte)(148)))));
             this.pnlControlBar.Controls.Add(this.btnMin);
             this.pnlControlBar.Controls.Add(this.btnMax);
             this.pnlControlBar.Controls.Add(this.btnClose);
@@ -490,7 +491,7 @@
             // 
             // ipbSelectedIcon
             // 
-            this.ipbSelectedIcon.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(67)))), ((int)(((byte)(100)))));
+            this.ipbSelectedIcon.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(100)))), ((int)(((byte)(148)))));
             this.ipbSelectedIcon.IconChar = FontAwesome.Sharp.IconChar.HomeLg;
             this.ipbSelectedIcon.IconColor = System.Drawing.Color.White;
             this.ipbSelectedIcon.IconFont = FontAwesome.Sharp.IconFont.Auto;
@@ -502,7 +503,7 @@
             // 
             // pnlEffect
             // 
-            this.pnlEffect.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(67)))), ((int)(((byte)(100)))));
+            this.pnlEffect.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(100)))), ((int)(((byte)(148)))));
             this.pnlEffect.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlEffect.Location = new System.Drawing.Point(220, 70);
             this.pnlEffect.Name = "pnlEffect";

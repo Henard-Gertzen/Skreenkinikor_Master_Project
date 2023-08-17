@@ -148,6 +148,9 @@
     <EmbeddedResource Include="Child Forms\frmResetPassword.resx">
       <DependentUpon>frmResetPassword.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Child Forms\frmSettings.resx">
+      <DependentUpon>frmSettings.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmLogin.resx">
       <DependentUpon>frmLogin.cs</DependentUpon>
     </EmbeddedResource>
@@ -182,6 +185,8 @@
     <None Include="Resources\SK_Logo.png" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Resources\New Database.sql" />
+    <Content Include="Resources\New Tables.sql" />
     <Content Include="Sterkinikor.ico" />
   </ItemGroup>
   <ItemGroup>

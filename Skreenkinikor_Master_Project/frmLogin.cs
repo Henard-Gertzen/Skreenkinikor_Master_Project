@@ -42,17 +42,17 @@ namespace Skreenkinikor_Master_Project
 
         private void btnClose_MouseLeave(object sender, EventArgs e)
         {
-            btnClose.BackColor = Color.FromArgb(19, 41, 61);
+            btnClose.BackColor = Color.FromArgb(0, 100, 148);
         }
 
         private void btnMin_MouseEnter(object sender, EventArgs e)
         {
-            btnMin.BackColor = Color.FromArgb(11, 83, 81);
+            btnMin.BackColor = Color.FromArgb(19, 41, 61);
         }
 
         private void btnMin_MouseLeave(object sender, EventArgs e)
         {
-            btnMin.BackColor = Color.FromArgb(19, 41, 61); 
+            btnMin.BackColor = Color.FromArgb(0, 100, 148); 
         }
         //Initiate login
         private void btnLogin_Click(object sender, EventArgs e)
@@ -147,6 +147,7 @@ namespace Skreenkinikor_Master_Project
         private void label2_Click(object sender, EventArgs e)
         {
             var request = new frmResetPassword();
+            this.Hide();
             request.ShowDialog();
         }
     }

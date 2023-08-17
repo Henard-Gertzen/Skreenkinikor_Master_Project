@@ -41,7 +41,7 @@ namespace Skreenkinikor_Master_Project
             public static Color primaryBackColor2 = Color.FromArgb(19, 41, 61);
 
             public static Color secondaryBackColor1 = Color.FromArgb(36, 92, 160);
-            public static Color secondaryBackColor2 = Color.FromArgb(31, 67, 100);
+            public static Color secondaryBackColor2 = Color.FromArgb(0, 100, 148);
 
             public static Color winBorderColor1 = Color.FromArgb(0, 100, 148);
             public static Color winBorderColor2 = Color.FromArgb(36, 123, 160);
@@ -49,7 +49,7 @@ namespace Skreenkinikor_Master_Project
 
             public static Color foregroundColor1 = Color.FromArgb(144, 194, 231);
             public static Color foregroundColor2 = Color.FromArgb(255, 87, 51);
-            public static Color foregroundColor3 = Color.FromArgb(11, 83, 81);
+            public static Color foregroundColor3 = Color.FromArgb(19, 41, 61);
         }
         //Methods
         private void Active(object sendedButton, Color color)
@@ -79,7 +79,7 @@ namespace Skreenkinikor_Master_Project
         {
             if(btnCurrent != null)
             {
-                btnCurrent.BackColor = Color.FromArgb(31, 67, 100);
+                btnCurrent.BackColor = Color.FromArgb(0, 100, 148);
                 btnCurrent.ForeColor = Color.White;
                 btnCurrent.TextAlign = ContentAlignment.MiddleLeft;
                 btnCurrent.IconColor = Color.White;
