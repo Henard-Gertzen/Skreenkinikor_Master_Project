@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using System.Data.Sql;
 using System.Data.SqlClient;
 using Skreenkinikor_Master_Project.Child_Forms;
+using Skreenkinikor_Master_Project.Classes;
 
 namespace Skreenkinikor_Master_Project
 {
@@ -63,7 +64,7 @@ namespace Skreenkinikor_Master_Project
                 var openMain = new frmMain();
                 openMain.bIsAdmin = checkIfAdmin(user);
                 openMain.sUserModel = userModel(user);
-
+                UserSession.Initialize(txtUser.Text, txtPass.Text);
                 openMain.Show();
                 this.Hide();
             }
@@ -133,9 +134,8 @@ namespace Skreenkinikor_Master_Project
                         if (reader.Read())
                         {
                             string firstName = reader.GetString(3);
-                            var first = new frmSettings();
-                            first.firstName = firstName;
-                                        string lastName = reader.GetString(4);
+                            UserSession.logFullName(firstName);
+                            string lastName = reader.GetString(4);
                             return firstName + " " +lastName;
                         }
                     }
@@ -150,6 +150,29 @@ namespace Skreenkinikor_Master_Project
             var request = new frmResetPassword();
             this.Hide();
             request.ShowDialog();
+        }
+        private void btnLogin_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                btnLogin_Click(sender, e);
+            }
+        }
+
+        private void txtPass_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                btnLogin_Click(sender, e);
+            }
+        }
+
+        private void txtUser_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                btnLogin_Click(sender, e);
+            }
         }
     }
 }

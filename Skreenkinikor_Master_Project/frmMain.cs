@@ -170,7 +170,7 @@ namespace Skreenkinikor_Master_Project
         private void btnSettings_Click(object sender, EventArgs e)
         {
             Active(sender, Colors.foregroundColor1);
-            OpenChild(new frmSettings());
+            OpenChild(new frmSettings(this));
         }
 
         private void frmMain_Load(object sender, EventArgs e)

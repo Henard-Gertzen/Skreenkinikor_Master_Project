@@ -101,6 +101,7 @@
             this.txtPass.Size = new System.Drawing.Size(222, 20);
             this.txtPass.TabIndex = 6;
             this.txtPass.UseSystemPasswordChar = true;
+            this.txtPass.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPass_KeyPress);
             // 
             // pnlBufferP
             // 
@@ -159,6 +160,7 @@
             this.txtUser.Name = "txtUser";
             this.txtUser.Size = new System.Drawing.Size(222, 20);
             this.txtUser.TabIndex = 4;
+            this.txtUser.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtUser_KeyPress);
             // 
             // pnlBufferU
             // 
@@ -205,6 +207,7 @@
             this.btnLogin.Text = "Login";
             this.btnLogin.UseVisualStyleBackColor = false;
             this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
+            this.btnLogin.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.btnLogin_KeyPress);
             // 
             // lblError
             // 

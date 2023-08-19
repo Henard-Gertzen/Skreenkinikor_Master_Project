@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using System.Data.Sql;
 using System.Data.SqlClient;
 using Skreenkinikor_Master_Project.Child_Forms;
+using Skreenkinikor_Master_Project.Classes;
 
 namespace Skreenkinikor_Master_Project
 {
@@ -17,13 +18,15 @@ namespace Skreenkinikor_Master_Project
     {
         private Button btnCurrent;
         private SqlDataAdapter adapter;
+        private frmMain mainInstance;
         public string firstName;
         private string conStr = "Data Source=.;Initial Catalog=LoginDB;Integrated Security=True";
         private string sqlReset = "SELECT * FROM ResetPassword";
         private string sqlLogin = "SELECT Username, Password, FirstName, LastName, IsAdmin FROM Login_Table";
-        public frmSettings()
+        public frmSettings(frmMain mainForm)
         {
             InitializeComponent();
+            mainInstance = mainForm;
         }
         //Methods
         private void Active(object activeButton)
@@ -188,23 +191,31 @@ namespace Skreenkinikor_Master_Project
             string user = dgSettings.SelectedRows[0].Cells["Username"].Value.ToString();
             string deleteCmd = "DELETE FROM Login_Table WHERE Username = @Username";
             //Check if user is logged in
-            var check = new frmMain();
+            firstName = UserSession.FullName;
             if(firstName == dgSettings.SelectedRows[0].Cells["FirstName"].Value.ToString())
             {
-                using (SqlConnection con = new SqlConnection(conStr))
+                DialogResult warn = MessageBox.Show("Are you sure you want to proceed, deleting your own account will terminate your session", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                if(warn == DialogResult.Yes)
                 {
-                    con.Open();
-                    using (SqlCommand cmd = new SqlCommand(deleteCmd, con))
+                    using (SqlConnection con = new SqlConnection(conStr))
                     {
-                        cmd.Parameters.AddWithValue("@Username", user);
-                        cmd.ExecuteNonQuery();
+                        con.Open();
+                        using (SqlCommand cmd = new SqlCommand(deleteCmd, con))
+                        {
+                            cmd.Parameters.AddWithValue("@Username", user);
+                            cmd.ExecuteNonQuery();
+                        }
+                        con.Close();
                     }
-                    con.Close();
+                    mainInstance.Close();
+                    var login = new frmLogin();
+                    this.Close();
+                    login.Show();
                 }
-                var login = new frmLogin();
-                login.Show();
-                this.Close();
-                LoadTable(sqlQuery);
+                else if(warn == DialogResult.No)
+                {
+                    //nothing happens
+                }
             }
             else
             {

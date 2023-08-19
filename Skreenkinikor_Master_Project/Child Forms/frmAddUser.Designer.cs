@@ -119,14 +119,14 @@
             this.txtName.Location = new System.Drawing.Point(166, 84);
             this.txtName.Name = "txtName";
             this.txtName.Size = new System.Drawing.Size(100, 20);
-            this.txtName.TabIndex = 26;
+            this.txtName.TabIndex = 3;
             // 
             // txtSurname
             // 
             this.txtSurname.Location = new System.Drawing.Point(166, 110);
             this.txtSurname.Name = "txtSurname";
             this.txtSurname.Size = new System.Drawing.Size(100, 20);
-            this.txtSurname.TabIndex = 27;
+            this.txtSurname.TabIndex = 4;
             // 
             // lblSurname
             // 
@@ -147,7 +147,7 @@
             this.lblUser.Location = new System.Drawing.Point(49, 35);
             this.lblUser.Name = "lblUser";
             this.lblUser.Size = new System.Drawing.Size(58, 13);
-            this.lblUser.TabIndex = 32;
+            this.lblUser.TabIndex = 0;
             this.lblUser.Text = "Username:";
             // 
             // txtUser
@@ -155,14 +155,14 @@
             this.txtUser.Location = new System.Drawing.Point(166, 32);
             this.txtUser.Name = "txtUser";
             this.txtUser.Size = new System.Drawing.Size(100, 20);
-            this.txtUser.TabIndex = 30;
+            this.txtUser.TabIndex = 1;
             // 
             // txtPass
             // 
             this.txtPass.Location = new System.Drawing.Point(166, 58);
             this.txtPass.Name = "txtPass";
             this.txtPass.Size = new System.Drawing.Size(100, 20);
-            this.txtPass.TabIndex = 31;
+            this.txtPass.TabIndex = 2;
             // 
             // lblPass
             // 
@@ -193,7 +193,7 @@
             this.cbxAdmin.Location = new System.Drawing.Point(166, 136);
             this.cbxAdmin.Name = "cbxAdmin";
             this.cbxAdmin.Size = new System.Drawing.Size(15, 14);
-            this.cbxAdmin.TabIndex = 34;
+            this.cbxAdmin.TabIndex = 5;
             this.cbxAdmin.UseVisualStyleBackColor = true;
             // 
             // btnAdd
@@ -205,7 +205,7 @@
             this.btnAdd.Location = new System.Drawing.Point(108, 174);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(99, 40);
-            this.btnAdd.TabIndex = 36;
+            this.btnAdd.TabIndex = 6;
             this.btnAdd.Text = "&Add New";
             this.btnAdd.UseVisualStyleBackColor = false;
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);

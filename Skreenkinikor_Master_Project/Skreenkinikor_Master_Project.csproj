@@ -146,6 +146,7 @@
     <Compile Include="Child Forms\frmTicket_Sale.Designer.cs">
       <DependentUpon>frmTicket_Sale.cs</DependentUpon>
     </Compile>
+    <Compile Include="Classes\UserSession.cs" />
     <Compile Include="frmLogin.cs">
       <SubType>Form</SubType>
     </Compile>
