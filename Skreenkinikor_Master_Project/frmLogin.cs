@@ -88,10 +88,9 @@ namespace Skreenkinikor_Master_Project
                     cmd.Parameters.AddWithValue("@password", password);
 
                     bool isValid = Convert.ToInt32(cmd.ExecuteScalar()) > 0;
-
+                    con.Close();
                     return isValid;
                 }
-                con.Close();
             }
         }
         //Check if user is admin
@@ -109,13 +108,13 @@ namespace Skreenkinikor_Master_Project
 
                     if (isAdminObj != null && isAdminObj != DBNull.Value)
                     {
-                        int isAdminInt = Convert.ToInt32(isAdminObj);
-                        return isAdminInt == 1;
+                        bool isAdmin = Convert.ToBoolean(isAdminObj);
+                        return isAdmin;
                     }
 
+                    con.Close();
                     return false;
                 }
-                con.Close();
             }
         }
 
@@ -134,7 +133,9 @@ namespace Skreenkinikor_Master_Project
                         if (reader.Read())
                         {
                             string firstName = reader.GetString(3);
-                            string lastName = reader.GetString(4);
+                            var first = new frmSettings();
+                            first.firstName = firstName;
+                                        string lastName = reader.GetString(4);
                             return firstName + " " +lastName;
                         }
                     }

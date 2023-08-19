@@ -11,3 +11,9 @@ Color Palettes
 >#00A9A5 - Light Sea Green
 >#4E8098 - Air Force Blue
 >#90C2E7 - Light Sky Blue 
+#3
+>#3E92CC
+>#2A628F
+>#13293D
+>#16324F
+>#18435A

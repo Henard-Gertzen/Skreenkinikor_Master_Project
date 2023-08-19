@@ -50,6 +50,9 @@
   <PropertyGroup>
     <ApplicationIcon>Sterkinikor.ico</ApplicationIcon>
   </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>Skreenkinikor_Master_Project.Program</StartupObject>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="FontAwesome.Sharp, Version=6.3.0.0, Culture=neutral, PublicKeyToken=d16d1e4e568ec10f, processorArchitecture=MSIL">
       <HintPath>packages\FontAwesome.Sharp.6.3.0\lib\net472\FontAwesome.Sharp.dll</HintPath>
@@ -77,6 +80,12 @@
     <Compile Include="Child Forms\frmActors.Designer.cs">
       <DependentUpon>frmActors.cs</DependentUpon>
     </Compile>
+    <Compile Include="Child Forms\frmAddUser.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Child Forms\frmAddUser.Designer.cs">
+      <DependentUpon>frmAddUser.cs</DependentUpon>
+    </Compile>
     <Compile Include="Child Forms\frmCon_Sale.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -88,6 +97,12 @@
     </Compile>
     <Compile Include="Child Forms\frmHome.Designer.cs">
       <DependentUpon>frmHome.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Child Forms\frmModifyUser.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Child Forms\frmModifyUser.Designer.cs">
+      <DependentUpon>frmModifyUser.cs</DependentUpon>
     </Compile>
     <Compile Include="Child Forms\frmMovies.cs">
       <SubType>Form</SubType>
@@ -145,6 +160,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Child Forms\frmAddUser.resx">
+      <DependentUpon>frmAddUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Child Forms\frmModifyUser.resx">
+      <DependentUpon>frmModifyUser.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Child Forms\frmResetPassword.resx">
       <DependentUpon>frmResetPassword.cs</DependentUpon>
     </EmbeddedResource>
