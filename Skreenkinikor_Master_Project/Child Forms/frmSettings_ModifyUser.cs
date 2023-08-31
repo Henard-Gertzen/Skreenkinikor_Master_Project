@@ -10,18 +10,19 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.Sql;
 using System.Data.SqlClient;
+using Skreenkinikor_Master_Project.Classes;
 
 namespace Skreenkinikor_Master_Project.Child_Forms
 {
-    public partial class frmModifyUser : Form
+    public partial class frmSettings_ModifyUser : Form
     {
         public string modifyUsername, modifyName, modifySurname, modifyPassword;
         public bool modifyAdmin;
-        private string conString = "Data Source=.;Initial Catalog=LoginDB;Integrated Security=True";
+        private string conString = ConnectionStrings.conLoginStr;
         private SqlConnection conn;
         private SqlCommand cmd;
 
-        public frmModifyUser()
+        public frmSettings_ModifyUser()
         {
             InitializeComponent();
         }

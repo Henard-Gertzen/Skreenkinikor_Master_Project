@@ -20,7 +20,7 @@ namespace Skreenkinikor_Master_Project
         private SqlDataAdapter adapter;
         private frmMain mainInstance;
         public string firstName;
-        private string conStr = "Data Source=.;Initial Catalog=LoginDB;Integrated Security=True";
+        private string conStr = ConnectionStrings.conLoginStr;
         private string sqlReset = "SELECT * FROM ResetPassword";
         private string sqlLogin = "SELECT Username, Password, FirstName, LastName, IsAdmin FROM Login_Table";
         public frmSettings(frmMain mainForm)
@@ -176,7 +176,7 @@ namespace Skreenkinikor_Master_Project
             }
             else
             {
-                MessageBox.Show("No Row Selected", "Error.NoSelection");
+                MessageBox.Show("No Request Selected", "Error.NoSelection");
             }
         }
 
@@ -261,7 +261,7 @@ namespace Skreenkinikor_Master_Project
 
         private void btnManage2_Click(object sender, EventArgs e)
         {
-            var modify = new frmModifyUser();
+            var modify = new frmSettings_ModifyUser();
             modify.modifyUsername = dgSettings.SelectedRows[0].Cells["Username"].Value.ToString();
             modify.modifyName = dgSettings.SelectedRows[0].Cells["FirstName"].Value.ToString();
             modify.modifySurname = dgSettings.SelectedRows[0].Cells["LastName"].Value.ToString();
@@ -293,7 +293,7 @@ namespace Skreenkinikor_Master_Project
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            var addNew = new frmAddUser();
+            var addNew = new frmSettings_AddUser();
             addNew.ShowDialog();
             addNew.FormClosed += addNew_FormClosed;
         }

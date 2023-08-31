@@ -10,6 +10,7 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Skreenkinikor_Master_Project.Classes;
 
 namespace Skreenkinikor_Master_Project.Child_Forms
 {
@@ -19,7 +20,7 @@ namespace Skreenkinikor_Master_Project.Child_Forms
         {
             InitializeComponent();
         }
-        private string conStr = "Data Source=.;Initial Catalog=LoginDB;Integrated Security=True";
+        private string conStr = ConnectionStrings.conLoginStr;
         //Don't touch this, this adds drag functionality to the header panel
         //Explanation: Uses native libaries of the OS to move form
         [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]

@@ -1,6 +1,6 @@
 ﻿namespace Skreenkinikor_Master_Project.Child_Forms
 {
-    partial class frmAddUser
+    partial class frmSettings_AddUser
     {
         /// <summary>
         /// Required designer variable.

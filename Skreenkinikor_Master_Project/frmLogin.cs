@@ -11,6 +11,7 @@ using System.Data.Sql;
 using System.Data.SqlClient;
 using Skreenkinikor_Master_Project.Child_Forms;
 using Skreenkinikor_Master_Project.Classes;
+using System.Runtime.InteropServices;
 
 namespace Skreenkinikor_Master_Project
 {
@@ -21,7 +22,7 @@ namespace Skreenkinikor_Master_Project
             InitializeComponent();
         }
         //Variables
-        private string conStr = "Data Source=.;Initial Catalog=LoginDB;Integrated Security=True";
+        private string conStr = ConnectionStrings.conLoginStr;
 
         private void btnClose_Click(object sender, EventArgs e)
         {
@@ -173,6 +174,16 @@ namespace Skreenkinikor_Master_Project
             {
                 btnLogin_Click(sender, e);
             }
+        }
+        //Don't touch
+        [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
+        private extern static void ReleaseCapture();
+        [DllImport("user32.DLL", EntryPoint = "SendMessage")]
+        private extern static void SendMessage(System.IntPtr hWnd, int wMsg, int wParam, int lParam);
+        private void pbLogo_MouseDown(object sender, MouseEventArgs e)
+        {
+            ReleaseCapture();
+            SendMessage(this.Handle, 0x112, 0xf012, 0);
         }
     }
 }

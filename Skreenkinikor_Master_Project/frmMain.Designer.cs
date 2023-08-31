@@ -412,6 +412,7 @@
             this.pnlControlBar.Name = "pnlControlBar";
             this.pnlControlBar.Size = new System.Drawing.Size(686, 22);
             this.pnlControlBar.TabIndex = 5;
+            this.pnlControlBar.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlControlBar_Paint);
             this.pnlControlBar.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pnlControlBar_MouseDown);
             // 
             // btnMin

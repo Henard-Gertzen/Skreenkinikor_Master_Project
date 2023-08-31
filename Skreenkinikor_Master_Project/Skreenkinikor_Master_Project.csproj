@@ -80,11 +80,11 @@
     <Compile Include="Child Forms\frmActors.Designer.cs">
       <DependentUpon>frmActors.cs</DependentUpon>
     </Compile>
-    <Compile Include="Child Forms\frmAddUser.cs">
+    <Compile Include="Child Forms\frmSettings_AddUser.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Child Forms\frmAddUser.Designer.cs">
-      <DependentUpon>frmAddUser.cs</DependentUpon>
+    <Compile Include="Child Forms\frmSettings_AddUser.Designer.cs">
+      <DependentUpon>frmSettings_AddUser.cs</DependentUpon>
     </Compile>
     <Compile Include="Child Forms\frmCon_Sale.cs">
       <SubType>Form</SubType>
@@ -98,11 +98,11 @@
     <Compile Include="Child Forms\frmHome.Designer.cs">
       <DependentUpon>frmHome.cs</DependentUpon>
     </Compile>
-    <Compile Include="Child Forms\frmModifyUser.cs">
+    <Compile Include="Child Forms\frmSettings_ModifyUser.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Child Forms\frmModifyUser.Designer.cs">
-      <DependentUpon>frmModifyUser.cs</DependentUpon>
+    <Compile Include="Child Forms\frmSettings_ModifyUser.Designer.cs">
+      <DependentUpon>frmSettings_ModifyUser.cs</DependentUpon>
     </Compile>
     <Compile Include="Child Forms\frmMovies.cs">
       <SubType>Form</SubType>
@@ -146,6 +146,7 @@
     <Compile Include="Child Forms\frmTicket_Sale.Designer.cs">
       <DependentUpon>frmTicket_Sale.cs</DependentUpon>
     </Compile>
+    <Compile Include="Classes\ConnectionStrings.cs" />
     <Compile Include="Classes\UserSession.cs" />
     <Compile Include="frmLogin.cs">
       <SubType>Form</SubType>
@@ -161,11 +162,11 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Child Forms\frmAddUser.resx">
-      <DependentUpon>frmAddUser.cs</DependentUpon>
+    <EmbeddedResource Include="Child Forms\frmSettings_AddUser.resx">
+      <DependentUpon>frmSettings_AddUser.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Child Forms\frmModifyUser.resx">
-      <DependentUpon>frmModifyUser.cs</DependentUpon>
+    <EmbeddedResource Include="Child Forms\frmSettings_ModifyUser.resx">
+      <DependentUpon>frmSettings_ModifyUser.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Child Forms\frmResetPassword.resx">
       <DependentUpon>frmResetPassword.cs</DependentUpon>
