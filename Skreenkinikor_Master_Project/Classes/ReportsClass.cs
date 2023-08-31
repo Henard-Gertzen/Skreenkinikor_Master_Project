@@ -18,21 +18,21 @@ namespace Skreenkinikor_Master_Project.Classes
     public class ReportsClass
     {
         //Fields
-        private DateTime dateStart, dateEnd;
+        private DateTime startDate, endDate;
         private int numDays;
 
         public int numTickets { get; private set; }
         public int numTotalMoviesScheduled { get; private set; }
         public List<TotalMoviesScheduled> TotalMovies { get; private set; }
-        public List<TotalMoviesScheduled> top10Movies { get; private set; }
+        public List<KeyValuePair<string, decimal>> top10Movies { get; private set; }
 
         //Constructor
         public ReportsClass()
         {
 
         }
-        //Methods
-        private void getNumMovies()
+        //Private Methods
+        private void GetTotalMoviesScheduled()
         {
             TotalMovies = new List<TotalMoviesScheduled>();
             using (SqlConnection con = new SqlConnection(ConnectionStrings.conSkreenMainStr))
@@ -107,30 +107,49 @@ namespace Skreenkinikor_Master_Project.Classes
                 }
             }
         }
-
         public void GetTop10Movies()
         {
-            top10Movies = new List<TotalMoviesScheduled>();
+            top10Movies = new List<KeyValuePair<string, decimal>>();
 
             using (SqlConnection con = new SqlConnection(ConnectionStrings.conSkreenMainStr))
             {
                 con.Open();
-
-                string sqlCmd = @"
-                            SELECT Movie_On_Schedule.Movie_ID, COUNT(Ticket_Info.Ticket_ID) AS TotalTickets
-                            FROM Movie_On_Schedule
-                            INNER JOIN Schedule ON Movie_On_Schedule.Schedule_ID = Schedule.Schedule_ID
-                            INNER JOIN Ticket_Info ON Movie_On_Schedule.Movie_ID = Ticket_Info.Movie_ID
-                            WHERE Schedule.Day_Shown BETWEEN @StartDate AND @EndDate
-                            GROUP BY Schedule.Day_Shown
-                            ORDER BY TotalTickets DESC";
+                SqlDataReader reader;
+                string sqlCmd = @"SELECT TOP 10 MI.Movie_Name, SUMS(Ticket_Info.TicketTotal) AS totalSales
+                                            FROM Movie_Info AS MI
+                                            INNER JOIN Movie_On_Schedule AS MOS ON MI.Movie_ID = MOS.Movie_ID
+                                            INNER JOIN Schedule AS S ON MOS.Schedule_ID = S.Schedule_ID
+                                            INNER JOIN Ticket_Info AS TI ON MI.Movie_ID = TI.Movie_ID
+                                            WHERE S.Day_Shown BETWEEN @StartDate AND @EndDate
+                                            GROUP BY MI.Movie_Name
+                                            ORDER BY totalSales DESC";
 
                 using (SqlCommand cmd = new SqlCommand(sqlCmd, con))
                 {
                     cmd.Parameters.Add("@StartDate", System.Data.SqlDbType.DateTime).Value = dateStart;
                     cmd.Parameters.Add("@EndDate", System.Data.SqlDbType.DateTime).Value = dateEnd;
-                    
+
+                    reader = cmd.ExecuteReader();
+                    while(reader.Read())
+                    {
+                        top10Movies.Add(new KeyValuePair<string, decimal>(reader[0].ToString(), (int)reader[1]));
+                    }
+                    reader.Close();
                 }
+            }
+        }
+        //Public methods
+        public void LoadData(DateTime startDate, DateTime endDate)
+        {
+            endDate = new DateTime(endDate.Year, endDate.Month, endDate.Day, endDate.Hour, endDate.Minute, 59);
+            if(startDate != this.startDate || endDate != this.endDate)
+            {
+                this.startDate = startDate;
+                this.endDate = endDate;
+                this.numDays = (endDate - startDate).Days;
+
+                GetTotalMoviesScheduled();
+                GetTop10Movies();
             }
         }
     }

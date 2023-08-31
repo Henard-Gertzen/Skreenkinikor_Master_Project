@@ -186,7 +186,6 @@ namespace Skreenkinikor_Master_Project
             OpenChild(new frmHome());
         }
         //Don't touch this, this adds drag functionality to the header panel
-        //Explanation: Uses native libaries of the OS to move form
         [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
         private extern static void ReleaseCapture();
         [DllImport("user32.DLL", EntryPoint = "SendMessage")]
