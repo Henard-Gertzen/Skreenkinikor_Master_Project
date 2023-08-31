@@ -147,6 +147,7 @@
       <DependentUpon>frmTicket_Sale.cs</DependentUpon>
     </Compile>
     <Compile Include="Classes\ConnectionStrings.cs" />
+    <Compile Include="Classes\ReportsClass.cs" />
     <Compile Include="Classes\UserSession.cs" />
     <Compile Include="frmLogin.cs">
       <SubType>Form</SubType>
