@@ -28,9 +28,6 @@ namespace Skreenkinikor_Master_Project
                     SelectedTickets.Add(checkBox.Name);
                 }
             }
-
-            // Display the names of seats
-            MessageBox.Show("Selected Checkboxes: " + string.Join(", ", SelectedTickets));
         }
 
         // Function to insert selected seats into the Ticket_Info table
@@ -49,11 +46,9 @@ namespace Skreenkinikor_Master_Project
 
                     // Combine the selected seats into a single string with '#' as the delimiter
                     string combinedSeats = string.Join("#", SelectedTickets);
-                    MessageBox.Show("CombinedSeats: "+combinedSeats);
 
                     // Calculate the Ticket_Total (number of selected seats)
                     decimal ticketTotal = SelectedTickets.Count;
-                    MessageBox.Show("TicketTotal: "+ticketTotal.ToString());
 
                     string insertQuery = "INSERT INTO Ticket_Info (Movie_ID, Ticket_Total, Seats) VALUES (@MovieID, @TicketTotal, @Seats)";
 
@@ -103,6 +98,22 @@ namespace Skreenkinikor_Master_Project
             return movieId;
         }
 
+        //Enable all checkboxes
+        private void EnableAllCheckBoxes(Control control)
+        {
+            foreach (Control c in control.Controls)
+            {
+                if (c is CheckBox checkBox && !checkBox.Enabled)
+                {
+                    checkBox.Enabled = true;
+                }
+
+                if (c.HasChildren)
+                {
+                    EnableAllCheckBoxes(c);
+                }
+            }
+        }
 
         //Uncheck selected seats
         private void UncheckAllCheckBoxes(Control control)
@@ -210,6 +221,7 @@ namespace Skreenkinikor_Master_Project
 
         private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
         {
+            EnableAllCheckBoxes(this);
             // Get the selected date from the DateTimePicker
             DateTime selectedDate = dateTimePicker1.Value;
 
