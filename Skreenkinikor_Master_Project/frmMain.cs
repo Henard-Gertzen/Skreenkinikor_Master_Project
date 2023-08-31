@@ -135,6 +135,7 @@ namespace Skreenkinikor_Master_Project
         private void btnCon_Sale_Click(object sender, EventArgs e)
         {
             Active(sender, Colors.foregroundColor1);
+            OpenChild(new frmCon_Sale());
         }
 
         private void btnSchedule_Click(object sender, EventArgs e)
