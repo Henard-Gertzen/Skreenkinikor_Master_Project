@@ -162,6 +162,24 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Child Forms\frmActors.resx">
+      <DependentUpon>frmActors.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Child Forms\frmCon_Sale.resx">
+      <DependentUpon>frmCon_Sale.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Child Forms\frmHome.resx">
+      <DependentUpon>frmHome.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Child Forms\frmMovies.resx">
+      <DependentUpon>frmMovies.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Child Forms\frmReports.resx">
+      <DependentUpon>frmReports.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Child Forms\frmSchedule.resx">
+      <DependentUpon>frmSchedule.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Child Forms\frmSettings_AddUser.resx">
       <DependentUpon>frmSettings_AddUser.cs</DependentUpon>
     </EmbeddedResource>
@@ -173,6 +191,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Child Forms\frmSettings.resx">
       <DependentUpon>frmSettings.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Child Forms\frmStock.resx">
+      <DependentUpon>frmStock.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmLogin.resx">
       <DependentUpon>frmLogin.cs</DependentUpon>
