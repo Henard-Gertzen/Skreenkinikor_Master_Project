@@ -46,7 +46,8 @@ CREATE TABLE Ticket_Info
 (
 	Ticket_ID	int	IDENTITY(1,1)PRIMARY KEY,
 	Movie_ID	int	FOREIGN KEY REFERENCES Movie_Info(Movie_ID),
-	Ticket_Total	decimal(19,4)
+	Ticket_Total	decimal(19,4),
+	Seats NVARCHAR(50) 
 );
 
 
