@@ -145,11 +145,11 @@
             this.lblRowC = new System.Windows.Forms.Label();
             this.lblRowB = new System.Windows.Forms.Label();
             this.lblRowA = new System.Windows.Forms.Label();
-            this.cbxSelectMovie = new System.Windows.Forms.ComboBox();
+            this.cbbSelectMovie = new System.Windows.Forms.ComboBox();
             this.lblSelectMovie = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.lblSelectDate = new System.Windows.Forms.Label();
+            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.pnlMovieSeats.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.pnlScreen.SuspendLayout();
@@ -1546,14 +1546,14 @@
             this.lblRowA.TabIndex = 0;
             this.lblRowA.Text = "Row A:";
             // 
-            // cbxSelectMovie
+            // cbbSelectMovie
             // 
-            this.cbxSelectMovie.FormattingEnabled = true;
-            this.cbxSelectMovie.Location = new System.Drawing.Point(98, 112);
-            this.cbxSelectMovie.Name = "cbxSelectMovie";
-            this.cbxSelectMovie.Size = new System.Drawing.Size(121, 21);
-            this.cbxSelectMovie.TabIndex = 8;
-            this.cbxSelectMovie.SelectedIndexChanged += new System.EventHandler(this.cbxSelectMovie_SelectedIndexChanged);
+            this.cbbSelectMovie.FormattingEnabled = true;
+            this.cbbSelectMovie.Location = new System.Drawing.Point(98, 112);
+            this.cbbSelectMovie.Name = "cbbSelectMovie";
+            this.cbbSelectMovie.Size = new System.Drawing.Size(121, 21);
+            this.cbbSelectMovie.TabIndex = 8;
+            this.cbbSelectMovie.SelectedIndexChanged += new System.EventHandler(this.cbxSelectMovie_SelectedIndexChanged);
             // 
             // lblSelectMovie
             // 
@@ -1571,20 +1571,12 @@
             this.panel1.Controls.Add(this.dateTimePicker1);
             this.panel1.Controls.Add(this.lblSelectMovie);
             this.panel1.Controls.Add(this.btnConfirm);
-            this.panel1.Controls.Add(this.cbxSelectMovie);
+            this.panel1.Controls.Add(this.cbbSelectMovie);
             this.panel1.Controls.Add(this.btnReset);
             this.panel1.Location = new System.Drawing.Point(12, 10);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(247, 288);
             this.panel1.TabIndex = 10;
-            // 
-            // dateTimePicker1
-            // 
-            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePicker1.Location = new System.Drawing.Point(98, 88);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(121, 20);
-            this.dateTimePicker1.TabIndex = 10;
             // 
             // lblSelectDate
             // 
@@ -1594,6 +1586,15 @@
             this.lblSelectDate.Size = new System.Drawing.Size(66, 13);
             this.lblSelectDate.TabIndex = 11;
             this.lblSelectDate.Text = "Select Date:";
+            // 
+            // dateTimePicker1
+            // 
+            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dateTimePicker1.Location = new System.Drawing.Point(98, 88);
+            this.dateTimePicker1.Name = "dateTimePicker1";
+            this.dateTimePicker1.Size = new System.Drawing.Size(121, 20);
+            this.dateTimePicker1.TabIndex = 10;
+            this.dateTimePicker1.ValueChanged += new System.EventHandler(this.dateTimePicker1_ValueChanged);
             // 
             // frmTicket_Sale
             // 
@@ -1737,7 +1738,7 @@
         private System.Windows.Forms.Label lblRowC;
         private System.Windows.Forms.Label lblRowB;
         private System.Windows.Forms.Label lblRowA;
-        private System.Windows.Forms.ComboBox cbxSelectMovie;
+        private System.Windows.Forms.ComboBox cbbSelectMovie;
         private System.Windows.Forms.Label lblSelectMovie;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label lblSelectDate;
