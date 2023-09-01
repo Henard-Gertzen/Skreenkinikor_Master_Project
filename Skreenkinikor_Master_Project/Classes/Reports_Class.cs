@@ -79,7 +79,31 @@ namespace Skreenkinikor_Master_Project.Classes
             lTop10Movies = new List<KeyValuePair<string, int>>();
             using (SqlConnection con = new SqlConnection(ConnectionStrings.conSkreenMainStr))
             {
+                con.Open();
+                string sqlTop10 = @"SELECT TOP 10 Movie_Info.Movie_Name, SUM(Ticket_Info.Ticket_Total) AS TotalSales
+                                    FROM Movie_Info
+                                    INNER JOIN Ticket_Info ON Movie_Info.Movie_ID = Ticket_Info.Movie_ID
+                                    WHERE Ticket_Info.Ticket_ID IN(
+                                    SELECT Ticket_ID
+                                    FROM Schedule
+                                    INNER JOIN Movie_On_Schedule ON Schedule.Schedule_ID = Movie_On_Schedule.Schedule_ID
+                                    WHERE Schedule.Day_Shown BETWEEN '2000-01-01' AND '2023-12-31'
+                                    )
+                                    GROUP BY Movie_Info.Movie_Name
+                                    ORDER BY TotalSales DESC";
+                using(SqlCommand cmd = new SqlCommand(sqlTop10, con))
+                {
+                    cmd.Parameters.Add("@StartDate", System.Data.SqlDbType.DateTime).Value = startDate;
+                    cmd.Parameters.Add("@EndDate", System.Data.SqlDbType.DateTime).Value = endDate;
 
+                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            lTop10Movies.Add(new KeyValuePair<string, int>(reader[0].ToString(), Convert.ToInt32(reader[1])));
+                        }
+                    }
+                }
             }
         }
 
@@ -93,6 +117,7 @@ namespace Skreenkinikor_Master_Project.Classes
                 this.numDays = (endDate - startDate).Days;
 
                 TotalMovies(startDate, endDate);
+                Top10Movies(startDate, endDate);
                 Console.WriteLine("Refreshed data: {0} - {1}", startDate.ToString(), endDate.ToString());
 
                 return true;

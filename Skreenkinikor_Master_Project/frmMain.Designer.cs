@@ -47,7 +47,6 @@
             this.btnLogout = new FontAwesome.Sharp.IconButton();
             this.pnlUserBottomBuffer = new System.Windows.Forms.Panel();
             this.pnlUserTopBuffer = new System.Windows.Forms.Panel();
-            this.pnlControlBar = new System.Windows.Forms.Panel();
             this.btnMin = new FontAwesome.Sharp.IconButton();
             this.btnMax = new FontAwesome.Sharp.IconButton();
             this.btnClose = new FontAwesome.Sharp.IconButton();
@@ -55,13 +54,14 @@
             this.ipbSelectedIcon = new FontAwesome.Sharp.IconPictureBox();
             this.pnlEffect = new System.Windows.Forms.Panel();
             this.pnlMainContainer = new System.Windows.Forms.Panel();
+            this.pnlControlBar = new System.Windows.Forms.Panel();
             this.pnlMenu.SuspendLayout();
             this.pnlLogo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbxLogo)).BeginInit();
             this.pnlHeader.SuspendLayout();
             this.pnlUser.SuspendLayout();
-            this.pnlControlBar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ipbSelectedIcon)).BeginInit();
+            this.pnlControlBar.SuspendLayout();
             this.SuspendLayout();
             // 
             // pnlMenu
@@ -329,9 +329,9 @@
             // 
             this.pnlHeader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(100)))), ((int)(((byte)(148)))));
             this.pnlHeader.Controls.Add(this.pnlUser);
-            this.pnlHeader.Controls.Add(this.pnlControlBar);
             this.pnlHeader.Controls.Add(this.lblSelected);
             this.pnlHeader.Controls.Add(this.ipbSelectedIcon);
+            this.pnlHeader.Controls.Add(this.pnlControlBar);
             this.pnlHeader.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlHeader.Location = new System.Drawing.Point(220, 0);
             this.pnlHeader.Name = "pnlHeader";
@@ -400,20 +400,6 @@
             this.pnlUserTopBuffer.Name = "pnlUserTopBuffer";
             this.pnlUserTopBuffer.Size = new System.Drawing.Size(398, 15);
             this.pnlUserTopBuffer.TabIndex = 0;
-            // 
-            // pnlControlBar
-            // 
-            this.pnlControlBar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(100)))), ((int)(((byte)(148)))));
-            this.pnlControlBar.Controls.Add(this.btnMin);
-            this.pnlControlBar.Controls.Add(this.btnMax);
-            this.pnlControlBar.Controls.Add(this.btnClose);
-            this.pnlControlBar.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pnlControlBar.Location = new System.Drawing.Point(0, 0);
-            this.pnlControlBar.Name = "pnlControlBar";
-            this.pnlControlBar.Size = new System.Drawing.Size(686, 22);
-            this.pnlControlBar.TabIndex = 5;
-            this.pnlControlBar.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlControlBar_Paint);
-            this.pnlControlBar.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pnlControlBar_MouseDown);
             // 
             // btnMin
             // 
@@ -514,11 +500,25 @@
             // pnlMainContainer
             // 
             this.pnlMainContainer.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(19)))), ((int)(((byte)(41)))), ((int)(((byte)(61)))));
-            this.pnlMainContainer.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnlMainContainer.Dock = System.Windows.Forms.DockStyle.Right;
             this.pnlMainContainer.Location = new System.Drawing.Point(220, 78);
             this.pnlMainContainer.Name = "pnlMainContainer";
             this.pnlMainContainer.Size = new System.Drawing.Size(686, 644);
             this.pnlMainContainer.TabIndex = 3;
+            // 
+            // pnlControlBar
+            // 
+            this.pnlControlBar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(100)))), ((int)(((byte)(148)))));
+            this.pnlControlBar.Controls.Add(this.btnMin);
+            this.pnlControlBar.Controls.Add(this.btnMax);
+            this.pnlControlBar.Controls.Add(this.btnClose);
+            this.pnlControlBar.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pnlControlBar.Location = new System.Drawing.Point(0, 0);
+            this.pnlControlBar.Name = "pnlControlBar";
+            this.pnlControlBar.Size = new System.Drawing.Size(686, 22);
+            this.pnlControlBar.TabIndex = 5;
+            this.pnlControlBar.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlControlBar_Paint);
+            this.pnlControlBar.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pnlControlBar_MouseDown);
             // 
             // frmMain
             // 
@@ -529,7 +529,7 @@
             this.Controls.Add(this.pnlEffect);
             this.Controls.Add(this.pnlHeader);
             this.Controls.Add(this.pnlMenu);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "frmMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
@@ -541,8 +541,8 @@
             this.pnlHeader.PerformLayout();
             this.pnlUser.ResumeLayout(false);
             this.pnlUser.PerformLayout();
-            this.pnlControlBar.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.ipbSelectedIcon)).EndInit();
+            this.pnlControlBar.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -569,13 +569,13 @@
         private FontAwesome.Sharp.IconButton btnMin;
         private FontAwesome.Sharp.IconButton btnMax;
         private FontAwesome.Sharp.IconButton btnClose;
-        private System.Windows.Forms.Panel pnlControlBar;
         private System.Windows.Forms.Panel pnlFullBar;
         private System.Windows.Forms.Panel pnlUser;
         private System.Windows.Forms.Label lblUserModel;
         private System.Windows.Forms.Panel pnlUserBottomBuffer;
         private System.Windows.Forms.Panel pnlUserTopBuffer;
         private FontAwesome.Sharp.IconButton btnLogout;
+        private System.Windows.Forms.Panel pnlControlBar;
     }
 }
 
