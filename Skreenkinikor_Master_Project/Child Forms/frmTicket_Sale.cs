@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Skreenkinikor_Master_Project.Classes;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,6 +16,7 @@ namespace Skreenkinikor_Master_Project
     public partial class frmTicket_Sale : Form
     {
         private List<string> SelectedTickets = new List<string>();
+        private string connectionString = ConnectionStrings.conSkreenMainStr;
 
         //Saves all seats in List and disable checkboxes
         private void ConfirmTickets()
@@ -34,7 +36,6 @@ namespace Skreenkinikor_Master_Project
         //add movie names to combobox for the selected date
         private void PopulateMovieComboBox(ComboBox comboBox, DateTime selectedDate)
         {
-            string connectionString = Classes.ConnectionStrings.conSkreenMainStr;
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
@@ -67,8 +68,6 @@ namespace Skreenkinikor_Master_Project
         // Function to insert selected seats into the Ticket_Info table
         private void InsertSelectedSeatsIntoDatabase(string selectedMovieName)
         {
-            string connectionString = Classes.ConnectionStrings.conSkreenMainStr;
-
             // Retrieve the Movie_ID based on the selected movie name
             int selectedMovieId = GetMovieIdFromName(selectedMovieName);
 
@@ -109,7 +108,6 @@ namespace Skreenkinikor_Master_Project
 
         private int GetMovieIdFromName(string movieName)
         {
-            string connectionString = Classes.ConnectionStrings.conSkreenMainStr;
             int movieId = -1; // Initialize to a default value or handle errors appropriately
 
             using (SqlConnection connection = new SqlConnection(connectionString))
@@ -180,7 +178,6 @@ namespace Skreenkinikor_Master_Project
         //get seat price
         private decimal GetSeatPriceByMovieId(int movieId)
         {
-            string connectionString = Classes.ConnectionStrings.conSkreenMainStr;
             decimal seatPrice = -1; // Initialize to a default value or handle errors appropriately
 
             using (SqlConnection connection = new SqlConnection(connectionString))
@@ -208,8 +205,6 @@ namespace Skreenkinikor_Master_Project
         // Function to read seats from the database and disable checkboxes for a specific movie and date
         private void DisableBookedSeats(string selectedMovieName, DateTime selectedDate)
         {
-            string connectionString = Classes.ConnectionStrings.conSkreenMainStr;
-
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 try
@@ -283,7 +278,6 @@ namespace Skreenkinikor_Master_Project
 
             if (selectedMovieId != -1)
             {
-                string connectionString = Classes.ConnectionStrings.conSkreenMainStr;
                 string showTime = "";
 
                 using (SqlConnection connection = new SqlConnection(connectionString))

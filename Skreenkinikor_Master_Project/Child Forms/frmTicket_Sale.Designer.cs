@@ -36,7 +36,6 @@
             this.cbxJ9 = new System.Windows.Forms.CheckBox();
             this.cbxJ1 = new System.Windows.Forms.CheckBox();
             this.cbxA2 = new System.Windows.Forms.CheckBox();
-            this.cbxA1 = new System.Windows.Forms.CheckBox();
             this.cbxJ8 = new System.Windows.Forms.CheckBox();
             this.cbxA3 = new System.Windows.Forms.CheckBox();
             this.cbxJ7 = new System.Windows.Forms.CheckBox();
@@ -132,6 +131,7 @@
             this.cbxF1 = new System.Windows.Forms.CheckBox();
             this.cbxE10 = new System.Windows.Forms.CheckBox();
             this.cbxH4 = new System.Windows.Forms.CheckBox();
+            this.cbxA1 = new System.Windows.Forms.CheckBox();
             this.lblTitle = new System.Windows.Forms.Label();
             this.lblRowJ = new System.Windows.Forms.Label();
             this.pnlScreen = new System.Windows.Forms.Panel();
@@ -400,21 +400,6 @@
             this.cbxA2.TabIndex = 193;
             this.cbxA2.Text = "2";
             this.cbxA2.UseVisualStyleBackColor = false;
-            // 
-            // cbxA1
-            // 
-            this.cbxA1.Appearance = System.Windows.Forms.Appearance.Button;
-            this.cbxA1.AutoSize = true;
-            this.cbxA1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(83)))), ((int)(((byte)(81)))));
-            this.cbxA1.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(241)))), ((int)(((byte)(242)))));
-            this.cbxA1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cbxA1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(241)))), ((int)(((byte)(242)))));
-            this.cbxA1.Location = new System.Drawing.Point(3, 3);
-            this.cbxA1.Name = "cbxA1";
-            this.cbxA1.Size = new System.Drawing.Size(23, 23);
-            this.cbxA1.TabIndex = 282;
-            this.cbxA1.Text = "1";
-            this.cbxA1.UseVisualStyleBackColor = false;
             // 
             // cbxJ8
             // 
@@ -1841,6 +1826,21 @@
             this.cbxH4.Text = "4";
             this.cbxH4.UseVisualStyleBackColor = false;
             // 
+            // cbxA1
+            // 
+            this.cbxA1.Appearance = System.Windows.Forms.Appearance.Button;
+            this.cbxA1.AutoSize = true;
+            this.cbxA1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(83)))), ((int)(((byte)(81)))));
+            this.cbxA1.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(241)))), ((int)(((byte)(242)))));
+            this.cbxA1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cbxA1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(241)))), ((int)(((byte)(242)))));
+            this.cbxA1.Location = new System.Drawing.Point(3, 3);
+            this.cbxA1.Name = "cbxA1";
+            this.cbxA1.Size = new System.Drawing.Size(23, 23);
+            this.cbxA1.TabIndex = 282;
+            this.cbxA1.Text = "1";
+            this.cbxA1.UseVisualStyleBackColor = false;
+            // 
             // lblTitle
             // 
             this.lblTitle.AutoSize = true;
@@ -2037,6 +2037,7 @@
             // lblShowTimeTime
             // 
             this.lblShowTimeTime.AutoSize = true;
+            this.lblShowTimeTime.ForeColor = System.Drawing.Color.White;
             this.lblShowTimeTime.Location = new System.Drawing.Point(82, 150);
             this.lblShowTimeTime.Name = "lblShowTimeTime";
             this.lblShowTimeTime.Size = new System.Drawing.Size(0, 13);
