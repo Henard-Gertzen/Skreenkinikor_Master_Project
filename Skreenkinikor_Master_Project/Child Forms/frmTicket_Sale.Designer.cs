@@ -165,22 +165,28 @@
             // 
             // btnConfirm
             // 
+            this.btnConfirm.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(19)))), ((int)(((byte)(41)))), ((int)(((byte)(61)))));
+            this.btnConfirm.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnConfirm.ForeColor = System.Drawing.Color.White;
             this.btnConfirm.Location = new System.Drawing.Point(17, 126);
             this.btnConfirm.Name = "btnConfirm";
             this.btnConfirm.Size = new System.Drawing.Size(196, 37);
             this.btnConfirm.TabIndex = 7;
             this.btnConfirm.Text = "Confirm";
-            this.btnConfirm.UseVisualStyleBackColor = true;
+            this.btnConfirm.UseVisualStyleBackColor = false;
             this.btnConfirm.Click += new System.EventHandler(this.btnConfirm_Click);
             // 
             // btnReset
             // 
+            this.btnReset.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(19)))), ((int)(((byte)(41)))), ((int)(((byte)(61)))));
+            this.btnReset.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnReset.ForeColor = System.Drawing.Color.White;
             this.btnReset.Location = new System.Drawing.Point(17, 83);
             this.btnReset.Name = "btnReset";
             this.btnReset.Size = new System.Drawing.Size(196, 37);
             this.btnReset.TabIndex = 5;
             this.btnReset.Text = "Clear";
-            this.btnReset.UseVisualStyleBackColor = true;
+            this.btnReset.UseVisualStyleBackColor = false;
             this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
             // 
             // pnlMovieSeats
@@ -222,7 +228,6 @@
             this.tableLayoutPanel1.Controls.Add(this.cbxJ9, 8, 9);
             this.tableLayoutPanel1.Controls.Add(this.cbxJ1, 0, 9);
             this.tableLayoutPanel1.Controls.Add(this.cbxA2, 1, 0);
-            this.tableLayoutPanel1.Controls.Add(this.cbxA1, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.cbxJ8, 7, 9);
             this.tableLayoutPanel1.Controls.Add(this.cbxA3, 2, 0);
             this.tableLayoutPanel1.Controls.Add(this.cbxJ7, 6, 9);
@@ -318,6 +323,7 @@
             this.tableLayoutPanel1.Controls.Add(this.cbxF1, 0, 5);
             this.tableLayoutPanel1.Controls.Add(this.cbxE10, 9, 4);
             this.tableLayoutPanel1.Controls.Add(this.cbxH4, 3, 7);
+            this.tableLayoutPanel1.Controls.Add(this.cbxA1, 0, 0);
             this.tableLayoutPanel1.Location = new System.Drawing.Point(68, 85);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 10;
