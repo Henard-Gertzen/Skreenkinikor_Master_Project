@@ -5,6 +5,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -179,6 +180,103 @@ namespace Skreenkinikor_Master_Project
             return movieID;
         }
 
+        // Function to get the name of the movie from the selected row
+        private string GetMovieName()
+        {
+            if (dataGridView1.SelectedRows.Count > 0)
+            {
+                // Get the selected row
+                DataGridViewRow selectedRow = dataGridView1.SelectedRows[0];
+
+                // Find the column index by name (case-sensitive)
+                int movieNameIndex = -1;
+
+                foreach (DataGridViewColumn column in dataGridView1.Columns)
+                {
+                    if (column.Name == "Movie_Name")
+                    {
+                        movieNameIndex = column.Index;
+                        break; // Exit the loop once the column is found
+                    }
+                }
+
+                if (movieNameIndex != -1)
+                {
+                    // Retrieve the movie name from the selected row
+                    string movieName = selectedRow.Cells[movieNameIndex].Value.ToString();
+                    return movieName;
+                }
+            }
+
+            return null; // Return null if no row is selected or if the column is not found
+        }
+
+        private string GetMovieTime()
+        {
+            if (dataGridView1.SelectedRows.Count > 0)
+            {
+                // Get the selected row
+                DataGridViewRow selectedRow = dataGridView1.SelectedRows[0];
+
+                // Find the column index by name (case-sensitive)
+                int timeIndex = -1;
+
+                foreach (DataGridViewColumn column in dataGridView1.Columns)
+                {
+                    if (column.Name == "Timeslot")
+                    {
+                        timeIndex = column.Index;
+                        break; // Exit the loop once the column is found
+                    }
+                }
+
+                if (timeIndex != -1)
+                {
+                    // Retrieve the movie time from the selected row
+                    string movieTime = selectedRow.Cells[timeIndex].Value.ToString();
+                    return movieTime;
+                }
+            }
+
+            return null; // Return null if no row is selected or if the column is not found
+        }
+
+        private string GetMovieDate()
+        {
+            if (dataGridView1.SelectedRows.Count > 0)
+            {
+                // Get the selected row
+                DataGridViewRow selectedRow = dataGridView1.SelectedRows[0];
+
+                // Find the column index by name (case-sensitive)
+                int dateIndex = -1;
+
+                foreach (DataGridViewColumn column in dataGridView1.Columns)
+                {
+                    if (column.Name == "Day_Shown")
+                    {
+                        dateIndex = column.Index;
+                        break; // Exit the loop once the column is found
+                    }
+                }
+
+                if (dateIndex != -1)
+                {
+                    // Retrieve the movie date from the selected row
+                    DateTime movieDate = Convert.ToDateTime(selectedRow.Cells[dateIndex].Value);
+
+                    // Format the date to display only the date portion (e.g., 9/2/2023)
+                    string formattedDate = movieDate.ToString("M/d/yyyy");
+
+                    return formattedDate;
+                }
+            }
+
+            return null; // Return null if no row is selected or if the column is not found
+        }
+
+
+
         public frmSchedule()
         {
             InitializeComponent();
@@ -235,7 +333,10 @@ namespace Skreenkinikor_Master_Project
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
-
+            string name = GetMovieName();
+            string date = GetMovieDate();
+            string time = GetMovieTime();
+            MessageBox.Show(date + " <date:time> " +time);
         }
 
         private void frmSchedule_Load(object sender, EventArgs e)
