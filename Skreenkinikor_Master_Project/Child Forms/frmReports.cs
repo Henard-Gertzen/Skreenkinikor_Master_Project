@@ -1,13 +1,18 @@
-﻿using Skreenkinikor_Master_Project.Classes;
+﻿using iTextSharp.text;
+using iTextSharp.text.pdf;
+using Skreenkinikor_Master_Project.Classes;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Image = iTextSharp.text.Image;
+using System.Windows.Forms.DataVisualization.Charting;
 
 namespace Skreenkinikor_Master_Project
 {
@@ -144,6 +149,82 @@ namespace Skreenkinikor_Master_Project
         {
             lblStartDate.Text = dtpStart.Value.ToString("MMM dd, yyyy");
             lblEndDate.Text = dtpEnd.Value.ToString("MMM dd, yyyy");
+        }
+
+        private void btnPrint_MouseEnter(object sender, EventArgs e)
+        {
+            btnPrint.BackColor = Color.FromArgb(27, 152, 224);
+        }
+
+        private void btnPrint_MouseLeave(object sender, EventArgs e)
+        {
+            btnPrint.BackColor = Color.FromArgb(19, 41, 61);
+        }
+
+        private void btnPrint_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                //Save File dialogue
+                SaveFileDialog saveFileDialog = new SaveFileDialog();
+                saveFileDialog.Filter = "PDF Files (*.pdf)|*.pdf";
+                saveFileDialog.Title = "Save PDF File";
+
+                if(saveFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    // Create a new document
+                    Document doc = new Document();
+                    string pdfPath = saveFileDialog.FileName;
+
+                    // Create a PdfWriter to write to the document
+                    PdfWriter writer = PdfWriter.GetInstance(doc, new FileStream(pdfPath, FileMode.Create));
+
+                    // Open the document for writing
+                    doc.Open();
+
+
+                    iTextSharp.text.Font titleFont = FontFactory.GetFont(FontFactory.HELVETICA, 18);
+                    Paragraph title = new Paragraph("Report Generated for Skreenkinikor", titleFont);
+                    title.Alignment = Element.ALIGN_CENTER;
+                    doc.Add(title);
+
+
+                    Bitmap bitmapLogo = Properties.Resources.SK_Logo;
+
+                    Image logoImage = Image.GetInstance(bitmapLogo, System.Drawing.Imaging.ImageFormat.Png);
+                    logoImage.Alignment = Element.ALIGN_CENTER;
+                    doc.Add(logoImage);
+
+
+                    iTextSharp.text.Font dateFont = FontFactory.GetFont(FontFactory.HELVETICA, 12);
+                    Paragraph date = new Paragraph("Date: " + DateTime.Now.ToString("yyyy-MM-dd"), dateFont);
+                    date.Alignment = Element.ALIGN_CENTER;
+                    doc.Add(date);
+
+                    string imagePath1 = "chart_image.png";
+                    string imagePath2 = "chart_image2.png";
+
+                    chTop10.SaveImage(imagePath1, ChartImageFormat.Png);
+                    chTotal.SaveImage(imagePath2, ChartImageFormat.Png);
+
+                    Image chartImage1 = Image.GetInstance(imagePath1);
+                    chartImage1.Alignment = Element.ALIGN_CENTER;
+                    doc.Add(chartImage1);
+
+                    Image chartImage2 = Image.GetInstance(imagePath2);
+                    chartImage2.Alignment = Element.ALIGN_CENTER;
+                    doc.Add(chartImage2);
+
+                    // Close the document
+                    doc.Close();
+
+                    MessageBox.Show("PDF generated successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }
