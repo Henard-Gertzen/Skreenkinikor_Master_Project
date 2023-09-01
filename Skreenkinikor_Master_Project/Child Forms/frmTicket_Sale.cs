@@ -277,6 +277,55 @@ namespace Skreenkinikor_Master_Project
             return null; // CheckBox not found
         }
 
+        private string MovieShowTime(string selectedMovieName, DateTime selectedDate)
+        {
+            int selectedMovieId = GetMovieIdFromName(selectedMovieName);
+
+            if (selectedMovieId != -1)
+            {
+                string connectionString = Classes.ConnectionStrings.conSkreenMainStr;
+                string showTime = "";
+
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    try
+                    {
+                        connection.Open();
+
+                        string selectQuery = "SELECT Schedule.Timeslot " +
+                                             "FROM Movie_On_Schedule " +
+                                             "INNER JOIN Schedule ON Movie_On_Schedule.Schedule_ID = Schedule.Schedule_ID " +
+                                             "WHERE Movie_On_Schedule.Movie_ID = @MovieId " +
+                                             "AND CONVERT(DATE, Schedule.Day_Shown) = @SelectedDate";
+
+                        using (SqlCommand cmd = new SqlCommand(selectQuery, connection))
+                        {
+                            cmd.Parameters.AddWithValue("@MovieId", selectedMovieId);
+                            cmd.Parameters.AddWithValue("@SelectedDate", selectedDate.Date);
+
+                            object result = cmd.ExecuteScalar();
+
+                            if (result != null)
+                            {
+                                showTime = result.ToString();
+                            }
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        // Handle the exception here or log it for debugging
+                        MessageBox.Show("Error: " + ex.Message);
+                    }
+                }
+
+                return showTime;
+            }
+            else
+            {
+                return "Showtime not available";
+            }
+        }
+
 
         public frmTicket_Sale()
         {
@@ -297,7 +346,7 @@ namespace Skreenkinikor_Master_Project
                 ConfirmTickets();
                 InsertSelectedSeatsIntoDatabase(selectedMovieName);
                 UncheckAllCheckBoxes(this);
-                //SelectedTickets.Clear();
+                SelectedTickets.Clear();
             }
             else
             {
@@ -315,7 +364,9 @@ namespace Skreenkinikor_Master_Project
             // Get the selected date from the DateTimePicker
             DateTime selectedDate = dateTimePicker1.Value;
             string selectedMovieName = cbbSelectMovie.SelectedItem as string;
+            EnableAllCheckBoxes(this);
             DisableBookedSeats(selectedMovieName, selectedDate);
+            lblShowTimeTime.Text = MovieShowTime(selectedMovieName, selectedDate);
         }
 
         private void dateTimePicker1_ValueChanged(object sender, EventArgs e)

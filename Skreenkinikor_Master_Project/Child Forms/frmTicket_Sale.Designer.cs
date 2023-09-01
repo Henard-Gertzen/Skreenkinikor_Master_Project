@@ -150,6 +150,8 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.lblSelectDate = new System.Windows.Forms.Label();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.lblShowTime = new System.Windows.Forms.Label();
+            this.lblShowTimeTime = new System.Windows.Forms.Label();
             this.pnlMovieSeats.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.pnlScreen.SuspendLayout();
@@ -1567,6 +1569,8 @@
             // panel1
             // 
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.lblShowTimeTime);
+            this.panel1.Controls.Add(this.lblShowTime);
             this.panel1.Controls.Add(this.lblSelectDate);
             this.panel1.Controls.Add(this.dateTimePicker1);
             this.panel1.Controls.Add(this.lblSelectMovie);
@@ -1595,6 +1599,23 @@
             this.dateTimePicker1.Size = new System.Drawing.Size(121, 20);
             this.dateTimePicker1.TabIndex = 10;
             this.dateTimePicker1.ValueChanged += new System.EventHandler(this.dateTimePicker1_ValueChanged);
+            // 
+            // lblShowTime
+            // 
+            this.lblShowTime.AutoSize = true;
+            this.lblShowTime.Location = new System.Drawing.Point(13, 150);
+            this.lblShowTime.Name = "lblShowTime";
+            this.lblShowTime.Size = new System.Drawing.Size(63, 13);
+            this.lblShowTime.TabIndex = 12;
+            this.lblShowTime.Text = "Show Time:";
+            // 
+            // lblShowTimeTime
+            // 
+            this.lblShowTimeTime.AutoSize = true;
+            this.lblShowTimeTime.Location = new System.Drawing.Point(82, 150);
+            this.lblShowTimeTime.Name = "lblShowTimeTime";
+            this.lblShowTimeTime.Size = new System.Drawing.Size(0, 13);
+            this.lblShowTimeTime.TabIndex = 13;
             // 
             // frmTicket_Sale
             // 
@@ -1743,5 +1764,7 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label lblSelectDate;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.Label lblShowTimeTime;
+        private System.Windows.Forms.Label lblShowTime;
     }
 }
