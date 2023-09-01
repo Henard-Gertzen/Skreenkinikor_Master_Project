@@ -275,6 +275,90 @@ namespace Skreenkinikor_Master_Project
             return null; // Return null if no row is selected or if the column is not found
         }
 
+        private int GetScheduleID(string dayShown, string timeslot)
+        {
+            int scheduleID = -1; // Initialize with an invalid ID in case the schedule is not found.
+
+            // Create a SqlConnection and a SqlCommand.
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                string query = "SELECT Schedule_ID FROM Schedule WHERE Day_Shown = @DayShown AND Timeslot = @Timeslot";
+
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@DayShown", DateTime.Parse(dayShown).Date); // Parse the date string to DateTime and use Date property to remove time component
+                    command.Parameters.AddWithValue("@Timeslot", TimeSpan.Parse(timeslot)); // Parse the timeslot string to TimeSpan
+
+                    try
+                    {
+                        connection.Open();
+                        object result = command.ExecuteScalar();
+                        if (result != null)
+                        {
+                            scheduleID = Convert.ToInt32(result);
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Error: " + ex.Message);
+                    }
+                }
+            }
+
+            return scheduleID;
+        }
+
+        private void DeleteSchedule(int scheduleID)
+        {
+            // Create a SqlConnection and a SqlCommand.
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                string query = "DELETE FROM Schedule WHERE Schedule_ID = @ScheduleID";
+
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@ScheduleID", scheduleID);
+
+                    try
+                    {
+                        connection.Open();
+                        command.ExecuteNonQuery();
+                        MessageBox.Show("Schedule deleted successfully.");
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Error: " + ex.Message);
+                    }
+                }
+            }
+        }
+
+        private void DeleteMovieOnSchedule(int scheduleID)
+        {
+            // Create a SqlConnection and a SqlCommand.
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                string query = "DELETE FROM Movie_On_Schedule WHERE Schedule_ID = @ScheduleID";
+
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@ScheduleID", scheduleID);
+
+                    try
+                    {
+                        connection.Open();
+                        command.ExecuteNonQuery();
+                        MessageBox.Show("Movie on Schedule deleted successfully.");
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Error: " + ex.Message);
+                    }
+                }
+            }
+        }
+
+
 
 
         public frmSchedule()
@@ -336,7 +420,17 @@ namespace Skreenkinikor_Master_Project
             string name = GetMovieName();
             string date = GetMovieDate();
             string time = GetMovieTime();
-            MessageBox.Show(date + " <date:time> " +time);
+
+            int scheduleID = GetScheduleID(date, time);
+            int movieID = GetSelectedMovieID(name);
+
+            // Delete related records in Movie_On_Schedule first
+            DeleteMovieOnSchedule(scheduleID);
+
+            // Now, delete the record in Schedule
+            DeleteSchedule(scheduleID);
+
+            ShowUpcomingMoviesInDataGridView(dataGridView1);
         }
 
         private void frmSchedule_Load(object sender, EventArgs e)
