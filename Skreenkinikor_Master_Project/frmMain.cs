@@ -282,10 +282,5 @@ namespace Skreenkinikor_Master_Project
             openLogin.Show();
             this.Hide();
         }
-
-        private void pnlControlBar_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
     }
 }

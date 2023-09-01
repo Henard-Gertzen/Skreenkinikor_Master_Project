@@ -47,14 +47,14 @@
             this.btnLogout = new FontAwesome.Sharp.IconButton();
             this.pnlUserBottomBuffer = new System.Windows.Forms.Panel();
             this.pnlUserTopBuffer = new System.Windows.Forms.Panel();
+            this.lblSelected = new System.Windows.Forms.Label();
+            this.ipbSelectedIcon = new FontAwesome.Sharp.IconPictureBox();
+            this.pnlControlBar = new System.Windows.Forms.Panel();
             this.btnMin = new FontAwesome.Sharp.IconButton();
             this.btnMax = new FontAwesome.Sharp.IconButton();
             this.btnClose = new FontAwesome.Sharp.IconButton();
-            this.lblSelected = new System.Windows.Forms.Label();
-            this.ipbSelectedIcon = new FontAwesome.Sharp.IconPictureBox();
             this.pnlEffect = new System.Windows.Forms.Panel();
             this.pnlMainContainer = new System.Windows.Forms.Panel();
-            this.pnlControlBar = new System.Windows.Forms.Panel();
             this.pnlMenu.SuspendLayout();
             this.pnlLogo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbxLogo)).BeginInit();
@@ -401,6 +401,42 @@
             this.pnlUserTopBuffer.Size = new System.Drawing.Size(398, 15);
             this.pnlUserTopBuffer.TabIndex = 0;
             // 
+            // lblSelected
+            // 
+            this.lblSelected.AutoSize = true;
+            this.lblSelected.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.249999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSelected.ForeColor = System.Drawing.Color.White;
+            this.lblSelected.Location = new System.Drawing.Point(39, 38);
+            this.lblSelected.Name = "lblSelected";
+            this.lblSelected.Size = new System.Drawing.Size(39, 13);
+            this.lblSelected.TabIndex = 1;
+            this.lblSelected.Text = "Home";
+            // 
+            // ipbSelectedIcon
+            // 
+            this.ipbSelectedIcon.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(100)))), ((int)(((byte)(148)))));
+            this.ipbSelectedIcon.IconChar = FontAwesome.Sharp.IconChar.HomeLg;
+            this.ipbSelectedIcon.IconColor = System.Drawing.Color.White;
+            this.ipbSelectedIcon.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.ipbSelectedIcon.Location = new System.Drawing.Point(6, 29);
+            this.ipbSelectedIcon.Name = "ipbSelectedIcon";
+            this.ipbSelectedIcon.Size = new System.Drawing.Size(32, 32);
+            this.ipbSelectedIcon.TabIndex = 0;
+            this.ipbSelectedIcon.TabStop = false;
+            // 
+            // pnlControlBar
+            // 
+            this.pnlControlBar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(100)))), ((int)(((byte)(148)))));
+            this.pnlControlBar.Controls.Add(this.btnMin);
+            this.pnlControlBar.Controls.Add(this.btnMax);
+            this.pnlControlBar.Controls.Add(this.btnClose);
+            this.pnlControlBar.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pnlControlBar.Location = new System.Drawing.Point(0, 0);
+            this.pnlControlBar.Name = "pnlControlBar";
+            this.pnlControlBar.Size = new System.Drawing.Size(686, 22);
+            this.pnlControlBar.TabIndex = 5;
+            this.pnlControlBar.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pnlControlBar_MouseDown);
+            // 
             // btnMin
             // 
             this.btnMin.Cursor = System.Windows.Forms.Cursors.Hand;
@@ -465,29 +501,6 @@
             this.btnClose.MouseEnter += new System.EventHandler(this.btnClose_MouseEnter);
             this.btnClose.MouseLeave += new System.EventHandler(this.btnClose_MouseLeave);
             // 
-            // lblSelected
-            // 
-            this.lblSelected.AutoSize = true;
-            this.lblSelected.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.249999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSelected.ForeColor = System.Drawing.Color.White;
-            this.lblSelected.Location = new System.Drawing.Point(39, 38);
-            this.lblSelected.Name = "lblSelected";
-            this.lblSelected.Size = new System.Drawing.Size(39, 13);
-            this.lblSelected.TabIndex = 1;
-            this.lblSelected.Text = "Home";
-            // 
-            // ipbSelectedIcon
-            // 
-            this.ipbSelectedIcon.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(100)))), ((int)(((byte)(148)))));
-            this.ipbSelectedIcon.IconChar = FontAwesome.Sharp.IconChar.HomeLg;
-            this.ipbSelectedIcon.IconColor = System.Drawing.Color.White;
-            this.ipbSelectedIcon.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.ipbSelectedIcon.Location = new System.Drawing.Point(6, 29);
-            this.ipbSelectedIcon.Name = "ipbSelectedIcon";
-            this.ipbSelectedIcon.Size = new System.Drawing.Size(32, 32);
-            this.ipbSelectedIcon.TabIndex = 0;
-            this.ipbSelectedIcon.TabStop = false;
-            // 
             // pnlEffect
             // 
             this.pnlEffect.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(100)))), ((int)(((byte)(148)))));
@@ -505,20 +518,6 @@
             this.pnlMainContainer.Name = "pnlMainContainer";
             this.pnlMainContainer.Size = new System.Drawing.Size(686, 644);
             this.pnlMainContainer.TabIndex = 3;
-            // 
-            // pnlControlBar
-            // 
-            this.pnlControlBar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(100)))), ((int)(((byte)(148)))));
-            this.pnlControlBar.Controls.Add(this.btnMin);
-            this.pnlControlBar.Controls.Add(this.btnMax);
-            this.pnlControlBar.Controls.Add(this.btnClose);
-            this.pnlControlBar.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pnlControlBar.Location = new System.Drawing.Point(0, 0);
-            this.pnlControlBar.Name = "pnlControlBar";
-            this.pnlControlBar.Size = new System.Drawing.Size(686, 22);
-            this.pnlControlBar.TabIndex = 5;
-            this.pnlControlBar.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlControlBar_Paint);
-            this.pnlControlBar.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pnlControlBar_MouseDown);
             // 
             // frmMain
             // 
@@ -566,9 +565,6 @@
         private System.Windows.Forms.Label lblSelected;
         private System.Windows.Forms.Panel pnlEffect;
         private System.Windows.Forms.Panel pnlMainContainer;
-        private FontAwesome.Sharp.IconButton btnMin;
-        private FontAwesome.Sharp.IconButton btnMax;
-        private FontAwesome.Sharp.IconButton btnClose;
         private System.Windows.Forms.Panel pnlFullBar;
         private System.Windows.Forms.Panel pnlUser;
         private System.Windows.Forms.Label lblUserModel;
@@ -576,6 +572,9 @@
         private System.Windows.Forms.Panel pnlUserTopBuffer;
         private FontAwesome.Sharp.IconButton btnLogout;
         private System.Windows.Forms.Panel pnlControlBar;
+        private FontAwesome.Sharp.IconButton btnMin;
+        private FontAwesome.Sharp.IconButton btnMax;
+        private FontAwesome.Sharp.IconButton btnClose;
     }
 }
 
