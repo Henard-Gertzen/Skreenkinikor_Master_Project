@@ -71,6 +71,44 @@ namespace Skreenkinikor_Master_Project
             }
         }
 
+        private void ShowUpcomingMoviesInDataGridView(DataGridView dataGridView)
+        {
+            // Calculate the date range for the next seven days.
+            DateTime startDate = DateTime.Now.Date;
+            DateTime endDate = startDate.AddDays(7);
+
+            // Create a SqlConnection and a SqlCommand.
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                string query = "SELECT Movie_Info.Movie_Name, Schedule.Timeslot, Schedule.Day_Shown " +
+                               "FROM Movie_Info " +
+                               "INNER JOIN Movie_On_Schedule ON Movie_Info.Movie_ID = Movie_On_Schedule.Movie_ID " +
+                               "INNER JOIN Schedule ON Movie_On_Schedule.Schedule_ID = Schedule.Schedule_ID " +
+                               "WHERE Schedule.Day_Shown BETWEEN @StartDate AND @EndDate " +
+                               "ORDER BY Schedule.Day_Shown, Schedule.Timeslot";
+
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@StartDate", startDate);
+                    command.Parameters.AddWithValue("@EndDate", endDate);
+
+                    try
+                    {
+                        connection.Open();
+                        SqlDataAdapter adapter = new SqlDataAdapter(command);
+                        DataTable dt = new DataTable();
+                        adapter.Fill(dt);
+
+                        // Bind the DataTable to the DataGridView.
+                        dataGridView.DataSource = dt;
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Error: " + ex.Message);
+                    }
+                }
+            }
+        }
 
         //insert data to schedule
         private int InsertSchedule(DateTime date, DateTime timeSlot)
@@ -94,7 +132,7 @@ namespace Skreenkinikor_Master_Project
                         // ExecuteScalar to get the inserted Schedule_ID.
                         scheduleID = Convert.ToInt32(command.ExecuteScalar());
 
-                        MessageBox.Show("Schedule successfully added. Schedule ID: " + scheduleID);
+                        MessageBox.Show("Movie successfully added");
                     }
                     catch (Exception ex)
                     {
@@ -180,9 +218,6 @@ namespace Skreenkinikor_Master_Project
                     break;
             }
 
-            // Now, you can use the 'selectedTime' variable as needed.
-            MessageBox.Show($"Selected Time: {selectedTime.ToString("HH:mm")}");
-
             string selectedMovieName = comboBox1.SelectedItem != null ? comboBox1.SelectedItem.ToString() : string.Empty;
 
             if (!string.IsNullOrEmpty(selectedMovieName))
@@ -190,6 +225,7 @@ namespace Skreenkinikor_Master_Project
                 int selectedMovieID = GetSelectedMovieID(selectedMovieName);
                 scheduleID = InsertSchedule(dateTimePicker1.Value.Date, selectedTime);
                 InsertMovieOnSchedule(selectedMovieID, scheduleID);
+                ShowUpcomingMoviesInDataGridView(dataGridView1);
             }
             else
             {
@@ -199,18 +235,18 @@ namespace Skreenkinikor_Master_Project
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
-            rdoFirstShow.Checked = false;
-            rdoSecondSHow.Checked = false;
-            rdoThirdShow.Checked = false;
-            rdoFourthShow.Checked = false;
 
-            dateTimePicker1.Value = DateTime.Now;
-            lblStartDate.Text = dateTimePicker1.Value.ToString("MMM dd, yyyy");
         }
 
         private void frmSchedule_Load(object sender, EventArgs e)
         {
             PopulateMovieComboBox();
+            ShowUpcomingMoviesInDataGridView(dataGridView1);
+        }
+
+        private void btnModify_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
