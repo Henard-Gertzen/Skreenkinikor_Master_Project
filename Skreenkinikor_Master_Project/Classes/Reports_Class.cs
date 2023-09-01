@@ -20,6 +20,7 @@ namespace Skreenkinikor_Master_Project.Classes
         private int numDays;
         //Public Variables
         public List<totalMovies> lTotalMovies { get; private set; }
+        public List<KeyValuePair<string, int>> lTop10Movies {get; private set;}
 
         private void TotalMovies(DateTime startDate, DateTime endDate)
         {
@@ -47,29 +48,38 @@ namespace Skreenkinikor_Master_Project.Classes
                             resultTable.Add(new KeyValuePair<DateTime, int>((DateTime)reader[0], (int)reader[1]));
                         }
                     }
-                    if(numDays <= 30)
+                    if (numDays <= 30)
                     {
-                        lTotalMovies = ((List<totalMovies>)(from orderList in resultTable
+                        lTotalMovies = (from orderList in resultTable
                                         group orderList by orderList.Key.ToString("dd MMM")
                                         into order
                                         select new totalMovies
                                         {
                                             Date = order.Key,
                                             TotalAmount = order.Sum(amount => amount.Value)
-                                        }));
+                                        }).ToList();
                     }
                     else
                     {
-                        lTotalMovies = ((List<totalMovies>) from orderList in resultTable
+                        lTotalMovies = (from orderList in resultTable
                                         group orderList by orderList.Key.ToString("yyyy")
                                         into order
                                         select new totalMovies
                                         {
                                             Date = order.Key,
                                             TotalAmount= order.Sum(amount => amount.Value)
-                                        });
+                                        }).ToList();
                     }
                 }
+            }
+        }
+
+        private void Top10Movies(DateTime startDate, DateTime endDate)
+        {
+            lTop10Movies = new List<KeyValuePair<string, int>>();
+            using (SqlConnection con = new SqlConnection(ConnectionStrings.conSkreenMainStr))
+            {
+
             }
         }
 
@@ -82,11 +92,14 @@ namespace Skreenkinikor_Master_Project.Classes
                 this.endDate = endDate;
                 this.numDays = (endDate - startDate).Days;
 
+                TotalMovies(startDate, endDate);
+                Console.WriteLine("Refreshed data: {0} - {1}", startDate.ToString(), endDate.ToString());
 
                 return true;
             }
             else
             {
+                Console.WriteLine("Data Not Refreshed: {0} - {1}", startDate.ToString(), endDate.ToString());
                 return false;
             }
         }
