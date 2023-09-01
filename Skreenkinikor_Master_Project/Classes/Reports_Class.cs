@@ -56,7 +56,7 @@ namespace Skreenkinikor_Master_Project.Classes
                                         select new totalMovies
                                         {
                                             Date = order.Key,
-                                            TotalAmount = order.Sum(amount => amount.Value)
+                                            TotalAmount = order.Count()
                                         }).ToList();
                     }
                     else
@@ -67,7 +67,7 @@ namespace Skreenkinikor_Master_Project.Classes
                                         select new totalMovies
                                         {
                                             Date = order.Key,
-                                            TotalAmount= order.Sum(amount => amount.Value)
+                                            TotalAmount= order.Count()
                                         }).ToList();
                     }
                 }
