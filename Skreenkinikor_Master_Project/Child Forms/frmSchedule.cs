@@ -31,7 +31,6 @@ namespace Skreenkinikor_Master_Project
 
         private void btnConfirm_Click(object sender, EventArgs e)
         {
-            // Check which radio button is selected and update the selectedTime variable.
             switch (true)
             {
                 case var _ when rdoFirstShow.Checked:
@@ -47,13 +46,23 @@ namespace Skreenkinikor_Master_Project
                     selectedTime = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 20, 0, 0);
                     break;
                 default:
-                    // Handle the case where none of the radio buttons are selected.
                     MessageBox.Show("Please select a show option.");
                     break;
             }
 
             // Now, you can use the 'selectedTime' variable as needed.
             MessageBox.Show($"Selected Time: {selectedTime.ToString("HH:mm")}");
+        }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            rdoFirstShow.Checked = false;
+            rdoSecondSHow.Checked = false;
+            rdoThirdShow.Checked = false;
+            rdoFourthShow.Checked = false;
+
+            dateTimePicker1.Value = DateTime.Now;
+            lblStartDate.Text = dateTimePicker1.Value.ToString("MMM dd, yyyy");
         }
     }
 }

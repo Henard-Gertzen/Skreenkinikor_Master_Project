@@ -357,6 +357,8 @@ namespace Skreenkinikor_Master_Project
         private void btnReset_Click(object sender, EventArgs e)
         {
             UncheckAllCheckBoxes(this);
+            dateTimePicker1.Value = DateTime.Now;
+            lblStartDate.Text = dateTimePicker1.Value.ToString("MMM dd, yyyy");
         }
 
         private void cbxSelectMovie_SelectedIndexChanged(object sender, EventArgs e)
