@@ -28,14 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Title title1 = new System.Windows.Forms.DataVisualization.Charting.Title();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Title title2 = new System.Windows.Forms.DataVisualization.Charting.Title();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea11 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend11 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series11 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Title title11 = new System.Windows.Forms.DataVisualization.Charting.Title();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea12 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend12 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series12 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Title title12 = new System.Windows.Forms.DataVisualization.Charting.Title();
             this.btnMonth = new System.Windows.Forms.Button();
             this.btnPrevMonth = new System.Windows.Forms.Button();
             this.btnWeek = new System.Windows.Forms.Button();
@@ -80,6 +80,7 @@
             this.btnMonth.TabIndex = 15;
             this.btnMonth.Text = "&This Month";
             this.btnMonth.UseVisualStyleBackColor = false;
+            this.btnMonth.Click += new System.EventHandler(this.btnMonth_Click);
             // 
             // btnPrevMonth
             // 
@@ -94,6 +95,7 @@
             this.btnPrevMonth.TabIndex = 14;
             this.btnPrevMonth.Text = "&Last 30 days";
             this.btnPrevMonth.UseVisualStyleBackColor = false;
+            this.btnPrevMonth.Click += new System.EventHandler(this.btnPrevMonth_Click);
             // 
             // btnWeek
             // 
@@ -108,6 +110,7 @@
             this.btnWeek.TabIndex = 13;
             this.btnWeek.Text = "&Last 7 days";
             this.btnWeek.UseVisualStyleBackColor = false;
+            this.btnWeek.Click += new System.EventHandler(this.btnWeek_Click);
             // 
             // pnlTop
             // 
@@ -174,6 +177,7 @@
             this.btnSubmit.TabIndex = 17;
             this.btnSubmit.Text = "&Submit";
             this.btnSubmit.UseVisualStyleBackColor = false;
+            this.btnSubmit.Click += new System.EventHandler(this.btnSubmit_Click);
             // 
             // btnCustom
             // 
@@ -188,6 +192,7 @@
             this.btnCustom.TabIndex = 16;
             this.btnCustom.Text = "&Custom";
             this.btnCustom.UseVisualStyleBackColor = false;
+            this.btnCustom.Click += new System.EventHandler(this.btnCustom_Click);
             // 
             // panel2
             // 
@@ -215,27 +220,27 @@
             // 
             // chTop10
             // 
-            chartArea1.Name = "ChartArea1";
-            this.chTop10.ChartAreas.Add(chartArea1);
+            chartArea11.Name = "ChartArea1";
+            this.chTop10.ChartAreas.Add(chartArea11);
             this.chTop10.Dock = System.Windows.Forms.DockStyle.Fill;
-            legend1.Name = "Legend1";
-            this.chTop10.Legends.Add(legend1);
+            legend11.Name = "Legend1";
+            this.chTop10.Legends.Add(legend11);
             this.chTop10.Location = new System.Drawing.Point(0, 41);
             this.chTop10.Name = "chTop10";
-            series1.ChartArea = "ChartArea1";
-            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
-            series1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            series1.IsValueShownAsLabel = true;
-            series1.LabelForeColor = System.Drawing.Color.White;
-            series1.Legend = "Legend1";
-            series1.Name = "Series1";
-            this.chTop10.Series.Add(series1);
+            series11.ChartArea = "ChartArea1";
+            series11.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
+            series11.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            series11.IsValueShownAsLabel = true;
+            series11.LabelForeColor = System.Drawing.Color.White;
+            series11.Legend = "Legend1";
+            series11.Name = "Series1";
+            this.chTop10.Series.Add(series11);
             this.chTop10.Size = new System.Drawing.Size(650, 205);
             this.chTop10.TabIndex = 25;
             this.chTop10.Text = "chartTop10";
-            title1.Name = "tHead";
-            title1.Text = "Top 10 Movies";
-            this.chTop10.Titles.Add(title1);
+            title11.Name = "tHead";
+            title11.Text = "Top 10 Movies";
+            this.chTop10.Titles.Add(title11);
             // 
             // pnlTop3
             // 
@@ -311,24 +316,24 @@
             // 
             // chTotal
             // 
-            chartArea2.Name = "ChartArea1";
-            this.chTotal.ChartAreas.Add(chartArea2);
+            chartArea12.Name = "ChartArea1";
+            this.chTotal.ChartAreas.Add(chartArea12);
             this.chTotal.Dock = System.Windows.Forms.DockStyle.Fill;
-            legend2.Name = "Legend1";
-            this.chTotal.Legends.Add(legend2);
+            legend12.Name = "Legend1";
+            this.chTotal.Legends.Add(legend12);
             this.chTotal.Location = new System.Drawing.Point(18, 300);
             this.chTotal.Name = "chTotal";
-            series2.ChartArea = "ChartArea1";
-            series2.Legend = "Legend1";
-            series2.Name = "Series1";
-            series2.YValuesPerPoint = 2;
-            this.chTotal.Series.Add(series2);
+            series12.ChartArea = "ChartArea1";
+            series12.Legend = "Legend1";
+            series12.Name = "Series1";
+            series12.YValuesPerPoint = 2;
+            this.chTotal.Series.Add(series12);
             this.chTotal.Size = new System.Drawing.Size(650, 242);
             this.chTotal.TabIndex = 19;
             this.chTotal.Text = "chartTotalMovies";
-            title2.Name = "tHead";
-            title2.Text = "Total Movies Scheduled";
-            this.chTotal.Titles.Add(title2);
+            title12.Name = "tHead";
+            title12.Text = "Total Movies Scheduled";
+            this.chTotal.Titles.Add(title12);
             // 
             // frmReports
             // 

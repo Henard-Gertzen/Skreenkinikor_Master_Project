@@ -80,17 +80,13 @@ namespace Skreenkinikor_Master_Project.Classes
             using (SqlConnection con = new SqlConnection(ConnectionStrings.conSkreenMainStr))
             {
                 con.Open();
-                string sqlTop10 = @"SELECT TOP 10 Movie_Info.Movie_Name, SUM(Ticket_Info.Ticket_Total) AS TotalSales
-                                    FROM Movie_Info
-                                    INNER JOIN Ticket_Info ON Movie_Info.Movie_ID = Ticket_Info.Movie_ID
-                                    WHERE Ticket_Info.Ticket_ID IN(
-                                    SELECT Ticket_ID
-                                    FROM Schedule
-                                    INNER JOIN Movie_On_Schedule ON Schedule.Schedule_ID = Movie_On_Schedule.Schedule_ID
-                                    WHERE Schedule.Day_Shown BETWEEN '2000-01-01' AND '2023-12-31'
-                                    )
-                                    GROUP BY Movie_Info.Movie_Name
-                                    ORDER BY TotalSales DESC";
+                string sqlTop10 = @"SELECT TOP 10 MI.Movie_Name, SUM(Ticket_Info.Ticket_Total) AS total
+                                    FROM Ticket_Info
+                                    INNER JOIN Movie_Info MI ON MI.Movie_ID = Ticket_Info.Movie_ID
+                                    INNER JOIN Movie_On_Schedule MOS ON MOS.Movie_ID = MI.Movie_ID
+                                    WHERE Payment_Date BETWEEN @StartDate AND @EndDate
+                                    GROUP BY MI.Movie_Name
+                                    ORDER BY total DESC";
                 using(SqlCommand cmd = new SqlCommand(sqlTop10, con))
                 {
                     cmd.Parameters.Add("@StartDate", System.Data.SqlDbType.DateTime).Value = startDate;

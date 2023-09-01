@@ -49,5 +49,47 @@ namespace Skreenkinikor_Master_Project
                 Console.WriteLine("View Not loaded!");
             }
         }
+        private void DisableCustomDates()
+        {
+            dtpEnd.Enabled = false;
+            dtpStart.Enabled = false;
+            btnSubmit.Visible = false;
+        }
+
+        private void btnMonth_Click(object sender, EventArgs e)
+        {
+            dtpStart.Value = new DateTime(DateTime.Today.Year, DateTime.Today.Month, 1);
+            dtpEnd.Value = DateTime.Now;
+            InitializeGraphData();
+            DisableCustomDates();
+        }
+
+        private void btnPrevMonth_Click(object sender, EventArgs e)
+        {
+            dtpStart.Value = DateTime.Today.AddDays(-30);
+            dtpEnd.Value = DateTime.Now;
+            InitializeGraphData();
+            DisableCustomDates();
+        }
+
+        private void btnWeek_Click(object sender, EventArgs e)
+        {
+            dtpStart.Value = DateTime.Today.AddDays(-7);
+            dtpEnd.Value = DateTime.Now;
+            InitializeGraphData();
+            DisableCustomDates();
+        }
+
+        private void btnCustom_Click(object sender, EventArgs e)
+        {
+            dtpEnd.Enabled = true;
+            dtpStart.Enabled = true;
+            btnSubmit.Visible = true;
+        }
+
+        private void btnSubmit_Click(object sender, EventArgs e)
+        {
+            InitializeGraphData();
+        }
     }
 }
