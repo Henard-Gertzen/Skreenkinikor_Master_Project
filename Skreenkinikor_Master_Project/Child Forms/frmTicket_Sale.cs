@@ -380,6 +380,14 @@ namespace Skreenkinikor_Master_Project
 
             PopulateMovieComboBox(cbbSelectMovie, selectedDate);
 
+            lblStartDate.Text = dateTimePicker1.Value.ToString("MMM dd, yyyy");
+
+        }
+
+        private void lblStartDate_Click(object sender, EventArgs e)
+        {
+            dateTimePicker1.Select();
+            SendKeys.Send("%{DOWN}");
         }
     }
 }

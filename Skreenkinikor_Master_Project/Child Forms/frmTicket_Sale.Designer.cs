@@ -153,15 +153,19 @@
             this.lblShowTime = new System.Windows.Forms.Label();
             this.lblShowTimeTime = new System.Windows.Forms.Label();
             this.lblMovie = new System.Windows.Forms.Label();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.lblConfirmSeats = new System.Windows.Forms.Label();
+            this.lblStartDate = new System.Windows.Forms.Label();
             this.pnlMovieSeats.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.pnlScreen.SuspendLayout();
             this.panel1.SuspendLayout();
+            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnConfirm
             // 
-            this.btnConfirm.Location = new System.Drawing.Point(16, 231);
+            this.btnConfirm.Location = new System.Drawing.Point(17, 126);
             this.btnConfirm.Name = "btnConfirm";
             this.btnConfirm.Size = new System.Drawing.Size(196, 37);
             this.btnConfirm.TabIndex = 7;
@@ -171,11 +175,11 @@
             // 
             // btnReset
             // 
-            this.btnReset.Location = new System.Drawing.Point(16, 188);
+            this.btnReset.Location = new System.Drawing.Point(17, 83);
             this.btnReset.Name = "btnReset";
             this.btnReset.Size = new System.Drawing.Size(196, 37);
             this.btnReset.TabIndex = 5;
-            this.btnReset.Text = "Reset";
+            this.btnReset.Text = "Clear";
             this.btnReset.UseVisualStyleBackColor = true;
             this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
             // 
@@ -196,7 +200,7 @@
             this.pnlMovieSeats.Controls.Add(this.lblRowC);
             this.pnlMovieSeats.Controls.Add(this.lblRowB);
             this.pnlMovieSeats.Controls.Add(this.lblRowA);
-            this.pnlMovieSeats.Location = new System.Drawing.Point(248, 10);
+            this.pnlMovieSeats.Location = new System.Drawing.Point(248, 91);
             this.pnlMovieSeats.Name = "pnlMovieSeats";
             this.pnlMovieSeats.Size = new System.Drawing.Size(422, 408);
             this.pnlMovieSeats.TabIndex = 4;
@@ -1435,6 +1439,7 @@
             // 
             this.lblTitle.AutoSize = true;
             this.lblTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTitle.ForeColor = System.Drawing.Color.White;
             this.lblTitle.Location = new System.Drawing.Point(195, 15);
             this.lblTitle.Name = "lblTitle";
             this.lblTitle.Size = new System.Drawing.Size(79, 13);
@@ -1444,6 +1449,7 @@
             // lblRowJ
             // 
             this.lblRowJ.AutoSize = true;
+            this.lblRowJ.ForeColor = System.Drawing.Color.White;
             this.lblRowJ.Location = new System.Drawing.Point(15, 365);
             this.lblRowJ.Name = "lblRowJ";
             this.lblRowJ.Size = new System.Drawing.Size(40, 13);
@@ -1462,7 +1468,8 @@
             // lblScreen
             // 
             this.lblScreen.AutoSize = true;
-            this.lblScreen.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(67)))), ((int)(((byte)(90)))));
+            this.lblScreen.BackColor = System.Drawing.Color.Transparent;
+            this.lblScreen.ForeColor = System.Drawing.Color.White;
             this.lblScreen.Location = new System.Drawing.Point(152, 11);
             this.lblScreen.Name = "lblScreen";
             this.lblScreen.Size = new System.Drawing.Size(41, 13);
@@ -1472,6 +1479,7 @@
             // lblRowI
             // 
             this.lblRowI.AutoSize = true;
+            this.lblRowI.ForeColor = System.Drawing.Color.White;
             this.lblRowI.Location = new System.Drawing.Point(15, 334);
             this.lblRowI.Name = "lblRowI";
             this.lblRowI.Size = new System.Drawing.Size(38, 13);
@@ -1481,6 +1489,7 @@
             // lblRowH
             // 
             this.lblRowH.AutoSize = true;
+            this.lblRowH.ForeColor = System.Drawing.Color.White;
             this.lblRowH.Location = new System.Drawing.Point(15, 305);
             this.lblRowH.Name = "lblRowH";
             this.lblRowH.Size = new System.Drawing.Size(43, 13);
@@ -1490,6 +1499,7 @@
             // lblRowG
             // 
             this.lblRowG.AutoSize = true;
+            this.lblRowG.ForeColor = System.Drawing.Color.White;
             this.lblRowG.Location = new System.Drawing.Point(15, 274);
             this.lblRowG.Name = "lblRowG";
             this.lblRowG.Size = new System.Drawing.Size(43, 13);
@@ -1499,6 +1509,7 @@
             // lblRowF
             // 
             this.lblRowF.AutoSize = true;
+            this.lblRowF.ForeColor = System.Drawing.Color.White;
             this.lblRowF.Location = new System.Drawing.Point(15, 245);
             this.lblRowF.Name = "lblRowF";
             this.lblRowF.Size = new System.Drawing.Size(41, 13);
@@ -1508,6 +1519,7 @@
             // lblRowE
             // 
             this.lblRowE.AutoSize = true;
+            this.lblRowE.ForeColor = System.Drawing.Color.White;
             this.lblRowE.Location = new System.Drawing.Point(15, 215);
             this.lblRowE.Name = "lblRowE";
             this.lblRowE.Size = new System.Drawing.Size(42, 13);
@@ -1517,6 +1529,7 @@
             // lblRowD
             // 
             this.lblRowD.AutoSize = true;
+            this.lblRowD.ForeColor = System.Drawing.Color.White;
             this.lblRowD.Location = new System.Drawing.Point(15, 183);
             this.lblRowD.Name = "lblRowD";
             this.lblRowD.Size = new System.Drawing.Size(43, 13);
@@ -1526,6 +1539,7 @@
             // lblRowC
             // 
             this.lblRowC.AutoSize = true;
+            this.lblRowC.ForeColor = System.Drawing.Color.White;
             this.lblRowC.Location = new System.Drawing.Point(15, 150);
             this.lblRowC.Name = "lblRowC";
             this.lblRowC.Size = new System.Drawing.Size(42, 13);
@@ -1535,6 +1549,7 @@
             // lblRowB
             // 
             this.lblRowB.AutoSize = true;
+            this.lblRowB.ForeColor = System.Drawing.Color.White;
             this.lblRowB.Location = new System.Drawing.Point(15, 117);
             this.lblRowB.Name = "lblRowB";
             this.lblRowB.Size = new System.Drawing.Size(42, 13);
@@ -1544,6 +1559,7 @@
             // lblRowA
             // 
             this.lblRowA.AutoSize = true;
+            this.lblRowA.ForeColor = System.Drawing.Color.White;
             this.lblRowA.Location = new System.Drawing.Point(15, 88);
             this.lblRowA.Name = "lblRowA";
             this.lblRowA.Size = new System.Drawing.Size(42, 13);
@@ -1552,6 +1568,8 @@
             // 
             // cbbSelectMovie
             // 
+            this.cbbSelectMovie.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(67)))), ((int)(((byte)(90)))));
+            this.cbbSelectMovie.ForeColor = System.Drawing.Color.White;
             this.cbbSelectMovie.FormattingEnabled = true;
             this.cbbSelectMovie.Location = new System.Drawing.Point(91, 108);
             this.cbbSelectMovie.Name = "cbbSelectMovie";
@@ -1562,6 +1580,7 @@
             // lblSelectMovie
             // 
             this.lblSelectMovie.AutoSize = true;
+            this.lblSelectMovie.ForeColor = System.Drawing.Color.White;
             this.lblSelectMovie.Location = new System.Drawing.Point(13, 111);
             this.lblSelectMovie.Name = "lblSelectMovie";
             this.lblSelectMovie.Size = new System.Drawing.Size(72, 13);
@@ -1572,23 +1591,23 @@
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(67)))), ((int)(((byte)(90)))));
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.lblStartDate);
             this.panel1.Controls.Add(this.lblMovie);
             this.panel1.Controls.Add(this.lblShowTimeTime);
             this.panel1.Controls.Add(this.lblShowTime);
             this.panel1.Controls.Add(this.lblSelectDate);
             this.panel1.Controls.Add(this.dateTimePicker1);
             this.panel1.Controls.Add(this.lblSelectMovie);
-            this.panel1.Controls.Add(this.btnConfirm);
             this.panel1.Controls.Add(this.cbbSelectMovie);
-            this.panel1.Controls.Add(this.btnReset);
-            this.panel1.Location = new System.Drawing.Point(12, 10);
+            this.panel1.Location = new System.Drawing.Point(12, 91);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(230, 288);
+            this.panel1.Size = new System.Drawing.Size(230, 197);
             this.panel1.TabIndex = 10;
             // 
             // lblSelectDate
             // 
             this.lblSelectDate.AutoSize = true;
+            this.lblSelectDate.ForeColor = System.Drawing.Color.White;
             this.lblSelectDate.Location = new System.Drawing.Point(13, 90);
             this.lblSelectDate.Name = "lblSelectDate";
             this.lblSelectDate.Size = new System.Drawing.Size(66, 13);
@@ -1597,16 +1616,18 @@
             // 
             // dateTimePicker1
             // 
+            this.dateTimePicker1.CalendarMonthBackground = System.Drawing.SystemColors.WindowFrame;
             this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dateTimePicker1.Location = new System.Drawing.Point(91, 84);
             this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(121, 20);
+            this.dateTimePicker1.Size = new System.Drawing.Size(81, 20);
             this.dateTimePicker1.TabIndex = 10;
             this.dateTimePicker1.ValueChanged += new System.EventHandler(this.dateTimePicker1_ValueChanged);
             // 
             // lblShowTime
             // 
             this.lblShowTime.AutoSize = true;
+            this.lblShowTime.ForeColor = System.Drawing.Color.White;
             this.lblShowTime.Location = new System.Drawing.Point(13, 150);
             this.lblShowTime.Name = "lblShowTime";
             this.lblShowTime.Size = new System.Drawing.Size(63, 13);
@@ -1625,11 +1646,47 @@
             // 
             this.lblMovie.AutoSize = true;
             this.lblMovie.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblMovie.ForeColor = System.Drawing.Color.White;
             this.lblMovie.Location = new System.Drawing.Point(69, 15);
             this.lblMovie.Name = "lblMovie";
             this.lblMovie.Size = new System.Drawing.Size(81, 13);
             this.lblMovie.TabIndex = 112;
             this.lblMovie.Text = "Select Movie";
+            // 
+            // panel2
+            // 
+            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(67)))), ((int)(((byte)(90)))));
+            this.panel2.Controls.Add(this.lblConfirmSeats);
+            this.panel2.Controls.Add(this.btnReset);
+            this.panel2.Controls.Add(this.btnConfirm);
+            this.panel2.Location = new System.Drawing.Point(12, 294);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(230, 205);
+            this.panel2.TabIndex = 11;
+            // 
+            // lblConfirmSeats
+            // 
+            this.lblConfirmSeats.AutoSize = true;
+            this.lblConfirmSeats.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblConfirmSeats.ForeColor = System.Drawing.Color.White;
+            this.lblConfirmSeats.Location = new System.Drawing.Point(70, 13);
+            this.lblConfirmSeats.Name = "lblConfirmSeats";
+            this.lblConfirmSeats.Size = new System.Drawing.Size(93, 13);
+            this.lblConfirmSeats.TabIndex = 113;
+            this.lblConfirmSeats.Text = "Finialise Ticket";
+            // 
+            // lblStartDate
+            // 
+            this.lblStartDate.AutoSize = true;
+            this.lblStartDate.ForeColor = System.Drawing.Color.White;
+            this.lblStartDate.Location = new System.Drawing.Point(88, 84);
+            this.lblStartDate.MinimumSize = new System.Drawing.Size(90, 20);
+            this.lblStartDate.Name = "lblStartDate";
+            this.lblStartDate.Size = new System.Drawing.Size(90, 20);
+            this.lblStartDate.TabIndex = 113;
+            this.lblStartDate.Text = "Sep 01, 2023";
+            this.lblStartDate.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lblStartDate.Click += new System.EventHandler(this.lblStartDate_Click);
             // 
             // frmTicket_Sale
             // 
@@ -1637,6 +1694,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(19)))), ((int)(((byte)(41)))), ((int)(((byte)(61)))));
             this.ClientSize = new System.Drawing.Size(967, 685);
+            this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.pnlMovieSeats);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -1651,6 +1709,8 @@
             this.pnlScreen.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -1782,5 +1842,8 @@
         private System.Windows.Forms.Label lblShowTimeTime;
         private System.Windows.Forms.Label lblShowTime;
         private System.Windows.Forms.Label lblMovie;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Label lblConfirmSeats;
+        private System.Windows.Forms.Label lblStartDate;
     }
 }
