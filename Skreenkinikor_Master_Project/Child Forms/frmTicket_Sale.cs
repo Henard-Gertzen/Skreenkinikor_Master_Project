@@ -28,9 +28,6 @@ namespace Skreenkinikor_Master_Project
                     SelectedTickets.Add(checkBox.Name);
                 }
             }
-
-            // Display the names of seats
-            MessageBox.Show("Selected Checkboxes: " + string.Join(", ", SelectedTickets));
         }
 
         // Function to insert selected seats into the Ticket_Info table
@@ -49,11 +46,9 @@ namespace Skreenkinikor_Master_Project
 
                     // Combine the selected seats into a single string with '#' as the delimiter
                     string combinedSeats = string.Join("#", SelectedTickets);
-                    MessageBox.Show("CombinedSeats: "+combinedSeats);
 
                     // Calculate the Ticket_Total (number of selected seats)
                     decimal ticketTotal = SelectedTickets.Count;
-                    MessageBox.Show("TicketTotal: "+ticketTotal.ToString());
 
                     string insertQuery = "INSERT INTO Ticket_Info (Movie_ID, Ticket_Total, Seats) VALUES (@MovieID, @TicketTotal, @Seats)";
 
@@ -103,6 +98,22 @@ namespace Skreenkinikor_Master_Project
             return movieId;
         }
 
+        //Enable all checkboxes
+        private void EnableAllCheckBoxes(Control control)
+        {
+            foreach (Control c in control.Controls)
+            {
+                if (c is CheckBox checkBox && !checkBox.Enabled)
+                {
+                    checkBox.Enabled = true;
+                }
+
+                if (c.HasChildren)
+                {
+                    EnableAllCheckBoxes(c);
+                }
+            }
+        }
 
         //Uncheck selected seats
         private void UncheckAllCheckBoxes(Control control)
@@ -125,42 +136,55 @@ namespace Skreenkinikor_Master_Project
         {
             string connectionString = Classes.ConnectionStrings.conSkreenMainStr;
 
+            // Retrieve the Movie_ID based on the selected movie name
+            int selectedMovieId = GetMovieIdFromName(selectedMovieName);
+
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
-                connection.Open();
-
-                string selectQuery = "SELECT Ticket_Info.Seats FROM Ticket_Info " +
-                                     "INNER JOIN Movie_Info ON Ticket_Info.Movie_ID = Movie_Info.Movie_ID " +
-                                     "INNER JOIN Movie_On_Schedule ON Movie_Info.Movie_ID = Movie_On_Schedule.Movie_ID " +
-                                     "INNER JOIN Schedule ON Movie_On_Schedule.Schedule_ID = Schedule.Schedule_ID " +
-                                     "WHERE Ticket_Info.Seats IS NOT NULL " +
-                                     "AND Movie_Info.Movie_Name = @SelectedMovieName " +
-                                     "AND CONVERT(DATE, Schedule.Day_Shown) = @SelectedDate";
-
-                using (SqlCommand cmd = new SqlCommand(selectQuery, connection))
+                try
                 {
-                    cmd.Parameters.AddWithValue("@SelectedMovieName", selectedMovieName);
-                    cmd.Parameters.AddWithValue("@SelectedDate", selectedDate.Date);
+                    connection.Open();
 
-                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    string selectQuery = "SELECT Seats FROM Ticket_Info " +
+                                         "INNER JOIN Movie_Info ON Ticket_Info.Movie_ID = Movie_Info.Movie_ID " +
+                                         "INNER JOIN Schedule ON Movie_Info.Movie_ID = Schedule.Movie_ID " +
+                                         "WHERE Movie_Info.Movie_Name = @MovieName " +
+                                         "AND CONVERT(DATE, Schedule.Day_Shown) = @SelectedDate " +
+                                         "AND Movie_Info.Movie_ID = @MovieId"; // Include Movie_ID in the WHERE clause
+
+                    using (SqlCommand cmd = new SqlCommand(selectQuery, connection))
                     {
-                        while (reader.Read())
-                        {
-                            string bookedSeat = reader["Seats"].ToString().Trim();
+                        cmd.Parameters.AddWithValue("@MovieName", selectedMovieName);
+                        cmd.Parameters.AddWithValue("@SelectedDate", selectedDate.Date);
+                        cmd.Parameters.AddWithValue("@MovieId", selectedMovieId); // Pass selectedMovieId as a parameter
 
-                            if (!string.IsNullOrEmpty(bookedSeat))
+                        using (SqlDataReader reader = cmd.ExecuteReader())
+                        {
+                            while (reader.Read())
                             {
-                                foreach (Control control in tableLayoutPanel1.Controls)
+                                string bookedSeats = reader["Seats"].ToString();
+
+                                if (!string.IsNullOrEmpty(bookedSeats))
                                 {
-                                    if (control is CheckBox checkBox && control.Name.Trim() == bookedSeat)
+                                    string[] bookedSeatArray = bookedSeats.Split('#');
+
+                                    foreach (string seat in bookedSeatArray)
                                     {
-                                        checkBox.Enabled = false;
-                                        break;
+                                        Control[] controls = tableLayoutPanel1.Controls.Find(seat, true);
+                                        if (controls.Length > 0 && controls[0] is CheckBox checkBox)
+                                        {
+                                            checkBox.Enabled = false;
+                                        }
                                     }
                                 }
                             }
                         }
                     }
+                }
+                catch (Exception ex)
+                {
+                    // Handle the exception here or log it for debugging
+                    MessageBox.Show("Error: " + ex.Message);
                 }
             }
         }
@@ -210,6 +234,7 @@ namespace Skreenkinikor_Master_Project
 
         private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
         {
+            EnableAllCheckBoxes(this);
             // Get the selected date from the DateTimePicker
             DateTime selectedDate = dateTimePicker1.Value;
 
