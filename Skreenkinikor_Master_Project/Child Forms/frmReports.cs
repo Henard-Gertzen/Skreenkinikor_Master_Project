@@ -38,6 +38,11 @@ namespace Skreenkinikor_Master_Project
                 chTotal.Series[0].XValueMember = "Date";
                 chTotal.Series[0].YValueMembers = "TotalAmount";
                 chTotal.DataBind();
+
+                chTop10.DataSource = reports.lTop10Movies;
+                chTop10.Series[0].XValueMember = "Key";
+                chTop10.Series[0].YValueMembers = "Value";
+                chTop10.DataBind();
             }
             else
             {
