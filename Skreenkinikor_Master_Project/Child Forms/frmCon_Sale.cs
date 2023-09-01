@@ -22,6 +22,7 @@ namespace Skreenkinikor_Master_Project
         private string connectionString = ConnectionStrings.conSkreenMainStr;
         private string item;
         private int amount;
+        private LinkedList list = new LinkedList();
 
         private void btnClose_Click(object sender, EventArgs e)
         {
@@ -82,13 +83,15 @@ namespace Skreenkinikor_Master_Project
 
         private void btnProceed_Click(object sender, EventArgs e)
         {
-            amount = (int)nudAmount.Value;
+           
+            
         }
 
         private void txtSearch_TextChanged(object sender, EventArgs e)
         {
 
-            
+            lblAmount.Visible = true;
+            nudAmount.Visible = true;
             btnAdd.Visible = true;
 
             using (SqlConnection conn = new SqlConnection(connectionString))
@@ -125,16 +128,28 @@ namespace Skreenkinikor_Master_Project
 
         private void dgvConItems_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+                                      
+                       
+        }
+
+        private void btnAdd_Click(object sender, EventArgs e)
+        {
+            amount = (int)nudAmount.Value;
+
+            
+            // calls the method to add the item and the amount to the linked list
+            list.AddItem(item, amount);
+
+
             
 
+            list.ShowListInMessageBox();
+        }
+
+        private void dgvConItems_CellClick_1(object sender, DataGridViewCellEventArgs e)
+        {
             // the name of the item clicked is saved into the item variable
-
             item = dgvConItems.Rows[e.RowIndex].Cells["Confectionary_Name"].Value.ToString();
-                            
-            lblAmount.Visible = true;
-            nudAmount.Visible = true;
-
-
         }
     }
 }

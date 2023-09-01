@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace Skreenkinikor_Master_Project.Classes
 {
@@ -68,6 +69,18 @@ namespace Skreenkinikor_Master_Project.Classes
                 }
                 current = current.Next;
             }
+        }
+
+        public void ShowListInMessageBox()
+        {
+            StringBuilder sb = new StringBuilder();
+            Node current = Head;
+            while (current != null)
+            {
+                sb.AppendLine($"Confectionary Item: {current.Item}, Amount: {current.Amount}");
+                current = current.Next;
+            }
+            MessageBox.Show(sb.ToString());
         }
     }
 }
