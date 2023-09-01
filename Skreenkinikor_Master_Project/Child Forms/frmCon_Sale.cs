@@ -9,7 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Data.SqlClient;
+
 
 namespace Skreenkinikor_Master_Project
 {
@@ -111,6 +111,11 @@ namespace Skreenkinikor_Master_Project
                     MessageBox.Show(error.Message);
                 }
             }
+        }
+
+        private void dgvConItems_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

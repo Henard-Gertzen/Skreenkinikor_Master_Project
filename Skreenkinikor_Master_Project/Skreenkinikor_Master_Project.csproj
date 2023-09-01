@@ -147,6 +147,7 @@
     <Compile Include="Child Forms\frmTicket_Sale.Designer.cs">
       <DependentUpon>frmTicket_Sale.cs</DependentUpon>
     </Compile>
+    <Compile Include="Classes\ConfectionaryItems.cs" />
     <Compile Include="Classes\ConnectionStrings.cs" />
     <Compile Include="Classes\Reports_Class.cs" />
     <Compile Include="Classes\UserSession.cs" />
