@@ -2014,7 +2014,7 @@
             // 
             this.lblStartDate.AutoSize = true;
             this.lblStartDate.ForeColor = System.Drawing.Color.White;
-            this.lblStartDate.Location = new System.Drawing.Point(88, 84);
+            this.lblStartDate.Location = new System.Drawing.Point(89, 83);
             this.lblStartDate.MinimumSize = new System.Drawing.Size(90, 20);
             this.lblStartDate.Name = "lblStartDate";
             this.lblStartDate.Size = new System.Drawing.Size(90, 20);
