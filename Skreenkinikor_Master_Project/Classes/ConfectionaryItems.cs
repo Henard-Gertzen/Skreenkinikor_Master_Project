@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace Skreenkinikor_Master_Project.Classes
 {
@@ -30,15 +31,15 @@ namespace Skreenkinikor_Master_Project.Classes
             Head = newNode;
         }
 
-        // if the user made an error with the amount of an item they want to buy, they can subtract the amount
-        public void SubtractAmount(string Item, int Amount)
+        // if the user made an error with the amount of an item they want to buy, they can re-enter the amount they want
+        public void editAmount(string Item, int Amount)
         {
             Node current = Head;
             while (current != null)
             {
                 if (current.Item == Item)
                 {
-                    current.Amount -= Amount;
+                    current.Amount = Amount;
                 }
                 current = current.Next;
             }
@@ -68,6 +69,20 @@ namespace Skreenkinikor_Master_Project.Classes
                 }
                 current = current.Next;
             }
+        }
+
+        // method to test if the data is read into the linkedlist
+        // does not need to be called
+        public void ShowListInMessageBox()
+        {
+            StringBuilder sb = new StringBuilder();
+            Node current = Head;
+            while (current != null)
+            {
+                sb.AppendLine($"Confectionary Item: {current.Item}, Amount: {current.Amount}");
+                current = current.Next;
+            }
+            MessageBox.Show(sb.ToString());
         }
     }
 }
