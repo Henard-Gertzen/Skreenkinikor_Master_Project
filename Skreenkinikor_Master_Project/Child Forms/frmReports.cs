@@ -13,10 +13,21 @@ namespace Skreenkinikor_Master_Project
 {
     public partial class frmReports : Form
     {
+        //Variables
+        private Reports_Class reports;
         //Constructor
         public frmReports()
         {
             InitializeComponent();
+            //Default time
+            dtpStart.Value = DateTime.Today.AddDays(-7);
+            dtpEnd.Value = DateTime.Now;
+            reports = new Reports_Class();
+        }
+
+        private void InitializeGraphData()
+        {
+            var reloadData = reports.LoadMovieData();
         }
     }
 }
