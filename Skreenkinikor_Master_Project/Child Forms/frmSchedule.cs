@@ -357,7 +357,7 @@ namespace Skreenkinikor_Master_Project
                     {
                         connection.Open();
                         command.ExecuteNonQuery();
-                        MessageBox.Show("Schedule deleted successfully.");
+                        //MessageBox.Show("Schedule deleted successfully.");
                     }
                     catch (Exception ex)
                     {
@@ -391,6 +391,36 @@ namespace Skreenkinikor_Master_Project
                 }
             }
         }
+
+        private bool IsScheduleConflict(DateTime date, DateTime timeSlot)
+        {
+            // Create a SqlConnection and a SqlCommand.
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                string query = "SELECT COUNT(*) FROM Schedule WHERE Day_Shown = @DayShown AND Timeslot = @TimeSlot";
+
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@DayShown", date);
+                    command.Parameters.AddWithValue("@TimeSlot", timeSlot.TimeOfDay); // Extract the time portion
+
+                    try
+                    {
+                        connection.Open();
+                        int count = Convert.ToInt32(command.ExecuteScalar());
+                        return count > 0; // If count is greater than 0, it means a conflict exists.
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Error: " + ex.Message);
+                    }
+                }
+            }
+
+            return false; // Return false if an error occurs.
+        }
+
+
 
         public frmSchedule()
         {
@@ -428,7 +458,7 @@ namespace Skreenkinikor_Master_Project
                     break;
                 default:
                     MessageBox.Show("Please select a show option.");
-                    break;
+                    return; // Return early if no show option is selected.
             }
 
             string selectedMovieName = comboBox1.SelectedItem != null ? comboBox1.SelectedItem.ToString() : string.Empty;
@@ -436,7 +466,18 @@ namespace Skreenkinikor_Master_Project
             if (!string.IsNullOrEmpty(selectedMovieName))
             {
                 int selectedMovieID = GetSelectedMovieID(selectedMovieName);
-                scheduleID = InsertSchedule(dateTimePicker1.Value.Date, selectedTime);
+
+                // Get the date from the date picker control.
+                DateTime selectedDate = dateTimePicker1.Value.Date;
+
+                // Check for schedule conflicts before inserting a new schedule.
+                if (IsScheduleConflict(selectedDate, selectedTime))
+                {
+                    MessageBox.Show("Schedule conflict! This date and time already exist in the schedule.");
+                    return; // Return early if there's a conflict.
+                }
+
+                scheduleID = InsertSchedule(selectedDate, selectedTime);
                 InsertMovieOnSchedule(selectedMovieID, scheduleID);
                 ShowUpcomingMoviesInDataGridView(dataGridView1);
             }
