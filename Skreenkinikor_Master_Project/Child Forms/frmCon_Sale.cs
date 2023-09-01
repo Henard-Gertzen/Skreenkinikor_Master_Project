@@ -10,7 +10,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-
 namespace Skreenkinikor_Master_Project
 {
     public partial class frmCon_Sale : Form

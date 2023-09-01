@@ -400,6 +400,41 @@
             this.pnlUserTopBuffer.Size = new System.Drawing.Size(398, 15);
             this.pnlUserTopBuffer.TabIndex = 0;
             // 
+            // lblSelected
+            // 
+            this.lblSelected.AutoSize = true;
+            this.lblSelected.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.249999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSelected.ForeColor = System.Drawing.Color.White;
+            this.lblSelected.Location = new System.Drawing.Point(39, 38);
+            this.lblSelected.Name = "lblSelected";
+            this.lblSelected.Size = new System.Drawing.Size(39, 13);
+            this.lblSelected.TabIndex = 1;
+            this.lblSelected.Text = "Home";
+            // 
+            // ipbSelectedIcon
+            // 
+            this.ipbSelectedIcon.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(100)))), ((int)(((byte)(148)))));
+            this.ipbSelectedIcon.IconChar = FontAwesome.Sharp.IconChar.HomeLg;
+            this.ipbSelectedIcon.IconColor = System.Drawing.Color.White;
+            this.ipbSelectedIcon.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.ipbSelectedIcon.Location = new System.Drawing.Point(6, 29);
+            this.ipbSelectedIcon.Name = "ipbSelectedIcon";
+            this.ipbSelectedIcon.Size = new System.Drawing.Size(32, 32);
+            this.ipbSelectedIcon.TabIndex = 0;
+            this.ipbSelectedIcon.TabStop = false;
+            // 
+            // pnlControlBar
+            // 
+            this.pnlControlBar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(100)))), ((int)(((byte)(148)))));
+            this.pnlControlBar.Controls.Add(this.btnMin);
+            this.pnlControlBar.Controls.Add(this.btnClose);
+            this.pnlControlBar.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pnlControlBar.Location = new System.Drawing.Point(0, 0);
+            this.pnlControlBar.Name = "pnlControlBar";
+            this.pnlControlBar.Size = new System.Drawing.Size(686, 22);
+            this.pnlControlBar.TabIndex = 5;
+            this.pnlControlBar.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pnlControlBar_MouseDown);
+            // 
             // btnMin
             // 
             this.btnMin.Cursor = System.Windows.Forms.Cursors.Hand;
