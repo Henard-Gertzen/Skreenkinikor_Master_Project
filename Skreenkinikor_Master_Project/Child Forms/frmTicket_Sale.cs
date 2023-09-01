@@ -50,15 +50,20 @@ namespace Skreenkinikor_Master_Project
                     // Calculate the Ticket_Total (number of selected seats)
                     decimal ticketTotal = SelectedTickets.Count;
 
-                    string insertQuery = "INSERT INTO Ticket_Info (Movie_ID, Ticket_Total, Seats) VALUES (@MovieID, @TicketTotal, @Seats)";
+                    string insertQuery = "INSERT INTO Ticket_Info (Movie_ID, Ticket_Total, Seats, Payment_Date) " +
+                                         "VALUES (@MovieID, @TicketTotal, @Seats, @PaymentDate)";
 
                     using (SqlCommand cmd = new SqlCommand(insertQuery, connection))
                     {
-                        cmd.Parameters.AddWithValue("@MovieID", selectedMovieId);
-                        cmd.Parameters.AddWithValue("@TicketTotal", ticketTotal);
-                        cmd.Parameters.AddWithValue("@Seats", combinedSeats);
+                        cmd.Parameters.AddWithValue("@MovieID", 1);
+                        cmd.Parameters.AddWithValue("@TicketTotal", 50.00);
+                        cmd.Parameters.AddWithValue("@Seats", "cbxA1");
+                        cmd.Parameters.AddWithValue("@PaymentDate", DateTime.Now);
+
                         cmd.ExecuteNonQuery();
                     }
+
+                    MessageBox.Show("Tickets Booked");
                 }
                 catch (Exception ex)
                 {
@@ -69,8 +74,6 @@ namespace Skreenkinikor_Master_Project
         }
 
 
-
-
         private int GetMovieIdFromName(string movieName)
         {
             string connectionString = Classes.ConnectionStrings.conSkreenMainStr;
@@ -78,25 +81,38 @@ namespace Skreenkinikor_Master_Project
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
-                connection.Open();
-
-                string selectQuery = "SELECT Movie_ID FROM Movie_Info WHERE Movie_Name = @MovieName";
-
-                using (SqlCommand cmd = new SqlCommand(selectQuery, connection))
+                try
                 {
-                    cmd.Parameters.AddWithValue("@MovieName", movieName);
+                    connection.Open();
 
-                    object result = cmd.ExecuteScalar();
+                    string selectQuery = "SELECT Movie_ID FROM Movie_Info WHERE Movie_Name = @MovieName";
 
-                    if (result != null)
+                    using (SqlCommand cmd = new SqlCommand(selectQuery, connection))
                     {
-                        movieId = Convert.ToInt32(result);
+                        cmd.Parameters.AddWithValue("@MovieName", movieName);
+
+                        object result = cmd.ExecuteScalar();
+
+                        if (result != null && result != DBNull.Value)
+                        {
+                            int.TryParse(result.ToString(), out movieId);
+                        }
+                        else
+                        {
+                            // Handle the case where no result was found for the given movie name
+                        }
                     }
+                }
+                catch (Exception ex)
+                {
+                    // Handle the exception here or log it for debugging
+                    MessageBox.Show("Error: " + ex.Message);
                 }
             }
 
             return movieId;
         }
+
 
         //Enable all checkboxes
         private void EnableAllCheckBoxes(Control control)
@@ -136,27 +152,24 @@ namespace Skreenkinikor_Master_Project
         {
             string connectionString = Classes.ConnectionStrings.conSkreenMainStr;
 
-            // Retrieve the Movie_ID based on the selected movie name
-            int selectedMovieId = GetMovieIdFromName(selectedMovieName);
-
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 try
                 {
                     connection.Open();
 
-                    string selectQuery = "SELECT Seats FROM Ticket_Info " +
-                                         "INNER JOIN Movie_Info ON Ticket_Info.Movie_ID = Movie_Info.Movie_ID " +
-                                         "INNER JOIN Schedule ON Movie_Info.Movie_ID = Schedule.Movie_ID " +
-                                         "WHERE Movie_Info.Movie_Name = @MovieName " +
-                                         "AND CONVERT(DATE, Schedule.Day_Shown) = @SelectedDate " +
-                                         "AND Movie_Info.Movie_ID = @MovieId"; // Include Movie_ID in the WHERE clause
+                    // Retrieve the Movie_ID based on the selected movie name
+                    int selectedMovieId = GetMovieIdFromName(selectedMovieName);
+
+                    string selectQuery = "SELECT Seats FROM Ticket_Info TI " +
+                                        "INNER JOIN Movie_Info MI ON TI.Movie_ID = MI.Movie_ID " +
+                                        "WHERE MI.Movie_Name = @MovieName " +
+                                        "AND CONVERT(DATE, TI.Payment_Date) = @SelectedDate";
 
                     using (SqlCommand cmd = new SqlCommand(selectQuery, connection))
                     {
-                        cmd.Parameters.AddWithValue("@MovieName", selectedMovieName);
+                        cmd.Parameters.AddWithValue("@MovieName", selectedMovieName); // Use @MovieName here
                         cmd.Parameters.AddWithValue("@SelectedDate", selectedDate.Date);
-                        cmd.Parameters.AddWithValue("@MovieId", selectedMovieId); // Pass selectedMovieId as a parameter
 
                         using (SqlDataReader reader = cmd.ExecuteReader())
                         {
@@ -187,10 +200,8 @@ namespace Skreenkinikor_Master_Project
                     MessageBox.Show("Error: " + ex.Message);
                 }
             }
+
         }
-
-
-
 
         public frmTicket_Sale()
         {
@@ -209,8 +220,8 @@ namespace Skreenkinikor_Master_Project
             if (!string.IsNullOrEmpty(selectedMovieName))
             {
                 ConfirmTickets();
-                UncheckAllCheckBoxes(this);
                 InsertSelectedSeatsIntoDatabase(selectedMovieName);
+                UncheckAllCheckBoxes(this);
                 //SelectedTickets.Clear();
             }
             else

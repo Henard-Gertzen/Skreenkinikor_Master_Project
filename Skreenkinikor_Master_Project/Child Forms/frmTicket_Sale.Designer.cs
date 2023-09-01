@@ -158,7 +158,7 @@
             // 
             // btnConfirm
             // 
-            this.btnConfirm.Location = new System.Drawing.Point(23, 235);
+            this.btnConfirm.Location = new System.Drawing.Point(16, 231);
             this.btnConfirm.Name = "btnConfirm";
             this.btnConfirm.Size = new System.Drawing.Size(196, 37);
             this.btnConfirm.TabIndex = 7;
@@ -168,7 +168,7 @@
             // 
             // btnReset
             // 
-            this.btnReset.Location = new System.Drawing.Point(23, 192);
+            this.btnReset.Location = new System.Drawing.Point(16, 188);
             this.btnReset.Name = "btnReset";
             this.btnReset.Size = new System.Drawing.Size(196, 37);
             this.btnReset.TabIndex = 5;
@@ -192,7 +192,7 @@
             this.pnlMovieSeats.Controls.Add(this.lblRowC);
             this.pnlMovieSeats.Controls.Add(this.lblRowB);
             this.pnlMovieSeats.Controls.Add(this.lblRowA);
-            this.pnlMovieSeats.Location = new System.Drawing.Point(265, 10);
+            this.pnlMovieSeats.Location = new System.Drawing.Point(248, 10);
             this.pnlMovieSeats.Name = "pnlMovieSeats";
             this.pnlMovieSeats.Size = new System.Drawing.Size(422, 408);
             this.pnlMovieSeats.TabIndex = 4;
@@ -1549,7 +1549,7 @@
             // cbbSelectMovie
             // 
             this.cbbSelectMovie.FormattingEnabled = true;
-            this.cbbSelectMovie.Location = new System.Drawing.Point(98, 112);
+            this.cbbSelectMovie.Location = new System.Drawing.Point(91, 108);
             this.cbbSelectMovie.Name = "cbbSelectMovie";
             this.cbbSelectMovie.Size = new System.Drawing.Size(121, 21);
             this.cbbSelectMovie.TabIndex = 8;
@@ -1558,7 +1558,7 @@
             // lblSelectMovie
             // 
             this.lblSelectMovie.AutoSize = true;
-            this.lblSelectMovie.Location = new System.Drawing.Point(20, 115);
+            this.lblSelectMovie.Location = new System.Drawing.Point(13, 111);
             this.lblSelectMovie.Name = "lblSelectMovie";
             this.lblSelectMovie.Size = new System.Drawing.Size(72, 13);
             this.lblSelectMovie.TabIndex = 9;
@@ -1575,13 +1575,13 @@
             this.panel1.Controls.Add(this.btnReset);
             this.panel1.Location = new System.Drawing.Point(12, 10);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(247, 288);
+            this.panel1.Size = new System.Drawing.Size(230, 288);
             this.panel1.TabIndex = 10;
             // 
             // lblSelectDate
             // 
             this.lblSelectDate.AutoSize = true;
-            this.lblSelectDate.Location = new System.Drawing.Point(20, 94);
+            this.lblSelectDate.Location = new System.Drawing.Point(13, 90);
             this.lblSelectDate.Name = "lblSelectDate";
             this.lblSelectDate.Size = new System.Drawing.Size(66, 13);
             this.lblSelectDate.TabIndex = 11;
@@ -1590,7 +1590,7 @@
             // dateTimePicker1
             // 
             this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePicker1.Location = new System.Drawing.Point(98, 88);
+            this.dateTimePicker1.Location = new System.Drawing.Point(91, 84);
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.Size = new System.Drawing.Size(121, 20);
             this.dateTimePicker1.TabIndex = 10;
