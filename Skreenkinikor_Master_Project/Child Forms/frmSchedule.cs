@@ -49,7 +49,6 @@ namespace Skreenkinikor_Master_Project
 
         private void InsertMovieOnSchedule(int movieID, int scheduleID)
         {
-            // Create a SqlConnection and a SqlCommand.
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 string query = "INSERT INTO Movie_On_Schedule (Movie_ID, Schedule_ID) VALUES (@MovieID, @ScheduleID)";
@@ -74,11 +73,9 @@ namespace Skreenkinikor_Master_Project
 
         private void ShowUpcomingMoviesInDataGridView(DataGridView dataGridView)
         {
-            // Calculate the date range for the next seven days.
             DateTime startDate = DateTime.Now.Date;
             DateTime endDate = startDate.AddDays(7);
 
-            // Create a SqlConnection and a SqlCommand.
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 string query = "SELECT Movie_Info.Movie_Name, Schedule.Timeslot, Schedule.Day_Shown " +
@@ -100,7 +97,6 @@ namespace Skreenkinikor_Master_Project
                         DataTable dt = new DataTable();
                         adapter.Fill(dt);
 
-                        // Bind the DataTable to the DataGridView.
                         dataGridView.DataSource = dt;
                     }
                     catch (Exception ex)
@@ -114,10 +110,8 @@ namespace Skreenkinikor_Master_Project
         //insert data to schedule
         private int InsertSchedule(DateTime date, DateTime timeSlot)
         {
-            // Initialize the scheduleID to -1 in case of an error.
             int scheduleID = -1;
 
-            // Create a SqlConnection and a SqlCommand.
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 string query = "INSERT INTO Schedule (Day_Shown, Timeslot) OUTPUT INSERTED.Schedule_ID VALUES (@DayShown, @TimeSlot)";
@@ -130,7 +124,6 @@ namespace Skreenkinikor_Master_Project
                     try
                     {
                         connection.Open();
-                        // ExecuteScalar to get the inserted Schedule_ID.
                         scheduleID = Convert.ToInt32(command.ExecuteScalar());
 
                         MessageBox.Show("Movie successfully added");
@@ -142,15 +135,14 @@ namespace Skreenkinikor_Master_Project
                 }
             }
 
-            return scheduleID; // Return the Schedule_ID.
+            return scheduleID; 
         }
 
         private void ModifySchedule(int scheduleID, int currentMovieID, int replacementMovieID)
         {
-            // Create a SqlConnection and a SqlCommand.
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
-                // First, update the Movie_On_Schedule table to replace the current movie ID with the replacement movie ID.
+               
                 string updateMovieOnScheduleQuery = "UPDATE Movie_On_Schedule SET Movie_ID = @ReplacementMovieID WHERE Schedule_ID = @ScheduleID AND Movie_ID = @CurrentMovieID";
 
                 using (SqlCommand updateMovieOnScheduleCommand = new SqlCommand(updateMovieOnScheduleQuery, connection))
@@ -184,9 +176,8 @@ namespace Skreenkinikor_Master_Project
         private int GetSelectedMovieID(string selectedMovieName)
         {
 
-            int movieID = -1; // Initialize with an invalid ID in case the movie is not found.
+            int movieID = -1;
 
-            // Create a SqlConnection and a SqlCommand.
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 string query = "SELECT Movie_ID FROM Movie_Info WHERE Movie_Name = @MovieName";
@@ -219,10 +210,8 @@ namespace Skreenkinikor_Master_Project
         {
             if (dataGridView1.SelectedRows.Count > 0)
             {
-                // Get the selected row
                 DataGridViewRow selectedRow = dataGridView1.SelectedRows[0];
 
-                // Find the column index by name (case-sensitive)
                 int movieNameIndex = -1;
 
                 foreach (DataGridViewColumn column in dataGridView1.Columns)
@@ -230,29 +219,26 @@ namespace Skreenkinikor_Master_Project
                     if (column.Name == "Movie_Name")
                     {
                         movieNameIndex = column.Index;
-                        break; // Exit the loop once the column is found
+                        break; 
                     }
                 }
 
                 if (movieNameIndex != -1)
                 {
-                    // Retrieve the movie name from the selected row
                     string movieName = selectedRow.Cells[movieNameIndex].Value.ToString();
                     return movieName;
                 }
             }
 
-            return null; // Return null if no row is selected or if the column is not found
+            return null;
         }
 
         private string GetMovieTime()
         {
             if (dataGridView1.SelectedRows.Count > 0)
             {
-                // Get the selected row
                 DataGridViewRow selectedRow = dataGridView1.SelectedRows[0];
 
-                // Find the column index by name (case-sensitive)
                 int timeIndex = -1;
 
                 foreach (DataGridViewColumn column in dataGridView1.Columns)
@@ -260,29 +246,26 @@ namespace Skreenkinikor_Master_Project
                     if (column.Name == "Timeslot")
                     {
                         timeIndex = column.Index;
-                        break; // Exit the loop once the column is found
+                        break;
                     }
                 }
 
                 if (timeIndex != -1)
                 {
-                    // Retrieve the movie time from the selected row
                     string movieTime = selectedRow.Cells[timeIndex].Value.ToString();
                     return movieTime;
                 }
             }
 
-            return null; // Return null if no row is selected or if the column is not found
+            return null; 
         }
 
         private string GetMovieDate()
         {
             if (dataGridView1.SelectedRows.Count > 0)
             {
-                // Get the selected row
                 DataGridViewRow selectedRow = dataGridView1.SelectedRows[0];
 
-                // Find the column index by name (case-sensitive)
                 int dateIndex = -1;
 
                 foreach (DataGridViewColumn column in dataGridView1.Columns)
@@ -290,30 +273,27 @@ namespace Skreenkinikor_Master_Project
                     if (column.Name == "Day_Shown")
                     {
                         dateIndex = column.Index;
-                        break; // Exit the loop once the column is found
+                        break; 
                     }
                 }
 
                 if (dateIndex != -1)
                 {
-                    // Retrieve the movie date from the selected row
                     DateTime movieDate = Convert.ToDateTime(selectedRow.Cells[dateIndex].Value);
 
-                    // Format the date to display only the date portion (e.g., 9/2/2023)
                     string formattedDate = movieDate.ToString("M/d/yyyy");
 
                     return formattedDate;
                 }
             }
 
-            return null; // Return null if no row is selected or if the column is not found
+            return null; 
         }
 
         private int GetScheduleID(string dayShown, string timeslot)
         {
-            int scheduleID = -1; // Initialize with an invalid ID in case the schedule is not found.
+            int scheduleID = -1; 
 
-            // Create a SqlConnection and a SqlCommand.
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 string query = "SELECT Schedule_ID FROM Schedule WHERE Day_Shown = @DayShown AND Timeslot = @Timeslot";
@@ -344,7 +324,6 @@ namespace Skreenkinikor_Master_Project
 
         private void DeleteSchedule(int scheduleID)
         {
-            // Create a SqlConnection and a SqlCommand.
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 string query = "DELETE FROM Schedule WHERE Schedule_ID = @ScheduleID";
@@ -369,7 +348,6 @@ namespace Skreenkinikor_Master_Project
 
         private void DeleteMovieOnSchedule(int scheduleID)
         {
-            // Create a SqlConnection and a SqlCommand.
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 string query = "DELETE FROM Movie_On_Schedule WHERE Schedule_ID = @ScheduleID";
@@ -393,8 +371,7 @@ namespace Skreenkinikor_Master_Project
         }
 
         private bool IsScheduleConflict(DateTime date, DateTime timeSlot)
-        {
-            // Create a SqlConnection and a SqlCommand.
+        {          
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 string query = "SELECT COUNT(*) FROM Schedule WHERE Day_Shown = @DayShown AND Timeslot = @TimeSlot";
@@ -402,13 +379,13 @@ namespace Skreenkinikor_Master_Project
                 using (SqlCommand command = new SqlCommand(query, connection))
                 {
                     command.Parameters.AddWithValue("@DayShown", date);
-                    command.Parameters.AddWithValue("@TimeSlot", timeSlot.TimeOfDay); // Extract the time portion
+                    command.Parameters.AddWithValue("@TimeSlot", timeSlot.TimeOfDay); 
 
                     try
                     {
                         connection.Open();
                         int count = Convert.ToInt32(command.ExecuteScalar());
-                        return count > 0; // If count is greater than 0, it means a conflict exists.
+                        return count > 0;
                     }
                     catch (Exception ex)
                     {
@@ -417,7 +394,7 @@ namespace Skreenkinikor_Master_Project
                 }
             }
 
-            return false; // Return false if an error occurs.
+            return false; 
         }
 
 
@@ -458,7 +435,7 @@ namespace Skreenkinikor_Master_Project
                     break;
                 default:
                     MessageBox.Show("Please select a show option.");
-                    return; // Return early if no show option is selected.
+                    return; 
             }
 
             string selectedMovieName = comboBox1.SelectedItem != null ? comboBox1.SelectedItem.ToString() : string.Empty;
@@ -467,14 +444,12 @@ namespace Skreenkinikor_Master_Project
             {
                 int selectedMovieID = GetSelectedMovieID(selectedMovieName);
 
-                // Get the date from the date picker control.
                 DateTime selectedDate = dateTimePicker1.Value.Date;
 
-                // Check for schedule conflicts before inserting a new schedule.
                 if (IsScheduleConflict(selectedDate, selectedTime))
                 {
                     MessageBox.Show("Schedule conflict! This date and time already exist in the schedule.");
-                    return; // Return early if there's a conflict.
+                    return; 
                 }
 
                 scheduleID = InsertSchedule(selectedDate, selectedTime);
