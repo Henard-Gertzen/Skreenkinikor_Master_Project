@@ -5,6 +5,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -30,6 +31,39 @@ namespace Skreenkinikor_Master_Project
             }
         }
 
+        //add movie names to combobox for the selected date
+        private void PopulateMovieComboBox(ComboBox comboBox, DateTime selectedDate)
+        {
+            string connectionString = Classes.ConnectionStrings.conSkreenMainStr;
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+
+                string selectQuery = "SELECT DISTINCT Movie_Info.Movie_Name " +
+                                     "FROM Movie_Info " +
+                                     "INNER JOIN Movie_On_Schedule ON Movie_Info.Movie_ID = Movie_On_Schedule.Movie_ID " +
+                                     "INNER JOIN Schedule ON Movie_On_Schedule.Schedule_ID = Schedule.Schedule_ID " +
+                                     "WHERE CONVERT(DATE, Schedule.Day_Shown) = @SelectedDate";
+
+                using (SqlCommand cmd = new SqlCommand(selectQuery, connection))
+                {
+                    cmd.Parameters.AddWithValue("@SelectedDate", selectedDate.Date);
+
+                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        comboBox.Items.Clear(); // Clear existing items in the ComboBox
+
+                        while (reader.Read())
+                        {
+                            // Add each movie name to the ComboBox
+                            comboBox.Items.Add(reader["Movie_Name"].ToString());
+                        }
+                    }
+                }
+            }
+        }
+
         // Function to insert selected seats into the Ticket_Info table
         private void InsertSelectedSeatsIntoDatabase(string selectedMovieName)
         {
@@ -48,16 +82,16 @@ namespace Skreenkinikor_Master_Project
                     string combinedSeats = string.Join("#", SelectedTickets);
 
                     // Calculate the Ticket_Total (number of selected seats)
-                    decimal ticketTotal = SelectedTickets.Count;
+                    decimal ticketTotal = SelectedTickets.Count * GetSeatPriceByMovieId(selectedMovieId);
 
                     string insertQuery = "INSERT INTO Ticket_Info (Movie_ID, Ticket_Total, Seats, Payment_Date) " +
                                          "VALUES (@MovieID, @TicketTotal, @Seats, @PaymentDate)";
 
                     using (SqlCommand cmd = new SqlCommand(insertQuery, connection))
                     {
-                        cmd.Parameters.AddWithValue("@MovieID", 1);
-                        cmd.Parameters.AddWithValue("@TicketTotal", 50.00);
-                        cmd.Parameters.AddWithValue("@Seats", "cbxA1");
+                        cmd.Parameters.AddWithValue("@MovieID", selectedMovieId);
+                        cmd.Parameters.AddWithValue("@TicketTotal", ticketTotal);
+                        cmd.Parameters.AddWithValue("@Seats", combinedSeats);
                         cmd.Parameters.AddWithValue("@PaymentDate", DateTime.Now);
 
                         cmd.ExecuteNonQuery();
@@ -72,7 +106,6 @@ namespace Skreenkinikor_Master_Project
                 }
             }
         }
-
 
         private int GetMovieIdFromName(string movieName)
         {
@@ -96,10 +129,6 @@ namespace Skreenkinikor_Master_Project
                         if (result != null && result != DBNull.Value)
                         {
                             int.TryParse(result.ToString(), out movieId);
-                        }
-                        else
-                        {
-                            // Handle the case where no result was found for the given movie name
                         }
                     }
                 }
@@ -147,6 +176,35 @@ namespace Skreenkinikor_Master_Project
                 }
             }
         }
+
+        //get seat price
+        private decimal GetSeatPriceByMovieId(int movieId)
+        {
+            string connectionString = Classes.ConnectionStrings.conSkreenMainStr;
+            decimal seatPrice = -1; // Initialize to a default value or handle errors appropriately
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+
+                string selectQuery = "SELECT Seat_Price FROM Movie_Info WHERE Movie_ID = @MovieId";
+
+                using (SqlCommand cmd = new SqlCommand(selectQuery, connection))
+                {
+                    cmd.Parameters.AddWithValue("@MovieId", movieId);
+
+                    object result = cmd.ExecuteScalar();
+
+                    if (result != null)
+                    {
+                        seatPrice = Convert.ToDecimal(result);
+                    }
+                }
+            }
+
+            return seatPrice;
+        }
+
         // Function to read seats from the database and disable checkboxes for a specific movie and date
         private void DisableBookedSeats(string selectedMovieName, DateTime selectedDate)
         {
@@ -162,33 +220,36 @@ namespace Skreenkinikor_Master_Project
                     int selectedMovieId = GetMovieIdFromName(selectedMovieName);
 
                     string selectQuery = "SELECT Seats FROM Ticket_Info TI " +
-                                        "INNER JOIN Movie_Info MI ON TI.Movie_ID = MI.Movie_ID " +
-                                        "WHERE MI.Movie_Name = @MovieName " +
-                                        "AND CONVERT(DATE, TI.Payment_Date) = @SelectedDate";
+                                         "INNER JOIN Movie_Info MI ON TI.Movie_ID = MI.Movie_ID " +
+                                         "WHERE MI.Movie_Name = @MovieName " +
+                                         "AND TI.Movie_ID = @MovieId";
 
                     using (SqlCommand cmd = new SqlCommand(selectQuery, connection))
                     {
-                        cmd.Parameters.AddWithValue("@MovieName", selectedMovieName); // Use @MovieName here
-                        cmd.Parameters.AddWithValue("@SelectedDate", selectedDate.Date);
+                        cmd.Parameters.AddWithValue("@MovieName", selectedMovieName);
+                        cmd.Parameters.AddWithValue("@MovieId", selectedMovieId);
 
                         using (SqlDataReader reader = cmd.ExecuteReader())
                         {
+                            List<string> bookedSeats = new List<string>();
+
                             while (reader.Read())
                             {
-                                string bookedSeats = reader["Seats"].ToString();
+                                string seats = reader["Seats"].ToString();
 
-                                if (!string.IsNullOrEmpty(bookedSeats))
+                                if (!string.IsNullOrEmpty(seats))
                                 {
-                                    string[] bookedSeatArray = bookedSeats.Split('#');
+                                    bookedSeats.AddRange(seats.Split('#'));
+                                }
+                            }
 
-                                    foreach (string seat in bookedSeatArray)
-                                    {
-                                        Control[] controls = tableLayoutPanel1.Controls.Find(seat, true);
-                                        if (controls.Length > 0 && controls[0] is CheckBox checkBox)
-                                        {
-                                            checkBox.Enabled = false;
-                                        }
-                                    }
+                            // Disable checkboxes for booked seats
+                            foreach (string seat in bookedSeats)
+                            {
+                                CheckBox checkBox = FindCheckBoxByName(seat);
+                                if (checkBox != null)
+                                {
+                                    checkBox.Enabled = false;
                                 }
                             }
                         }
@@ -196,12 +257,26 @@ namespace Skreenkinikor_Master_Project
                 }
                 catch (Exception ex)
                 {
-                    // Handle the exception here or log it for debugging
                     MessageBox.Show("Error: " + ex.Message);
+                    // Log the error for debugging if needed
                 }
             }
-
         }
+
+
+        // Helper function to find a CheckBox by its name in the TableLayoutPanel
+        private CheckBox FindCheckBoxByName(string name)
+        {
+            foreach (Control control in tableLayoutPanel1.Controls)
+            {
+                if (control is CheckBox checkBox && checkBox.Name == name)
+                {
+                    return checkBox;
+                }
+            }
+            return null; // CheckBox not found
+        }
+
 
         public frmTicket_Sale()
         {
@@ -252,33 +327,8 @@ namespace Skreenkinikor_Master_Project
             // Clear the existing items in the ComboBox
             cbbSelectMovie.Items.Clear();
 
-            // Query the database to retrieve movies scheduled for the selected date
-            string connectionString = Classes.ConnectionStrings.conSkreenMainStr;
+            PopulateMovieComboBox(cbbSelectMovie, selectedDate);
 
-            using (SqlConnection connection = new SqlConnection(connectionString))
-            {
-                connection.Open();
-
-                string selectQuery = "SELECT DISTINCT Movie_Info.Movie_Name " +
-                                     "FROM Movie_Info " +
-                                     "INNER JOIN Movie_On_Schedule ON Movie_Info.Movie_ID = Movie_On_Schedule.Movie_ID " +
-                                     "INNER JOIN Schedule ON Movie_On_Schedule.Schedule_ID = Schedule.Schedule_ID " +
-                                     "WHERE CONVERT(DATE, Schedule.Day_Shown) = @SelectedDate";
-
-                using (SqlCommand cmd = new SqlCommand(selectQuery, connection))
-                {
-                    cmd.Parameters.AddWithValue("@SelectedDate", selectedDate.Date);
-
-                    using (SqlDataReader reader = cmd.ExecuteReader())
-                    {
-                        while (reader.Read())
-                        {
-                            // Add each movie name to the ComboBox
-                            cbbSelectMovie.Items.Add(reader["Movie_Name"].ToString());
-                        }
-                    }
-                }
-            }
         }
     }
 }
