@@ -145,6 +145,40 @@ namespace Skreenkinikor_Master_Project
             return scheduleID; // Return the Schedule_ID.
         }
 
+        private void ModifySchedule(int scheduleID, int currentMovieID, int replacementMovieID)
+        {
+            // Create a SqlConnection and a SqlCommand.
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                // First, update the Movie_On_Schedule table to replace the current movie ID with the replacement movie ID.
+                string updateMovieOnScheduleQuery = "UPDATE Movie_On_Schedule SET Movie_ID = @ReplacementMovieID WHERE Schedule_ID = @ScheduleID AND Movie_ID = @CurrentMovieID";
+
+                using (SqlCommand updateMovieOnScheduleCommand = new SqlCommand(updateMovieOnScheduleQuery, connection))
+                {
+                    updateMovieOnScheduleCommand.Parameters.AddWithValue("@ReplacementMovieID", replacementMovieID);
+                    updateMovieOnScheduleCommand.Parameters.AddWithValue("@ScheduleID", scheduleID);
+                    updateMovieOnScheduleCommand.Parameters.AddWithValue("@CurrentMovieID", currentMovieID);
+
+                    try
+                    {
+                        connection.Open();
+                        int rowsAffected = updateMovieOnScheduleCommand.ExecuteNonQuery();
+                        if (rowsAffected > 0)
+                        {
+                            MessageBox.Show("Schedule modified successfully.");
+                        }
+                        else
+                        {
+                            MessageBox.Show("No matching records found in Movie_On_Schedule to modify.");
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Error: " + ex.Message);
+                    }
+                }
+            }
+        }
 
         //get the selected movie id
         private int GetSelectedMovieID(string selectedMovieName)
@@ -358,9 +392,6 @@ namespace Skreenkinikor_Master_Project
             }
         }
 
-
-
-
         public frmSchedule()
         {
             InitializeComponent();
@@ -417,17 +448,12 @@ namespace Skreenkinikor_Master_Project
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
-            string name = GetMovieName();
             string date = GetMovieDate();
             string time = GetMovieTime();
 
             int scheduleID = GetScheduleID(date, time);
-            int movieID = GetSelectedMovieID(name);
 
-            // Delete related records in Movie_On_Schedule first
             DeleteMovieOnSchedule(scheduleID);
-
-            // Now, delete the record in Schedule
             DeleteSchedule(scheduleID);
 
             ShowUpcomingMoviesInDataGridView(dataGridView1);
@@ -441,7 +467,18 @@ namespace Skreenkinikor_Master_Project
 
         private void btnModify_Click(object sender, EventArgs e)
         {
+            string currentMovieName = GetMovieName();
+            string replacementMovieName = comboBox1.SelectedItem != null ? comboBox1.SelectedItem.ToString() : string.Empty;
 
+            int currentMovieID = GetSelectedMovieID(currentMovieName);
+            int replacementMovieID = GetSelectedMovieID(replacementMovieName);
+
+            string date = GetMovieDate();
+            string time = GetMovieTime();
+
+            int scheduleID = GetScheduleID(date, time);
+            ModifySchedule(scheduleID, currentMovieID, replacementMovieID);
+            ShowUpcomingMoviesInDataGridView(dataGridView1);
         }
     }
 }
