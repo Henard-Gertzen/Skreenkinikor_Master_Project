@@ -63,6 +63,7 @@ namespace Skreenkinikor_Master_Project
             {
                 string user = txtUser.Text;
                 var openMain = new frmMain();
+                Console.WriteLine("Check Admin Login : " + checkIfAdmin(user));
                 openMain.bIsAdmin = checkIfAdmin(user);
                 openMain.sUserModel = userModel(user);
                 UserSession.Initialize(txtUser.Text, txtPass.Text);
@@ -101,7 +102,7 @@ namespace Skreenkinikor_Master_Project
             using (SqlConnection con = new SqlConnection(conStr))
             {
                 con.Open();
-                string checkAdmin = "SELECT * FROM Login_Table WHERE Username = @user";
+                string checkAdmin = "SELECT IsAdmin FROM Login_Table WHERE Username = @user"; ;
                 using (SqlCommand cmd = new SqlCommand(checkAdmin, con))
                 {
                     cmd.Parameters.AddWithValue("@user", user);
