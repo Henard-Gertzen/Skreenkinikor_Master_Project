@@ -152,6 +152,7 @@
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.lblShowTime = new System.Windows.Forms.Label();
             this.lblShowTimeTime = new System.Windows.Forms.Label();
+            this.lblMovie = new System.Windows.Forms.Label();
             this.pnlMovieSeats.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.pnlScreen.SuspendLayout();
@@ -180,6 +181,7 @@
             // 
             // pnlMovieSeats
             // 
+            this.pnlMovieSeats.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(67)))), ((int)(((byte)(90)))));
             this.pnlMovieSeats.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pnlMovieSeats.Controls.Add(this.tableLayoutPanel1);
             this.pnlMovieSeats.Controls.Add(this.lblTitle);
@@ -1450,7 +1452,7 @@
             // 
             // pnlScreen
             // 
-            this.pnlScreen.BackColor = System.Drawing.SystemColors.Desktop;
+            this.pnlScreen.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(19)))), ((int)(((byte)(41)))), ((int)(((byte)(61)))));
             this.pnlScreen.Controls.Add(this.lblScreen);
             this.pnlScreen.Location = new System.Drawing.Point(59, 42);
             this.pnlScreen.Name = "pnlScreen";
@@ -1460,7 +1462,7 @@
             // lblScreen
             // 
             this.lblScreen.AutoSize = true;
-            this.lblScreen.BackColor = System.Drawing.SystemColors.Info;
+            this.lblScreen.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(67)))), ((int)(((byte)(90)))));
             this.lblScreen.Location = new System.Drawing.Point(152, 11);
             this.lblScreen.Name = "lblScreen";
             this.lblScreen.Size = new System.Drawing.Size(41, 13);
@@ -1568,7 +1570,9 @@
             // 
             // panel1
             // 
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(67)))), ((int)(((byte)(90)))));
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.lblMovie);
             this.panel1.Controls.Add(this.lblShowTimeTime);
             this.panel1.Controls.Add(this.lblShowTime);
             this.panel1.Controls.Add(this.lblSelectDate);
@@ -1617,10 +1621,21 @@
             this.lblShowTimeTime.Size = new System.Drawing.Size(0, 13);
             this.lblShowTimeTime.TabIndex = 13;
             // 
+            // lblMovie
+            // 
+            this.lblMovie.AutoSize = true;
+            this.lblMovie.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblMovie.Location = new System.Drawing.Point(69, 15);
+            this.lblMovie.Name = "lblMovie";
+            this.lblMovie.Size = new System.Drawing.Size(81, 13);
+            this.lblMovie.TabIndex = 112;
+            this.lblMovie.Text = "Select Movie";
+            // 
             // frmTicket_Sale
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(19)))), ((int)(((byte)(41)))), ((int)(((byte)(61)))));
             this.ClientSize = new System.Drawing.Size(967, 685);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.pnlMovieSeats);
@@ -1766,5 +1781,6 @@
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
         private System.Windows.Forms.Label lblShowTimeTime;
         private System.Windows.Forms.Label lblShowTime;
+        private System.Windows.Forms.Label lblMovie;
     }
 }
