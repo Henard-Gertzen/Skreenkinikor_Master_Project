@@ -10,7 +10,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-
 namespace Skreenkinikor_Master_Project
 {
     public partial class frmCon_Sale : Form
@@ -111,11 +110,6 @@ namespace Skreenkinikor_Master_Project
                     MessageBox.Show(error.Message);
                 }
             }
-        }
-
-        private void dgvConItems_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-
         }
     }
 }
