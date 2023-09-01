@@ -41,7 +41,7 @@ namespace Skreenkinikor_Master_Project
                 try
                 {
                     conn.Open();
-                    
+                   
                     string sql = "SELECT Confectionary_Name, Confectionary_Price FROM Confectionary_Item Where Confectionary_Stock > 0";
                     using (SqlCommand command = new SqlCommand(sql,conn))
                     {
@@ -92,6 +92,7 @@ namespace Skreenkinikor_Master_Project
                         using (DataSet ds = new DataSet())
                         {
                             // the text in the textbox filters the datagrid according to what is typed
+                            // The collation allows for case-insensitivity in the sql query.
                             string sql = "SELECT Confectionary_Name, Confectionary_Price FROM Confectionary_Item Where Confectionary_Stock > 0 AND Confectionary_Name COLLATE Latin1_General_CI_AS LIKE '%" + txtSearch.Text + "%'";
 
                             using (SqlCommand command = new SqlCommand(sql,conn))
