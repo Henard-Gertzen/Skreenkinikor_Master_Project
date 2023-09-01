@@ -51,7 +51,6 @@
             this.ipbSelectedIcon = new FontAwesome.Sharp.IconPictureBox();
             this.pnlControlBar = new System.Windows.Forms.Panel();
             this.btnMin = new FontAwesome.Sharp.IconButton();
-            this.btnMax = new FontAwesome.Sharp.IconButton();
             this.btnClose = new FontAwesome.Sharp.IconButton();
             this.pnlEffect = new System.Windows.Forms.Panel();
             this.pnlMainContainer = new System.Windows.Forms.Panel();
@@ -428,7 +427,6 @@
             // 
             this.pnlControlBar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(100)))), ((int)(((byte)(148)))));
             this.pnlControlBar.Controls.Add(this.btnMin);
-            this.pnlControlBar.Controls.Add(this.btnMax);
             this.pnlControlBar.Controls.Add(this.btnClose);
             this.pnlControlBar.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlControlBar.Location = new System.Drawing.Point(0, 0);
@@ -449,7 +447,7 @@
             this.btnMin.IconFont = FontAwesome.Sharp.IconFont.Regular;
             this.btnMin.IconSize = 16;
             this.btnMin.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnMin.Location = new System.Drawing.Point(620, 0);
+            this.btnMin.Location = new System.Drawing.Point(642, 0);
             this.btnMin.Name = "btnMin";
             this.btnMin.Size = new System.Drawing.Size(22, 22);
             this.btnMin.TabIndex = 4;
@@ -457,28 +455,6 @@
             this.btnMin.Click += new System.EventHandler(this.btnMin_Click);
             this.btnMin.MouseEnter += new System.EventHandler(this.btnMin_MouseEnter);
             this.btnMin.MouseLeave += new System.EventHandler(this.btnMin_MouseLeave);
-            // 
-            // btnMax
-            // 
-            this.btnMax.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnMax.Dock = System.Windows.Forms.DockStyle.Right;
-            this.btnMax.FlatAppearance.BorderSize = 0;
-            this.btnMax.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnMax.ForeColor = System.Drawing.Color.White;
-            this.btnMax.IconChar = FontAwesome.Sharp.IconChar.Square;
-            this.btnMax.IconColor = System.Drawing.Color.White;
-            this.btnMax.IconFont = FontAwesome.Sharp.IconFont.Regular;
-            this.btnMax.IconSize = 14;
-            this.btnMax.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnMax.Location = new System.Drawing.Point(642, 0);
-            this.btnMax.Name = "btnMax";
-            this.btnMax.Size = new System.Drawing.Size(22, 22);
-            this.btnMax.TabIndex = 3;
-            this.btnMax.TextAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.btnMax.UseVisualStyleBackColor = true;
-            this.btnMax.Click += new System.EventHandler(this.btnMax_Click);
-            this.btnMax.MouseEnter += new System.EventHandler(this.btnMax_MouseEnter);
-            this.btnMax.MouseLeave += new System.EventHandler(this.btnMax_MouseLeave);
             // 
             // btnClose
             // 
@@ -573,7 +549,6 @@
         private FontAwesome.Sharp.IconButton btnLogout;
         private System.Windows.Forms.Panel pnlControlBar;
         private FontAwesome.Sharp.IconButton btnMin;
-        private FontAwesome.Sharp.IconButton btnMax;
         private FontAwesome.Sharp.IconButton btnClose;
     }
 }
