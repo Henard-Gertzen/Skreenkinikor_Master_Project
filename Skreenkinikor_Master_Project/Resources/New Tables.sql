@@ -71,8 +71,8 @@ CREATE TABLE Actor_On_Movie
 CREATE TABLE Schedule
 (
 	Schedule_ID	int	IDENTITY(1,1)PRIMARY KEY,
-	Timeslot_Info	varchar(13),
-	Day_Shown	datetime
+	Timeslot	time(7),
+	Day_Shown	date
 );
 
 CREATE TABLE Movie_On_Schedule

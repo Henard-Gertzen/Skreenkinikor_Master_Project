@@ -61,6 +61,7 @@
     <Reference Include="PresentationFramework" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
     <Reference Include="System.Xaml" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -147,7 +148,7 @@
       <DependentUpon>frmTicket_Sale.cs</DependentUpon>
     </Compile>
     <Compile Include="Classes\ConnectionStrings.cs" />
-    <Compile Include="Classes\ReportsClass.cs" />
+    <Compile Include="Classes\Reports_Class.cs" />
     <Compile Include="Classes\UserSession.cs" />
     <Compile Include="frmLogin.cs">
       <SubType>Form</SubType>

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Skreenkinikor_Master_Project.Classes;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,6 +13,7 @@ namespace Skreenkinikor_Master_Project
 {
     public partial class frmReports : Form
     {
+        //Constructor
         public frmReports()
         {
             InitializeComponent();
