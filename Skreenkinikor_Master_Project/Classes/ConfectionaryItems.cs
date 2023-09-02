@@ -19,7 +19,7 @@ namespace Skreenkinikor_Master_Project.Classes
 
     public class LinkedList
     {
-        private Node Head;
+        public Node Head;
 
         // method to add a new confectionary Item and it's amount to the linkedlist
         public void AddItem(String Item, int Amount)

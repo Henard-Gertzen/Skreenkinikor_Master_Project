@@ -26,11 +26,11 @@ namespace Skreenkinikor_Master_Project
         private string tempItem;
         private int tempAmount;
         private LinkedList list = new LinkedList();
-       
+
 
         private void btnClose_Click(object sender, EventArgs e)
         {
-            
+
         }
 
         private void panel1_Paint(object sender, PaintEventArgs e)
@@ -50,16 +50,24 @@ namespace Skreenkinikor_Master_Project
             lblEdit.Visible = false;
             btnEdit.Visible = false;
             btnDelete.Visible = false;
-            
 
+            displayDB();
+           
+
+
+        }
+
+        private void displayDB()
+        {
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
                 try
                 {
                     conn.Open();
-                   
+
+                    // displays the confectionary items and their prices in the datagrid when the form loads
                     string sql = "SELECT Confectionary_Name, Confectionary_Price FROM Confectionary_Item Where Confectionary_Stock > 0";
-                    using (SqlCommand command = new SqlCommand(sql,conn))
+                    using (SqlCommand command = new SqlCommand(sql, conn))
                     {
                         using (SqlDataAdapter dataAdapter = new SqlDataAdapter())
                         {
@@ -70,7 +78,7 @@ namespace Skreenkinikor_Master_Project
                                 dataAdapter.SelectCommand = command;
                                 dataAdapter.Fill(ds, "Confectionary_Item");
 
-                               
+
 
                                 dgvConItems.DataSource = ds;
                                 dgvConItems.DataMember = "Confectionary_Item";
@@ -86,14 +94,11 @@ namespace Skreenkinikor_Master_Project
                     MessageBox.Show(error.Message);
                 }
             }
-                
-            
         }
-
         private void btnProceed_Click(object sender, EventArgs e)
         {
-           
-            
+
+
         }
 
         private void txtSearch_TextChanged(object sender, EventArgs e)
@@ -117,18 +122,18 @@ namespace Skreenkinikor_Master_Project
                             // The collation allows for case-insensitivity in the sql query.
                             string sql = "SELECT Confectionary_Name, Confectionary_Price FROM Confectionary_Item Where Confectionary_Stock > 0 AND Confectionary_Name COLLATE Latin1_General_CI_AS LIKE '%" + txtSearch.Text + "%'";
 
-                            using (SqlCommand command = new SqlCommand(sql,conn))
+                            using (SqlCommand command = new SqlCommand(sql, conn))
                             {
-                                dataAdapter.SelectCommand= command;
+                                dataAdapter.SelectCommand = command;
                                 dataAdapter.Fill(ds, "Confectionary_Item");
 
-                                dgvConItems.DataSource= ds;
+                                dgvConItems.DataSource = ds;
                                 dgvConItems.DataMember = "Confectionary_Item";
                             }
                         }
                     }
                 }
-                catch(SqlException error)
+                catch (SqlException error)
                 {
                     MessageBox.Show(error.Message);
                 }
@@ -137,8 +142,8 @@ namespace Skreenkinikor_Master_Project
 
         private void dgvConItems_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-                                      
-                       
+
+
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
@@ -151,13 +156,14 @@ namespace Skreenkinikor_Master_Project
             btnEdit.Visible = true;
             btnDelete.Visible = true;
 
-            
+
             // calls the method to add the item and the amount to the linked list
             list.AddItem(item, amount);
 
-           
+
+
+            lbItems.Items.Add(item + " x " + amount.ToString());
             
-            lbItems.Items.Add(item + " x " + amount.ToString()); 
 
             //list.ShowListInMessageBox();
         }
@@ -170,11 +176,81 @@ namespace Skreenkinikor_Master_Project
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
+            tempItem = lbItems.SelectedItem.ToString();
 
+            try
+            {
+                // splits the selected item into their respective parts (item and amount)
+
+                var parts = tempItem.Split(new[] { " x " }, StringSplitOptions.None);
+                var item = parts[0];
+                var ampount = int.Parse(parts[1]);
+
+                // remove function is called
+                list.RemoveItem(item);
+
+                
+                lbItems.Items.Clear();
+
+
+                // loop through the linkedlist and displays its contents
+                var current = list.Head;
+                while (current != null)
+                {
+                    lbItems.Items.Add(current.Item + " x " + current.Amount.ToString());
+                    current = current.Next;
+                }
+
+            }
+            catch
+            {
+                MessageBox.Show("Please select an item!");
+            }
         }
+
+
 
         private void btnEdit_Click(object sender, EventArgs e)
         {
+            // receive the selected item from the listbox
+            tempItem = lbItems.SelectedItem.ToString();
+
+            
+           
+
+            // try catch to ensure the user selects an item to edit
+            try
+            {
+                // splits the selected item into their respective parts (item and amount)
+
+                var parts = tempItem.Split(new[] { " x " }, StringSplitOptions.None);
+                var item = parts[0];
+                var ampount = int.Parse(parts[1]);
+
+                // new value to be inserted into the list
+                tempAmount = (int)nudAmount.Value;
+
+                // edit method is called
+                list.editAmount(item, tempAmount);
+
+                // listbox is cleared in order to display the updated list
+                lbItems.Items.Clear();
+
+                // loop through the linkedlist and displays its contents
+                var current = list.Head;
+                
+
+                while (current != null)
+                {
+                    lbItems.Items.Add(current.Item + " x " + current.Amount.ToString());
+                    current = current.Next;
+                }
+            }
+            catch
+            {
+                MessageBox.Show("Please select an item");
+            }
+           
 
         }
     }
