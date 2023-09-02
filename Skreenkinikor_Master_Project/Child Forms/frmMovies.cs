@@ -1,7 +1,9 @@
-﻿using System;
+﻿using Skreenkinikor_Master_Project.Classes;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -17,14 +19,55 @@ namespace Skreenkinikor_Master_Project
             InitializeComponent();
         }
 
+        private string connectionString = ConnectionStrings.conSkreenMainStr;
+        private string Name, Description;
+        private decimal Price;
+
         private void frmMovies_Load(object sender, EventArgs e)
         {
-            pnlEdit.Visible = false;
+            
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            pnlEdit.Visible = true;
+            
+            
+
+            Name = txtMovieName.Text;
+            Description = txtMovieDesc.Text;
+
+            if (decimal.TryParse(txtMoviePrice.Text, out Price))
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    try
+                    {
+                        conn.Open();
+
+                        string sql = $"INSERT INTO Movie_Info VALUES ('{Name}','{Description}','{Price}')";
+                        using (SqlDataAdapter adapter = new SqlDataAdapter())
+                        {
+                            using (SqlCommand command = new SqlCommand(sql, conn))
+                            {
+                                adapter.InsertCommand = command;
+                                adapter.InsertCommand.ExecuteNonQuery();
+
+                                
+                            }
+                        }
+                    }
+                    catch (SqlException ex) 
+                    { 
+                        MessageBox.Show(ex.Message); 
+                    }
+
+                    MessageBox.Show("Movie added successfully");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Please enter a valid price for seating!");
+            }
         }
 
         private void button3_Click(object sender, EventArgs e)
