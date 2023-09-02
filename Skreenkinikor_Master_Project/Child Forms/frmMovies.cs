@@ -58,6 +58,7 @@ namespace Skreenkinikor_Master_Project
                                 dgvMovies.DataSource = ds;
                                 dgvMovies.DataMember = "Movie_Info";
 
+                                // change the colum headings to more appropriate text
                                 dgvMovies.Columns["Movie_name"].HeaderText = "Movie";
                                 dgvMovies.Columns["Movie_Description"].HeaderText = "Description";
                                 dgvMovies.Columns["Seat_Price"].HeaderText = "Price";
@@ -144,6 +145,8 @@ namespace Skreenkinikor_Master_Project
 
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
+
+                // SQL injection to delete the selected movie
                 try
                 {
                     conn.Open();
