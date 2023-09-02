@@ -106,6 +106,7 @@ namespace Skreenkinikor_Master_Project.Child_Forms
             catch (Exception ex)
             {
                 MessageBox.Show("Error occurred: " + ex);
+                return false;
             }
         }
 
