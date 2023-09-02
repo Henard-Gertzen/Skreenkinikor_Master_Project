@@ -148,6 +148,7 @@ namespace Skreenkinikor_Master_Project
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
+            // receives the amount the user wants to order
             amount = (int)nudAmount.Value;
 
             lbItems.Visible = true;
@@ -156,13 +157,36 @@ namespace Skreenkinikor_Master_Project
             btnEdit.Visible = true;
             btnDelete.Visible = true;
 
+            int available = 0;
+
+            // sql statement that retrieves the available stock for the selected item
+
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                conn.Open();
+
+                string sql = $"SELECT Confectionary_Stock FROM Confectionary_Item WHERE Confectionary_Name = '{item}'";
+
+                using (SqlCommand command = new SqlCommand(sql,conn))
+                {
+                    available = (int)command.ExecuteScalar();
+                }
+            }
+
+            // checks to see that the amount requested does not exceed the available stock
+            if (amount > available)
+            {
+                MessageBox.Show("The amount you have requested exceeds that for which we have stock, stock available: " + available.ToString());
+                return;
+            }
+
+           
 
             // calls the method to add the item and the amount to the linked list
-            list.AddItem(item, amount);
+           list.AddItem(item, amount);
 
-
-
-            lbItems.Items.Add(item + " x " + amount.ToString());
+           // adds the selected item and quantity to the listbox
+           lbItems.Items.Add(item + " x " + amount.ToString());
             
 
             //list.ShowListInMessageBox();
@@ -252,6 +276,60 @@ namespace Skreenkinikor_Master_Project
             }
            
 
+        }
+
+        private void btnProceed_Click_1(object sender, EventArgs e)
+        {
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                try
+                {
+                    conn.Open();
+                    using (SqlDataAdapter dataAdapter = new SqlDataAdapter())
+                    {
+                        string sql = "UPDATE Confectionary_Item SET Confectionary_Stock = Confectionary_Stock - @Amount WHERE Confectionary_Name = @Item";
+                        using (SqlCommand command = new SqlCommand(sql, conn))
+                        {
+                            // adds parameters to the command
+                            command.Parameters.Add("@Amount", SqlDbType.Int);
+                            command.Parameters.Add("@Item", SqlDbType.VarChar);
+
+                            var current = list.Head;
+                            while (current != null)
+                            {
+                                /*command.Parameters.AddWithValue("@Amount", current.Amount);
+                                command.Parameters.AddWithValue("@Item", current.Item);
+                                command.ExecuteNonQuery();*/
+
+                                // Sets the parameter values
+                                command.Parameters["@Amount"].Value = current.Amount;
+                                command.Parameters["@Item"].Value = current.Item;
+                                
+                                //update statement is executed
+                                command.ExecuteNonQuery();
+
+                                // moves to the next node
+                                current = current.Next;
+
+                            }
+                        }
+                    }
+
+                    list.Head = null;
+
+                }
+                catch (SqlException ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+
+                displayDB();
+                lbItems.Items.Clear();
+
+            }
+
+            MessageBox.Show("Thank you for your purchase!");
+                
         }
     }
 }
