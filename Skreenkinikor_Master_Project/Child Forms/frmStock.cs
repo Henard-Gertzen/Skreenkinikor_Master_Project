@@ -31,6 +31,7 @@ namespace Skreenkinikor_Master_Project
 
         string selectedItemStockName = null;
         string selectedItemTypeName = null;
+        string selectedItemWithTypeID = null;
 
         int modifyOrAddItem , modifyOrAddType;
         //end of variables
@@ -116,7 +117,7 @@ namespace Skreenkinikor_Master_Project
                 MessageBox.Show("Error: " + a.Message);
             }
         }
-        //returns int value for confectionary type assignment
+        //returns value for confectionary type assignment
         public string returnSingleDatabaseValue(string sql)
         {
             string returnValue = "";
@@ -245,10 +246,11 @@ namespace Skreenkinikor_Master_Project
                 grpItemChange.Text = "MODIFYING Item";
                 populateCombo(cmboItemType, "SELECT Confectionary_Type_Name FROM ScreenKinikor.dbo.Confectionary_Item_Type", "Confectionary_Type_Name", "ScreenKinikor.dbo.Confectionary_Item_Type");
 
-                //autofills textboxes
+                //autofills textboxes and combobox
                 txtItemName.Text = returnSingleDatabaseValue("SELECT Confectionary_Name FROM ScreenKinikor.dbo.Confectionary_Item WHERE Confectionary_Name = '" + selectedItemStockName + "'");
                 txtItemPrice.Text = returnSingleDatabaseValue("SELECT Confectionary_Price FROM ScreenKinikor.dbo.Confectionary_Item WHERE Confectionary_Name = '" + selectedItemStockName + "'");
                 txtItemStock.Text = returnSingleDatabaseValue("SELECT Confectionary_Stock FROM ScreenKinikor.dbo.Confectionary_Item WHERE Confectionary_Name = '" + selectedItemStockName + "'");
+                cmboItemType.SelectedIndex = cmboItemType.FindStringExact(returnSingleDatabaseValue("SELECT Confectionary_Type_Name FROM ScreenKinikor.dbo.Confectionary_Item_Type WHERE Confectionary_Type_Name = '"+selectedItemWithTypeID+"'"));
             }
         }
 
@@ -311,6 +313,7 @@ namespace Skreenkinikor_Master_Project
             //resets grid selection and item assignment
             gridDisplayStock.ClearSelection();
             selectedItemStockName = null;
+            selectedItemWithTypeID = null;
         }
 
         private void btnCancelTypeRemoval_Click(object sender, EventArgs e)
@@ -333,6 +336,7 @@ namespace Skreenkinikor_Master_Project
             //clears initial selection in gridview
             gridDisplayStock.ClearSelection();
             selectedItemStockName = null;
+            selectedItemWithTypeID = null;
         }
 
         private void gridDisplayType_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
@@ -349,7 +353,12 @@ namespace Skreenkinikor_Master_Project
             {
                 int rowIndex = gridDisplayStock.SelectedCells[0].RowIndex;
                 DataGridViewRow selectedRow = gridDisplayStock.Rows[rowIndex];
-                selectedItemStockName = (selectedRow.Cells["Confectionary_Name"].Value.ToString());
+                selectedItemStockName = selectedRow.Cells["Confectionary_Name"].Value.ToString();
+
+
+                int rowIndex2 = gridDisplayStock.SelectedCells[3].RowIndex;
+                DataGridViewRow selectedRow2 = gridDisplayStock.Rows[rowIndex];
+                selectedItemWithTypeID = selectedRow2.Cells["Confectionary_Type_Name"].Value.ToString();
 
                 //sets visibility if selected cell changes
                 btnStockCancelRemoval.Visible = false;
@@ -391,7 +400,7 @@ namespace Skreenkinikor_Master_Project
             errorProviderItem.Clear();
             errorProviderType.Clear();
 
-            //variables for parrsing output
+            //variables for parsing output
             int stockAmount; decimal price;
             string itemName = txtItemName.Text;
 
@@ -549,12 +558,6 @@ namespace Skreenkinikor_Master_Project
             modifyOrAddType = 2;
             btnFinalConfirmation.Visible = false;
             btnConfirmType.Enabled = true;
-        }
-
-        //ignore cant remove
-        private void panelItem_Paint(object sender, PaintEventArgs e)
-        {
-
         }
 
         private void gridDisplayType_SelectionChanged(object sender, EventArgs e)
