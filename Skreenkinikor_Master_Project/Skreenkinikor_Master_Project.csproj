@@ -246,6 +246,7 @@
     <Content Include="Resources\New Tables.sql" />
     <Content Include="Resources\New_LoginDB.sql" />
     <Content Include="Resources\New_LoginTables.sql" />
+    <Content Include="Resources\Prepopulate Database.sql" />
     <Content Include="Sterkinikor.ico" />
   </ItemGroup>
   <ItemGroup>
