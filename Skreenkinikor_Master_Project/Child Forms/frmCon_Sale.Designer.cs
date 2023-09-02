@@ -79,13 +79,14 @@
             // 
             // btnAdd
             // 
-            this.btnAdd.Location = new System.Drawing.Point(429, 139);
+           /* this.btnAdd.Location = new System.Drawing.Point(429, 139);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(206, 36);
             this.btnAdd.TabIndex = 11;
             this.btnAdd.Text = "Add Item";
             this.btnAdd.UseVisualStyleBackColor = true;
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
+           */
             // 
             // btnProceed
             // 
