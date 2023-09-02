@@ -185,7 +185,7 @@ namespace Skreenkinikor_Master_Project
             lblUserModel.Text = "Welcome " + sUserModel;
             OpenChild(new frmHome());
         }
-        //Don't touch this, this adds drag functionality to the header panel
+        //Don't touch this
         [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
         private extern static void ReleaseCapture();
         [DllImport("user32.DLL", EntryPoint = "SendMessage")]

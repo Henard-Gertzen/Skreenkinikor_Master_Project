@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Skreenkinikor_Master_Project.Classes;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,6 +16,7 @@ namespace Skreenkinikor_Master_Project
     public partial class frmTicket_Sale : Form
     {
         private List<string> SelectedTickets = new List<string>();
+        private string connectionString = ConnectionStrings.conSkreenMainStr;
 
         //Saves all seats in List and disable checkboxes
         private void ConfirmTickets()
@@ -25,7 +27,6 @@ namespace Skreenkinikor_Master_Project
                 {
                     checkBox.Enabled = false;
 
-                    // Store the name of seat
                     SelectedTickets.Add(checkBox.Name);
                 }
             }
@@ -34,7 +35,6 @@ namespace Skreenkinikor_Master_Project
         //add movie names to combobox for the selected date
         private void PopulateMovieComboBox(ComboBox comboBox, DateTime selectedDate)
         {
-            string connectionString = Classes.ConnectionStrings.conSkreenMainStr;
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
@@ -52,11 +52,10 @@ namespace Skreenkinikor_Master_Project
 
                     using (SqlDataReader reader = cmd.ExecuteReader())
                     {
-                        comboBox.Items.Clear(); // Clear existing items in the ComboBox
+                        comboBox.Items.Clear(); 
 
                         while (reader.Read())
-                        {
-                            // Add each movie name to the ComboBox
+                        {                           
                             comboBox.Items.Add(reader["Movie_Name"].ToString());
                         }
                     }
@@ -67,9 +66,6 @@ namespace Skreenkinikor_Master_Project
         // Function to insert selected seats into the Ticket_Info table
         private void InsertSelectedSeatsIntoDatabase(string selectedMovieName)
         {
-            string connectionString = Classes.ConnectionStrings.conSkreenMainStr;
-
-            // Retrieve the Movie_ID based on the selected movie name
             int selectedMovieId = GetMovieIdFromName(selectedMovieName);
 
             using (SqlConnection connection = new SqlConnection(connectionString))
@@ -78,10 +74,8 @@ namespace Skreenkinikor_Master_Project
                 {
                     connection.Open();
 
-                    // Combine the selected seats into a single string with '#' as the delimiter
                     string combinedSeats = string.Join("#", SelectedTickets);
 
-                    // Calculate the Ticket_Total (number of selected seats)
                     decimal ticketTotal = SelectedTickets.Count * GetSeatPriceByMovieId(selectedMovieId);
 
                     string insertQuery = "INSERT INTO Ticket_Info (Movie_ID, Ticket_Total, Seats, Payment_Date) " +
@@ -101,7 +95,6 @@ namespace Skreenkinikor_Master_Project
                 }
                 catch (Exception ex)
                 {
-                    // Handle the exception here or log it for debugging
                     MessageBox.Show("Error: " + ex.Message);
                 }
             }
@@ -109,8 +102,7 @@ namespace Skreenkinikor_Master_Project
 
         private int GetMovieIdFromName(string movieName)
         {
-            string connectionString = Classes.ConnectionStrings.conSkreenMainStr;
-            int movieId = -1; // Initialize to a default value or handle errors appropriately
+            int movieId = -1;
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
@@ -134,7 +126,6 @@ namespace Skreenkinikor_Master_Project
                 }
                 catch (Exception ex)
                 {
-                    // Handle the exception here or log it for debugging
                     MessageBox.Show("Error: " + ex.Message);
                 }
             }
@@ -180,8 +171,7 @@ namespace Skreenkinikor_Master_Project
         //get seat price
         private decimal GetSeatPriceByMovieId(int movieId)
         {
-            string connectionString = Classes.ConnectionStrings.conSkreenMainStr;
-            decimal seatPrice = -1; // Initialize to a default value or handle errors appropriately
+            decimal seatPrice = -1; 
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
@@ -208,15 +198,12 @@ namespace Skreenkinikor_Master_Project
         // Function to read seats from the database and disable checkboxes for a specific movie and date
         private void DisableBookedSeats(string selectedMovieName, DateTime selectedDate)
         {
-            string connectionString = Classes.ConnectionStrings.conSkreenMainStr;
-
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 try
                 {
                     connection.Open();
 
-                    // Retrieve the Movie_ID based on the selected movie name
                     int selectedMovieId = GetMovieIdFromName(selectedMovieName);
 
                     string selectQuery = "SELECT Seats FROM Ticket_Info TI " +
@@ -258,7 +245,6 @@ namespace Skreenkinikor_Master_Project
                 catch (Exception ex)
                 {
                     MessageBox.Show("Error: " + ex.Message);
-                    // Log the error for debugging if needed
                 }
             }
         }
@@ -274,7 +260,7 @@ namespace Skreenkinikor_Master_Project
                     return checkBox;
                 }
             }
-            return null; // CheckBox not found
+            return null; 
         }
 
         private string MovieShowTime(string selectedMovieName, DateTime selectedDate)
@@ -283,7 +269,6 @@ namespace Skreenkinikor_Master_Project
 
             if (selectedMovieId != -1)
             {
-                string connectionString = Classes.ConnectionStrings.conSkreenMainStr;
                 string showTime = "";
 
                 using (SqlConnection connection = new SqlConnection(connectionString))
@@ -313,7 +298,6 @@ namespace Skreenkinikor_Master_Project
                     }
                     catch (Exception ex)
                     {
-                        // Handle the exception here or log it for debugging
                         MessageBox.Show("Error: " + ex.Message);
                     }
                 }
@@ -339,7 +323,7 @@ namespace Skreenkinikor_Master_Project
 
         private void btnConfirm_Click(object sender, EventArgs e)
         {
-            string selectedMovieName = cbbSelectMovie.SelectedItem as string; // Get the selected movie name
+            string selectedMovieName = cbbSelectMovie.SelectedItem as string;
 
             if (!string.IsNullOrEmpty(selectedMovieName))
             {
@@ -357,11 +341,12 @@ namespace Skreenkinikor_Master_Project
         private void btnReset_Click(object sender, EventArgs e)
         {
             UncheckAllCheckBoxes(this);
+            dateTimePicker1.Value = DateTime.Now;
+            lblStartDate.Text = dateTimePicker1.Value.ToString("MMM dd, yyyy");
         }
 
         private void cbxSelectMovie_SelectedIndexChanged(object sender, EventArgs e)
         {
-            // Get the selected date from the DateTimePicker
             DateTime selectedDate = dateTimePicker1.Value;
             string selectedMovieName = cbbSelectMovie.SelectedItem as string;
             EnableAllCheckBoxes(this);
@@ -372,14 +357,20 @@ namespace Skreenkinikor_Master_Project
         private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
         {
             EnableAllCheckBoxes(this);
-            // Get the selected date from the DateTimePicker
             DateTime selectedDate = dateTimePicker1.Value;
 
-            // Clear the existing items in the ComboBox
             cbbSelectMovie.Items.Clear();
 
             PopulateMovieComboBox(cbbSelectMovie, selectedDate);
 
+            lblStartDate.Text = dateTimePicker1.Value.ToString("MMM dd, yyyy");
+
+        }
+
+        private void lblStartDate_Click(object sender, EventArgs e)
+        {
+            dateTimePicker1.Select();
+            SendKeys.Send("%{DOWN}");
         }
     }
 }
