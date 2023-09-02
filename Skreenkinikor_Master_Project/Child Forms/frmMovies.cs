@@ -36,8 +36,10 @@ namespace Skreenkinikor_Master_Project
             Name = txtMovieName.Text;
             Description = txtMovieDesc.Text;
 
+            // tryparse to ensure that only a decimal value is added in the textbox
             if (decimal.TryParse(txtMoviePrice.Text, out Price))
             {
+                // sql statement to inject the new movie data into the database
                 using (SqlConnection conn = new SqlConnection(connectionString))
                 {
                     try
@@ -51,8 +53,6 @@ namespace Skreenkinikor_Master_Project
                             {
                                 adapter.InsertCommand = command;
                                 adapter.InsertCommand.ExecuteNonQuery();
-
-                                
                             }
                         }
                     }
@@ -74,7 +74,7 @@ namespace Skreenkinikor_Master_Project
         {
 
 
-            pnlEdit.Visible = true;
+            
         }
     }
 }
