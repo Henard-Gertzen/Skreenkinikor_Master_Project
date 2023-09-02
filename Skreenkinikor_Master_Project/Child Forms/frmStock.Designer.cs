@@ -29,9 +29,16 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panelMain = new System.Windows.Forms.Panel();
             this.tabControlStock = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.gridDisplayStock = new System.Windows.Forms.DataGridView();
             this.lblConfirmDeleteStock = new System.Windows.Forms.Label();
             this.btnStockCancelRemoval = new System.Windows.Forms.Button();
             this.btnConfirmItemRemoval = new System.Windows.Forms.Button();
@@ -41,8 +48,8 @@
             this.label1 = new System.Windows.Forms.Label();
             this.btnAddStock = new System.Windows.Forms.Button();
             this.txtSearchStock = new System.Windows.Forms.TextBox();
-            this.gridDisplayStock = new System.Windows.Forms.DataGridView();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.gridDisplayType = new System.Windows.Forms.DataGridView();
             this.btnCancelTypeRemoval = new System.Windows.Forms.Button();
             this.lblConfirmDeleteType = new System.Windows.Forms.Label();
             this.btnConfirmTypeRemoval = new System.Windows.Forms.Button();
@@ -52,9 +59,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.btnAddType = new System.Windows.Forms.Button();
             this.txtSearchType = new System.Windows.Forms.TextBox();
-            this.gridDisplayType = new System.Windows.Forms.DataGridView();
             this.panelType = new System.Windows.Forms.Panel();
-            this.lblTypeDescription = new System.Windows.Forms.Label();
             this.txtTypeDescription = new System.Windows.Forms.RichTextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
@@ -73,21 +78,24 @@
             this.btnConfirmItem = new System.Windows.Forms.Button();
             this.btnCancelItem = new System.Windows.Forms.Button();
             this.btnFinalConfirmationItem = new System.Windows.Forms.Button();
-            this.lblDescriptionItem = new System.Windows.Forms.Label();
             this.panelItem = new System.Windows.Forms.Panel();
             this.errorProviderItem = new System.Windows.Forms.ErrorProvider(this.components);
+            this.grpTypeChange = new System.Windows.Forms.GroupBox();
+            this.grpItemChange = new System.Windows.Forms.GroupBox();
             this.errorProviderType = new System.Windows.Forms.ErrorProvider(this.components);
             this.panelMain.SuspendLayout();
             this.tabControlStock.SuspendLayout();
             this.tabPage1.SuspendLayout();
-            this.gbTools.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridDisplayStock)).BeginInit();
+            this.gbTools.SuspendLayout();
             this.tabPage2.SuspendLayout();
-            this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridDisplayType)).BeginInit();
+            this.groupBox1.SuspendLayout();
             this.panelType.SuspendLayout();
             this.panelItem.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderItem)).BeginInit();
+            this.grpTypeChange.SuspendLayout();
+            this.grpItemChange.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderType)).BeginInit();
             this.SuspendLayout();
             // 
@@ -95,9 +103,10 @@
             // 
             this.panelMain.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(19)))), ((int)(((byte)(41)))), ((int)(((byte)(61)))));
             this.panelMain.Controls.Add(this.tabControlStock);
+            this.panelMain.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelMain.Location = new System.Drawing.Point(0, 0);
             this.panelMain.Name = "panelMain";
-            this.panelMain.Size = new System.Drawing.Size(682, 627);
+            this.panelMain.Size = new System.Drawing.Size(682, 671);
             this.panelMain.TabIndex = 1;
             // 
             // tabControlStock
@@ -109,23 +118,72 @@
             this.tabControlStock.Location = new System.Drawing.Point(0, 0);
             this.tabControlStock.Name = "tabControlStock";
             this.tabControlStock.SelectedIndex = 0;
-            this.tabControlStock.Size = new System.Drawing.Size(682, 627);
+            this.tabControlStock.Size = new System.Drawing.Size(682, 671);
             this.tabControlStock.TabIndex = 0;
             // 
             // tabPage1
             // 
             this.tabPage1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(19)))), ((int)(((byte)(41)))), ((int)(((byte)(61)))));
+            this.tabPage1.Controls.Add(this.gridDisplayStock);
             this.tabPage1.Controls.Add(this.lblConfirmDeleteStock);
             this.tabPage1.Controls.Add(this.btnStockCancelRemoval);
             this.tabPage1.Controls.Add(this.btnConfirmItemRemoval);
             this.tabPage1.Controls.Add(this.gbTools);
-            this.tabPage1.Controls.Add(this.gridDisplayStock);
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(674, 601);
+            this.tabPage1.Size = new System.Drawing.Size(674, 645);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Manage Item Stock";
+            // 
+            // gridDisplayStock
+            // 
+            this.gridDisplayStock.AllowUserToAddRows = false;
+            this.gridDisplayStock.AllowUserToDeleteRows = false;
+            this.gridDisplayStock.AllowUserToResizeColumns = false;
+            this.gridDisplayStock.AllowUserToResizeRows = false;
+            this.gridDisplayStock.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.gridDisplayStock.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(67)))), ((int)(((byte)(90)))));
+            this.gridDisplayStock.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.gridDisplayStock.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
+            this.gridDisplayStock.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle13.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(67)))), ((int)(((byte)(90)))));
+            dataGridViewCellStyle13.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle13.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(241)))), ((int)(((byte)(242)))));
+            dataGridViewCellStyle13.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(67)))), ((int)(((byte)(90)))));
+            dataGridViewCellStyle13.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle13.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.gridDisplayStock.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle13;
+            this.gridDisplayStock.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle14.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(67)))), ((int)(((byte)(90)))));
+            dataGridViewCellStyle14.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle14.ForeColor = System.Drawing.Color.Gainsboro;
+            dataGridViewCellStyle14.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(144)))), ((int)(((byte)(194)))), ((int)(((byte)(231)))));
+            dataGridViewCellStyle14.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.gridDisplayStock.DefaultCellStyle = dataGridViewCellStyle14;
+            this.gridDisplayStock.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
+            this.gridDisplayStock.EnableHeadersVisualStyles = false;
+            this.gridDisplayStock.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(241)))), ((int)(((byte)(242)))));
+            this.gridDisplayStock.Location = new System.Drawing.Point(1, 0);
+            this.gridDisplayStock.Name = "gridDisplayStock";
+            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle15.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle15.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle15.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle15.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(144)))), ((int)(((byte)(194)))), ((int)(((byte)(231)))));
+            dataGridViewCellStyle15.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle15.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.gridDisplayStock.RowHeadersDefaultCellStyle = dataGridViewCellStyle15;
+            this.gridDisplayStock.RowHeadersVisible = false;
+            this.gridDisplayStock.RowTemplate.Height = 35;
+            this.gridDisplayStock.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.gridDisplayStock.Size = new System.Drawing.Size(677, 387);
+            this.gridDisplayStock.TabIndex = 13;
+            this.gridDisplayStock.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.gridDisplayStock_DataBindingComplete);
+            this.gridDisplayStock.SelectionChanged += new System.EventHandler(this.gridDisplayStock_SelectionChanged);
             // 
             // lblConfirmDeleteStock
             // 
@@ -136,9 +194,9 @@
             this.lblConfirmDeleteStock.ForeColor = System.Drawing.Color.GhostWhite;
             this.lblConfirmDeleteStock.Location = new System.Drawing.Point(182, 525);
             this.lblConfirmDeleteStock.Name = "lblConfirmDeleteStock";
-            this.lblConfirmDeleteStock.Size = new System.Drawing.Size(309, 17);
+            this.lblConfirmDeleteStock.Size = new System.Drawing.Size(133, 17);
             this.lblConfirmDeleteStock.TabIndex = 12;
-            this.lblConfirmDeleteStock.Text = "Please Confirm Deletion of Selected Item:";
+            this.lblConfirmDeleteStock.Text = "[confirmationtext]";
             // 
             // btnStockCancelRemoval
             // 
@@ -147,7 +205,7 @@
             this.btnStockCancelRemoval.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnStockCancelRemoval.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnStockCancelRemoval.ForeColor = System.Drawing.Color.White;
-            this.btnStockCancelRemoval.Location = new System.Drawing.Point(347, 550);
+            this.btnStockCancelRemoval.Location = new System.Drawing.Point(347, 594);
             this.btnStockCancelRemoval.Name = "btnStockCancelRemoval";
             this.btnStockCancelRemoval.Size = new System.Drawing.Size(324, 48);
             this.btnStockCancelRemoval.TabIndex = 10;
@@ -162,7 +220,7 @@
             this.btnConfirmItemRemoval.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnConfirmItemRemoval.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnConfirmItemRemoval.ForeColor = System.Drawing.Color.White;
-            this.btnConfirmItemRemoval.Location = new System.Drawing.Point(3, 550);
+            this.btnConfirmItemRemoval.Location = new System.Drawing.Point(3, 594);
             this.btnConfirmItemRemoval.Name = "btnConfirmItemRemoval";
             this.btnConfirmItemRemoval.Size = new System.Drawing.Size(324, 48);
             this.btnConfirmItemRemoval.TabIndex = 8;
@@ -242,45 +300,69 @@
             this.txtSearchStock.TabIndex = 4;
             this.txtSearchStock.TextChanged += new System.EventHandler(this.txtSearchStock_TextChanged);
             // 
-            // gridDisplayStock
-            // 
-            this.gridDisplayStock.AllowUserToAddRows = false;
-            this.gridDisplayStock.AllowUserToDeleteRows = false;
-            this.gridDisplayStock.AllowUserToResizeColumns = false;
-            this.gridDisplayStock.AllowUserToResizeRows = false;
-            this.gridDisplayStock.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.gridDisplayStock.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(67)))), ((int)(((byte)(90)))));
-            this.gridDisplayStock.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.gridDisplayStock.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
-            this.gridDisplayStock.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            this.gridDisplayStock.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.gridDisplayStock.Dock = System.Windows.Forms.DockStyle.Top;
-            this.gridDisplayStock.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(241)))), ((int)(((byte)(242)))));
-            this.gridDisplayStock.Location = new System.Drawing.Point(3, 3);
-            this.gridDisplayStock.Name = "gridDisplayStock";
-            this.gridDisplayStock.ReadOnly = true;
-            this.gridDisplayStock.RowHeadersVisible = false;
-            this.gridDisplayStock.RowTemplate.Height = 35;
-            this.gridDisplayStock.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.gridDisplayStock.Size = new System.Drawing.Size(668, 384);
-            this.gridDisplayStock.TabIndex = 0;
-            this.gridDisplayStock.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.gridDisplayStock_DataBindingComplete);
-            this.gridDisplayStock.SelectionChanged += new System.EventHandler(this.gridDisplayStock_SelectionChanged);
-            // 
             // tabPage2
             // 
             this.tabPage2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(19)))), ((int)(((byte)(41)))), ((int)(((byte)(61)))));
+            this.tabPage2.Controls.Add(this.gridDisplayType);
             this.tabPage2.Controls.Add(this.btnCancelTypeRemoval);
             this.tabPage2.Controls.Add(this.lblConfirmDeleteType);
             this.tabPage2.Controls.Add(this.btnConfirmTypeRemoval);
             this.tabPage2.Controls.Add(this.groupBox1);
-            this.tabPage2.Controls.Add(this.gridDisplayType);
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(674, 601);
+            this.tabPage2.Size = new System.Drawing.Size(674, 645);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Manage Item Types";
+            // 
+            // gridDisplayType
+            // 
+            this.gridDisplayType.AllowUserToAddRows = false;
+            this.gridDisplayType.AllowUserToDeleteRows = false;
+            this.gridDisplayType.AllowUserToResizeColumns = false;
+            this.gridDisplayType.AllowUserToResizeRows = false;
+            this.gridDisplayType.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.gridDisplayType.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(67)))), ((int)(((byte)(90)))));
+            this.gridDisplayType.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.gridDisplayType.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
+            this.gridDisplayType.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle16.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(67)))), ((int)(((byte)(90)))));
+            dataGridViewCellStyle16.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle16.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(241)))), ((int)(((byte)(242)))));
+            dataGridViewCellStyle16.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(67)))), ((int)(((byte)(90)))));
+            dataGridViewCellStyle16.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle16.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.gridDisplayType.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle16;
+            this.gridDisplayType.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle17.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(67)))), ((int)(((byte)(90)))));
+            dataGridViewCellStyle17.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle17.ForeColor = System.Drawing.Color.Gainsboro;
+            dataGridViewCellStyle17.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(144)))), ((int)(((byte)(194)))), ((int)(((byte)(231)))));
+            dataGridViewCellStyle17.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle17.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.gridDisplayType.DefaultCellStyle = dataGridViewCellStyle17;
+            this.gridDisplayType.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
+            this.gridDisplayType.EnableHeadersVisualStyles = false;
+            this.gridDisplayType.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(241)))), ((int)(((byte)(242)))));
+            this.gridDisplayType.Location = new System.Drawing.Point(1, 0);
+            this.gridDisplayType.Name = "gridDisplayType";
+            dataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle18.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle18.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle18.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle18.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(144)))), ((int)(((byte)(194)))), ((int)(((byte)(231)))));
+            dataGridViewCellStyle18.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle18.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.gridDisplayType.RowHeadersDefaultCellStyle = dataGridViewCellStyle18;
+            this.gridDisplayType.RowHeadersVisible = false;
+            this.gridDisplayType.RowTemplate.Height = 35;
+            this.gridDisplayType.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.gridDisplayType.Size = new System.Drawing.Size(677, 387);
+            this.gridDisplayType.TabIndex = 14;
+            this.gridDisplayType.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.gridDisplayType_DataBindingComplete);
+            this.gridDisplayType.SelectionChanged += new System.EventHandler(this.gridDisplayType_SelectionChanged);
             // 
             // btnCancelTypeRemoval
             // 
@@ -289,7 +371,7 @@
             this.btnCancelTypeRemoval.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCancelTypeRemoval.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCancelTypeRemoval.ForeColor = System.Drawing.Color.White;
-            this.btnCancelTypeRemoval.Location = new System.Drawing.Point(347, 550);
+            this.btnCancelTypeRemoval.Location = new System.Drawing.Point(347, 594);
             this.btnCancelTypeRemoval.Name = "btnCancelTypeRemoval";
             this.btnCancelTypeRemoval.Size = new System.Drawing.Size(324, 48);
             this.btnCancelTypeRemoval.TabIndex = 12;
@@ -305,9 +387,9 @@
             this.lblConfirmDeleteType.ForeColor = System.Drawing.Color.White;
             this.lblConfirmDeleteType.Location = new System.Drawing.Point(182, 525);
             this.lblConfirmDeleteType.Name = "lblConfirmDeleteType";
-            this.lblConfirmDeleteType.Size = new System.Drawing.Size(309, 17);
+            this.lblConfirmDeleteType.Size = new System.Drawing.Size(138, 17);
             this.lblConfirmDeleteType.TabIndex = 11;
-            this.lblConfirmDeleteType.Text = "Please Confirm Deletion of Selected Item:";
+            this.lblConfirmDeleteType.Text = "[confirmationText]";
             // 
             // btnConfirmTypeRemoval
             // 
@@ -316,7 +398,7 @@
             this.btnConfirmTypeRemoval.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnConfirmTypeRemoval.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnConfirmTypeRemoval.ForeColor = System.Drawing.Color.White;
-            this.btnConfirmTypeRemoval.Location = new System.Drawing.Point(3, 550);
+            this.btnConfirmTypeRemoval.Location = new System.Drawing.Point(3, 594);
             this.btnConfirmTypeRemoval.Name = "btnConfirmTypeRemoval";
             this.btnConfirmTypeRemoval.Size = new System.Drawing.Size(324, 48);
             this.btnConfirmTypeRemoval.TabIndex = 10;
@@ -396,61 +478,18 @@
             this.txtSearchType.TabIndex = 4;
             this.txtSearchType.TextChanged += new System.EventHandler(this.txtSearchType_TextChanged);
             // 
-            // gridDisplayType
-            // 
-            this.gridDisplayType.AllowUserToAddRows = false;
-            this.gridDisplayType.AllowUserToDeleteRows = false;
-            this.gridDisplayType.AllowUserToResizeColumns = false;
-            this.gridDisplayType.AllowUserToResizeRows = false;
-            this.gridDisplayType.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.gridDisplayType.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(67)))), ((int)(((byte)(90)))));
-            this.gridDisplayType.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.gridDisplayType.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
-            this.gridDisplayType.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            this.gridDisplayType.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.gridDisplayType.Dock = System.Windows.Forms.DockStyle.Top;
-            this.gridDisplayType.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(241)))), ((int)(((byte)(242)))));
-            this.gridDisplayType.Location = new System.Drawing.Point(3, 3);
-            this.gridDisplayType.Name = "gridDisplayType";
-            this.gridDisplayType.ReadOnly = true;
-            this.gridDisplayType.RowHeadersVisible = false;
-            this.gridDisplayType.RowTemplate.Height = 35;
-            this.gridDisplayType.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.gridDisplayType.Size = new System.Drawing.Size(668, 384);
-            this.gridDisplayType.TabIndex = 8;
-            this.gridDisplayType.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.gridDisplayType_DataBindingComplete);
-            this.gridDisplayType.SelectionChanged += new System.EventHandler(this.gridDisplayType_SelectionChanged);
-            // 
             // panelType
             // 
-            this.panelType.Controls.Add(this.lblTypeDescription);
-            this.panelType.Controls.Add(this.txtTypeDescription);
-            this.panelType.Controls.Add(this.label8);
-            this.panelType.Controls.Add(this.label7);
-            this.panelType.Controls.Add(this.txtTypeName);
-            this.panelType.Controls.Add(this.btnFinalConfirmation);
-            this.panelType.Controls.Add(this.btnCancelType);
-            this.panelType.Controls.Add(this.btnConfirmType);
+            this.panelType.Controls.Add(this.grpTypeChange);
             this.panelType.Location = new System.Drawing.Point(0, 0);
             this.panelType.Name = "panelType";
-            this.panelType.Size = new System.Drawing.Size(682, 627);
+            this.panelType.Size = new System.Drawing.Size(682, 671);
             this.panelType.TabIndex = 2;
-            // 
-            // lblTypeDescription
-            // 
-            this.lblTypeDescription.AutoSize = true;
-            this.lblTypeDescription.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.lblTypeDescription.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTypeDescription.ForeColor = System.Drawing.Color.White;
-            this.lblTypeDescription.Location = new System.Drawing.Point(194, 101);
-            this.lblTypeDescription.Name = "lblTypeDescription";
-            this.lblTypeDescription.Size = new System.Drawing.Size(265, 24);
-            this.lblTypeDescription.TabIndex = 8;
-            this.lblTypeDescription.Text = "[description text goes here]";
             // 
             // txtTypeDescription
             // 
-            this.txtTypeDescription.Location = new System.Drawing.Point(286, 218);
+            this.txtTypeDescription.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.txtTypeDescription.Location = new System.Drawing.Point(184, 152);
             this.txtTypeDescription.Name = "txtTypeDescription";
             this.txtTypeDescription.Size = new System.Drawing.Size(208, 96);
             this.txtTypeDescription.TabIndex = 7;
@@ -458,10 +497,12 @@
             // 
             // label8
             // 
+            this.label8.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label8.AutoSize = true;
             this.label8.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.label8.ForeColor = System.Drawing.Color.White;
-            this.label8.Location = new System.Drawing.Point(125, 221);
+            this.label8.Location = new System.Drawing.Point(23, 155);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(155, 13);
             this.label8.TabIndex = 6;
@@ -469,10 +510,12 @@
             // 
             // label7
             // 
+            this.label7.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label7.AutoSize = true;
             this.label7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.label7.ForeColor = System.Drawing.Color.White;
-            this.label7.Location = new System.Drawing.Point(150, 173);
+            this.label7.Location = new System.Drawing.Point(23, 107);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(130, 13);
             this.label7.TabIndex = 5;
@@ -480,29 +523,32 @@
             // 
             // txtTypeName
             // 
-            this.txtTypeName.Location = new System.Drawing.Point(286, 170);
+            this.txtTypeName.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.txtTypeName.Location = new System.Drawing.Point(184, 104);
             this.txtTypeName.Name = "txtTypeName";
-            this.txtTypeName.Size = new System.Drawing.Size(208, 20);
+            this.txtTypeName.Size = new System.Drawing.Size(208, 22);
             this.txtTypeName.TabIndex = 3;
             // 
             // btnFinalConfirmation
             // 
+            this.btnFinalConfirmation.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.btnFinalConfirmation.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnFinalConfirmation.ForeColor = System.Drawing.Color.White;
-            this.btnFinalConfirmation.Location = new System.Drawing.Point(290, 409);
+            this.btnFinalConfirmation.Location = new System.Drawing.Point(159, 343);
             this.btnFinalConfirmation.Name = "btnFinalConfirmation";
             this.btnFinalConfirmation.Size = new System.Drawing.Size(132, 73);
             this.btnFinalConfirmation.TabIndex = 2;
-            this.btnFinalConfirmation.Text = "FINAL CONFIRMATION";
+            this.btnFinalConfirmation.Text = "FINAL CONFIRMATION AND FINISH";
             this.btnFinalConfirmation.UseVisualStyleBackColor = true;
             this.btnFinalConfirmation.Visible = false;
             this.btnFinalConfirmation.Click += new System.EventHandler(this.btnFinalConfirmation_Click);
             // 
             // btnCancelType
             // 
+            this.btnCancelType.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.btnCancelType.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCancelType.ForeColor = System.Drawing.Color.White;
-            this.btnCancelType.Location = new System.Drawing.Point(356, 363);
+            this.btnCancelType.Location = new System.Drawing.Point(225, 297);
             this.btnCancelType.Name = "btnCancelType";
             this.btnCancelType.Size = new System.Drawing.Size(139, 46);
             this.btnCancelType.TabIndex = 1;
@@ -512,9 +558,10 @@
             // 
             // btnConfirmType
             // 
+            this.btnConfirmType.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.btnConfirmType.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnConfirmType.ForeColor = System.Drawing.Color.White;
-            this.btnConfirmType.Location = new System.Drawing.Point(217, 363);
+            this.btnConfirmType.Location = new System.Drawing.Point(86, 297);
             this.btnConfirmType.Name = "btnConfirmType";
             this.btnConfirmType.Size = new System.Drawing.Size(139, 46);
             this.btnConfirmType.TabIndex = 0;
@@ -524,41 +571,46 @@
             // 
             // txtItemName
             // 
-            this.txtItemName.Location = new System.Drawing.Point(286, 122);
+            this.txtItemName.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.txtItemName.Location = new System.Drawing.Point(250, 84);
             this.txtItemName.Name = "txtItemName";
-            this.txtItemName.Size = new System.Drawing.Size(119, 20);
+            this.txtItemName.Size = new System.Drawing.Size(119, 22);
             this.txtItemName.TabIndex = 0;
             // 
             // txtItemPrice
             // 
-            this.txtItemPrice.Location = new System.Drawing.Point(286, 172);
+            this.txtItemPrice.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.txtItemPrice.Location = new System.Drawing.Point(250, 134);
             this.txtItemPrice.Name = "txtItemPrice";
-            this.txtItemPrice.Size = new System.Drawing.Size(119, 20);
+            this.txtItemPrice.Size = new System.Drawing.Size(119, 22);
             this.txtItemPrice.TabIndex = 1;
             // 
             // txtItemStock
             // 
-            this.txtItemStock.Location = new System.Drawing.Point(286, 221);
+            this.txtItemStock.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.txtItemStock.Location = new System.Drawing.Point(250, 183);
             this.txtItemStock.Name = "txtItemStock";
-            this.txtItemStock.Size = new System.Drawing.Size(119, 20);
+            this.txtItemStock.Size = new System.Drawing.Size(119, 22);
             this.txtItemStock.TabIndex = 2;
             // 
             // cmboItemType
             // 
+            this.cmboItemType.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.cmboItemType.FormattingEnabled = true;
-            this.cmboItemType.Location = new System.Drawing.Point(286, 268);
+            this.cmboItemType.Location = new System.Drawing.Point(250, 230);
             this.cmboItemType.MaxDropDownItems = 20;
             this.cmboItemType.Name = "cmboItemType";
-            this.cmboItemType.Size = new System.Drawing.Size(121, 21);
+            this.cmboItemType.Size = new System.Drawing.Size(121, 24);
             this.cmboItemType.TabIndex = 3;
             // 
             // label3
             // 
+            this.label3.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label3.AutoSize = true;
             this.label3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(199, 125);
+            this.label3.Location = new System.Drawing.Point(163, 87);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(67, 13);
             this.label3.TabIndex = 4;
@@ -566,11 +618,12 @@
             // 
             // label4
             // 
+            this.label4.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label4.AutoSize = true;
             this.label4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.White;
-            this.label4.Location = new System.Drawing.Point(199, 175);
+            this.label4.Location = new System.Drawing.Point(163, 137);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(64, 13);
             this.label4.TabIndex = 5;
@@ -578,11 +631,12 @@
             // 
             // label5
             // 
+            this.label5.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label5.AutoSize = true;
             this.label5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.Color.White;
-            this.label5.Location = new System.Drawing.Point(199, 224);
+            this.label5.Location = new System.Drawing.Point(163, 186);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(68, 13);
             this.label5.TabIndex = 6;
@@ -590,11 +644,12 @@
             // 
             // label6
             // 
+            this.label6.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label6.AutoSize = true;
             this.label6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.Color.White;
-            this.label6.Location = new System.Drawing.Point(199, 271);
+            this.label6.Location = new System.Drawing.Point(163, 233);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(63, 13);
             this.label6.TabIndex = 7;
@@ -602,9 +657,10 @@
             // 
             // btnConfirmItem
             // 
+            this.btnConfirmItem.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.btnConfirmItem.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnConfirmItem.ForeColor = System.Drawing.Color.White;
-            this.btnConfirmItem.Location = new System.Drawing.Point(180, 382);
+            this.btnConfirmItem.Location = new System.Drawing.Point(133, 344);
             this.btnConfirmItem.Name = "btnConfirmItem";
             this.btnConfirmItem.Size = new System.Drawing.Size(139, 46);
             this.btnConfirmItem.TabIndex = 8;
@@ -614,9 +670,10 @@
             // 
             // btnCancelItem
             // 
+            this.btnCancelItem.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.btnCancelItem.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCancelItem.ForeColor = System.Drawing.Color.White;
-            this.btnCancelItem.Location = new System.Drawing.Point(319, 382);
+            this.btnCancelItem.Location = new System.Drawing.Point(272, 344);
             this.btnCancelItem.Name = "btnCancelItem";
             this.btnCancelItem.Size = new System.Drawing.Size(139, 46);
             this.btnCancelItem.TabIndex = 9;
@@ -626,9 +683,10 @@
             // 
             // btnFinalConfirmationItem
             // 
+            this.btnFinalConfirmationItem.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.btnFinalConfirmationItem.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnFinalConfirmationItem.ForeColor = System.Drawing.Color.White;
-            this.btnFinalConfirmationItem.Location = new System.Drawing.Point(217, 428);
+            this.btnFinalConfirmationItem.Location = new System.Drawing.Point(170, 390);
             this.btnFinalConfirmationItem.Name = "btnFinalConfirmationItem";
             this.btnFinalConfirmationItem.Size = new System.Drawing.Size(208, 89);
             this.btnFinalConfirmationItem.TabIndex = 10;
@@ -637,41 +695,57 @@
             this.btnFinalConfirmationItem.Visible = false;
             this.btnFinalConfirmationItem.Click += new System.EventHandler(this.btnFinalConfirmationItem_Click);
             // 
-            // lblDescriptionItem
-            // 
-            this.lblDescriptionItem.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.lblDescriptionItem.AutoSize = true;
-            this.lblDescriptionItem.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.lblDescriptionItem.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Underline);
-            this.lblDescriptionItem.ForeColor = System.Drawing.Color.White;
-            this.lblDescriptionItem.Location = new System.Drawing.Point(185, 52);
-            this.lblDescriptionItem.Name = "lblDescriptionItem";
-            this.lblDescriptionItem.Size = new System.Drawing.Size(251, 24);
-            this.lblDescriptionItem.TabIndex = 11;
-            this.lblDescriptionItem.Text = "[Descriptive Text Goes Here]";
-            // 
             // panelItem
             // 
-            this.panelItem.Controls.Add(this.lblDescriptionItem);
-            this.panelItem.Controls.Add(this.btnFinalConfirmationItem);
-            this.panelItem.Controls.Add(this.btnCancelItem);
-            this.panelItem.Controls.Add(this.btnConfirmItem);
-            this.panelItem.Controls.Add(this.label6);
-            this.panelItem.Controls.Add(this.label5);
-            this.panelItem.Controls.Add(this.label4);
-            this.panelItem.Controls.Add(this.label3);
-            this.panelItem.Controls.Add(this.cmboItemType);
-            this.panelItem.Controls.Add(this.txtItemStock);
-            this.panelItem.Controls.Add(this.txtItemPrice);
-            this.panelItem.Controls.Add(this.txtItemName);
+            this.panelItem.Controls.Add(this.grpItemChange);
             this.panelItem.Location = new System.Drawing.Point(0, 0);
             this.panelItem.Name = "panelItem";
-            this.panelItem.Size = new System.Drawing.Size(682, 627);
+            this.panelItem.Size = new System.Drawing.Size(682, 671);
             this.panelItem.TabIndex = 1;
             // 
             // errorProviderItem
             // 
             this.errorProviderItem.ContainerControl = this;
+            // 
+            // grpTypeChange
+            // 
+            this.grpTypeChange.Controls.Add(this.btnConfirmType);
+            this.grpTypeChange.Controls.Add(this.btnCancelType);
+            this.grpTypeChange.Controls.Add(this.btnFinalConfirmation);
+            this.grpTypeChange.Controls.Add(this.txtTypeDescription);
+            this.grpTypeChange.Controls.Add(this.label7);
+            this.grpTypeChange.Controls.Add(this.label8);
+            this.grpTypeChange.Controls.Add(this.txtTypeName);
+            this.grpTypeChange.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
+            this.grpTypeChange.ForeColor = System.Drawing.Color.White;
+            this.grpTypeChange.Location = new System.Drawing.Point(117, 78);
+            this.grpTypeChange.Name = "grpTypeChange";
+            this.grpTypeChange.Size = new System.Drawing.Size(447, 518);
+            this.grpTypeChange.TabIndex = 9;
+            this.grpTypeChange.TabStop = false;
+            this.grpTypeChange.Text = "groupBox2";
+            // 
+            // grpItemChange
+            // 
+            this.grpItemChange.Controls.Add(this.txtItemName);
+            this.grpItemChange.Controls.Add(this.btnConfirmItem);
+            this.grpItemChange.Controls.Add(this.cmboItemType);
+            this.grpItemChange.Controls.Add(this.btnFinalConfirmationItem);
+            this.grpItemChange.Controls.Add(this.label6);
+            this.grpItemChange.Controls.Add(this.label5);
+            this.grpItemChange.Controls.Add(this.txtItemStock);
+            this.grpItemChange.Controls.Add(this.txtItemPrice);
+            this.grpItemChange.Controls.Add(this.label3);
+            this.grpItemChange.Controls.Add(this.label4);
+            this.grpItemChange.Controls.Add(this.btnCancelItem);
+            this.grpItemChange.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.grpItemChange.ForeColor = System.Drawing.Color.White;
+            this.grpItemChange.Location = new System.Drawing.Point(65, 46);
+            this.grpItemChange.Name = "grpItemChange";
+            this.grpItemChange.Size = new System.Drawing.Size(552, 558);
+            this.grpItemChange.TabIndex = 12;
+            this.grpItemChange.TabStop = false;
+            this.grpItemChange.Text = "groupBox3";
             // 
             // errorProviderType
             // 
@@ -682,10 +756,10 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(19)))), ((int)(((byte)(41)))), ((int)(((byte)(61)))));
-            this.ClientSize = new System.Drawing.Size(682, 627);
+            this.ClientSize = new System.Drawing.Size(682, 671);
             this.Controls.Add(this.panelMain);
-            this.Controls.Add(this.panelItem);
             this.Controls.Add(this.panelType);
+            this.Controls.Add(this.panelItem);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "frmStock";
             this.Text = "frmStock";
@@ -694,19 +768,21 @@
             this.tabControlStock.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gridDisplayStock)).EndInit();
             this.gbTools.ResumeLayout(false);
             this.gbTools.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.gridDisplayStock)).EndInit();
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gridDisplayType)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.gridDisplayType)).EndInit();
             this.panelType.ResumeLayout(false);
-            this.panelType.PerformLayout();
             this.panelItem.ResumeLayout(false);
-            this.panelItem.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderItem)).EndInit();
+            this.grpTypeChange.ResumeLayout(false);
+            this.grpTypeChange.PerformLayout();
+            this.grpItemChange.ResumeLayout(false);
+            this.grpItemChange.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderType)).EndInit();
             this.ResumeLayout(false);
 
@@ -725,7 +801,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnAddStock;
         private System.Windows.Forms.TextBox txtSearchStock;
-        private System.Windows.Forms.DataGridView gridDisplayStock;
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.Button btnCancelTypeRemoval;
         private System.Windows.Forms.Label lblConfirmDeleteType;
@@ -736,7 +811,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button btnAddType;
         private System.Windows.Forms.TextBox txtSearchType;
-        private System.Windows.Forms.DataGridView gridDisplayType;
         private System.Windows.Forms.Panel panelType;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label7;
@@ -745,9 +819,7 @@
         private System.Windows.Forms.Button btnCancelType;
         private System.Windows.Forms.Button btnConfirmType;
         private System.Windows.Forms.RichTextBox txtTypeDescription;
-        private System.Windows.Forms.Label lblTypeDescription;
         private System.Windows.Forms.Panel panelItem;
-        private System.Windows.Forms.Label lblDescriptionItem;
         private System.Windows.Forms.Button btnFinalConfirmationItem;
         private System.Windows.Forms.Button btnCancelItem;
         private System.Windows.Forms.Button btnConfirmItem;
@@ -760,6 +832,10 @@
         private System.Windows.Forms.TextBox txtItemPrice;
         private System.Windows.Forms.TextBox txtItemName;
         private System.Windows.Forms.ErrorProvider errorProviderItem;
+        private System.Windows.Forms.DataGridView gridDisplayStock;
+        private System.Windows.Forms.DataGridView gridDisplayType;
+        private System.Windows.Forms.GroupBox grpTypeChange;
+        private System.Windows.Forms.GroupBox grpItemChange;
         private System.Windows.Forms.ErrorProvider errorProviderType;
     }
 }

@@ -1,4 +1,5 @@
 ﻿using FontAwesome.Sharp;
+using Org.BouncyCastle.Utilities.Collections;
 using Skreenkinikor_Master_Project.Child_Forms;
 using System;
 using System.Collections.Generic;
@@ -157,13 +158,14 @@ namespace Skreenkinikor_Master_Project
             btnStockCancelRemoval.Visible = false;
             lblConfirmDeleteStock.Visible = false;
             lblConfirmDeleteType.Visible = false;
+            panelMain.BringToFront();
         }
 
         private void btnAddType_Click(object sender, EventArgs e)
         {
             //brings panel to front, changes label text
             panelType.BringToFront();
-            lblTypeDescription.Text = "Currently ADDING NEW item Type.";
+            grpTypeChange.Text = "ADDING Type";
         }
 
         private void btnRemoveType_Click(object sender, EventArgs e)
@@ -180,6 +182,8 @@ namespace Skreenkinikor_Master_Project
                 btnConfirmTypeRemoval.Visible = true;
                 btnCancelTypeRemoval.Visible = true;
                 lblConfirmDeleteType.Visible = true;
+                lblConfirmDeleteType.Text = "Confirm deletion of selected item: " +selectedItemTypeName;
+                btnRemoveType.Enabled = false;
             }
 
         }
@@ -195,7 +199,9 @@ namespace Skreenkinikor_Master_Project
                 //checks if modifying or adding new, brings panel to front and changes label text
                 modifyOrAddType = 1;
                 panelType.BringToFront();
-                lblTypeDescription.Text = "Currently MODIFYING " + selectedItemTypeName + ", please enter the new information.";
+                grpTypeChange.Text = "MODIFYING Type";
+                txtTypeName.Text = returnSingleDatabaseValue("SELECT Confectionary_Type_Name FROM ScreenKinikor.dbo.Confectionary_Item_Type WHERE Confectionary_Type_Name ='" + selectedItemTypeName +"'");
+                txtTypeDescription.Text = returnSingleDatabaseValue("SELECT Confectionary_Type_Name FROM ScreenKinikor.dbo.Confectionary_Item_Type WHERE Confectionary_Type_Name ='" + selectedItemTypeName + "'");
             }
         }
 
@@ -203,7 +209,7 @@ namespace Skreenkinikor_Master_Project
         {
             //brings panel to front, changes label text
             panelItem.BringToFront();
-            lblDescriptionItem.Text = "Currently ADDING NEW item.";
+            grpItemChange.Text = "ADDING Item";
             populateCombo(cmboItemType, "SELECT Confectionary_Type_Name FROM ScreenKinikor.dbo.Confectionary_Item_Type", "Confectionary_Type_Name", "ScreenKinikor.dbo.Confectionary_Item_Type");
         }
 
@@ -220,6 +226,8 @@ namespace Skreenkinikor_Master_Project
                 btnConfirmItemRemoval.Visible = true;
                 btnStockCancelRemoval.Visible = true;
                 lblConfirmDeleteStock.Visible = true;
+                lblConfirmDeleteStock.Text = "Confirm Deletion of selected item: " +selectedItemStockName;
+                btnRemoveStock.Enabled = false;
             }
         }
 
@@ -234,8 +242,13 @@ namespace Skreenkinikor_Master_Project
                 //checks if modifying or deleting, brings panel to front and changes label text
                 modifyOrAddItem = 1;
                 panelItem.BringToFront();
-                lblDescriptionItem.Text = "Currently MODIFYING " + selectedItemStockName + ", please enter the new information.";
+                grpItemChange.Text = "MODIFYING Item";
                 populateCombo(cmboItemType, "SELECT Confectionary_Type_Name FROM ScreenKinikor.dbo.Confectionary_Item_Type", "Confectionary_Type_Name", "ScreenKinikor.dbo.Confectionary_Item_Type");
+
+                //autofills textboxes
+                txtItemName.Text = returnSingleDatabaseValue("SELECT Confectionary_Name FROM ScreenKinikor.dbo.Confectionary_Item WHERE Confectionary_Name = '" + selectedItemStockName + "'");
+                txtItemPrice.Text = returnSingleDatabaseValue("SELECT Confectionary_Price FROM ScreenKinikor.dbo.Confectionary_Item WHERE Confectionary_Name = '" + selectedItemStockName + "'");
+                txtItemStock.Text = returnSingleDatabaseValue("SELECT Confectionary_Stock FROM ScreenKinikor.dbo.Confectionary_Item WHERE Confectionary_Name = '" + selectedItemStockName + "'");
             }
         }
 
@@ -243,10 +256,12 @@ namespace Skreenkinikor_Master_Project
         {
             //filters stock items by name
             populateGridStock(gridDisplayStock, "SELECT Confectionary_Item.Confectionary_Name,Confectionary_Item.Confectionary_Price,Confectionary_Item.Confectionary_Stock, Confectionary_Item_Type.Confectionary_Type_Name from Confectionary_Item inner join Confectionary_Item_Type ON Confectionary_Item.Confectionary_Type_ID=Confectionary_Item_Type.Confectionary_Type_ID WHERE Confectionary_Item.Confectionary_Name LIKE '%" + txtSearchStock.Text + "%' OR Confectionary_Item_Type.Confectionary_Type_Name LIKE '%" + txtSearchStock.Text + "%'");
+            btnRemoveStock.Enabled = true;
         }
         private void txtSearchType_TextChanged(object sender, EventArgs e)
         {
             //filters stock types by name
+            btnRemoveType.Enabled = true;
             populateGridStock(gridDisplayType, "SELECT Confectionary_Type_Name, Confectionary_Type_Desc FROM ScreenKinikor.dbo.Confectionary_Item_Type WHERE Confectionary_Type_Name LIKE '%" + txtSearchType.Text + "%'");
         }
 
@@ -263,6 +278,7 @@ namespace Skreenkinikor_Master_Project
             sqlCmdMethod("DELETE FROM ScreenKinikor.dbo.Confectionary_Item WHERE Confectionary_Name = '" + selectedItemStockName + "'");
             populateGridStock(gridDisplayStock, "SELECT Confectionary_Item.Confectionary_Name,Confectionary_Item.Confectionary_Price,Confectionary_Item.Confectionary_Stock, Confectionary_Item_Type.Confectionary_Type_Name from Confectionary_Item inner join Confectionary_Item_Type ON Confectionary_Item.Confectionary_Type_ID=Confectionary_Item_Type.Confectionary_Type_ID");
             selectedItemStockName = null;
+            btnRemoveStock.Enabled = true;
         }
 
         private void btnConfirmTypeRemoval_Click(object sender, EventArgs e)
@@ -279,6 +295,7 @@ namespace Skreenkinikor_Master_Project
             sqlCmdMethod("DELETE FROM ScreenKinikor.dbo.Confectionary_Item_Type WHERE Confectionary_Type_Name = '" + selectedItemTypeName + "'");
             populateGridStock(gridDisplayType, "SELECT Confectionary_Type_Name, Confectionary_Type_Desc FROM ScreenKinikor.dbo.Confectionary_Item_Type");
             selectedItemTypeName = null;
+            btnRemoveType.Enabled = true;
         }
 
         private void btnStockCancelRemoval_Click(object sender, EventArgs e)
@@ -287,6 +304,9 @@ namespace Skreenkinikor_Master_Project
             btnStockCancelRemoval.Visible = false;
             lblConfirmDeleteStock.Visible = false;
             btnConfirmItemRemoval.Visible = false;
+
+            //re-enabled remove button
+            btnRemoveStock.Enabled = true;
 
             //resets grid selection and item assignment
             gridDisplayStock.ClearSelection();
@@ -299,6 +319,9 @@ namespace Skreenkinikor_Master_Project
             btnConfirmTypeRemoval.Visible = false;
             btnCancelTypeRemoval.Visible = false;
             lblConfirmDeleteType.Visible = false;
+
+            //re-enabled remove button
+            btnRemoveType.Enabled = true;
 
             //resets grid selection and item assignment
             gridDisplayType.ClearSelection();
@@ -337,8 +360,16 @@ namespace Skreenkinikor_Master_Project
 
         private void btnConfirmItem_Click(object sender, EventArgs e)
         {
-            btnFinalConfirmationItem.Visible = true;
-            btnConfirmItem.Enabled = false;
+           //checks to make sure all fields have values
+            if(txtItemName.Text == "" || txtItemPrice.Text ==""||txtItemStock.Text=="" )
+            {
+                MessageBox.Show("Please enter all fields before continuing");
+            }
+            else
+            {
+                btnFinalConfirmationItem.Visible = true;
+                btnConfirmItem.Enabled = false;
+            }
         }
 
         private void btnCancelItem_Click(object sender, EventArgs e)
@@ -375,7 +406,26 @@ namespace Skreenkinikor_Master_Project
                     string typeID = returnSingleDatabaseValue("SELECT Confectionary_Type_ID FROM ScreenKinikor.dbo.Confectionary_Item_Type WHERE Confectionary_Type_Name = '" + ConfectionaryTypeID + "' ");
 
                     //update method for items
-                    sqlCmdMethod("UPDATE ScreenKinikor.dbo.Confectionary_Item SET Confectionary_Type_ID='" + Convert.ToInt32(typeID) + "' ,Confectionary_Name = '" + itemName + "', Confectionary_Price ='" + price + "', Confectionary_Stock='" + stockAmount + "' WHERE Confectionary_Name = '" + selectedItemStockName + "'");
+                    try
+                    {
+                        con = new SqlConnection(conStr);
+
+                        if (con.State == ConnectionState.Closed)
+                        {
+                            con.Open();
+                        }
+
+                        com = new SqlCommand("UPDATE ScreenKinikor.dbo.Confectionary_Item SET Confectionary_Type_ID = '" + Convert.ToInt32(typeID) + "', Confectionary_Name = '" + itemName + "', Confectionary_Price = @price, Confectionary_Stock = '" + stockAmount + "' WHERE Confectionary_Name = '" + selectedItemStockName + "'", con);
+                        com.Parameters.Add(new SqlParameter("price", price));
+                        com.ExecuteNonQuery();
+                    }
+                    catch (Exception a)
+                    {
+                        MessageBox.Show("Error: " + a.Message);
+                    }
+                    con.Close();
+                    MessageBox.Show("SUCCESSFULLY UPDATED ITEM "+itemName);
+
                 }
                 else
                 {
@@ -387,8 +437,27 @@ namespace Skreenkinikor_Master_Project
                         ConfectionaryTypeID = oDataRowView.Row["Confectionary_Type_Name"] as string;
                     }
                     string typeID = returnSingleDatabaseValue("SELECT Confectionary_Type_ID FROM ScreenKinikor.dbo.Confectionary_Item_Type WHERE Confectionary_Type_Name = '" + ConfectionaryTypeID + "' ");
+                    
+                    //sql for adding item
+                    try
+                    {
+                        con = new SqlConnection(conStr);
 
-                    sqlCmdMethod("INSERT INTO ScreenKinikor.dbo.Confectionary_Item(Confectionary_Type_ID,Confectionary_Name,Confectionary_Price,Confectionary_Stock) VALUES('" + Convert.ToInt32(typeID) + "','" + itemName + "','" + price + "','" + stockAmount + "')");
+                        if (con.State == ConnectionState.Closed)
+                        {
+                            con.Open();
+                        }
+
+                        com = new SqlCommand("INSERT INTO ScreenKinikor.dbo.Confectionary_Item(Confectionary_Type_ID,Confectionary_Name,Confectionary_Price,Confectionary_Stock) VALUES('" + Convert.ToInt32(typeID) + "','" + itemName + "',@price,'" + stockAmount + "')", con);
+                        com.Parameters.Add(new SqlParameter("price", price));
+                        com.ExecuteNonQuery();
+                    }
+                    catch (Exception a)
+                    {
+                        MessageBox.Show("Error: " + a.Message);
+                    }
+                    con.Close();
+                    MessageBox.Show("SUCCESSFULLY ADDED " + txtItemName.Text+" TO THE DATABASE.");
                 }
 
                 populateGridStock(gridDisplayStock, "SELECT Confectionary_Item.Confectionary_Name,Confectionary_Item.Confectionary_Price,Confectionary_Item.Confectionary_Stock, Confectionary_Item_Type.Confectionary_Type_Name from Confectionary_Item inner join Confectionary_Item_Type ON Confectionary_Item.Confectionary_Type_ID=Confectionary_Item_Type.Confectionary_Type_ID");
@@ -417,9 +486,17 @@ namespace Skreenkinikor_Master_Project
 
         private void btnConfirmType_Click(object sender, EventArgs e)
         {
-            //deactivates button and makes final confirmation visible
-           btnFinalConfirmation.Visible = true;
-            btnConfirmType.Enabled = false;
+            if (txtTypeName.Text == "" || txtTypeDescription.Text == "")
+            {
+                MessageBox.Show("Please enter all fields before continuing");
+            }
+            else
+            {
+                //deactivates button and makes final confirmation visible
+                btnFinalConfirmation.Visible = true;
+                btnConfirmType.Enabled = false;
+            }
+            
         }
 
         private void btnFinalConfirmation_Click(object sender, EventArgs e)
@@ -431,12 +508,12 @@ namespace Skreenkinikor_Master_Project
             if (modifyOrAddType == 1)
             {
                 sqlCmdMethod("UPDATE ScreenKinikor.dbo.Confectionary_Item_Type SET Confectionary_Type_Name='"+typeName+"' ,Confectionary_Type_Desc = '" +typeDesc+"' WHERE Confectionary_Type_Name = '"+selectedItemTypeName+"'");
-                MessageBox.Show("Successfully updated item: " + selectedItemTypeName);
+                MessageBox.Show("SUCCESSFULLY UPDATED ITEM: " + selectedItemTypeName);
             }
             else
             {
                 sqlCmdMethod("INSERT INTO ScreenKinikor.dbo.Confectionary_Item_Type(Confectionary_Type_Name,Confectionary_Type_Desc) VALUES('"+typeName+"','"+typeDesc+"')");
-                MessageBox.Show("Successfully inserted " + typeName + " into database");
+                MessageBox.Show("SUCCESSFULLY INSERTED " + typeName + " INTO DATABASE");
             }
 
             //repopulates gridbox, brings panel to front and sets checker int
