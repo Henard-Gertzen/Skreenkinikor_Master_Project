@@ -201,7 +201,7 @@ namespace Skreenkinikor_Master_Project
                 panelType.BringToFront();
                 grpTypeChange.Text = "MODIFYING Type";
                 txtTypeName.Text = returnSingleDatabaseValue("SELECT Confectionary_Type_Name FROM ScreenKinikor.dbo.Confectionary_Item_Type WHERE Confectionary_Type_Name ='" + selectedItemTypeName +"'");
-                txtTypeDescription.Text = returnSingleDatabaseValue("SELECT Confectionary_Type_Name FROM ScreenKinikor.dbo.Confectionary_Item_Type WHERE Confectionary_Type_Name ='" + selectedItemTypeName + "'");
+                txtTypeDescription.Text = returnSingleDatabaseValue("SELECT Confectionary_Type_Desc FROM ScreenKinikor.dbo.Confectionary_Item_Type WHERE Confectionary_Type_Name ='" + selectedItemTypeName + "'");
             }
         }
 
@@ -387,100 +387,109 @@ namespace Skreenkinikor_Master_Project
 
         private void btnFinalConfirmationItem_Click(object sender, EventArgs e)
         {
+            //clears error providers to prevent duplicity
+            errorProviderItem.Clear();
+            errorProviderType.Clear();
 
+            //variables for parrsing output
             int stockAmount; decimal price;
             string itemName = txtItemName.Text;
 
             //input numerical validation
-            if (int.TryParse(txtItemStock.Text, out stockAmount) && decimal.TryParse(txtItemPrice.Text, out price))
+            if (decimal.TryParse(txtItemPrice.Text, out price))
             {
-                if (modifyOrAddItem == 1)
+                if(int.TryParse(txtItemStock.Text, out stockAmount))
                 {
-                    //RETURNS COMBOBOX VALUE AS STRING
-                    DataRowView oDataRowView = cmboItemType.SelectedItem as DataRowView;
-                    string ConfectionaryTypeID = string.Empty;
-                    if (oDataRowView != null)
+                    if (modifyOrAddItem == 1)
                     {
-                        ConfectionaryTypeID = oDataRowView.Row["Confectionary_Type_Name"] as string;
-                    }
-                    string typeID = returnSingleDatabaseValue("SELECT Confectionary_Type_ID FROM ScreenKinikor.dbo.Confectionary_Item_Type WHERE Confectionary_Type_Name = '" + ConfectionaryTypeID + "' ");
-
-                    //update method for items
-                    try
-                    {
-                        con = new SqlConnection(conStr);
-
-                        if (con.State == ConnectionState.Closed)
+                        //RETURNS COMBOBOX VALUE AS STRING
+                        DataRowView oDataRowView = cmboItemType.SelectedItem as DataRowView;
+                        string ConfectionaryTypeID = string.Empty;
+                        if (oDataRowView != null)
                         {
-                            con.Open();
+                            ConfectionaryTypeID = oDataRowView.Row["Confectionary_Type_Name"] as string;
                         }
+                        string typeID = returnSingleDatabaseValue("SELECT Confectionary_Type_ID FROM ScreenKinikor.dbo.Confectionary_Item_Type WHERE Confectionary_Type_Name = '" + ConfectionaryTypeID + "' ");
 
-                        com = new SqlCommand("UPDATE ScreenKinikor.dbo.Confectionary_Item SET Confectionary_Type_ID = '" + Convert.ToInt32(typeID) + "', Confectionary_Name = '" + itemName + "', Confectionary_Price = @price, Confectionary_Stock = '" + stockAmount + "' WHERE Confectionary_Name = '" + selectedItemStockName + "'", con);
-                        com.Parameters.Add(new SqlParameter("price", price));
-                        com.ExecuteNonQuery();
+                        //update method for items
+                        try
+                        {
+                            con = new SqlConnection(conStr);
+
+                            if (con.State == ConnectionState.Closed)
+                            {
+                                con.Open();
+                            }
+
+                            com = new SqlCommand("UPDATE ScreenKinikor.dbo.Confectionary_Item SET Confectionary_Type_ID = '" + Convert.ToInt32(typeID) + "', Confectionary_Name = '" + itemName + "', Confectionary_Price = @price, Confectionary_Stock = '" + stockAmount + "' WHERE Confectionary_Name = '" + selectedItemStockName + "'", con);
+                            com.Parameters.Add(new SqlParameter("price", price));
+                            com.ExecuteNonQuery();
+                        }
+                        catch (Exception a)
+                        {
+                            MessageBox.Show("Error: " + a.Message);
+                        }
+                        con.Close();
+                        MessageBox.Show("SUCCESSFULLY UPDATED ITEM " + itemName);
+
                     }
-                    catch (Exception a)
+                    else
                     {
-                        MessageBox.Show("Error: " + a.Message);
-                    }
-                    con.Close();
-                    MessageBox.Show("SUCCESSFULLY UPDATED ITEM "+itemName);
+                        //RETURNS COMBOBOX VALUE AS STRING
+                        DataRowView oDataRowView = cmboItemType.SelectedItem as DataRowView;
+                        string ConfectionaryTypeID = string.Empty;
+                        if (oDataRowView != null)
+                        {
+                            ConfectionaryTypeID = oDataRowView.Row["Confectionary_Type_Name"] as string;
+                        }
+                        string typeID = returnSingleDatabaseValue("SELECT Confectionary_Type_ID FROM ScreenKinikor.dbo.Confectionary_Item_Type WHERE Confectionary_Type_Name = '" + ConfectionaryTypeID + "' ");
 
+                        //sql for adding item
+                        try
+                        {
+                            con = new SqlConnection(conStr);
+
+                            if (con.State == ConnectionState.Closed)
+                            {
+                                con.Open();
+                            }
+
+                            com = new SqlCommand("INSERT INTO ScreenKinikor.dbo.Confectionary_Item(Confectionary_Type_ID,Confectionary_Name,Confectionary_Price,Confectionary_Stock) VALUES('" + Convert.ToInt32(typeID) + "','" + itemName + "',@price,'" + stockAmount + "')", con);
+                            com.Parameters.Add(new SqlParameter("price", price));
+                            com.ExecuteNonQuery();
+                        }
+                        catch (Exception a)
+                        {
+                            MessageBox.Show("Error: " + a.Message);
+                        }
+                        con.Close();
+                        MessageBox.Show("SUCCESSFULLY ADDED " + txtItemName.Text + " TO THE DATABASE.");
+                    }
+
+                    populateGridStock(gridDisplayStock, "SELECT Confectionary_Item.Confectionary_Name,Confectionary_Item.Confectionary_Price,Confectionary_Item.Confectionary_Stock, Confectionary_Item_Type.Confectionary_Type_Name from Confectionary_Item inner join Confectionary_Item_Type ON Confectionary_Item.Confectionary_Type_ID=Confectionary_Item_Type.Confectionary_Type_ID");
+                    modifyOrAddItem = 2;
+                    panelMain.BringToFront();
+                    btnFinalConfirmationItem.Visible = false;
+
+                    //clears textboxes and error provider
+                    txtItemName.Clear();
+                    txtItemPrice.Clear();
+                    txtItemStock.Clear();
+
+                    //reactives button
+                    btnConfirmItem.Enabled = true;
                 }
                 else
                 {
-                    //RETURNS COMBOBOX VALUE AS STRING
-                    DataRowView oDataRowView = cmboItemType.SelectedItem as DataRowView;
-                    string ConfectionaryTypeID = string.Empty;
-                    if (oDataRowView != null)
-                    {
-                        ConfectionaryTypeID = oDataRowView.Row["Confectionary_Type_Name"] as string;
-                    }
-                    string typeID = returnSingleDatabaseValue("SELECT Confectionary_Type_ID FROM ScreenKinikor.dbo.Confectionary_Item_Type WHERE Confectionary_Type_Name = '" + ConfectionaryTypeID + "' ");
-                    
-                    //sql for adding item
-                    try
-                    {
-                        con = new SqlConnection(conStr);
-
-                        if (con.State == ConnectionState.Closed)
-                        {
-                            con.Open();
-                        }
-
-                        com = new SqlCommand("INSERT INTO ScreenKinikor.dbo.Confectionary_Item(Confectionary_Type_ID,Confectionary_Name,Confectionary_Price,Confectionary_Stock) VALUES('" + Convert.ToInt32(typeID) + "','" + itemName + "',@price,'" + stockAmount + "')", con);
-                        com.Parameters.Add(new SqlParameter("price", price));
-                        com.ExecuteNonQuery();
-                    }
-                    catch (Exception a)
-                    {
-                        MessageBox.Show("Error: " + a.Message);
-                    }
-                    con.Close();
-                    MessageBox.Show("SUCCESSFULLY ADDED " + txtItemName.Text+" TO THE DATABASE.");
+                    //sets error if not integer
+                    errorProviderItem.SetError(txtItemStock,"Please enter an Integer Value");
                 }
-
-                populateGridStock(gridDisplayStock, "SELECT Confectionary_Item.Confectionary_Name,Confectionary_Item.Confectionary_Price,Confectionary_Item.Confectionary_Stock, Confectionary_Item_Type.Confectionary_Type_Name from Confectionary_Item inner join Confectionary_Item_Type ON Confectionary_Item.Confectionary_Type_ID=Confectionary_Item_Type.Confectionary_Type_ID");
-                modifyOrAddItem = 2;
-                panelMain.BringToFront();
-                btnFinalConfirmationItem.Visible = false;
-
-                //clears textboxes and error provider
-                txtItemName.Clear();
-                txtItemPrice.Clear();
-                txtItemStock.Clear();
-
-                errorProviderItem.SetError(txtItemStock, "");
-                errorProviderType.SetError(txtItemPrice, "");
-
-                //reactives button
-                btnConfirmItem.Enabled = true;
+                
             }
             else
             {
                 //sets errors if incorrect numericals
-                errorProviderItem.SetError(txtItemStock,"Please enter an Integer Value");
-                errorProviderType.SetError(txtItemPrice, "Please enter any numerical value");
+                errorProviderType.SetError(txtItemPrice, "Please enter any numerical value, decimals seperated by ','");
             }
         }
 
