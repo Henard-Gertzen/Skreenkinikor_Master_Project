@@ -32,18 +32,18 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.btnProceed = new System.Windows.Forms.Button();
-            this.btnAdd = new System.Windows.Forms.Button();
             this.lblAmount = new System.Windows.Forms.Label();
             this.nudAmount = new System.Windows.Forms.NumericUpDown();
             this.lblSearch = new System.Windows.Forms.Label();
             this.dgvConItems = new System.Windows.Forms.DataGridView();
             this.txtSearch = new System.Windows.Forms.TextBox();
-            this.btnDelete = new System.Windows.Forms.Button();
             this.lbItems = new System.Windows.Forms.ListBox();
             this.lblDelete = new System.Windows.Forms.Label();
-            this.btnEdit = new System.Windows.Forms.Button();
             this.lblEdit = new System.Windows.Forms.Label();
+            this.btnAdd = new System.Windows.Forms.Button();
+            this.btnProceed = new System.Windows.Forms.Button();
+            this.btnDelete = new System.Windows.Forms.Button();
+            this.btnEdit = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudAmount)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvConItems)).BeginInit();
@@ -64,26 +64,6 @@
             this.panel1.Size = new System.Drawing.Size(638, 297);
             this.panel1.TabIndex = 0;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
-            // 
-            // btnProceed
-            // 
-            this.btnProceed.Location = new System.Drawing.Point(429, 258);
-            this.btnProceed.Name = "btnProceed";
-            this.btnProceed.Size = new System.Drawing.Size(206, 36);
-            this.btnProceed.TabIndex = 12;
-            this.btnProceed.Text = "Proceed";
-            this.btnProceed.UseVisualStyleBackColor = true;
-            this.btnProceed.Click += new System.EventHandler(this.btnProceed_Click_1);
-            // 
-            // btnAdd
-            // 
-            this.btnAdd.Location = new System.Drawing.Point(429, 156);
-            this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(206, 36);
-            this.btnAdd.TabIndex = 11;
-            this.btnAdd.Text = "Add Item";
-            this.btnAdd.UseVisualStyleBackColor = true;
-            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // lblAmount
             // 
@@ -171,16 +151,6 @@
             this.txtSearch.TabIndex = 1;
             this.txtSearch.TextChanged += new System.EventHandler(this.txtSearch_TextChanged);
             // 
-            // btnDelete
-            // 
-            this.btnDelete.Location = new System.Drawing.Point(203, 330);
-            this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(206, 36);
-            this.btnDelete.TabIndex = 13;
-            this.btnDelete.Text = "Delete Item";
-            this.btnDelete.UseVisualStyleBackColor = true;
-            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
-            // 
             // lbItems
             // 
             this.lbItems.FormattingEnabled = true;
@@ -202,16 +172,6 @@
             this.lblDelete.TabIndex = 2;
             this.lblDelete.Text = "Click on the item you want to remove or edit";
             // 
-            // btnEdit
-            // 
-            this.btnEdit.Location = new System.Drawing.Point(203, 372);
-            this.btnEdit.Name = "btnEdit";
-            this.btnEdit.Size = new System.Drawing.Size(206, 36);
-            this.btnEdit.TabIndex = 14;
-            this.btnEdit.Text = "Edit Item";
-            this.btnEdit.UseVisualStyleBackColor = true;
-            this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
-            // 
             // lblEdit
             // 
             this.lblEdit.AutoSize = true;
@@ -223,15 +183,71 @@
             this.lblEdit.TabIndex = 15;
             this.lblEdit.Text = "Click on the item you want to remove or edit";
             // 
+            // btnAdd
+            // 
+            this.btnAdd.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(19)))), ((int)(((byte)(41)))), ((int)(((byte)(61)))));
+            this.btnAdd.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.btnAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAdd.ForeColor = System.Drawing.Color.White;
+            this.btnAdd.Location = new System.Drawing.Point(429, 155);
+            this.btnAdd.Name = "btnAdd";
+            this.btnAdd.Size = new System.Drawing.Size(206, 50);
+            this.btnAdd.TabIndex = 16;
+            this.btnAdd.Text = "&Add Item";
+            this.btnAdd.UseVisualStyleBackColor = false;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click_1);
+            // 
+            // btnProceed
+            // 
+            this.btnProceed.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(19)))), ((int)(((byte)(41)))), ((int)(((byte)(61)))));
+            this.btnProceed.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.btnProceed.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnProceed.ForeColor = System.Drawing.Color.White;
+            this.btnProceed.Location = new System.Drawing.Point(429, 244);
+            this.btnProceed.Name = "btnProceed";
+            this.btnProceed.Size = new System.Drawing.Size(206, 50);
+            this.btnProceed.TabIndex = 17;
+            this.btnProceed.Text = "&Proceed";
+            this.btnProceed.UseVisualStyleBackColor = false;
+            this.btnProceed.Click += new System.EventHandler(this.btnProceed_Click_2);
+            // 
+            // btnDelete
+            // 
+            this.btnDelete.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(19)))), ((int)(((byte)(41)))), ((int)(((byte)(61)))));
+            this.btnDelete.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.btnDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDelete.ForeColor = System.Drawing.Color.White;
+            this.btnDelete.Location = new System.Drawing.Point(203, 330);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(206, 36);
+            this.btnDelete.TabIndex = 18;
+            this.btnDelete.Text = "&Delete Item";
+            this.btnDelete.UseVisualStyleBackColor = false;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click_1);
+            // 
+            // btnEdit
+            // 
+            this.btnEdit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(19)))), ((int)(((byte)(41)))), ((int)(((byte)(61)))));
+            this.btnEdit.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.btnEdit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnEdit.ForeColor = System.Drawing.Color.White;
+            this.btnEdit.Location = new System.Drawing.Point(203, 372);
+            this.btnEdit.Name = "btnEdit";
+            this.btnEdit.Size = new System.Drawing.Size(206, 36);
+            this.btnEdit.TabIndex = 19;
+            this.btnEdit.Text = "&Edit Item";
+            this.btnEdit.UseVisualStyleBackColor = false;
+            this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click_1);
+            // 
             // frmCon_Sale
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(19)))), ((int)(((byte)(41)))), ((int)(((byte)(61)))));
             this.ClientSize = new System.Drawing.Size(640, 480);
-            this.Controls.Add(this.lblEdit);
             this.Controls.Add(this.btnEdit);
             this.Controls.Add(this.btnDelete);
+            this.Controls.Add(this.lblEdit);
             this.Controls.Add(this.lblDelete);
             this.Controls.Add(this.lbItems);
             this.Controls.Add(this.panel1);
@@ -256,12 +272,12 @@
         private System.Windows.Forms.Label lblAmount;
         private System.Windows.Forms.NumericUpDown nudAmount;
         private System.Windows.Forms.Label lblSearch;
+        private System.Windows.Forms.ListBox lbItems;
+        private System.Windows.Forms.Label lblDelete;
+        private System.Windows.Forms.Label lblEdit;
         private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.Button btnProceed;
         private System.Windows.Forms.Button btnDelete;
-        private System.Windows.Forms.ListBox lbItems;
-        private System.Windows.Forms.Label lblDelete;
         private System.Windows.Forms.Button btnEdit;
-        private System.Windows.Forms.Label lblEdit;
     }
 }

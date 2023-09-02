@@ -29,12 +29,12 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle43 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle44 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle45 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle46 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle47 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle48 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panelMain = new System.Windows.Forms.Panel();
             this.tabControlStock = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
@@ -60,13 +60,14 @@
             this.btnAddType = new System.Windows.Forms.Button();
             this.txtSearchType = new System.Windows.Forms.TextBox();
             this.panelType = new System.Windows.Forms.Panel();
-            this.txtTypeDescription = new System.Windows.Forms.RichTextBox();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.txtTypeName = new System.Windows.Forms.TextBox();
-            this.btnFinalConfirmation = new System.Windows.Forms.Button();
-            this.btnCancelType = new System.Windows.Forms.Button();
+            this.grpTypeChange = new System.Windows.Forms.GroupBox();
             this.btnConfirmType = new System.Windows.Forms.Button();
+            this.btnCancelType = new System.Windows.Forms.Button();
+            this.btnFinalConfirmation = new System.Windows.Forms.Button();
+            this.txtTypeDescription = new System.Windows.Forms.RichTextBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.txtTypeName = new System.Windows.Forms.TextBox();
             this.txtItemName = new System.Windows.Forms.TextBox();
             this.txtItemPrice = new System.Windows.Forms.TextBox();
             this.txtItemStock = new System.Windows.Forms.TextBox();
@@ -79,9 +80,8 @@
             this.btnCancelItem = new System.Windows.Forms.Button();
             this.btnFinalConfirmationItem = new System.Windows.Forms.Button();
             this.panelItem = new System.Windows.Forms.Panel();
-            this.errorProviderItem = new System.Windows.Forms.ErrorProvider(this.components);
-            this.grpTypeChange = new System.Windows.Forms.GroupBox();
             this.grpItemChange = new System.Windows.Forms.GroupBox();
+            this.errorProviderItem = new System.Windows.Forms.ErrorProvider(this.components);
             this.errorProviderType = new System.Windows.Forms.ErrorProvider(this.components);
             this.panelMain.SuspendLayout();
             this.tabControlStock.SuspendLayout();
@@ -92,10 +92,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.gridDisplayType)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.panelType.SuspendLayout();
-            this.panelItem.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.errorProviderItem)).BeginInit();
             this.grpTypeChange.SuspendLayout();
+            this.panelItem.SuspendLayout();
             this.grpItemChange.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderItem)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderType)).BeginInit();
             this.SuspendLayout();
             // 
@@ -147,40 +147,40 @@
             this.gridDisplayStock.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.gridDisplayStock.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.gridDisplayStock.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle13.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(67)))), ((int)(((byte)(90)))));
-            dataGridViewCellStyle13.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle13.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(241)))), ((int)(((byte)(242)))));
-            dataGridViewCellStyle13.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(67)))), ((int)(((byte)(90)))));
-            dataGridViewCellStyle13.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle13.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.gridDisplayStock.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle13;
+            dataGridViewCellStyle43.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle43.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(67)))), ((int)(((byte)(90)))));
+            dataGridViewCellStyle43.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle43.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(241)))), ((int)(((byte)(242)))));
+            dataGridViewCellStyle43.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(67)))), ((int)(((byte)(90)))));
+            dataGridViewCellStyle43.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle43.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.gridDisplayStock.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle43;
             this.gridDisplayStock.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle14.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(67)))), ((int)(((byte)(90)))));
-            dataGridViewCellStyle14.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle14.ForeColor = System.Drawing.Color.Gainsboro;
-            dataGridViewCellStyle14.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(144)))), ((int)(((byte)(194)))), ((int)(((byte)(231)))));
-            dataGridViewCellStyle14.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.gridDisplayStock.DefaultCellStyle = dataGridViewCellStyle14;
+            dataGridViewCellStyle44.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle44.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(67)))), ((int)(((byte)(90)))));
+            dataGridViewCellStyle44.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle44.ForeColor = System.Drawing.Color.Gainsboro;
+            dataGridViewCellStyle44.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(144)))), ((int)(((byte)(194)))), ((int)(((byte)(231)))));
+            dataGridViewCellStyle44.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle44.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.gridDisplayStock.DefaultCellStyle = dataGridViewCellStyle44;
             this.gridDisplayStock.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.gridDisplayStock.EnableHeadersVisualStyles = false;
             this.gridDisplayStock.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(241)))), ((int)(((byte)(242)))));
             this.gridDisplayStock.Location = new System.Drawing.Point(1, 0);
             this.gridDisplayStock.Name = "gridDisplayStock";
-            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle15.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle15.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle15.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle15.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(144)))), ((int)(((byte)(194)))), ((int)(((byte)(231)))));
-            dataGridViewCellStyle15.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle15.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.gridDisplayStock.RowHeadersDefaultCellStyle = dataGridViewCellStyle15;
+            dataGridViewCellStyle45.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle45.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle45.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle45.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle45.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(144)))), ((int)(((byte)(194)))), ((int)(((byte)(231)))));
+            dataGridViewCellStyle45.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle45.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.gridDisplayStock.RowHeadersDefaultCellStyle = dataGridViewCellStyle45;
             this.gridDisplayStock.RowHeadersVisible = false;
             this.gridDisplayStock.RowTemplate.Height = 35;
             this.gridDisplayStock.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.gridDisplayStock.Size = new System.Drawing.Size(677, 387);
+            this.gridDisplayStock.Size = new System.Drawing.Size(677, 399);
             this.gridDisplayStock.TabIndex = 13;
             this.gridDisplayStock.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.gridDisplayStock_DataBindingComplete);
             this.gridDisplayStock.SelectionChanged += new System.EventHandler(this.gridDisplayStock_SelectionChanged);
@@ -192,7 +192,7 @@
             this.lblConfirmDeleteStock.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lblConfirmDeleteStock.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold);
             this.lblConfirmDeleteStock.ForeColor = System.Drawing.Color.GhostWhite;
-            this.lblConfirmDeleteStock.Location = new System.Drawing.Point(182, 525);
+            this.lblConfirmDeleteStock.Location = new System.Drawing.Point(182, 539);
             this.lblConfirmDeleteStock.Name = "lblConfirmDeleteStock";
             this.lblConfirmDeleteStock.Size = new System.Drawing.Size(133, 17);
             this.lblConfirmDeleteStock.TabIndex = 12;
@@ -208,7 +208,7 @@
             this.btnStockCancelRemoval.Location = new System.Drawing.Point(347, 594);
             this.btnStockCancelRemoval.Name = "btnStockCancelRemoval";
             this.btnStockCancelRemoval.Size = new System.Drawing.Size(324, 48);
-            this.btnStockCancelRemoval.TabIndex = 10;
+            this.btnStockCancelRemoval.TabIndex = 6;
             this.btnStockCancelRemoval.Text = "CANCEL ITEM REMOVAL";
             this.btnStockCancelRemoval.UseVisualStyleBackColor = false;
             this.btnStockCancelRemoval.Click += new System.EventHandler(this.btnStockCancelRemoval_Click);
@@ -223,7 +223,7 @@
             this.btnConfirmItemRemoval.Location = new System.Drawing.Point(3, 594);
             this.btnConfirmItemRemoval.Name = "btnConfirmItemRemoval";
             this.btnConfirmItemRemoval.Size = new System.Drawing.Size(324, 48);
-            this.btnConfirmItemRemoval.TabIndex = 8;
+            this.btnConfirmItemRemoval.TabIndex = 5;
             this.btnConfirmItemRemoval.Text = "CONFIRM ITEM REMOVAL";
             this.btnConfirmItemRemoval.UseVisualStyleBackColor = false;
             this.btnConfirmItemRemoval.Click += new System.EventHandler(this.btnConfirmItemRemoval_Click);
@@ -237,7 +237,7 @@
             this.gbTools.Controls.Add(this.btnAddStock);
             this.gbTools.Controls.Add(this.txtSearchStock);
             this.gbTools.ForeColor = System.Drawing.Color.White;
-            this.gbTools.Location = new System.Drawing.Point(109, 393);
+            this.gbTools.Location = new System.Drawing.Point(109, 407);
             this.gbTools.Name = "gbTools";
             this.gbTools.Size = new System.Drawing.Size(475, 122);
             this.gbTools.TabIndex = 7;
@@ -326,40 +326,40 @@
             this.gridDisplayType.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.gridDisplayType.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.gridDisplayType.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle16.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(67)))), ((int)(((byte)(90)))));
-            dataGridViewCellStyle16.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle16.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(241)))), ((int)(((byte)(242)))));
-            dataGridViewCellStyle16.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(67)))), ((int)(((byte)(90)))));
-            dataGridViewCellStyle16.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle16.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.gridDisplayType.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle16;
+            dataGridViewCellStyle46.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle46.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(67)))), ((int)(((byte)(90)))));
+            dataGridViewCellStyle46.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle46.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(241)))), ((int)(((byte)(242)))));
+            dataGridViewCellStyle46.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(67)))), ((int)(((byte)(90)))));
+            dataGridViewCellStyle46.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle46.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.gridDisplayType.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle46;
             this.gridDisplayType.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle17.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(67)))), ((int)(((byte)(90)))));
-            dataGridViewCellStyle17.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle17.ForeColor = System.Drawing.Color.Gainsboro;
-            dataGridViewCellStyle17.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(144)))), ((int)(((byte)(194)))), ((int)(((byte)(231)))));
-            dataGridViewCellStyle17.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle17.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.gridDisplayType.DefaultCellStyle = dataGridViewCellStyle17;
+            dataGridViewCellStyle47.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle47.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(67)))), ((int)(((byte)(90)))));
+            dataGridViewCellStyle47.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle47.ForeColor = System.Drawing.Color.Gainsboro;
+            dataGridViewCellStyle47.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(144)))), ((int)(((byte)(194)))), ((int)(((byte)(231)))));
+            dataGridViewCellStyle47.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle47.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.gridDisplayType.DefaultCellStyle = dataGridViewCellStyle47;
             this.gridDisplayType.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.gridDisplayType.EnableHeadersVisualStyles = false;
             this.gridDisplayType.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(241)))), ((int)(((byte)(242)))));
             this.gridDisplayType.Location = new System.Drawing.Point(1, 0);
             this.gridDisplayType.Name = "gridDisplayType";
-            dataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle18.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle18.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle18.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle18.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(144)))), ((int)(((byte)(194)))), ((int)(((byte)(231)))));
-            dataGridViewCellStyle18.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle18.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.gridDisplayType.RowHeadersDefaultCellStyle = dataGridViewCellStyle18;
+            dataGridViewCellStyle48.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle48.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle48.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle48.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle48.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(144)))), ((int)(((byte)(194)))), ((int)(((byte)(231)))));
+            dataGridViewCellStyle48.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle48.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.gridDisplayType.RowHeadersDefaultCellStyle = dataGridViewCellStyle48;
             this.gridDisplayType.RowHeadersVisible = false;
             this.gridDisplayType.RowTemplate.Height = 35;
             this.gridDisplayType.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.gridDisplayType.Size = new System.Drawing.Size(677, 387);
+            this.gridDisplayType.Size = new System.Drawing.Size(677, 399);
             this.gridDisplayType.TabIndex = 14;
             this.gridDisplayType.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.gridDisplayType_DataBindingComplete);
             this.gridDisplayType.SelectionChanged += new System.EventHandler(this.gridDisplayType_SelectionChanged);
@@ -374,7 +374,7 @@
             this.btnCancelTypeRemoval.Location = new System.Drawing.Point(347, 594);
             this.btnCancelTypeRemoval.Name = "btnCancelTypeRemoval";
             this.btnCancelTypeRemoval.Size = new System.Drawing.Size(324, 48);
-            this.btnCancelTypeRemoval.TabIndex = 12;
+            this.btnCancelTypeRemoval.TabIndex = 6;
             this.btnCancelTypeRemoval.Text = "CANCEL TYPE REMOVAL";
             this.btnCancelTypeRemoval.UseVisualStyleBackColor = false;
             this.btnCancelTypeRemoval.Click += new System.EventHandler(this.btnCancelTypeRemoval_Click);
@@ -385,7 +385,7 @@
             this.lblConfirmDeleteType.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lblConfirmDeleteType.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold);
             this.lblConfirmDeleteType.ForeColor = System.Drawing.Color.White;
-            this.lblConfirmDeleteType.Location = new System.Drawing.Point(182, 525);
+            this.lblConfirmDeleteType.Location = new System.Drawing.Point(182, 539);
             this.lblConfirmDeleteType.Name = "lblConfirmDeleteType";
             this.lblConfirmDeleteType.Size = new System.Drawing.Size(138, 17);
             this.lblConfirmDeleteType.TabIndex = 11;
@@ -401,7 +401,7 @@
             this.btnConfirmTypeRemoval.Location = new System.Drawing.Point(3, 594);
             this.btnConfirmTypeRemoval.Name = "btnConfirmTypeRemoval";
             this.btnConfirmTypeRemoval.Size = new System.Drawing.Size(324, 48);
-            this.btnConfirmTypeRemoval.TabIndex = 10;
+            this.btnConfirmTypeRemoval.TabIndex = 5;
             this.btnConfirmTypeRemoval.Text = "CONFIRM TYPE REMOVAL";
             this.btnConfirmTypeRemoval.UseVisualStyleBackColor = false;
             this.btnConfirmTypeRemoval.Click += new System.EventHandler(this.btnConfirmTypeRemoval_Click);
@@ -416,7 +416,7 @@
             this.groupBox1.Controls.Add(this.txtSearchType);
             this.groupBox1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.groupBox1.ForeColor = System.Drawing.Color.White;
-            this.groupBox1.Location = new System.Drawing.Point(109, 393);
+            this.groupBox1.Location = new System.Drawing.Point(109, 407);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(475, 122);
             this.groupBox1.TabIndex = 9;
@@ -486,27 +486,72 @@
             this.panelType.Size = new System.Drawing.Size(682, 671);
             this.panelType.TabIndex = 2;
             // 
+            // grpTypeChange
+            // 
+            this.grpTypeChange.Controls.Add(this.btnConfirmType);
+            this.grpTypeChange.Controls.Add(this.btnCancelType);
+            this.grpTypeChange.Controls.Add(this.btnFinalConfirmation);
+            this.grpTypeChange.Controls.Add(this.txtTypeDescription);
+            this.grpTypeChange.Controls.Add(this.label7);
+            this.grpTypeChange.Controls.Add(this.label8);
+            this.grpTypeChange.Controls.Add(this.txtTypeName);
+            this.grpTypeChange.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
+            this.grpTypeChange.ForeColor = System.Drawing.Color.White;
+            this.grpTypeChange.Location = new System.Drawing.Point(117, 78);
+            this.grpTypeChange.Name = "grpTypeChange";
+            this.grpTypeChange.Size = new System.Drawing.Size(447, 518);
+            this.grpTypeChange.TabIndex = 9;
+            this.grpTypeChange.TabStop = false;
+            this.grpTypeChange.Text = "[text]";
+            // 
+            // btnConfirmType
+            // 
+            this.btnConfirmType.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.btnConfirmType.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnConfirmType.ForeColor = System.Drawing.Color.White;
+            this.btnConfirmType.Location = new System.Drawing.Point(86, 297);
+            this.btnConfirmType.Name = "btnConfirmType";
+            this.btnConfirmType.Size = new System.Drawing.Size(139, 46);
+            this.btnConfirmType.TabIndex = 2;
+            this.btnConfirmType.Text = "Confirm Changes";
+            this.btnConfirmType.UseVisualStyleBackColor = true;
+            this.btnConfirmType.Click += new System.EventHandler(this.btnConfirmType_Click);
+            // 
+            // btnCancelType
+            // 
+            this.btnCancelType.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.btnCancelType.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCancelType.ForeColor = System.Drawing.Color.White;
+            this.btnCancelType.Location = new System.Drawing.Point(225, 297);
+            this.btnCancelType.Name = "btnCancelType";
+            this.btnCancelType.Size = new System.Drawing.Size(139, 46);
+            this.btnCancelType.TabIndex = 3;
+            this.btnCancelType.Text = "Cancel Editing";
+            this.btnCancelType.UseVisualStyleBackColor = true;
+            this.btnCancelType.Click += new System.EventHandler(this.btnCancelType_Click);
+            // 
+            // btnFinalConfirmation
+            // 
+            this.btnFinalConfirmation.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.btnFinalConfirmation.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnFinalConfirmation.ForeColor = System.Drawing.Color.White;
+            this.btnFinalConfirmation.Location = new System.Drawing.Point(159, 343);
+            this.btnFinalConfirmation.Name = "btnFinalConfirmation";
+            this.btnFinalConfirmation.Size = new System.Drawing.Size(132, 73);
+            this.btnFinalConfirmation.TabIndex = 4;
+            this.btnFinalConfirmation.Text = "FINAL CONFIRMATION AND FINISH";
+            this.btnFinalConfirmation.UseVisualStyleBackColor = true;
+            this.btnFinalConfirmation.Visible = false;
+            this.btnFinalConfirmation.Click += new System.EventHandler(this.btnFinalConfirmation_Click);
+            // 
             // txtTypeDescription
             // 
             this.txtTypeDescription.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.txtTypeDescription.Location = new System.Drawing.Point(184, 152);
             this.txtTypeDescription.Name = "txtTypeDescription";
             this.txtTypeDescription.Size = new System.Drawing.Size(208, 96);
-            this.txtTypeDescription.TabIndex = 7;
+            this.txtTypeDescription.TabIndex = 1;
             this.txtTypeDescription.Text = "";
-            // 
-            // label8
-            // 
-            this.label8.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.label8.AutoSize = true;
-            this.label8.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.label8.ForeColor = System.Drawing.Color.White;
-            this.label8.Location = new System.Drawing.Point(23, 155);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(155, 13);
-            this.label8.TabIndex = 6;
-            this.label8.Text = "Confectionary Type Description";
             // 
             // label7
             // 
@@ -521,53 +566,26 @@
             this.label7.TabIndex = 5;
             this.label7.Text = "Confectionary Type Name";
             // 
+            // label8
+            // 
+            this.label8.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.label8.AutoSize = true;
+            this.label8.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.label8.ForeColor = System.Drawing.Color.White;
+            this.label8.Location = new System.Drawing.Point(23, 155);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(155, 13);
+            this.label8.TabIndex = 6;
+            this.label8.Text = "Confectionary Type Description";
+            // 
             // txtTypeName
             // 
             this.txtTypeName.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.txtTypeName.Location = new System.Drawing.Point(184, 104);
             this.txtTypeName.Name = "txtTypeName";
             this.txtTypeName.Size = new System.Drawing.Size(208, 22);
-            this.txtTypeName.TabIndex = 3;
-            // 
-            // btnFinalConfirmation
-            // 
-            this.btnFinalConfirmation.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.btnFinalConfirmation.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnFinalConfirmation.ForeColor = System.Drawing.Color.White;
-            this.btnFinalConfirmation.Location = new System.Drawing.Point(159, 343);
-            this.btnFinalConfirmation.Name = "btnFinalConfirmation";
-            this.btnFinalConfirmation.Size = new System.Drawing.Size(132, 73);
-            this.btnFinalConfirmation.TabIndex = 2;
-            this.btnFinalConfirmation.Text = "FINAL CONFIRMATION AND FINISH";
-            this.btnFinalConfirmation.UseVisualStyleBackColor = true;
-            this.btnFinalConfirmation.Visible = false;
-            this.btnFinalConfirmation.Click += new System.EventHandler(this.btnFinalConfirmation_Click);
-            // 
-            // btnCancelType
-            // 
-            this.btnCancelType.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.btnCancelType.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCancelType.ForeColor = System.Drawing.Color.White;
-            this.btnCancelType.Location = new System.Drawing.Point(225, 297);
-            this.btnCancelType.Name = "btnCancelType";
-            this.btnCancelType.Size = new System.Drawing.Size(139, 46);
-            this.btnCancelType.TabIndex = 1;
-            this.btnCancelType.Text = "Cancel Editing";
-            this.btnCancelType.UseVisualStyleBackColor = true;
-            this.btnCancelType.Click += new System.EventHandler(this.btnCancelType_Click);
-            // 
-            // btnConfirmType
-            // 
-            this.btnConfirmType.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.btnConfirmType.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnConfirmType.ForeColor = System.Drawing.Color.White;
-            this.btnConfirmType.Location = new System.Drawing.Point(86, 297);
-            this.btnConfirmType.Name = "btnConfirmType";
-            this.btnConfirmType.Size = new System.Drawing.Size(139, 46);
-            this.btnConfirmType.TabIndex = 0;
-            this.btnConfirmType.Text = "Confirm Changes";
-            this.btnConfirmType.UseVisualStyleBackColor = true;
-            this.btnConfirmType.Click += new System.EventHandler(this.btnConfirmType_Click);
+            this.txtTypeName.TabIndex = 0;
             // 
             // txtItemName
             // 
@@ -703,28 +721,6 @@
             this.panelItem.Size = new System.Drawing.Size(682, 671);
             this.panelItem.TabIndex = 1;
             // 
-            // errorProviderItem
-            // 
-            this.errorProviderItem.ContainerControl = this;
-            // 
-            // grpTypeChange
-            // 
-            this.grpTypeChange.Controls.Add(this.btnConfirmType);
-            this.grpTypeChange.Controls.Add(this.btnCancelType);
-            this.grpTypeChange.Controls.Add(this.btnFinalConfirmation);
-            this.grpTypeChange.Controls.Add(this.txtTypeDescription);
-            this.grpTypeChange.Controls.Add(this.label7);
-            this.grpTypeChange.Controls.Add(this.label8);
-            this.grpTypeChange.Controls.Add(this.txtTypeName);
-            this.grpTypeChange.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
-            this.grpTypeChange.ForeColor = System.Drawing.Color.White;
-            this.grpTypeChange.Location = new System.Drawing.Point(117, 78);
-            this.grpTypeChange.Name = "grpTypeChange";
-            this.grpTypeChange.Size = new System.Drawing.Size(447, 518);
-            this.grpTypeChange.TabIndex = 9;
-            this.grpTypeChange.TabStop = false;
-            this.grpTypeChange.Text = "groupBox2";
-            // 
             // grpItemChange
             // 
             this.grpItemChange.Controls.Add(this.txtItemName);
@@ -747,6 +743,10 @@
             this.grpItemChange.TabStop = false;
             this.grpItemChange.Text = "groupBox3";
             // 
+            // errorProviderItem
+            // 
+            this.errorProviderItem.ContainerControl = this;
+            // 
             // errorProviderType
             // 
             this.errorProviderType.ContainerControl = this;
@@ -757,8 +757,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(19)))), ((int)(((byte)(41)))), ((int)(((byte)(61)))));
             this.ClientSize = new System.Drawing.Size(682, 671);
-            this.Controls.Add(this.panelMain);
             this.Controls.Add(this.panelType);
+            this.Controls.Add(this.panelMain);
             this.Controls.Add(this.panelItem);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "frmStock";
@@ -777,12 +777,12 @@
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.panelType.ResumeLayout(false);
-            this.panelItem.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.errorProviderItem)).EndInit();
             this.grpTypeChange.ResumeLayout(false);
             this.grpTypeChange.PerformLayout();
+            this.panelItem.ResumeLayout(false);
             this.grpItemChange.ResumeLayout(false);
             this.grpItemChange.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderItem)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderType)).EndInit();
             this.ResumeLayout(false);
 
