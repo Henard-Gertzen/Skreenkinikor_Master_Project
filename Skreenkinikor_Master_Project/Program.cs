@@ -17,6 +17,8 @@ namespace Skreenkinikor_Master_Project
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new frmLogin());
+            string dataDirectory = AppDomain.CurrentDomain.BaseDirectory;
+            AppDomain.CurrentDomain.SetData("DataDirectory", dataDirectory);
         }
     }
 }
