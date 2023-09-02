@@ -140,13 +140,19 @@ namespace Skreenkinikor_Master_Project
             }
         }
 
-        private void dgvConItems_CellClick(object sender, DataGridViewCellEventArgs e)
+        
+
+       
+
+        private void dgvConItems_CellClick_1(object sender, DataGridViewCellEventArgs e)
         {
-
-
+            // the name of the item clicked is saved into the item variable
+            item = dgvConItems.Rows[e.RowIndex].Cells["Confectionary_Name"].Value.ToString();
         }
 
-        private void btnAdd_Click(object sender, EventArgs e)
+
+
+        private void btnAdd_Click_1(object sender, EventArgs e)
         {
             // receives the amount the user wants to order
             amount = (int)nudAmount.Value;
@@ -167,7 +173,7 @@ namespace Skreenkinikor_Master_Project
 
                 string sql = $"SELECT Confectionary_Stock FROM Confectionary_Item WHERE Confectionary_Name = '{item}'";
 
-                using (SqlCommand command = new SqlCommand(sql,conn))
+                using (SqlCommand command = new SqlCommand(sql, conn))
                 {
                     available = (int)command.ExecuteScalar();
                 }
@@ -180,105 +186,19 @@ namespace Skreenkinikor_Master_Project
                 return;
             }
 
-           
+
 
             // calls the method to add the item and the amount to the linked list
-           list.AddItem(item, amount);
+            list.AddItem(item, amount);
 
-           // adds the selected item and quantity to the listbox
-           lbItems.Items.Add(item + " x " + amount.ToString());
-            
+            // adds the selected item and quantity to the listbox
+            lbItems.Items.Add(item + " x " + amount.ToString());
+
 
             //list.ShowListInMessageBox();
         }
 
-        private void dgvConItems_CellClick_1(object sender, DataGridViewCellEventArgs e)
-        {
-            // the name of the item clicked is saved into the item variable
-            item = dgvConItems.Rows[e.RowIndex].Cells["Confectionary_Name"].Value.ToString();
-        }
-
-        private void btnDelete_Click(object sender, EventArgs e)
-        {
-            tempItem = lbItems.SelectedItem.ToString();
-
-            try
-            {
-                // splits the selected item into their respective parts (item and amount)
-
-                var parts = tempItem.Split(new[] { " x " }, StringSplitOptions.None);
-                var item = parts[0];
-                var ampount = int.Parse(parts[1]);
-
-                // remove function is called
-                list.RemoveItem(item);
-
-                
-                lbItems.Items.Clear();
-
-
-                // loop through the linkedlist and displays its contents
-                var current = list.Head;
-                while (current != null)
-                {
-                    lbItems.Items.Add(current.Item + " x " + current.Amount.ToString());
-                    current = current.Next;
-                }
-
-            }
-            catch
-            {
-                MessageBox.Show("Please select an item!");
-            }
-        }
-
-
-
-        private void btnEdit_Click(object sender, EventArgs e)
-        {
-            // receive the selected item from the listbox
-            tempItem = lbItems.SelectedItem.ToString();
-
-            
-           
-
-            // try catch to ensure the user selects an item to edit
-            try
-            {
-                // splits the selected item into their respective parts (item and amount)
-
-                var parts = tempItem.Split(new[] { " x " }, StringSplitOptions.None);
-                var item = parts[0];
-                var ampount = int.Parse(parts[1]);
-
-                // new value to be inserted into the list
-                tempAmount = (int)nudAmount.Value;
-
-                // edit method is called
-                list.editAmount(item, tempAmount);
-
-                // listbox is cleared in order to display the updated list
-                lbItems.Items.Clear();
-
-                // loop through the linkedlist and displays its contents
-                var current = list.Head;
-                
-
-                while (current != null)
-                {
-                    lbItems.Items.Add(current.Item + " x " + current.Amount.ToString());
-                    current = current.Next;
-                }
-            }
-            catch
-            {
-                MessageBox.Show("Please select an item");
-            }
-           
-
-        }
-
-        private void btnProceed_Click_1(object sender, EventArgs e)
+        private void btnProceed_Click_2(object sender, EventArgs e)
         {
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
@@ -304,7 +224,7 @@ namespace Skreenkinikor_Master_Project
                                 // Sets the parameter values
                                 command.Parameters["@Amount"].Value = current.Amount;
                                 command.Parameters["@Item"].Value = current.Item;
-                                
+
                                 //update statement is executed
                                 command.ExecuteNonQuery();
 
@@ -329,7 +249,82 @@ namespace Skreenkinikor_Master_Project
             }
 
             MessageBox.Show("Thank you for your purchase!");
-                
+        }
+
+        private void btnDelete_Click_1(object sender, EventArgs e)
+        {
+            tempItem = lbItems.SelectedItem.ToString();
+
+            try
+            {
+                // splits the selected item into their respective parts (item and amount)
+
+                var parts = tempItem.Split(new[] { " x " }, StringSplitOptions.None);
+                var item = parts[0];
+                var ampount = int.Parse(parts[1]);
+
+                // remove function is called
+                list.RemoveItem(item);
+
+
+                lbItems.Items.Clear();
+
+
+                // loop through the linkedlist and displays its contents
+                var current = list.Head;
+                while (current != null)
+                {
+                    lbItems.Items.Add(current.Item + " x " + current.Amount.ToString());
+                    current = current.Next;
+                }
+
+            }
+            catch
+            {
+                MessageBox.Show("Please select an item!");
+            }
+        }
+
+        private void btnEdit_Click_1(object sender, EventArgs e)
+        {
+            // receive the selected item from the listbox
+            tempItem = lbItems.SelectedItem.ToString();
+
+
+
+
+            // try catch to ensure the user selects an item to edit
+            try
+            {
+                // splits the selected item into their respective parts (item and amount)
+
+                var parts = tempItem.Split(new[] { " x " }, StringSplitOptions.None);
+                var item = parts[0];
+                var ampount = int.Parse(parts[1]);
+
+                // new value to be inserted into the list
+                tempAmount = (int)nudAmount.Value;
+
+                // edit method is called
+                list.editAmount(item, tempAmount);
+
+                // listbox is cleared in order to display the updated list
+                lbItems.Items.Clear();
+
+                // loop through the linkedlist and displays its contents
+                var current = list.Head;
+
+
+                while (current != null)
+                {
+                    lbItems.Items.Add(current.Item + " x " + current.Amount.ToString());
+                    current = current.Next;
+                }
+            }
+            catch
+            {
+                MessageBox.Show("Please select an item");
+            }
         }
     }
 }
