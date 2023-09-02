@@ -23,6 +23,10 @@ namespace Skreenkinikor_Master_Project
         private string Name, Description;
         private decimal Price;
         private string delMovie;
+        private string MovieName, MovieDesc;
+        private decimal MoviePrice;
+
+        
 
         private void frmMovies_Load(object sender, EventArgs e)
         {
@@ -109,15 +113,34 @@ namespace Skreenkinikor_Master_Project
                 MessageBox.Show("Please enter a valid price for seating!");
             }
             displayDB();
+            txtMovieDesc.Clear();
+            txtMoviePrice.Clear();
+            txtMovieName.Clear();
+
         }
 
         private void dgvMovies_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+            // adds the values of the selected datagrid into variables
             delMovie = dgvMovies.Rows[e.RowIndex].Cells["Movie_Name"].Value.ToString();
+            MovieName = dgvMovies.Rows[e.RowIndex].Cells["Movie_Name"].Value.ToString();
+            MovieDesc = dgvMovies.Rows[e.RowIndex].Cells["Movie_Description"].Value.ToString();
+            MoviePrice = (decimal)dgvMovies.Rows[e.RowIndex].Cells["Seat_Price"].Value;
+
+            // the textboxes are populated with the values
+            txtMovieName.Text = MovieName;
+            txtMovieDesc.Text = MovieDesc;
+            txtMoviePrice.Text = MoviePrice.ToString();
         }
 
         private void btnRemoveMovie_Click(object sender, EventArgs e)
         {
+            if (delMovie == "")
+            {
+                MessageBox.Show("Please select a movie to delete");
+                return;
+            }
+
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
                 try
@@ -140,13 +163,23 @@ namespace Skreenkinikor_Master_Project
             }
             MessageBox.Show("Movie deleted");
             displayDB();
+
+            txtMovieDesc.Clear();
+            txtMoviePrice.Clear();
+            txtMovieName.Clear();
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
 
+            if (MovieName == "")
+            {
+                MessageBox.Show("Please select a movie to delete");
+                return;
+            }
 
             
+
         }
     }
 }
