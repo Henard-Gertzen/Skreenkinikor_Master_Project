@@ -22,10 +22,54 @@ namespace Skreenkinikor_Master_Project
         private string connectionString = ConnectionStrings.conSkreenMainStr;
         private string Name, Description;
         private decimal Price;
+        private string delMovie;
+        private string MovieName, MovieDesc;
+        private decimal MoviePrice;
+
+        
 
         private void frmMovies_Load(object sender, EventArgs e)
         {
-            
+            displayDB();
+        }
+        private void displayDB()
+        {
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                try
+                {
+                    conn.Open();
+
+                    // displays the Movie, description and price
+                    string sql = "SELECT Movie_Name, Movie_Description, Seat_Price FROM Movie_Info";
+                    using (SqlCommand command = new SqlCommand(sql, conn))
+                    {
+                        using (SqlDataAdapter dataAdapter = new SqlDataAdapter())
+                        {
+                            using (DataSet ds = new DataSet())
+                            {
+
+
+                                dataAdapter.SelectCommand = command;
+                                dataAdapter.Fill(ds, "Movie_Info");
+
+
+
+                                dgvMovies.DataSource = ds;
+                                dgvMovies.DataMember = "Movie_Info";
+
+                                dgvMovies.Columns["Movie_name"].HeaderText = "Movie";
+                                dgvMovies.Columns["Movie_Description"].HeaderText = "Description";
+                                dgvMovies.Columns["Seat_Price"].HeaderText = "Price";
+                            }
+                        }
+                    }
+                }
+                catch (SqlException error)
+                {
+                    MessageBox.Show(error.Message);
+                }
+            }
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -68,13 +112,74 @@ namespace Skreenkinikor_Master_Project
             {
                 MessageBox.Show("Please enter a valid price for seating!");
             }
+            displayDB();
+            txtMovieDesc.Clear();
+            txtMoviePrice.Clear();
+            txtMovieName.Clear();
+
+        }
+
+        private void dgvMovies_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            // adds the values of the selected datagrid into variables
+            delMovie = dgvMovies.Rows[e.RowIndex].Cells["Movie_Name"].Value.ToString();
+            MovieName = dgvMovies.Rows[e.RowIndex].Cells["Movie_Name"].Value.ToString();
+            MovieDesc = dgvMovies.Rows[e.RowIndex].Cells["Movie_Description"].Value.ToString();
+            MoviePrice = (decimal)dgvMovies.Rows[e.RowIndex].Cells["Seat_Price"].Value;
+
+            // the textboxes are populated with the values
+            txtMovieName.Text = MovieName;
+            txtMovieDesc.Text = MovieDesc;
+            txtMoviePrice.Text = MoviePrice.ToString();
+        }
+
+        private void btnRemoveMovie_Click(object sender, EventArgs e)
+        {
+            if (delMovie == "")
+            {
+                MessageBox.Show("Please select a movie to delete");
+                return;
+            }
+
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                try
+                {
+                    conn.Open();
+                    string sql = $"DELETE FROM Movie_Info WHERE Movie_Name = '{delMovie}'";
+                    using (SqlCommand command = new SqlCommand(sql, conn))
+                    {
+                        using (SqlDataAdapter adapter = new SqlDataAdapter())
+                        {
+                            adapter.DeleteCommand = command;
+                            adapter.DeleteCommand.ExecuteNonQuery();
+                        }
+                    }
+                }
+                catch (SqlException error)
+                {
+                    MessageBox.Show(error.Message);
+                }
+            }
+            MessageBox.Show("Movie deleted");
+            displayDB();
+
+            txtMovieDesc.Clear();
+            txtMoviePrice.Clear();
+            txtMovieName.Clear();
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
 
+            if (MovieName == "")
+            {
+                MessageBox.Show("Please select a movie to delete");
+                return;
+            }
 
             
+
         }
     }
 }

@@ -18,7 +18,7 @@ namespace Skreenkinikor_Master_Project
         private DateTime selectedTime;
         private string connectionString = ConnectionStrings.conSkreenMainStr;
 
-        //add data to combobox
+        //Populate ComboBox with movie names
         private void PopulateMovieComboBox()
         {
             comboBox1.Items.Clear();
@@ -47,6 +47,7 @@ namespace Skreenkinikor_Master_Project
             }
         }
 
+        //Insert Movie to Schedule
         private void InsertMovieOnSchedule(int movieID, int scheduleID)
         {
             using (SqlConnection connection = new SqlConnection(connectionString))
@@ -71,6 +72,7 @@ namespace Skreenkinikor_Master_Project
             }
         }
 
+        //Displays the upcoming moveis for the next 2 weeks
         private void ShowUpcomingMoviesInDataGridView(DataGridView dataGridView)
         {
             DateTime startDate = DateTime.Now.Date;
@@ -138,6 +140,7 @@ namespace Skreenkinikor_Master_Project
             return scheduleID; 
         }
 
+        //Update the schedule to the selected movie
         private void ModifySchedule(int scheduleID, int currentMovieID, int replacementMovieID)
         {
             using (SqlConnection connection = new SqlConnection(connectionString))
@@ -172,7 +175,7 @@ namespace Skreenkinikor_Master_Project
             }
         }
 
-        //get the selected movie id
+        //Get ID of Selected Movie
         private int GetSelectedMovieID(string selectedMovieName)
         {
 
@@ -205,7 +208,7 @@ namespace Skreenkinikor_Master_Project
             return movieID;
         }
 
-        // Function to get the name of the movie from the selected row
+        // Get the name of the movie from the selected row
         private string GetMovieName()
         {
             if (dataGridView1.SelectedRows.Count > 0)
@@ -233,6 +236,7 @@ namespace Skreenkinikor_Master_Project
             return null;
         }
 
+        //Get the showtime
         private string GetMovieTime()
         {
             if (dataGridView1.SelectedRows.Count > 0)
@@ -260,6 +264,7 @@ namespace Skreenkinikor_Master_Project
             return null; 
         }
 
+        //Get the date
         private string GetMovieDate()
         {
             if (dataGridView1.SelectedRows.Count > 0)
@@ -290,6 +295,7 @@ namespace Skreenkinikor_Master_Project
             return null; 
         }
 
+        //Get schedule ID
         private int GetScheduleID(string dayShown, string timeslot)
         {
             int scheduleID = -1; 
@@ -300,8 +306,8 @@ namespace Skreenkinikor_Master_Project
 
                 using (SqlCommand command = new SqlCommand(query, connection))
                 {
-                    command.Parameters.AddWithValue("@DayShown", DateTime.Parse(dayShown).Date); // Parse the date string to DateTime and use Date property to remove time component
-                    command.Parameters.AddWithValue("@Timeslot", TimeSpan.Parse(timeslot)); // Parse the timeslot string to TimeSpan
+                    command.Parameters.AddWithValue("@DayShown", DateTime.Parse(dayShown).Date); 
+                    command.Parameters.AddWithValue("@Timeslot", TimeSpan.Parse(timeslot)); 
 
                     try
                     {
@@ -322,6 +328,7 @@ namespace Skreenkinikor_Master_Project
             return scheduleID;
         }
 
+        //Delete movie from schedule
         private void DeleteSchedule(int scheduleID)
         {
             using (SqlConnection connection = new SqlConnection(connectionString))
@@ -346,6 +353,7 @@ namespace Skreenkinikor_Master_Project
             }
         }
 
+        //Delete data from movie on schedule
         private void DeleteMovieOnSchedule(int scheduleID)
         {
             using (SqlConnection connection = new SqlConnection(connectionString))
@@ -370,6 +378,7 @@ namespace Skreenkinikor_Master_Project
             }
         }
 
+        //Make sure no schedule conflicts
         private bool IsScheduleConflict(DateTime date, DateTime timeSlot)
         {          
             using (SqlConnection connection = new SqlConnection(connectionString))
@@ -397,6 +406,7 @@ namespace Skreenkinikor_Master_Project
             return false; 
         }
 
+        //Make sure no date conflicts
         private bool IsMovieScheduledForDate(int movieID, DateTime date)
         {
             using (SqlConnection connection = new SqlConnection(connectionString))
@@ -447,12 +457,17 @@ namespace Skreenkinikor_Master_Project
         {
             int scheduleID;
 
-            string selectedMovieName = comboBox1.SelectedItem != null ? comboBox1.SelectedItem.ToString() : string.Empty;
+            string selectedMovieName = string.Empty;
+
+            if (comboBox1.SelectedItem != null)
+            {
+                selectedMovieName = comboBox1.SelectedItem.ToString();
+            }
 
             if (string.IsNullOrEmpty(selectedMovieName))
             {
                 MessageBox.Show("Please select a movie.");
-                return; // Return early if no movie is selected.
+                return; 
             }
 
             switch (true)
@@ -471,29 +486,25 @@ namespace Skreenkinikor_Master_Project
                     break;
                 default:
                     MessageBox.Show("Please select a show option.");
-                    return; // Return early if no show option is selected.
+                    return; 
             }
 
             int selectedMovieID = GetSelectedMovieID(selectedMovieName);
 
-            // Get the date from the date picker control.
             DateTime selectedDate = dateTimePicker1.Value.Date;
 
-            // Check if the movie is already scheduled for the selected date.
             if (IsMovieScheduledForDate(selectedMovieID, selectedDate))
             {
                 MessageBox.Show("The selected movie is already scheduled for the chosen date.");
-                return; // Return early to prevent adding the same movie again.
+                return;
             }
 
-            // Check for schedule conflicts before inserting a new schedule.
             if (IsScheduleConflict(selectedDate, selectedTime))
             {
                 MessageBox.Show("Schedule conflict! This date and time already exist in the schedule.");
-                return; // Return early if there's a conflict.
+                return; 
             }
 
-            // Insert the schedule and movie on schedule.
             scheduleID = InsertSchedule(selectedDate, selectedTime);
             InsertMovieOnSchedule(selectedMovieID, scheduleID);
             ShowUpcomingMoviesInDataGridView(dataGridView1);
@@ -517,12 +528,19 @@ namespace Skreenkinikor_Master_Project
         {
             PopulateMovieComboBox();
             ShowUpcomingMoviesInDataGridView(dataGridView1);
+            lblStartDate.Text = dateTimePicker1.Value.ToString("MMM dd, yyyy");
         }
 
         private void btnModify_Click(object sender, EventArgs e)
         {
             string currentMovieName = GetMovieName();
-            string replacementMovieName = comboBox1.SelectedItem != null ? comboBox1.SelectedItem.ToString() : string.Empty;
+            string replacementMovieName = string.Empty;
+
+            if (comboBox1.SelectedItem != null)
+            {
+                replacementMovieName = comboBox1.SelectedItem.ToString();
+            }
+
 
             int currentMovieID = GetSelectedMovieID(currentMovieName);
             int replacementMovieID = GetSelectedMovieID(replacementMovieName);
@@ -531,8 +549,20 @@ namespace Skreenkinikor_Master_Project
             string time = GetMovieTime();
 
             int scheduleID = GetScheduleID(date, time);
+
+            if (IsMovieScheduledForDate(replacementMovieID, DateTime.Parse(date)))
+            {
+                MessageBox.Show("The selected movie is already scheduled for the chosen date.");
+                return;
+            }
+
             ModifySchedule(scheduleID, currentMovieID, replacementMovieID);
             ShowUpcomingMoviesInDataGridView(dataGridView1);
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }
