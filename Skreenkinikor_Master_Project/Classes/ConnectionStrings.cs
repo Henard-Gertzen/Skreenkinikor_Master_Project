@@ -8,7 +8,7 @@ using System.Configuration;
 namespace Skreenkinikor_Master_Project.Classes
 {
     public static class ConnectionStrings
-    {
+    {//Con strings are in App.config
         public static readonly string conLoginStr = ConfigurationManager.ConnectionStrings["SkLogin"].ConnectionString;
         public static readonly string conSkreenMainStr = ConfigurationManager.ConnectionStrings["SkMain"].ConnectionString;
     }

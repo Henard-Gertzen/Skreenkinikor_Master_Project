@@ -81,70 +81,94 @@ namespace Skreenkinikor_Master_Project
         //Validate password and user
         private bool ValidateLogin(string username, string password)
         {
-            using (SqlConnection con = new SqlConnection(conStr))
+            try
             {
-                con.Open();
-                string checkDetails = "SELECT * FROM Login_Table WHERE Username = @username AND Password = @password";
-                using (SqlCommand cmd = new SqlCommand(checkDetails, con))
+                using (SqlConnection con = new SqlConnection(conStr))
                 {
-                    cmd.Parameters.AddWithValue("@username", username);
-                    cmd.Parameters.AddWithValue("@password", password);
+                    con.Open();
+                    string checkDetails = "SELECT * FROM Login_Table WHERE Username = @username AND Password = @password";
+                    using (SqlCommand cmd = new SqlCommand(checkDetails, con))
+                    {
+                        cmd.Parameters.AddWithValue("@username", username);
+                        cmd.Parameters.AddWithValue("@password", password);
 
-                    bool isValid = Convert.ToInt32(cmd.ExecuteScalar()) > 0;
-                    con.Close();
-                    return isValid;
+                        bool isValid = Convert.ToInt32(cmd.ExecuteScalar()) > 0;
+                        con.Close();
+                        return isValid;
+                    }
                 }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error occurred: " + ex);
+                return false;
             }
         }
         //Check if user is admin
         private bool checkIfAdmin(string user)
         {
-            using (SqlConnection con = new SqlConnection(conStr))
+            try
             {
-                con.Open();
-                string checkAdmin = "SELECT IsAdmin FROM Login_Table WHERE Username = @user"; ;
-                using (SqlCommand cmd = new SqlCommand(checkAdmin, con))
+                using (SqlConnection con = new SqlConnection(conStr))
                 {
-                    cmd.Parameters.AddWithValue("@user", user);
-
-                    object isAdminObj = cmd.ExecuteScalar();
-
-                    if (isAdminObj != null && isAdminObj != DBNull.Value)
+                    con.Open();
+                    string checkAdmin = "SELECT IsAdmin FROM Login_Table WHERE Username = @user"; ;
+                    using (SqlCommand cmd = new SqlCommand(checkAdmin, con))
                     {
-                        bool isAdmin = Convert.ToBoolean(isAdminObj);
-                        return isAdmin;
-                    }
+                        cmd.Parameters.AddWithValue("@user", user);
 
-                    con.Close();
-                    return false;
+                        object isAdminObj = cmd.ExecuteScalar();
+
+                        if (isAdminObj != null && isAdminObj != DBNull.Value)
+                        {
+                            bool isAdmin = Convert.ToBoolean(isAdminObj);
+                            return isAdmin;
+                        }
+
+                        con.Close();
+                        return false;
+                    }
                 }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error occurred: " + ex);
+                return false;
             }
         }
 
         private string userModel(string user)
         {
-            using (SqlConnection con = new SqlConnection(conStr))
+            try
             {
-                con.Open();
-                string getUser = "SELECT * FROM Login_Table WHERE Username = @user";
-                using (SqlCommand cmd = new SqlCommand(getUser, con))
+                using (SqlConnection con = new SqlConnection(conStr))
                 {
-                    cmd.Parameters.AddWithValue("@user", user);
-
-                    using(SqlDataReader reader = cmd.ExecuteReader())
+                    con.Open();
+                    string getUser = "SELECT * FROM Login_Table WHERE Username = @user";
+                    using (SqlCommand cmd = new SqlCommand(getUser, con))
                     {
-                        if (reader.Read())
+                        cmd.Parameters.AddWithValue("@user", user);
+
+                        using (SqlDataReader reader = cmd.ExecuteReader())
                         {
-                            string firstName = reader.GetString(3);
-                            UserSession.logFullName(firstName);
-                            string lastName = reader.GetString(4);
-                            return firstName + " " +lastName;
+                            if (reader.Read())
+                            {
+                                string firstName = reader.GetString(3);
+                                UserSession.logFullName(firstName);
+                                string lastName = reader.GetString(4);
+                                return firstName + " " + lastName;
+                            }
                         }
                     }
+                    con.Close();
                 }
-                con.Close();
+                return string.Empty;
             }
-            return string.Empty;
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error occurred: " + ex);
+                return String.Empty;
+            }
         }
 
         private void label2_Click(object sender, EventArgs e)
