@@ -17,12 +17,16 @@ namespace Skreenkinikor_Master_Project
         public frmCon_Sale()
         {
             InitializeComponent();
+
         }
 
         private string connectionString = ConnectionStrings.conSkreenMainStr;
         private string item;
         private int amount;
+        private string tempItem;
+        private int tempAmount;
         private LinkedList list = new LinkedList();
+       
 
         private void btnClose_Click(object sender, EventArgs e)
         {
@@ -41,6 +45,11 @@ namespace Skreenkinikor_Master_Project
             lblAmount.Visible = false;
             nudAmount.Visible = false;
             btnAdd.Visible = false;
+            lblDelete.Visible = false;
+            lbItems.Visible = false;
+            lblEdit.Visible = false;
+            btnEdit.Visible = false;
+            btnDelete.Visible = false;
             
 
             using (SqlConnection conn = new SqlConnection(connectionString))
@@ -136,20 +145,37 @@ namespace Skreenkinikor_Master_Project
         {
             amount = (int)nudAmount.Value;
 
+            lbItems.Visible = true;
+            lblDelete.Visible = true;
+            lblEdit.Visible = true;
+            btnEdit.Visible = true;
+            btnDelete.Visible = true;
+
             
             // calls the method to add the item and the amount to the linked list
             list.AddItem(item, amount);
 
-
+           
             
+            lbItems.Items.Add(item + " x " + amount.ToString()); 
 
-            list.ShowListInMessageBox();
+            //list.ShowListInMessageBox();
         }
 
         private void dgvConItems_CellClick_1(object sender, DataGridViewCellEventArgs e)
         {
             // the name of the item clicked is saved into the item variable
             item = dgvConItems.Rows[e.RowIndex].Cells["Confectionary_Name"].Value.ToString();
+        }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnEdit_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
