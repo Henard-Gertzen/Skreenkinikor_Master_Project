@@ -39,6 +39,11 @@
             this.lblSearch = new System.Windows.Forms.Label();
             this.dgvConItems = new System.Windows.Forms.DataGridView();
             this.txtSearch = new System.Windows.Forms.TextBox();
+            this.btnDelete = new System.Windows.Forms.Button();
+            this.lbItems = new System.Windows.Forms.ListBox();
+            this.lblDelete = new System.Windows.Forms.Label();
+            this.btnEdit = new System.Windows.Forms.Button();
+            this.lblEdit = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudAmount)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvConItems)).BeginInit();
@@ -68,6 +73,7 @@
             this.btnProceed.TabIndex = 12;
             this.btnProceed.Text = "Proceed";
             this.btnProceed.UseVisualStyleBackColor = true;
+            this.btnProceed.Click += new System.EventHandler(this.btnProceed_Click_1);
             // 
             // btnAdd
             // 
@@ -165,12 +171,69 @@
             this.txtSearch.TabIndex = 1;
             this.txtSearch.TextChanged += new System.EventHandler(this.txtSearch_TextChanged);
             // 
+            // btnDelete
+            // 
+            this.btnDelete.Location = new System.Drawing.Point(203, 330);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(206, 36);
+            this.btnDelete.TabIndex = 13;
+            this.btnDelete.Text = "Delete Item";
+            this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
+            // 
+            // lbItems
+            // 
+            this.lbItems.FormattingEnabled = true;
+            this.lbItems.Items.AddRange(new object[] {
+            " "});
+            this.lbItems.Location = new System.Drawing.Point(0, 303);
+            this.lbItems.Name = "lbItems";
+            this.lbItems.Size = new System.Drawing.Size(194, 173);
+            this.lbItems.TabIndex = 1;
+            // 
+            // lblDelete
+            // 
+            this.lblDelete.AutoSize = true;
+            this.lblDelete.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDelete.ForeColor = System.Drawing.Color.White;
+            this.lblDelete.Location = new System.Drawing.Point(200, 303);
+            this.lblDelete.Name = "lblDelete";
+            this.lblDelete.Size = new System.Drawing.Size(242, 15);
+            this.lblDelete.TabIndex = 2;
+            this.lblDelete.Text = "Click on the item you want to remove or edit";
+            // 
+            // btnEdit
+            // 
+            this.btnEdit.Location = new System.Drawing.Point(203, 372);
+            this.btnEdit.Name = "btnEdit";
+            this.btnEdit.Size = new System.Drawing.Size(206, 36);
+            this.btnEdit.TabIndex = 14;
+            this.btnEdit.Text = "Edit Item";
+            this.btnEdit.UseVisualStyleBackColor = true;
+            this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
+            // 
+            // lblEdit
+            // 
+            this.lblEdit.AutoSize = true;
+            this.lblEdit.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblEdit.ForeColor = System.Drawing.Color.White;
+            this.lblEdit.Location = new System.Drawing.Point(200, 411);
+            this.lblEdit.Name = "lblEdit";
+            this.lblEdit.Size = new System.Drawing.Size(242, 15);
+            this.lblEdit.TabIndex = 15;
+            this.lblEdit.Text = "Click on the item you want to remove or edit";
+            // 
             // frmCon_Sale
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(19)))), ((int)(((byte)(41)))), ((int)(((byte)(61)))));
-            this.ClientSize = new System.Drawing.Size(645, 304);
+            this.ClientSize = new System.Drawing.Size(640, 480);
+            this.Controls.Add(this.lblEdit);
+            this.Controls.Add(this.btnEdit);
+            this.Controls.Add(this.btnDelete);
+            this.Controls.Add(this.lblDelete);
+            this.Controls.Add(this.lbItems);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "frmCon_Sale";
@@ -181,6 +244,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.nudAmount)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvConItems)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -194,5 +258,10 @@
         private System.Windows.Forms.Label lblSearch;
         private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.Button btnProceed;
+        private System.Windows.Forms.Button btnDelete;
+        private System.Windows.Forms.ListBox lbItems;
+        private System.Windows.Forms.Label lblDelete;
+        private System.Windows.Forms.Button btnEdit;
+        private System.Windows.Forms.Label lblEdit;
     }
 }
