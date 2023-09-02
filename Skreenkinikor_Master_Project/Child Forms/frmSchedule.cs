@@ -74,7 +74,7 @@ namespace Skreenkinikor_Master_Project
         private void ShowUpcomingMoviesInDataGridView(DataGridView dataGridView)
         {
             DateTime startDate = DateTime.Now.Date;
-            DateTime endDate = startDate.AddDays(7);
+            DateTime endDate = startDate.AddDays(14);
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
@@ -397,6 +397,34 @@ namespace Skreenkinikor_Master_Project
             return false; 
         }
 
+        private bool IsMovieScheduledForDate(int movieID, DateTime date)
+        {
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                string query = "SELECT COUNT(*) FROM Movie_On_Schedule " +
+                               "INNER JOIN Schedule ON Movie_On_Schedule.Schedule_ID = Schedule.Schedule_ID " +
+                               "WHERE Movie_On_Schedule.Movie_ID = @MovieID AND Schedule.Day_Shown = @DayShown";
+
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@MovieID", movieID);
+                    command.Parameters.AddWithValue("@DayShown", date.Date);
+
+                    try
+                    {
+                        connection.Open();
+                        int count = Convert.ToInt32(command.ExecuteScalar());
+                        return count > 0; 
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Error: " + ex.Message);
+                    }
+                }
+            }
+
+            return false; 
+        }
 
 
         public frmSchedule()
@@ -419,6 +447,14 @@ namespace Skreenkinikor_Master_Project
         {
             int scheduleID;
 
+            string selectedMovieName = comboBox1.SelectedItem != null ? comboBox1.SelectedItem.ToString() : string.Empty;
+
+            if (string.IsNullOrEmpty(selectedMovieName))
+            {
+                MessageBox.Show("Please select a movie.");
+                return; // Return early if no movie is selected.
+            }
+
             switch (true)
             {
                 case var _ when rdoFirstShow.Checked:
@@ -435,32 +471,34 @@ namespace Skreenkinikor_Master_Project
                     break;
                 default:
                     MessageBox.Show("Please select a show option.");
-                    return; 
+                    return; // Return early if no show option is selected.
             }
 
-            string selectedMovieName = comboBox1.SelectedItem != null ? comboBox1.SelectedItem.ToString() : string.Empty;
+            int selectedMovieID = GetSelectedMovieID(selectedMovieName);
 
-            if (!string.IsNullOrEmpty(selectedMovieName))
+            // Get the date from the date picker control.
+            DateTime selectedDate = dateTimePicker1.Value.Date;
+
+            // Check if the movie is already scheduled for the selected date.
+            if (IsMovieScheduledForDate(selectedMovieID, selectedDate))
             {
-                int selectedMovieID = GetSelectedMovieID(selectedMovieName);
-
-                DateTime selectedDate = dateTimePicker1.Value.Date;
-
-                if (IsScheduleConflict(selectedDate, selectedTime))
-                {
-                    MessageBox.Show("Schedule conflict! This date and time already exist in the schedule.");
-                    return; 
-                }
-
-                scheduleID = InsertSchedule(selectedDate, selectedTime);
-                InsertMovieOnSchedule(selectedMovieID, scheduleID);
-                ShowUpcomingMoviesInDataGridView(dataGridView1);
+                MessageBox.Show("The selected movie is already scheduled for the chosen date.");
+                return; // Return early to prevent adding the same movie again.
             }
-            else
+
+            // Check for schedule conflicts before inserting a new schedule.
+            if (IsScheduleConflict(selectedDate, selectedTime))
             {
-                MessageBox.Show("Please select a movie.");
+                MessageBox.Show("Schedule conflict! This date and time already exist in the schedule.");
+                return; // Return early if there's a conflict.
             }
+
+            // Insert the schedule and movie on schedule.
+            scheduleID = InsertSchedule(selectedDate, selectedTime);
+            InsertMovieOnSchedule(selectedMovieID, scheduleID);
+            ShowUpcomingMoviesInDataGridView(dataGridView1);
         }
+
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
