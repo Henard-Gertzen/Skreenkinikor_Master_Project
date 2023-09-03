@@ -149,8 +149,23 @@ namespace Skreenkinikor_Master_Project
 
         private void btnRefresh_Click(object sender, EventArgs e)
         {
-            dataGridView1.DataSource = null; // Clear the current data source
-            dataGridView1.DataSource = Actor_Info(); 
+            
+            LoadDataIntoDataGridView();
+        }
+
+        private void LoadDataIntoDataGridView()
+
+        {
+
+            // Create a DataTable to hold your data
+            DataTable freshData = new DataTable();
+
+          
+                string query = "SELECT * FROM YourTable"; // Replace with your SQL query
+                SqlDataAdapter adapter = new SqlDataAdapter(query, connection);
+                adapter.Fill(freshData);
+            
+            dataGridView1.DataSource = freshData;
         }
 
         private void btnModify_Click(object sender, EventArgs e)
