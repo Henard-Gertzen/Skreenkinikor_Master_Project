@@ -45,6 +45,10 @@
             this.btnDelete = new System.Windows.Forms.Button();
             this.pnlTitle = new System.Windows.Forms.Panel();
             this.btnClose = new FontAwesome.Sharp.IconButton();
+            this.lblDescription = new System.Windows.Forms.Label();
+            this.txtBxDescription = new System.Windows.Forms.TextBox();
+            this.txtBxID = new System.Windows.Forms.TextBox();
+            this.lblID = new System.Windows.Forms.Label();
             this.pnlBorderRight.SuspendLayout();
             this.pnlContent.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -78,6 +82,10 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(100)))), ((int)(((byte)(148)))));
+            this.panel1.Controls.Add(this.txtBxID);
+            this.panel1.Controls.Add(this.lblID);
+            this.panel1.Controls.Add(this.txtBxDescription);
+            this.panel1.Controls.Add(this.lblDescription);
             this.panel1.Controls.Add(this.lblSurname);
             this.panel1.Controls.Add(this.txtBxSurname);
             this.panel1.Controls.Add(this.txtBxName);
@@ -101,7 +109,7 @@
             this.lblSurname.AutoSize = true;
             this.lblSurname.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblSurname.ForeColor = System.Drawing.Color.White;
-            this.lblSurname.Location = new System.Drawing.Point(26, 157);
+            this.lblSurname.Location = new System.Drawing.Point(14, 176);
             this.lblSurname.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblSurname.Name = "lblSurname";
             this.lblSurname.Size = new System.Drawing.Size(106, 25);
@@ -110,7 +118,7 @@
             // 
             // txtBxSurname
             // 
-            this.txtBxSurname.Location = new System.Drawing.Point(160, 157);
+            this.txtBxSurname.Location = new System.Drawing.Point(173, 179);
             this.txtBxSurname.Margin = new System.Windows.Forms.Padding(4);
             this.txtBxSurname.Name = "txtBxSurname";
             this.txtBxSurname.Size = new System.Drawing.Size(132, 22);
@@ -118,7 +126,7 @@
             // 
             // txtBxName
             // 
-            this.txtBxName.Location = new System.Drawing.Point(160, 92);
+            this.txtBxName.Location = new System.Drawing.Point(173, 133);
             this.txtBxName.Margin = new System.Windows.Forms.Padding(4);
             this.txtBxName.Name = "txtBxName";
             this.txtBxName.Size = new System.Drawing.Size(132, 22);
@@ -129,7 +137,7 @@
             this.lblName.AutoSize = true;
             this.lblName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblName.ForeColor = System.Drawing.Color.White;
-            this.lblName.Location = new System.Drawing.Point(35, 89);
+            this.lblName.Location = new System.Drawing.Point(14, 133);
             this.lblName.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblName.Name = "lblName";
             this.lblName.Size = new System.Drawing.Size(75, 25);
@@ -183,11 +191,15 @@
             // 
             // dataGridView1
             // 
+            this.dataGridView1.AllowUserToAddRows = false;
+            this.dataGridView1.AllowUserToDeleteRows = false;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Location = new System.Drawing.Point(313, 65);
             this.dataGridView1.Margin = new System.Windows.Forms.Padding(4);
             this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowHeadersWidth = 51;
+            this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView1.Size = new System.Drawing.Size(659, 315);
             this.dataGridView1.TabIndex = 26;
             // 
@@ -233,6 +245,7 @@
             this.btnDelete.TabIndex = 7;
             this.btnDelete.Text = "&Delete Actor";
             this.btnDelete.UseVisualStyleBackColor = false;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // pnlTitle
             // 
@@ -264,6 +277,46 @@
             this.btnClose.TabIndex = 12;
             this.btnClose.UseVisualStyleBackColor = true;
             // 
+            // lblDescription
+            // 
+            this.lblDescription.AutoSize = true;
+            this.lblDescription.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDescription.ForeColor = System.Drawing.Color.White;
+            this.lblDescription.Location = new System.Drawing.Point(14, 216);
+            this.lblDescription.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblDescription.Name = "lblDescription";
+            this.lblDescription.Size = new System.Drawing.Size(127, 25);
+            this.lblDescription.TabIndex = 34;
+            this.lblDescription.Text = "Description:";
+            // 
+            // txtBxDescription
+            // 
+            this.txtBxDescription.Location = new System.Drawing.Point(62, 272);
+            this.txtBxDescription.Margin = new System.Windows.Forms.Padding(4);
+            this.txtBxDescription.Name = "txtBxDescription";
+            this.txtBxDescription.Size = new System.Drawing.Size(171, 22);
+            this.txtBxDescription.TabIndex = 35;
+            // 
+            // txtBxID
+            // 
+            this.txtBxID.Location = new System.Drawing.Point(173, 85);
+            this.txtBxID.Margin = new System.Windows.Forms.Padding(4);
+            this.txtBxID.Name = "txtBxID";
+            this.txtBxID.Size = new System.Drawing.Size(132, 22);
+            this.txtBxID.TabIndex = 36;
+            // 
+            // lblID
+            // 
+            this.lblID.AutoSize = true;
+            this.lblID.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblID.ForeColor = System.Drawing.Color.White;
+            this.lblID.Location = new System.Drawing.Point(14, 85);
+            this.lblID.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblID.Name = "lblID";
+            this.lblID.Size = new System.Drawing.Size(40, 25);
+            this.lblID.TabIndex = 37;
+            this.lblID.Text = "ID:";
+            // 
             // frmActors
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -275,7 +328,6 @@
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frmActors";
             this.Text = "frmActors";
-            this.Load += new System.EventHandler(this.frmActors_Load);
             this.pnlBorderRight.ResumeLayout(false);
             this.pnlContent.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
@@ -307,5 +359,9 @@
         private System.Windows.Forms.TextBox txtBxSurname;
         private System.Windows.Forms.TextBox txtBxName;
         private System.Windows.Forms.Label lblName;
+        private System.Windows.Forms.TextBox txtBxDescription;
+        private System.Windows.Forms.Label lblDescription;
+        private System.Windows.Forms.TextBox txtBxID;
+        private System.Windows.Forms.Label lblID;
     }
 }
