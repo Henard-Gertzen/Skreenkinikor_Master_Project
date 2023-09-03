@@ -17,11 +17,14 @@ namespace Skreenkinikor_Master_Project
     {
 
         private SqlConnection connection;
+       
 
         public frmActors(string connectionString)
         {
             InitializeComponent();
             connection = new SqlConnection(connectionString);
+
+
         }
         public void OpenConnection()
         {

@@ -425,7 +425,7 @@
             this.lblSelected.ForeColor = System.Drawing.Color.White;
             this.lblSelected.Location = new System.Drawing.Point(39, 38);
             this.lblSelected.Name = "lblSelected";
-            this.lblSelected.Size = new System.Drawing.Size(39, 13);
+            this.lblSelected.Size = new System.Drawing.Size(49, 17);
             this.lblSelected.TabIndex = 1;
             this.lblSelected.Text = "Home";
             // 
@@ -466,7 +466,7 @@
             this.btnMin.IconFont = FontAwesome.Sharp.IconFont.Regular;
             this.btnMin.IconSize = 16;
             this.btnMin.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnMin.Location = new System.Drawing.Point(642, 0);
+            this.btnMin.Location = new System.Drawing.Point(857, 0);
             this.btnMin.Name = "btnMin";
             this.btnMin.Size = new System.Drawing.Size(29, 27);
             this.btnMin.TabIndex = 4;
@@ -511,7 +511,7 @@
             // 
             this.pnlMainContainer.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(19)))), ((int)(((byte)(41)))), ((int)(((byte)(61)))));
             this.pnlMainContainer.Dock = System.Windows.Forms.DockStyle.Right;
-            this.pnlMainContainer.Location = new System.Drawing.Point(220, 78);
+            this.pnlMainContainer.Location = new System.Drawing.Point(293, 96);
             this.pnlMainContainer.Name = "pnlMainContainer";
             this.pnlMainContainer.Size = new System.Drawing.Size(915, 793);
             this.pnlMainContainer.TabIndex = 3;
