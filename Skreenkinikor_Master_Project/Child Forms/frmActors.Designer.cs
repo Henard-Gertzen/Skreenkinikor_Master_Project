@@ -190,7 +190,6 @@
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.Size = new System.Drawing.Size(659, 315);
             this.dataGridView1.TabIndex = 26;
-            
             // 
             // btnAddNew
             // 
@@ -220,7 +219,6 @@
             this.btnModify.TabIndex = 8;
             this.btnModify.Text = "&Modify Actor";
             this.btnModify.UseVisualStyleBackColor = false;
-            this.btnModify.Click += new System.EventHandler(this.btnModify_Click);
             // 
             // btnDelete
             // 
