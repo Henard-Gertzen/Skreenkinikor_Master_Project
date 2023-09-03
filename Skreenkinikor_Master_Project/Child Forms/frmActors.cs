@@ -11,7 +11,6 @@ using System.Windows.Forms;
 using System.Data.Sql;
 using System.Data.SqlClient;
 using Skreenkinikor_Master_Project.Classes;
-using Skreenkinikor_Master_Project.Child_Forms;
 
 namespace Skreenkinikor_Master_Project
 {
@@ -182,14 +181,6 @@ namespace Skreenkinikor_Master_Project
                 Console.WriteLine($"Error: {ex.Message}");
             }
         }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            var newfrm = new frmActor_Assign();
-            newfrm.ShowDialog();
-        }
-    }
-}
         private void btnRefresh_Click_1(object sender, EventArgs e)
         {
             LoadTable();

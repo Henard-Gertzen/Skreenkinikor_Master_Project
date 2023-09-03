@@ -89,12 +89,6 @@
     <Compile Include="Child Forms\frmActors.Designer.cs">
       <DependentUpon>frmActors.cs</DependentUpon>
     </Compile>
-    <Compile Include="Child Forms\frmActor_Assign.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Child Forms\frmActor_Assign.Designer.cs">
-      <DependentUpon>frmActor_Assign.cs</DependentUpon>
-    </Compile>
     <Compile Include="Child Forms\frmSettings_AddUser.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -181,9 +175,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Child Forms\frmActors.resx">
       <DependentUpon>frmActors.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Child Forms\frmActor_Assign.resx">
-      <DependentUpon>frmActor_Assign.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Child Forms\frmCon_Sale.resx">
       <DependentUpon>frmCon_Sale.cs</DependentUpon>
