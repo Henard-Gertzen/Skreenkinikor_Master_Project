@@ -251,8 +251,3 @@ namespace Skreenkinikor_Master_Project.Child_Forms
         }
     }
 }
-
-
-
-
-

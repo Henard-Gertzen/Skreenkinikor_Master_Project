@@ -87,6 +87,8 @@ namespace Skreenkinikor_Master_Project
             btnDelete.Enabled = true;
             btnModify.Enabled = true;
             btnRefresh.Enabled = true;
+            btnAdd_Actor.Enabled = true;
+            btnViewMovies.Enabled = true;
             dgwActor.Enabled = true;
 
             txtModDesc.Visible = false;
@@ -108,7 +110,10 @@ namespace Skreenkinikor_Master_Project
             btnDelete.Enabled = false;
             btnModify.Enabled = false;
             btnRefresh.Enabled = false;
+            btnAdd_Actor.Enabled = false;
+            btnViewMovies.Enabled = false;
             dgwActor.Enabled = false;
+            dgViewMovies.Visible = false;
 
             txtModDesc.Visible = true;
             txtModName.Visible = true;
@@ -176,6 +181,7 @@ namespace Skreenkinikor_Master_Project
                 txtBxDescription.Text = getDesc;
                 txtBxName.Text = getName;
                 txtBxSurname.Text = getSurname;
+                lblTitle.Text = "Enter Modification: ";
             }
             catch (Exception ex)
             {
@@ -283,5 +289,42 @@ namespace Skreenkinikor_Master_Project
             var newFrm = new frmActor_Assign();
             newFrm.ShowDialog();    
         }
+
+        private void btnViewMovies_Click(object sender, EventArgs e)
+        {
+            dgViewMovies.Visible = true;
+            lblTitle.Visible = true;
+            cancelMod();
+            lblTitle.Text = "Movies " + dgwActor.SelectedRows[0].Cells["First_Name"].Value.ToString() + " " + dgwActor.SelectedRows[0].Cells["Last_Name"].Value.ToString() + " stars in: ";
+            try
+            {
+                using (SqlConnection con = new SqlConnection(connectionString))
+                {
+                    string view = @"SELECT Movie_Info.Movie_Name
+                                    FROM Actor_Info AS AI
+                                    JOIN Actor_On_Movie ON AI.Actor_ID = Actor_On_Movie.Actor_ID
+                                    JOIN Movie_Info ON Actor_On_Movie.Movie_ID = Movie_Info.Movie_ID
+                                    WHERE AI.First_Name = @First AND AI.Last_Name = @Last AND AI.Description = @Desc";
+                    con.Open();
+                    using (SqlCommand cmd = new SqlCommand(view, con))
+                    {
+                        cmd.Parameters.AddWithValue("@First", dgwActor.SelectedRows[0].Cells["First_Name"].Value.ToString());
+                        cmd.Parameters.AddWithValue("@Last", dgwActor.SelectedRows[0].Cells["Last_Name"].Value.ToString());
+                        cmd.Parameters.AddWithValue("@Desc", dgwActor.SelectedRows[0].Cells["Description"].Value.ToString());
+
+                        DataTable dt = new DataTable();
+                        adapter = new SqlDataAdapter(cmd);
+                        adapter.Fill(dt);
+
+                        dgViewMovies.DataSource = dt;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error: " + ex.Message);
+            }
+        }
+
     }
 }

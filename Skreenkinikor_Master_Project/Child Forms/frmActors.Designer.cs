@@ -31,6 +31,9 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.pnlRight = new System.Windows.Forms.Panel();
             this.pnlContent = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -58,9 +61,13 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.pnlBorderRight = new System.Windows.Forms.Panel();
             this.btnAdd_Actor = new System.Windows.Forms.Button();
+            this.btnViewMovies = new System.Windows.Forms.Button();
+            this.dgViewMovies = new System.Windows.Forms.DataGridView();
+            this.label4 = new System.Windows.Forms.Label();
             this.pnlContent.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgwActor)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgViewMovies)).BeginInit();
             this.SuspendLayout();
             // 
             // pnlRight
@@ -85,6 +92,9 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(100)))), ((int)(((byte)(148)))));
+            this.panel1.Controls.Add(this.label4);
+            this.panel1.Controls.Add(this.dgViewMovies);
+            this.panel1.Controls.Add(this.btnViewMovies);
             this.panel1.Controls.Add(this.btnAdd_Actor);
             this.panel1.Controls.Add(this.btnCancel);
             this.panel1.Controls.Add(this.btnSubmit);
@@ -118,7 +128,7 @@
             this.btnCancel.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.btnCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCancel.ForeColor = System.Drawing.Color.White;
-            this.btnCancel.Location = new System.Drawing.Point(375, 484);
+            this.btnCancel.Location = new System.Drawing.Point(354, 484);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(54, 40);
             this.btnCancel.TabIndex = 49;
@@ -135,7 +145,7 @@
             this.btnSubmit.ForeColor = System.Drawing.Color.White;
             this.btnSubmit.Location = new System.Drawing.Point(275, 484);
             this.btnSubmit.Name = "btnSubmit";
-            this.btnSubmit.Size = new System.Drawing.Size(103, 40);
+            this.btnSubmit.Size = new System.Drawing.Size(79, 40);
             this.btnSubmit.TabIndex = 48;
             this.btnSubmit.Text = "&Submit";
             this.btnSubmit.UseVisualStyleBackColor = false;
@@ -262,7 +272,7 @@
             this.dgwActor.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dgwActor.EnableHeadersVisualStyles = false;
             this.dgwActor.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(241)))), ((int)(((byte)(242)))));
-            this.dgwActor.Location = new System.Drawing.Point(14, 21);
+            this.dgwActor.Location = new System.Drawing.Point(14, 27);
             this.dgwActor.Name = "dgwActor";
             dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
@@ -340,7 +350,7 @@
             this.btnAddNew.ForeColor = System.Drawing.Color.White;
             this.btnAddNew.Location = new System.Drawing.Point(327, 332);
             this.btnAddNew.Name = "btnAddNew";
-            this.btnAddNew.Size = new System.Drawing.Size(102, 40);
+            this.btnAddNew.Size = new System.Drawing.Size(100, 40);
             this.btnAddNew.TabIndex = 9;
             this.btnAddNew.Text = "&Add New Actor";
             this.btnAddNew.UseVisualStyleBackColor = false;
@@ -352,9 +362,9 @@
             this.btnModify.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.btnModify.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnModify.ForeColor = System.Drawing.Color.White;
-            this.btnModify.Location = new System.Drawing.Point(429, 332);
+            this.btnModify.Location = new System.Drawing.Point(531, 484);
             this.btnModify.Name = "btnModify";
-            this.btnModify.Size = new System.Drawing.Size(99, 40);
+            this.btnModify.Size = new System.Drawing.Size(100, 40);
             this.btnModify.TabIndex = 8;
             this.btnModify.Text = "&Modify Actor";
             this.btnModify.UseVisualStyleBackColor = false;
@@ -366,9 +376,9 @@
             this.btnDelete.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.btnDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDelete.ForeColor = System.Drawing.Color.White;
-            this.btnDelete.Location = new System.Drawing.Point(528, 332);
+            this.btnDelete.Location = new System.Drawing.Point(527, 332);
             this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(103, 40);
+            this.btnDelete.Size = new System.Drawing.Size(100, 40);
             this.btnDelete.TabIndex = 7;
             this.btnDelete.Text = "&Delete Actor";
             this.btnDelete.UseVisualStyleBackColor = false;
@@ -407,13 +417,87 @@
             this.btnAdd_Actor.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.btnAdd_Actor.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAdd_Actor.ForeColor = System.Drawing.Color.White;
-            this.btnAdd_Actor.Location = new System.Drawing.Point(528, 380);
+            this.btnAdd_Actor.Location = new System.Drawing.Point(427, 332);
             this.btnAdd_Actor.Name = "btnAdd_Actor";
-            this.btnAdd_Actor.Size = new System.Drawing.Size(103, 40);
+            this.btnAdd_Actor.Size = new System.Drawing.Size(100, 40);
             this.btnAdd_Actor.TabIndex = 50;
             this.btnAdd_Actor.Text = "&Add Actor to Movie";
             this.btnAdd_Actor.UseVisualStyleBackColor = false;
             this.btnAdd_Actor.Click += new System.EventHandler(this.btnAdd_Actor_Click);
+            // 
+            // btnViewMovies
+            // 
+            this.btnViewMovies.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(19)))), ((int)(((byte)(41)))), ((int)(((byte)(61)))));
+            this.btnViewMovies.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.btnViewMovies.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnViewMovies.ForeColor = System.Drawing.Color.White;
+            this.btnViewMovies.Location = new System.Drawing.Point(531, 530);
+            this.btnViewMovies.Name = "btnViewMovies";
+            this.btnViewMovies.Size = new System.Drawing.Size(100, 40);
+            this.btnViewMovies.TabIndex = 51;
+            this.btnViewMovies.Text = "&View Actor Movies";
+            this.btnViewMovies.UseVisualStyleBackColor = false;
+            this.btnViewMovies.Click += new System.EventHandler(this.btnViewMovies_Click);
+            // 
+            // dgViewMovies
+            // 
+            this.dgViewMovies.AllowUserToAddRows = false;
+            this.dgViewMovies.AllowUserToDeleteRows = false;
+            this.dgViewMovies.AllowUserToResizeColumns = false;
+            this.dgViewMovies.AllowUserToResizeRows = false;
+            this.dgViewMovies.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgViewMovies.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(67)))), ((int)(((byte)(90)))));
+            this.dgViewMovies.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dgViewMovies.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
+            this.dgViewMovies.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(67)))), ((int)(((byte)(90)))));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(241)))), ((int)(((byte)(242)))));
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(67)))), ((int)(((byte)(90)))));
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgViewMovies.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.dgViewMovies.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(67)))), ((int)(((byte)(90)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Gainsboro;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(144)))), ((int)(((byte)(194)))), ((int)(((byte)(231)))));
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgViewMovies.DefaultCellStyle = dataGridViewCellStyle2;
+            this.dgViewMovies.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
+            this.dgViewMovies.EnableHeadersVisualStyles = false;
+            this.dgViewMovies.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(241)))), ((int)(((byte)(242)))));
+            this.dgViewMovies.Location = new System.Drawing.Point(32, 462);
+            this.dgViewMovies.Name = "dgViewMovies";
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(144)))), ((int)(((byte)(194)))), ((int)(((byte)(231)))));
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgViewMovies.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            this.dgViewMovies.RowHeadersVisible = false;
+            this.dgViewMovies.RowTemplate.Height = 35;
+            this.dgViewMovies.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgViewMovies.Size = new System.Drawing.Size(397, 134);
+            this.dgViewMovies.TabIndex = 52;
+            this.dgViewMovies.Visible = false;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.ForeColor = System.Drawing.Color.White;
+            this.label4.Location = new System.Drawing.Point(9, 0);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(499, 25);
+            this.label4.TabIndex = 53;
+            this.label4.Text = "&Select an Actor and choose from the below buttons";
+            this.label4.Visible = false;
             // 
             // frmActors
             // 
@@ -432,6 +516,7 @@
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgwActor)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgViewMovies)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -465,5 +550,8 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.Button btnAdd_Actor;
+        private System.Windows.Forms.DataGridView dgViewMovies;
+        private System.Windows.Forms.Button btnViewMovies;
+        private System.Windows.Forms.Label label4;
     }
 }
