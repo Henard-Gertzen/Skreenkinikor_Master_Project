@@ -146,8 +146,11 @@ namespace Skreenkinikor_Master_Project
 
         private void dgvConItems_CellClick_1(object sender, DataGridViewCellEventArgs e)
         {
-            // the name of the item clicked is saved into the item variable
-            item = dgvConItems.Rows[e.RowIndex].Cells["Confectionary_Name"].Value.ToString();
+            if (e.RowIndex >= 0 && e.RowIndex < dgvConItems.Rows.Count)
+            {
+                // the name of the item clicked is saved into the item variable
+                item = dgvConItems.Rows[e.RowIndex].Cells["Confectionary_Name"].Value.ToString();
+            }
         }
 
 
