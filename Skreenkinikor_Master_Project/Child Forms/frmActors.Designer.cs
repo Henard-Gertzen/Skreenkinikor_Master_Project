@@ -28,15 +28,19 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.pnlRight = new System.Windows.Forms.Panel();
             this.pnlContent = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.label4 = new System.Windows.Forms.Label();
+            this.dgViewMovies = new System.Windows.Forms.DataGridView();
+            this.btnViewMovies = new System.Windows.Forms.Button();
+            this.btnAdd_Actor = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnSubmit = new System.Windows.Forms.Button();
             this.lblTitle = new System.Windows.Forms.Label();
@@ -60,14 +64,10 @@
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.pnlBorderRight = new System.Windows.Forms.Panel();
-            this.btnAdd_Actor = new System.Windows.Forms.Button();
-            this.btnViewMovies = new System.Windows.Forms.Button();
-            this.dgViewMovies = new System.Windows.Forms.DataGridView();
-            this.label4 = new System.Windows.Forms.Label();
             this.pnlContent.SuspendLayout();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgwActor)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgViewMovies)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgwActor)).BeginInit();
             this.SuspendLayout();
             // 
             // pnlRight
@@ -117,10 +117,99 @@
             this.panel1.Controls.Add(this.btnModify);
             this.panel1.Controls.Add(this.btnDelete);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(642, 602);
             this.panel1.TabIndex = 38;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.ForeColor = System.Drawing.Color.White;
+            this.label4.Location = new System.Drawing.Point(9, 0);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(499, 25);
+            this.label4.TabIndex = 53;
+            this.label4.Text = "&Select an Actor and choose from the below buttons";
+            this.label4.Visible = false;
+            // 
+            // dgViewMovies
+            // 
+            this.dgViewMovies.AllowUserToAddRows = false;
+            this.dgViewMovies.AllowUserToDeleteRows = false;
+            this.dgViewMovies.AllowUserToResizeColumns = false;
+            this.dgViewMovies.AllowUserToResizeRows = false;
+            this.dgViewMovies.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgViewMovies.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(67)))), ((int)(((byte)(90)))));
+            this.dgViewMovies.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dgViewMovies.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
+            this.dgViewMovies.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(67)))), ((int)(((byte)(90)))));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(241)))), ((int)(((byte)(242)))));
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(67)))), ((int)(((byte)(90)))));
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgViewMovies.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.dgViewMovies.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(67)))), ((int)(((byte)(90)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Gainsboro;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(144)))), ((int)(((byte)(194)))), ((int)(((byte)(231)))));
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgViewMovies.DefaultCellStyle = dataGridViewCellStyle2;
+            this.dgViewMovies.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
+            this.dgViewMovies.EnableHeadersVisualStyles = false;
+            this.dgViewMovies.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(241)))), ((int)(((byte)(242)))));
+            this.dgViewMovies.Location = new System.Drawing.Point(32, 462);
+            this.dgViewMovies.Name = "dgViewMovies";
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(144)))), ((int)(((byte)(194)))), ((int)(((byte)(231)))));
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgViewMovies.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            this.dgViewMovies.RowHeadersVisible = false;
+            this.dgViewMovies.RowTemplate.Height = 35;
+            this.dgViewMovies.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgViewMovies.Size = new System.Drawing.Size(397, 134);
+            this.dgViewMovies.TabIndex = 52;
+            this.dgViewMovies.Visible = false;
+            // 
+            // btnViewMovies
+            // 
+            this.btnViewMovies.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(19)))), ((int)(((byte)(41)))), ((int)(((byte)(61)))));
+            this.btnViewMovies.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.btnViewMovies.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnViewMovies.ForeColor = System.Drawing.Color.White;
+            this.btnViewMovies.Location = new System.Drawing.Point(531, 530);
+            this.btnViewMovies.Name = "btnViewMovies";
+            this.btnViewMovies.Size = new System.Drawing.Size(100, 40);
+            this.btnViewMovies.TabIndex = 51;
+            this.btnViewMovies.Text = "&View Actor Movies";
+            this.btnViewMovies.UseVisualStyleBackColor = false;
+            this.btnViewMovies.Click += new System.EventHandler(this.btnViewMovies_Click);
+            // 
+            // btnAdd_Actor
+            // 
+            this.btnAdd_Actor.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(19)))), ((int)(((byte)(41)))), ((int)(((byte)(61)))));
+            this.btnAdd_Actor.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.btnAdd_Actor.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAdd_Actor.ForeColor = System.Drawing.Color.White;
+            this.btnAdd_Actor.Location = new System.Drawing.Point(427, 332);
+            this.btnAdd_Actor.Name = "btnAdd_Actor";
+            this.btnAdd_Actor.Size = new System.Drawing.Size(100, 40);
+            this.btnAdd_Actor.TabIndex = 50;
+            this.btnAdd_Actor.Text = "&Add Actor to Movie";
+            this.btnAdd_Actor.UseVisualStyleBackColor = false;
+            this.btnAdd_Actor.Click += new System.EventHandler(this.btnAdd_Actor_Click);
             // 
             // btnCancel
             // 
@@ -128,7 +217,7 @@
             this.btnCancel.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.btnCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCancel.ForeColor = System.Drawing.Color.White;
-            this.btnCancel.Location = new System.Drawing.Point(354, 484);
+            this.btnCancel.Location = new System.Drawing.Point(355, 478);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(54, 40);
             this.btnCancel.TabIndex = 49;
@@ -143,7 +232,7 @@
             this.btnSubmit.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.btnSubmit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSubmit.ForeColor = System.Drawing.Color.White;
-            this.btnSubmit.Location = new System.Drawing.Point(275, 484);
+            this.btnSubmit.Location = new System.Drawing.Point(276, 478);
             this.btnSubmit.Name = "btnSubmit";
             this.btnSubmit.Size = new System.Drawing.Size(79, 40);
             this.btnSubmit.TabIndex = 48;
@@ -166,7 +255,7 @@
             // 
             // txtModDesc
             // 
-            this.txtModDesc.Location = new System.Drawing.Point(148, 530);
+            this.txtModDesc.Location = new System.Drawing.Point(157, 530);
             this.txtModDesc.Name = "txtModDesc";
             this.txtModDesc.Size = new System.Drawing.Size(100, 20);
             this.txtModDesc.TabIndex = 46;
@@ -175,11 +264,11 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(28, 528);
+            this.label1.Location = new System.Drawing.Point(70, 530);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(105, 20);
+            this.label1.Size = new System.Drawing.Size(72, 15);
             this.label1.TabIndex = 45;
             this.label1.Text = "Description:";
             this.label1.Visible = false;
@@ -187,18 +276,18 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(28, 493);
+            this.label2.Location = new System.Drawing.Point(70, 504);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(86, 20);
+            this.label2.Size = new System.Drawing.Size(61, 15);
             this.label2.TabIndex = 44;
             this.label2.Text = "Surname:";
             this.label2.Visible = false;
             // 
             // txtModSur
             // 
-            this.txtModSur.Location = new System.Drawing.Point(148, 495);
+            this.txtModSur.Location = new System.Drawing.Point(157, 504);
             this.txtModSur.Name = "txtModSur";
             this.txtModSur.Size = new System.Drawing.Size(100, 20);
             this.txtModSur.TabIndex = 42;
@@ -206,7 +295,7 @@
             // 
             // txtModName
             // 
-            this.txtModName.Location = new System.Drawing.Point(148, 462);
+            this.txtModName.Location = new System.Drawing.Point(157, 478);
             this.txtModName.Name = "txtModName";
             this.txtModName.Size = new System.Drawing.Size(100, 20);
             this.txtModName.TabIndex = 41;
@@ -215,11 +304,11 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(28, 462);
+            this.label3.Location = new System.Drawing.Point(70, 478);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(60, 20);
+            this.label3.Size = new System.Drawing.Size(44, 15);
             this.label3.TabIndex = 43;
             this.label3.Text = "Name:";
             this.label3.Visible = false;
@@ -254,7 +343,7 @@
             this.dgwActor.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(67)))), ((int)(((byte)(90)))));
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(241)))), ((int)(((byte)(242)))));
             dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(67)))), ((int)(((byte)(90)))));
             dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.White;
@@ -276,7 +365,7 @@
             this.dgwActor.Name = "dgwActor";
             dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
             dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(144)))), ((int)(((byte)(194)))), ((int)(((byte)(231)))));
             dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
@@ -290,7 +379,7 @@
             // 
             // txtBxDescription
             // 
-            this.txtBxDescription.Location = new System.Drawing.Point(148, 400);
+            this.txtBxDescription.Location = new System.Drawing.Point(157, 403);
             this.txtBxDescription.Name = "txtBxDescription";
             this.txtBxDescription.Size = new System.Drawing.Size(100, 20);
             this.txtBxDescription.TabIndex = 35;
@@ -298,35 +387,35 @@
             // lblDescription
             // 
             this.lblDescription.AutoSize = true;
-            this.lblDescription.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDescription.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDescription.ForeColor = System.Drawing.Color.White;
-            this.lblDescription.Location = new System.Drawing.Point(28, 398);
+            this.lblDescription.Location = new System.Drawing.Point(70, 403);
             this.lblDescription.Name = "lblDescription";
-            this.lblDescription.Size = new System.Drawing.Size(105, 20);
+            this.lblDescription.Size = new System.Drawing.Size(72, 15);
             this.lblDescription.TabIndex = 34;
             this.lblDescription.Text = "Description:";
             // 
             // lblSurname
             // 
             this.lblSurname.AutoSize = true;
-            this.lblSurname.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSurname.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblSurname.ForeColor = System.Drawing.Color.White;
-            this.lblSurname.Location = new System.Drawing.Point(28, 363);
+            this.lblSurname.Location = new System.Drawing.Point(70, 377);
             this.lblSurname.Name = "lblSurname";
-            this.lblSurname.Size = new System.Drawing.Size(86, 20);
+            this.lblSurname.Size = new System.Drawing.Size(61, 15);
             this.lblSurname.TabIndex = 33;
             this.lblSurname.Text = "Surname:";
             // 
             // txtBxSurname
             // 
-            this.txtBxSurname.Location = new System.Drawing.Point(148, 365);
+            this.txtBxSurname.Location = new System.Drawing.Point(157, 377);
             this.txtBxSurname.Name = "txtBxSurname";
             this.txtBxSurname.Size = new System.Drawing.Size(100, 20);
             this.txtBxSurname.TabIndex = 31;
             // 
             // txtBxName
             // 
-            this.txtBxName.Location = new System.Drawing.Point(148, 332);
+            this.txtBxName.Location = new System.Drawing.Point(157, 351);
             this.txtBxName.Name = "txtBxName";
             this.txtBxName.Size = new System.Drawing.Size(100, 20);
             this.txtBxName.TabIndex = 30;
@@ -334,11 +423,11 @@
             // lblName
             // 
             this.lblName.AutoSize = true;
-            this.lblName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblName.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblName.ForeColor = System.Drawing.Color.White;
-            this.lblName.Location = new System.Drawing.Point(28, 332);
+            this.lblName.Location = new System.Drawing.Point(70, 351);
             this.lblName.Name = "lblName";
-            this.lblName.Size = new System.Drawing.Size(60, 20);
+            this.lblName.Size = new System.Drawing.Size(44, 15);
             this.lblName.TabIndex = 32;
             this.lblName.Text = "Name:";
             // 
@@ -411,94 +500,6 @@
             this.pnlBorderRight.Size = new System.Drawing.Size(24, 644);
             this.pnlBorderRight.TabIndex = 24;
             // 
-            // btnAdd_Actor
-            // 
-            this.btnAdd_Actor.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(19)))), ((int)(((byte)(41)))), ((int)(((byte)(61)))));
-            this.btnAdd_Actor.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.btnAdd_Actor.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAdd_Actor.ForeColor = System.Drawing.Color.White;
-            this.btnAdd_Actor.Location = new System.Drawing.Point(427, 332);
-            this.btnAdd_Actor.Name = "btnAdd_Actor";
-            this.btnAdd_Actor.Size = new System.Drawing.Size(100, 40);
-            this.btnAdd_Actor.TabIndex = 50;
-            this.btnAdd_Actor.Text = "&Add Actor to Movie";
-            this.btnAdd_Actor.UseVisualStyleBackColor = false;
-            this.btnAdd_Actor.Click += new System.EventHandler(this.btnAdd_Actor_Click);
-            // 
-            // btnViewMovies
-            // 
-            this.btnViewMovies.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(19)))), ((int)(((byte)(41)))), ((int)(((byte)(61)))));
-            this.btnViewMovies.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.btnViewMovies.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnViewMovies.ForeColor = System.Drawing.Color.White;
-            this.btnViewMovies.Location = new System.Drawing.Point(531, 530);
-            this.btnViewMovies.Name = "btnViewMovies";
-            this.btnViewMovies.Size = new System.Drawing.Size(100, 40);
-            this.btnViewMovies.TabIndex = 51;
-            this.btnViewMovies.Text = "&View Actor Movies";
-            this.btnViewMovies.UseVisualStyleBackColor = false;
-            this.btnViewMovies.Click += new System.EventHandler(this.btnViewMovies_Click);
-            // 
-            // dgViewMovies
-            // 
-            this.dgViewMovies.AllowUserToAddRows = false;
-            this.dgViewMovies.AllowUserToDeleteRows = false;
-            this.dgViewMovies.AllowUserToResizeColumns = false;
-            this.dgViewMovies.AllowUserToResizeRows = false;
-            this.dgViewMovies.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgViewMovies.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(67)))), ((int)(((byte)(90)))));
-            this.dgViewMovies.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.dgViewMovies.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
-            this.dgViewMovies.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(67)))), ((int)(((byte)(90)))));
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(241)))), ((int)(((byte)(242)))));
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(67)))), ((int)(((byte)(90)))));
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgViewMovies.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            this.dgViewMovies.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(67)))), ((int)(((byte)(90)))));
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Gainsboro;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(144)))), ((int)(((byte)(194)))), ((int)(((byte)(231)))));
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgViewMovies.DefaultCellStyle = dataGridViewCellStyle2;
-            this.dgViewMovies.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
-            this.dgViewMovies.EnableHeadersVisualStyles = false;
-            this.dgViewMovies.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(241)))), ((int)(((byte)(242)))));
-            this.dgViewMovies.Location = new System.Drawing.Point(32, 462);
-            this.dgViewMovies.Name = "dgViewMovies";
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(144)))), ((int)(((byte)(194)))), ((int)(((byte)(231)))));
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgViewMovies.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
-            this.dgViewMovies.RowHeadersVisible = false;
-            this.dgViewMovies.RowTemplate.Height = 35;
-            this.dgViewMovies.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgViewMovies.Size = new System.Drawing.Size(397, 134);
-            this.dgViewMovies.TabIndex = 52;
-            this.dgViewMovies.Visible = false;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.ForeColor = System.Drawing.Color.White;
-            this.label4.Location = new System.Drawing.Point(9, 0);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(499, 25);
-            this.label4.TabIndex = 53;
-            this.label4.Text = "&Select an Actor and choose from the below buttons";
-            this.label4.Visible = false;
-            // 
             // frmActors
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -515,8 +516,8 @@
             this.pnlContent.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgwActor)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgViewMovies)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgwActor)).EndInit();
             this.ResumeLayout(false);
 
         }
