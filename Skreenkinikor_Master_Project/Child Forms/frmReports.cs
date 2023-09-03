@@ -46,11 +46,6 @@ namespace Skreenkinikor_Master_Project
                 chTotal.Series[0].YValueMembers = "TotalAmount";
                 chTotal.DataBind();
 
-                foreach (var item in reports.lTotalMovies)
-                {
-                    Console.WriteLine($"Date: {item.Date}, TotalAmount: {item.TotalAmount}");
-                }
-
                 chTop10.DataSource = reports.lTop10Movies;
                 chTop10.Series[0].XValueMember = "Key";
                 chTop10.Series[0].YValueMembers = "Value";
