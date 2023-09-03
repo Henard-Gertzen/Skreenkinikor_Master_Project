@@ -12,7 +12,7 @@ namespace Skreenkinikor_Master_Project.Classes
     public struct totalMovies
     {
         public string Date { get; set; }
-        public decimal TotalAmount { get; set; }
+        public int TotalAmount { get; set; }
     }
     public class Reports_Class
     {
@@ -58,7 +58,7 @@ namespace Skreenkinikor_Master_Project.Classes
                                             select new totalMovies
                                             {
                                                 Date = order.Key,
-                                                TotalAmount = order.Count()
+                                                TotalAmount = order.Sum(amount => amount.Value)
                                             }).ToList();
                         }
                         else
@@ -69,7 +69,7 @@ namespace Skreenkinikor_Master_Project.Classes
                                             select new totalMovies
                                             {
                                                 Date = order.Key,
-                                                TotalAmount = order.Count()
+                                                TotalAmount = order.Sum(amount => amount.Value)
                                             }).ToList();
                         }
                     }
