@@ -168,6 +168,7 @@
             this.gridDisplayStock.EnableHeadersVisualStyles = false;
             this.gridDisplayStock.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(241)))), ((int)(((byte)(242)))));
             this.gridDisplayStock.Location = new System.Drawing.Point(1, 0);
+            this.gridDisplayStock.MultiSelect = false;
             this.gridDisplayStock.Name = "gridDisplayStock";
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
@@ -347,6 +348,7 @@
             this.gridDisplayType.EnableHeadersVisualStyles = false;
             this.gridDisplayType.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(241)))), ((int)(((byte)(242)))));
             this.gridDisplayType.Location = new System.Drawing.Point(1, 0);
+            this.gridDisplayType.MultiSelect = false;
             this.gridDisplayType.Name = "gridDisplayType";
             dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;

@@ -9,6 +9,7 @@ using System.Data.SqlClient;
 using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -65,8 +66,9 @@ namespace Skreenkinikor_Master_Project
             con.Close();
         }
         //delete/insert commands
-        private void sqlCmdMethod(string sql)
+        private bool sqlCmdMethod(string sql)
         {
+            bool check = true;
             try
             {
                 con = new SqlConnection(conStr);
@@ -82,8 +84,10 @@ namespace Skreenkinikor_Master_Project
             catch (Exception a)
             {
                 MessageBox.Show("Error: " + a.Message);
+                check = false;
             }
             con.Close();
+            return check;
         }
         //method to populate combobox
         public void populateCombo(ComboBox cmbo, string Sql, string thingtodisplay, string table)
@@ -285,19 +289,28 @@ namespace Skreenkinikor_Master_Project
 
         private void btnConfirmTypeRemoval_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Item "+selectedItemTypeName+" successfully removed from database.");
-
-            //resets selection
-            btnConfirmTypeRemoval.Visible = false;
-            btnCancelTypeRemoval.Visible = false;
-            lblConfirmDeleteType.Visible = false;
-            gridDisplayType.ClearSelection();
 
             //removes item once confirmed and repopulates
-            sqlCmdMethod("DELETE FROM ScreenKinikor.dbo.Confectionary_Item_Type WHERE Confectionary_Type_Name = '" + selectedItemTypeName + "'");
+                if (sqlCmdMethod("DELETE FROM ScreenKinikor.dbo.Confectionary_Item_Type WHERE Confectionary_Type_Name = '" + selectedItemTypeName + "'"))
+                {
+                    MessageBox.Show("Item " + selectedItemTypeName + " successfully removed from database.");
+
+                    //resets selection
+                    btnConfirmTypeRemoval.Visible = false;
+                    btnCancelTypeRemoval.Visible = false;
+                    lblConfirmDeleteType.Visible = false;
+                    gridDisplayType.ClearSelection();
+                    selectedItemTypeName = null;
+                    btnRemoveType.Enabled = true;
+                }
+                else
+                {
+                    MessageBox.Show("Please Delete All Items With Associated Type '"+selectedItemTypeName+"' FIRST in order to proceed.");
+                    btnRemoveType.Enabled = true;
+                }
+
             populateGridStock(gridDisplayType, "SELECT Confectionary_Type_Name, Confectionary_Type_Desc FROM ScreenKinikor.dbo.Confectionary_Item_Type");
-            selectedItemTypeName = null;
-            btnRemoveType.Enabled = true;
+
         }
 
         private void btnStockCancelRemoval_Click(object sender, EventArgs e)
