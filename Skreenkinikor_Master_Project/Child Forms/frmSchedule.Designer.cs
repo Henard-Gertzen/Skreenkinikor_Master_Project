@@ -143,13 +143,13 @@
             // 
             this.lblStartDate.AutoSize = true;
             this.lblStartDate.ForeColor = System.Drawing.Color.White;
-            this.lblStartDate.Location = new System.Drawing.Point(112, 64);
+            this.lblStartDate.Location = new System.Drawing.Point(112, 63);
             this.lblStartDate.MinimumSize = new System.Drawing.Size(90, 20);
             this.lblStartDate.Name = "lblStartDate";
             this.lblStartDate.Size = new System.Drawing.Size(90, 20);
             this.lblStartDate.TabIndex = 114;
             this.lblStartDate.Text = "Sep 01, 2023";
-            this.lblStartDate.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lblStartDate.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.lblStartDate.Click += new System.EventHandler(this.lblStartDate_Click);
             // 
             // comboBox1

@@ -66,6 +66,7 @@
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Numerics" />
     <Reference Include="System.Windows.Forms.DataVisualization" />
@@ -246,6 +247,7 @@
     <Content Include="Resources\New Tables.sql" />
     <Content Include="Resources\New_LoginDB.sql" />
     <Content Include="Resources\New_LoginTables.sql" />
+    <Content Include="Resources\Prepopulate Database.sql" />
     <Content Include="Sterkinikor.ico" />
   </ItemGroup>
   <ItemGroup>

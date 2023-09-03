@@ -315,10 +315,46 @@ namespace Skreenkinikor_Master_Project
         {
             InitializeComponent();
         }
+        //Method
+        private void ShowUpcomingMoviesInDataGridView(DataGridView dataGridView)
+        {
+            DateTime startDate = DateTime.Now.Date;
+            DateTime endDate = startDate.AddDays(14);
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                string query = "SELECT Movie_Info.Movie_Name, Schedule.Timeslot, Schedule.Day_Shown " +
+                               "FROM Movie_Info " +
+                               "INNER JOIN Movie_On_Schedule ON Movie_Info.Movie_ID = Movie_On_Schedule.Movie_ID " +
+                               "INNER JOIN Schedule ON Movie_On_Schedule.Schedule_ID = Schedule.Schedule_ID " +
+                               "WHERE Schedule.Day_Shown BETWEEN @StartDate AND @EndDate " +
+                               "ORDER BY Schedule.Day_Shown, Schedule.Timeslot";
+
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@StartDate", startDate);
+                    command.Parameters.AddWithValue("@EndDate", endDate);
+
+                    try
+                    {
+                        connection.Open();
+                        SqlDataAdapter adapter = new SqlDataAdapter(command);
+                        DataTable dt = new DataTable();
+                        adapter.Fill(dt);
+
+                        dataGridView.DataSource = dt;
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Error: " + ex.Message);
+                    }
+                }
+            }
+        }
 
         private void frmTicket_Sale_Load(object sender, EventArgs e)
         {
-            
+            ShowUpcomingMoviesInDataGridView(dgwSchedule);
         }
 
         private void btnConfirm_Click(object sender, EventArgs e)

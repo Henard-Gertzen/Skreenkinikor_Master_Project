@@ -77,29 +77,36 @@ namespace Skreenkinikor_Master_Project
         }
         public void LoadTable(string sqlTable)
         {
-            using (SqlConnection con = new SqlConnection(conStr))
+            try
             {
-                con.Open();
-                using (SqlCommand cmd = new SqlCommand(sqlTable, con))
+                using (SqlConnection con = new SqlConnection(conStr))
                 {
-                    DataTable dt = new DataTable();
-                    adapter = new SqlDataAdapter(cmd);
-                    adapter.Fill(dt);
-
-                    dgSettings.DataSource = dt;
-
-                    if (dt.Columns.Count == 5)
+                    con.Open();
+                    using (SqlCommand cmd = new SqlCommand(sqlTable, con))
                     {
-                        dgSettings.Columns["FirstName"].HeaderText = "Name";
-                        dgSettings.Columns["LastName"].HeaderText = "Surname";
-                        dgSettings.Columns["IsAdmin"].HeaderText = "Admin";
+                        DataTable dt = new DataTable();
+                        adapter = new SqlDataAdapter(cmd);
+                        adapter.Fill(dt);
+
+                        dgSettings.DataSource = dt;
+
+                        if (dt.Columns.Count == 5)
+                        {
+                            dgSettings.Columns["FirstName"].HeaderText = "Name";
+                            dgSettings.Columns["LastName"].HeaderText = "Surname";
+                            dgSettings.Columns["IsAdmin"].HeaderText = "Admin";
+                        }
+                        else if (dt.Columns.Count == 2)
+                        {
+                            dgSettings.Columns["RequestTimestamp"].HeaderText = "Time of Request";
+                        }
                     }
-                    else if (dt.Columns.Count == 2)
-                    {
-                        dgSettings.Columns["RequestTimestamp"].HeaderText = "Time of Request";
-                    }
+                    con.Close();
                 }
-                con.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error occurred: " + ex);
             }
         }
 
@@ -157,9 +164,11 @@ namespace Skreenkinikor_Master_Project
 
         private void deleteRequest(string sqlQuery)
         {
-            if (dgSettings.SelectedRows.Count != 0)
+            try
             {
-               
+                if (dgSettings.SelectedRows.Count != 0)
+                {
+
                     DateTime pk = (DateTime)dgSettings.SelectedRows[0].Cells["RequestTimestamp"].Value;
                     string deleteCmd = "DELETE FROM ResetPassword WHERE RequestTimestamp = @RequestTimestamp";
                     using (SqlConnection con = new SqlConnection(conStr))
@@ -173,29 +182,58 @@ namespace Skreenkinikor_Master_Project
                         con.Close();
                     }
                     LoadTable(sqlQuery);
+                }
+                else
+                {
+                    MessageBox.Show("No Request Selected", "Error.NoSelection");
+                }
             }
-            else
+            catch (Exception ex)
             {
-                MessageBox.Show("No Request Selected", "Error.NoSelection");
+                MessageBox.Show("Error occurred: " + ex);
             }
         }
 
         private void deleteUser(string sqlQuery)
         {
-            string checkAdmin = dgSettings.SelectedRows[0].Cells["FirstName"].Value.ToString();
-            if (checkAdmin.Equals("Admin", StringComparison.OrdinalIgnoreCase))
+            try
             {
+                string checkAdmin = dgSettings.SelectedRows[0].Cells["FirstName"].Value.ToString();
+                if (checkAdmin.Equals("Admin", StringComparison.OrdinalIgnoreCase))
+                {
                     MessageBox.Show("Admin account cannot be deleted.", "Error.AdminDeletion", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                     return;
-            }
-            string user = dgSettings.SelectedRows[0].Cells["Username"].Value.ToString();
-            string deleteCmd = "DELETE FROM Login_Table WHERE Username = @Username";
-            //Check if user is logged in
-            firstName = UserSession.FullName;
-            if(firstName == dgSettings.SelectedRows[0].Cells["FirstName"].Value.ToString())
-            {
-                DialogResult warn = MessageBox.Show("Are you sure you want to proceed, deleting your own account will terminate your session", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-                if(warn == DialogResult.Yes)
+                    return;
+                }
+                string user = dgSettings.SelectedRows[0].Cells["Username"].Value.ToString();
+                string deleteCmd = "DELETE FROM Login_Table WHERE Username = @Username";
+                //Check if user is logged in
+                firstName = UserSession.FullName;
+                if (firstName == dgSettings.SelectedRows[0].Cells["FirstName"].Value.ToString())
+                {
+                    DialogResult warn = MessageBox.Show("Are you sure you want to proceed, deleting your own account will terminate your session", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                    if (warn == DialogResult.Yes)
+                    {
+                        using (SqlConnection con = new SqlConnection(conStr))
+                        {
+                            con.Open();
+                            using (SqlCommand cmd = new SqlCommand(deleteCmd, con))
+                            {
+                                cmd.Parameters.AddWithValue("@Username", user);
+                                cmd.ExecuteNonQuery();
+                            }
+                            con.Close();
+                        }
+                        mainInstance.Close();
+                        var login = new frmLogin();
+                        this.Close();
+                        login.Show();
+                    }
+                    else if (warn == DialogResult.No)
+                    {
+                        //nothing happens
+                    }
+                }
+                else
                 {
                     using (SqlConnection con = new SqlConnection(conStr))
                     {
@@ -207,31 +245,14 @@ namespace Skreenkinikor_Master_Project
                         }
                         con.Close();
                     }
-                    mainInstance.Close();
-                    var login = new frmLogin();
-                    this.Close();
-                    login.Show();
-                }
-                else if(warn == DialogResult.No)
-                {
-                    //nothing happens
+                    LoadTable(sqlQuery);
                 }
             }
-            else
+            catch (Exception ex)
             {
-                using (SqlConnection con = new SqlConnection(conStr))
-                {
-                    con.Open();
-                    using (SqlCommand cmd = new SqlCommand(deleteCmd, con))
-                    {
-                        cmd.Parameters.AddWithValue("@Username", user);
-                        cmd.ExecuteNonQuery();
-                    }
-                    con.Close();
-                }
-                LoadTable(sqlQuery);
+                MessageBox.Show("Error occurred: " + ex);
             }
-            
+
         }
 
         private void btnManaged_MouseEnter(object sender, EventArgs e)

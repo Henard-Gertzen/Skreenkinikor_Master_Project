@@ -4,15 +4,15 @@ GO
 CREATE TABLE Confectionary_Item_Type
 (
 	Confectionary_Type_ID	int IDENTITY(1,1)PRIMARY KEY,
-	Confectionary_Type_Name	varchar(20),
-	Confectionary_Type_Desc	varchar(20)
+	Confectionary_Type_Name	varchar(max),
+	Confectionary_Type_Desc	varchar(max)
 );
 
 CREATE TABLE Confectionary_Item
 (
 	Confectionary_ID	int	IDENTITY(1,1)PRIMARY KEY,
 	Confectionary_Type_ID	int	FOREIGN KEY REFERENCES Confectionary_Item_Type(Confectionary_Type_ID),
-	Confectionary_Name	varchar(20),
+	Confectionary_Name	varchar(max),
 	Confectionary_Price	decimal(19,4),
 	Confectionary_Stock	int
 );
@@ -38,7 +38,7 @@ CREATE TABLE Movie_Info
 (
 	Movie_ID	int	IDENTITY(1,1)PRIMARY KEY,
 	Movie_Name	varchar(40),
-	Movie_Description	varchar(200),
+	Movie_Description	varchar(max),
 	Seat_Price	decimal(19,4)
 );
 
@@ -84,4 +84,3 @@ CREATE TABLE Movie_On_Schedule
 	FOREIGN KEY (Schedule_ID) REFERENCES Schedule(Schedule_ID),
 	FOREIGN KEY (Movie_ID) REFERENCES Movie_Info(Movie_ID)
 );
-
