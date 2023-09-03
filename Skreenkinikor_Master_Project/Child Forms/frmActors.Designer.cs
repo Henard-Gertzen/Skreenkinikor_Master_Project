@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmActors));
             this.pnlBorderRight = new System.Windows.Forms.Panel();
             this.pnlContent = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -49,6 +50,7 @@
             this.txtBxDescription = new System.Windows.Forms.TextBox();
             this.txtBxID = new System.Windows.Forms.TextBox();
             this.lblID = new System.Windows.Forms.Label();
+            this.btnRefresh = new FontAwesome.Sharp.IconButton();
             this.pnlBorderRight.SuspendLayout();
             this.pnlContent.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -82,6 +84,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(100)))), ((int)(((byte)(148)))));
+            this.panel1.Controls.Add(this.btnRefresh);
             this.panel1.Controls.Add(this.txtBxID);
             this.panel1.Controls.Add(this.lblID);
             this.panel1.Controls.Add(this.txtBxDescription);
@@ -238,7 +241,7 @@
             this.btnDelete.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.btnDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDelete.ForeColor = System.Drawing.Color.White;
-            this.btnDelete.Location = new System.Drawing.Point(835, 409);
+            this.btnDelete.Location = new System.Drawing.Point(704, 409);
             this.btnDelete.Margin = new System.Windows.Forms.Padding(4);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(137, 49);
@@ -317,6 +320,20 @@
             this.lblID.TabIndex = 37;
             this.lblID.Text = "ID:";
             // 
+            // btnRefresh
+            // 
+            this.btnRefresh.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnRefresh.BackgroundImage")));
+            this.btnRefresh.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnRefresh.IconChar = FontAwesome.Sharp.IconChar.None;
+            this.btnRefresh.IconColor = System.Drawing.Color.Black;
+            this.btnRefresh.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnRefresh.Location = new System.Drawing.Point(879, 416);
+            this.btnRefresh.Name = "btnRefresh";
+            this.btnRefresh.Size = new System.Drawing.Size(45, 35);
+            this.btnRefresh.TabIndex = 38;
+            this.btnRefresh.UseVisualStyleBackColor = true;
+            this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
+            // 
             // frmActors
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -363,5 +380,6 @@
         private System.Windows.Forms.Label lblDescription;
         private System.Windows.Forms.TextBox txtBxID;
         private System.Windows.Forms.Label lblID;
+        private FontAwesome.Sharp.IconButton btnRefresh;
     }
 }

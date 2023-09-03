@@ -74,7 +74,7 @@ namespace Skreenkinikor_Master_Project
                 {
                     connection.Open();
                     command.ExecuteNonQuery();
-                    Console.WriteLine("Actor added succesfully ");
+                    Console.WriteLine("Actor added successfully! ");
                 }
                 catch (Exception ex)
                 {
@@ -112,42 +112,47 @@ namespace Skreenkinikor_Master_Project
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            connection.Open();
-
-            // Define the DELETE command
-            string deleteQuery = "DELETE FROM Actor_Info WHERE  Actor_ID,First_Name, Last_Nmae, Description";
-
-            // Create a SqlCommand with parameters
-            using (SqlCommand command = new SqlCommand(deleteQuery, connection))
+            try
             {
-                // Set the parameter values
-                command.Parameters.AddWithValue("@Param1", txtBxID.Text);
-                command.Parameters.AddWithValue("@Param2", txtBxName.Text);
-                command.Parameters.AddWithValue("@Param3", txtBxSurname.Text);
-                command.Parameters.AddWithValue("@Param4", txtBxDescription.Text);
 
-                // Execute the DELETE command
-                int rowsAffected = command.ExecuteNonQuery();
 
-                if (rowsAffected > 0)
+                connection.Open();
+
+                // Define the DELETE command
+                string deleteQuery = "DELETE FROM Actor_Info WHERE  Actor_ID = @Param1 ,First_Name =@Param2, Last_Nmae =@Param3, Description = @Param4";
+
+                // Create a SqlCommand with parameters
+                using (SqlCommand command = new SqlCommand(deleteQuery, connection))
                 {
-                    Console.WriteLine("Record deleted successfully.");
+                    // Set the parameter values
+                    command.Parameters.AddWithValue("@Param1", txtBxID.Text);
+                    command.Parameters.AddWithValue("@Param2", txtBxName.Text);
+                    command.Parameters.AddWithValue("@Param3", txtBxSurname.Text);
+                    command.Parameters.AddWithValue("@Param4", txtBxDescription.Text);
+
+                    // Execute the DELETE command
+                    int rowsAffected = command.ExecuteNonQuery();
+
+                    if (rowsAffected > 0)
+                    {
+                        Console.WriteLine("Actor deleted successfully.");
+                    }
+                    else
+                    {
+                        Console.WriteLine("No records deleted.");
+                    }
                 }
-                else
-                {
-                    Console.WriteLine("No records deleted.");
-                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error: " + ex.Message);
             }
         }
     }
-catch (Exception ex)
-{
-    Console.WriteLine("Error: " + ex.Message);
-}
-        }
-    }
 }
 
+        
+    
 
 
 
