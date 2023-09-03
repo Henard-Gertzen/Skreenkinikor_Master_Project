@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using System.Data.SqlClient;
 using System.Windows;
 using Skreenkinikor_Master_Project.Classes;
+using Skreenkinikor_Master_Project.Child_Forms;
 
 namespace Skreenkinikor_Master_Project
 {
@@ -55,6 +56,12 @@ namespace Skreenkinikor_Master_Project
             {
                 Console.WriteLine($"Error: {ex.Message}");
             }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            var newfrm = new frmActor_Assign();
+            newfrm.ShowDialog();
         }
     }
 }
