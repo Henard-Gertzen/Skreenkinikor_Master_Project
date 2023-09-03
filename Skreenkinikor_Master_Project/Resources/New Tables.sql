@@ -57,7 +57,7 @@ CREATE TABLE Actor_Info
 	Actor_ID	int	IDENTITY(1,1)PRIMARY KEY,
 	First_Name	varchar(20),
 	Last_Name	varchar(20),
-	Description	varchar(200)
+	Description	varchar(max)
 );
 
 CREATE TABLE Actor_On_Movie

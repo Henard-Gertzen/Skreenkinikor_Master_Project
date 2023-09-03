@@ -20,7 +20,7 @@ namespace Skreenkinikor_Master_Project
         }
 
         private string connectionString = ConnectionStrings.conSkreenMainStr;
-        private string Name, Description;
+        private string mName, Description;
         private decimal Price;
         private string delMovie;
         private string MovieName, MovieDesc,tempName;
@@ -77,7 +77,7 @@ namespace Skreenkinikor_Master_Project
 
         private void btnAddMovie_Click(object sender, EventArgs e)
         {
-            Name = txtMovieName.Text;
+            mName = txtMovieName.Text;
             Description = txtMovieDesc.Text;
 
             // tryparse to ensure that only a decimal value is added in the textbox
@@ -90,7 +90,7 @@ namespace Skreenkinikor_Master_Project
                     {
                         conn.Open();
 
-                        string sql = $"INSERT INTO Movie_Info VALUES ('{Name}','{Description}','{Price}')";
+                        string sql = $"INSERT INTO Movie_Info VALUES ('{mName}','{Description}','{Price}')";
                         using (SqlDataAdapter adapter = new SqlDataAdapter())
                         {
                             using (SqlCommand command = new SqlCommand(sql, conn))

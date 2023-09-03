@@ -420,7 +420,7 @@
             this.ipbSelectedIcon.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.ipbSelectedIcon.IconSize = 24;
             this.ipbSelectedIcon.Location = new System.Drawing.Point(4, 24);
-            this.ipbSelectedIcon.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.ipbSelectedIcon.Margin = new System.Windows.Forms.Padding(2);
             this.ipbSelectedIcon.Name = "ipbSelectedIcon";
             this.ipbSelectedIcon.Size = new System.Drawing.Size(24, 26);
             this.ipbSelectedIcon.TabIndex = 0;
@@ -451,7 +451,7 @@
             this.btnMin.IconSize = 16;
             this.btnMin.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.btnMin.Location = new System.Drawing.Point(642, 0);
-            this.btnMin.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnMin.Margin = new System.Windows.Forms.Padding(2);
             this.btnMin.Name = "btnMin";
             this.btnMin.Size = new System.Drawing.Size(22, 22);
             this.btnMin.TabIndex = 4;
@@ -495,7 +495,7 @@
             this.pnlMainContainer.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(19)))), ((int)(((byte)(41)))), ((int)(((byte)(61)))));
             this.pnlMainContainer.Dock = System.Windows.Forms.DockStyle.Right;
             this.pnlMainContainer.Location = new System.Drawing.Point(220, 78);
-            this.pnlMainContainer.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pnlMainContainer.Margin = new System.Windows.Forms.Padding(2);
             this.pnlMainContainer.Name = "pnlMainContainer";
             this.pnlMainContainer.Size = new System.Drawing.Size(686, 644);
             this.pnlMainContainer.TabIndex = 3;
@@ -510,7 +510,7 @@
             this.Controls.Add(this.pnlHeader);
             this.Controls.Add(this.pnlMenu);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "frmMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
