@@ -140,6 +140,34 @@ namespace Skreenkinikor_Master_Project
             return scheduleID; 
         }
 
+        private int UpdateTimeSlot(DateTime date, DateTime timeSlot, int scheduleID)
+        {
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                string query = "UPDATE Schedule SET Day_Shown = @DayShown, Timeslot = @TimeSlot WHERE Schedule_ID = @ScheduleID";
+
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@DayShown", date);
+                    command.Parameters.AddWithValue("@TimeSlot", timeSlot);
+                    command.Parameters.AddWithValue("@ScheduleID", scheduleID);
+
+                    try
+                    {
+                        connection.Open();
+                        int rowsAffected = command.ExecuteNonQuery();
+                        return rowsAffected; 
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Error: " + ex.Message);
+                        return -1; 
+                    }
+                }
+            }
+        }
+
+
         //Update the schedule to the selected movie
         private void ModifySchedule(int scheduleID, int currentMovieID, int replacementMovieID)
         {
@@ -535,10 +563,30 @@ namespace Skreenkinikor_Master_Project
         {
             string currentMovieName = GetMovieName();
             string replacementMovieName = string.Empty;
+            //bool flag = true;
 
             if (comboBox1.SelectedItem != null)
             {
                 replacementMovieName = comboBox1.SelectedItem.ToString();
+            }
+
+            switch (true)
+            {
+                case var _ when rdoFirstShow.Checked:
+                    selectedTime = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 8, 0, 0);
+                    break;
+                case var _ when rdoSecondSHow.Checked:
+                    selectedTime = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 12, 0, 0);
+                    break;
+                case var _ when rdoThirdShow.Checked:
+                    selectedTime = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 16, 0, 0);
+                    break;
+                case var _ when rdoFourthShow.Checked:
+                    selectedTime = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 20, 0, 0);
+                    break;
+                default:
+                    MessageBox.Show("Select the timeslot.");
+                    return;
             }
 
 
@@ -550,12 +598,15 @@ namespace Skreenkinikor_Master_Project
 
             int scheduleID = GetScheduleID(date, time);
 
-            if (IsMovieScheduledForDate(replacementMovieID, DateTime.Parse(date)))
+
+            if (IsMovieScheduledForDate(replacementMovieID, DateTime.Parse(date)) && time == selectedTime.ToString("HH:mm:ss"))
             {
-                MessageBox.Show("The selected movie is already scheduled for the chosen date.");
+                MessageBox.Show("There was a conflict, no changes were made.");
                 return;
             }
 
+
+            UpdateTimeSlot(dateTimePicker1.Value.Date, selectedTime, scheduleID);            
             ModifySchedule(scheduleID, currentMovieID, replacementMovieID);
             ShowUpcomingMoviesInDataGridView(dataGridView1);
         }
