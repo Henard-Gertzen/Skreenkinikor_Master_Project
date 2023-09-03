@@ -61,13 +61,14 @@ namespace Skreenkinikor_Master_Project
 
         private void btnAddNew_Click(object sender, EventArgs e)
         {
-            string insertQuery = "INSERT INTO Actor_Info (First_Name, Last_Nmae, Description) VALUES (@f_name, @l_name, @description)";
+            string insertQuery = "INSERT INTO Actor_Info (Actor_ID,First_Name, Last_Nmae, Description) VALUES (@ID,@f_name, @l_name, @description)";
 
             using (SqlCommand command = new SqlCommand(insertQuery, connection))
             {
-                command.Parameters.AddWithValue("@Param1", txtBxName.Text);
-                command.Parameters.AddWithValue("@Param2", txtBxSurname.Text);
-                command.Parameters.AddWithValue("@Param2", txtBxDescription.Text);
+                command.Parameters.AddWithValue("@Param1", txtBxID.Text);
+                command.Parameters.AddWithValue("@Param2", txtBxName.Text);
+                command.Parameters.AddWithValue("@Param3", txtBxSurname.Text);
+                command.Parameters.AddWithValue("@Param4", txtBxDescription.Text);
 
                 try
                 {
@@ -114,13 +115,16 @@ namespace Skreenkinikor_Master_Project
             connection.Open();
 
             // Define the DELETE command
-            string deleteQuery = "DELETE FROM Actor_Info WHERE  = @ID";
+            string deleteQuery = "DELETE FROM Actor_Info WHERE  Actor_ID,First_Name, Last_Nmae, Description";
 
             // Create a SqlCommand with parameters
             using (SqlCommand command = new SqlCommand(deleteQuery, connection))
             {
                 // Set the parameter values
-                command.Parameters.AddWithValue("@ID", 123); // Replace 123 with the ID you want to delete
+                command.Parameters.AddWithValue("@Param1", txtBxID.Text);
+                command.Parameters.AddWithValue("@Param2", txtBxName.Text);
+                command.Parameters.AddWithValue("@Param3", txtBxSurname.Text);
+                command.Parameters.AddWithValue("@Param4", txtBxDescription.Text);
 
                 // Execute the DELETE command
                 int rowsAffected = command.ExecuteNonQuery();
