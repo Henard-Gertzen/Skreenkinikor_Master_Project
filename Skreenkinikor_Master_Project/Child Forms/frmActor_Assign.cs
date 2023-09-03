@@ -18,115 +18,150 @@ namespace Skreenkinikor_Master_Project.Child_Forms
 {
     public partial class frmActor_Assign : Form
     {
+        private string con = ConnectionStrings.conSkreenMainStr;
+        SqlCommand cmd;
+        private string fName, lName;
+
         public frmActor_Assign()
         {
             InitializeComponent();
         }
+        //Methods
+        private int GetActorId(string fName, string lName)
+        {
+            try
+            {
+                string update = $"SELECT Actor_ID FROM Actor_Info WHERE First_Name = @First AND Last_Name = @Last";
+                int id = -1;
+                using (SqlConnection conn = new SqlConnection(con))
+                {
+                    conn.Open();
+                    using (SqlCommand cmd = new SqlCommand(update, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@First", fName);
+                        cmd.Parameters.AddWithValue("@Last", lName);
 
-        private string connectionString = ConnectionStrings.conSkreenMainStr;
-        private string mName, aName;
+                        object result = cmd.ExecuteScalar();
+                        if (result != null)
+                        {
+                            id = Convert.ToInt32(result);
+                        }
+                        return id;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error has ocurred: " + ex);
+            }
+            return -1;
+        }
+        private int GetMovieId()
+        {
+            try
+            {
+                string update = $"SELECT Movie_ID FROM Movie_Info WHERE Movie_Name = @Name";
+                int id = -1;
+                using (SqlConnection conn = new SqlConnection(con))
+                {
+                    conn.Open();
+                    using (SqlCommand cmd = new SqlCommand(update, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@Name", cmbMovies.SelectedItem.ToString());
+
+                        object result = cmd.ExecuteScalar();
+                        if (result != null)
+                        {
+                            id = Convert.ToInt32(result);
+                        }
+                        return id;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error has ocurred: " + ex);
+            }
+            return -1;
+        }
+        private bool checkDupe(int aID, int mID)
+        {
+            string check = @"SELECT *
+                            FROM Actor_On_Movie
+                            WHERE Actor_ID = @ActorID AND Movie_ID = @MovieID";
+            bool bCheck = false;
+
+            using(SqlConnection conn = new SqlConnection(con))
+            {
+                conn.Open();
+                using(SqlCommand cmd = new SqlCommand(check, conn))
+                {
+                    cmd.Parameters.AddWithValue("@ActorID", aID);
+                    cmd.Parameters.AddWithValue("@MovieID", mID);
+
+                   object result = cmd.ExecuteScalar();
+                   if(result != null && result != DBNull.Value)
+                   {
+                        return bCheck = true;
+                   }
+                }
+            }
+            return bCheck;
+        }
+        private void AddActorToMovie(string fName, string lName)
+        {
+          try
+          {
+            if (cmbActors.SelectedItem != null && cmbMovies.SelectedItem != null)
+            {
+                int actorID = GetActorId(fName, lName);
+                int movieID = GetMovieId();
+                if(!checkDupe(actorID, movieID))
+                {
+                    if (actorID != -1 && movieID != -1)
+                    {
+                            using (SqlConnection conn = new SqlConnection(con))
+                            {
+                                string sqlAdd = "INSERT INTO Actor_On_Movie(Actor_ID, Movie_ID) VALUES (@aID, @mID)";
+                                conn.Open();
+                                using (cmd = new SqlCommand(sqlAdd, conn))
+                                {
+                                    cmd.Parameters.AddWithValue("@aID", actorID);
+                                    cmd.Parameters.AddWithValue("@mID", movieID);
+
+                                    cmd.ExecuteNonQuery();
+
+                                    MessageBox.Show("Actor has been added!");
+                                }
+                            }
+                    }
+                    else
+                    {
+                       MessageBox.Show("Please select valid actor and movie.");
+                    }    
+                }
+                else
+                {
+                    MessageBox.Show("Actor already added to this movie!");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Please select an actor and movie.");
+            }
+          }
+          catch (Exception ex)
+          {
+             MessageBox.Show("Error has ocurred: " + ex);
+          }
+        }
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            string ActorName;
-
-            aName = cmbActors.SelectedItem.ToString();
-
-            // splits the name and surname of the actor
-            char[] separator = new char[] { ' ' };
-            string[] parts = aName.Split(separator, StringSplitOptions.None);
-
-            // the actor name is saved into the the new variable
-            ActorName = parts[0];
-            mName = cmbMovies.SelectedItem.ToString();
-
-
-            // initialise default values for the variables
-            int mID = 0, aID = 0;
-
-            using (SqlConnection conn = new SqlConnection(connectionString))
-            {
-                // retrieves the actor ID from the database using the actor name received from the combobox
-                try
-                {
-                    conn.Open();
-
-                    string sqlActor = $"Select Actor_ID FROM Actor_Info WHERE First_Name = '{ActorName}'";
-
-                    using (SqlCommand cmd = new SqlCommand(sqlActor, conn))
-                    {
-                        SqlDataReader reader;
-                        reader = cmd.ExecuteReader();
-
-                        while (reader.Read())
-                        {
-                            mID = (int)reader.GetValue(0);
-                        }
-
-                        Console.WriteLine("aName: " + ActorName);
-                        Console.WriteLine("Actor " + mID);
-                    }
-                }
-                catch (SqlException ex)
-                {
-                    MessageBox.Show(ex.Message);
-                }
-            }
-
-            using (SqlConnection conn = new SqlConnection(connectionString))
-            {
-                // retrieves the Movie ID from the database using the Movie name received from the combobox
-                try
-                {
-                    conn.Open();
-
-                    string sqlMovie = $"SELECT Movie_ID FROM Movie_Info WHERE Movie_Name = '{mName}'";
-                    using (SqlCommand command = new SqlCommand(sqlMovie, conn))
-                    {
-                        SqlDataReader dataReader;
-                        dataReader = command.ExecuteReader();
-
-                        while (dataReader.Read())
-                        {
-                            aID = (int)dataReader.GetValue(0);
-                        }
-
-                        Console.WriteLine("mName: " + mName);
-                        Console.WriteLine("MovieID " + aID);
-                    }
-                }
-                catch (SqlException ex)
-                {
-                    MessageBox.Show(ex.Message);
-                }
-            }
-
-            using (SqlConnection conn = new SqlConnection(connectionString))
-            {
-                // inserts the actor ID and movie ID into the database
-                try
-                {
-                    conn.Open();
-
-                    string sql = $"INSERT INTO Actor_On_Movie(Actor_ID,Movie_ID) VALUES ('{aID}','{mID}')";
-
-                    using (SqlDataAdapter adapter = new SqlDataAdapter())
-                    {
-                        using (SqlCommand cmdAdd = new SqlCommand(sql, conn))
-                        {
-                            /* adapter.InsertCommand = cmdAdd;
-                             adapter.InsertCommand.ExecuteNonQuery();*/
-                            cmdAdd.ExecuteNonQuery();
-                        }
-                    }
-                }
-                catch (SqlException ex)
-                {
-                    MessageBox.Show(ex.Message);
-                }
-            }
-
-            MessageBox.Show("Added succesfully!");
+            string[] values = cmbActors.SelectedItem.ToString().Split(' ');
+            fName = values[0].Trim();
+            lName = values[1].Trim();
+            AddActorToMovie(fName, lName);
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
@@ -164,11 +199,9 @@ namespace Skreenkinikor_Master_Project.Child_Forms
         private void frmActor_Assign_Load(object sender, EventArgs e)
         {
             // reads the movie name and actor names into their respective comboboxes
-            using (SqlConnection conn = new SqlConnection(connectionString))
+            using (SqlConnection conn = new SqlConnection(con))
             {
                 string sqlActor = $"Select First_Name, Last_Name FROM Actor_Info";
-
-
                 try
                 {
                     conn.Open();
@@ -179,9 +212,7 @@ namespace Skreenkinikor_Master_Project.Child_Forms
 
                         while (datareader.Read())
                         {
-
                             cmbActors.Items.Add(datareader.GetValue(0) + " " + datareader.GetValue(1));
-
                         }
                     }
                 }
@@ -192,7 +223,7 @@ namespace Skreenkinikor_Master_Project.Child_Forms
 
             }
 
-            using (SqlConnection conn = new SqlConnection(connectionString))
+            using (SqlConnection conn = new SqlConnection(con))
             {
                 string sqlMovie = $"Select Movie_Name FROM Movie_Info";
                 SqlDataReader reader;
