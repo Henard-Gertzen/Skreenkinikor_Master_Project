@@ -185,8 +185,7 @@ namespace Skreenkinikor_Master_Project
             lblUserModel.Text = "Welcome " + sUserModel;
             OpenChild(new frmHome());
         }
-        //Don't touch this, this adds drag functionality to the header panel
-        //Explanation: Uses native libaries of the OS to move form
+        //Don't touch this
         [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
         private extern static void ReleaseCapture();
         [DllImport("user32.DLL", EntryPoint = "SendMessage")]
@@ -223,38 +222,12 @@ namespace Skreenkinikor_Master_Project
             Application.Exit();
         }
 
-        private void btnMax_Click(object sender, EventArgs e)
-        {
-            if(WindowState == FormWindowState.Normal)
-            {
-                WindowState = FormWindowState.Maximized;
-                btnMax.ImageAlign = ContentAlignment.TopCenter;
-                btnMax.IconSize = 12;
-            }
-            else if(WindowState == FormWindowState.Maximized)
-            {
-                WindowState = FormWindowState.Normal;
-                btnMax.ImageAlign = ContentAlignment.TopCenter;
-                btnMax.IconSize = 14;
-            }
-        }
-
         private void btnMin_Click(object sender, EventArgs e)
         {
             if(WindowState != FormWindowState.Minimized)
             {
                 WindowState=FormWindowState.Minimized;
             }
-        }
-
-        private void btnMax_MouseEnter(object sender, EventArgs e)
-        {
-            btnMax.BackColor = Colors.foregroundColor3;
-        }
-
-        private void btnMax_MouseLeave(object sender, EventArgs e)
-        {
-            btnMax.BackColor = Colors.secondaryBackColor2;
         }
 
         private void btnMin_MouseEnter(object sender, EventArgs e)
@@ -282,11 +255,6 @@ namespace Skreenkinikor_Master_Project
             var openLogin = new frmLogin();
             openLogin.Show();
             this.Hide();
-        }
-
-        private void pnlControlBar_Paint(object sender, PaintEventArgs e)
-        {
-
         }
     }
 }

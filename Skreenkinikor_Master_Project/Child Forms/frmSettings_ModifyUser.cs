@@ -29,50 +29,58 @@ namespace Skreenkinikor_Master_Project.Child_Forms
         //Methods
         private String changeUser()
         {
-            string update = "UPDATE Login_Table SET Username = @Username, Password = @Password, IsAdmin = @IsAdmin WHERE FirstName = @FirstName";
-            using (conn = new SqlConnection(conString))
+            try
             {
-                conn.Open();
-                using (cmd = new SqlCommand(update, conn))
+                string update = "UPDATE Login_Table SET Username = @Username, Password = @Password, IsAdmin = @IsAdmin WHERE FirstName = @FirstName";
+                using (conn = new SqlConnection(conString))
                 {
-                    if(txtChangeUser.Text != "")
+                    conn.Open();
+                    using (cmd = new SqlCommand(update, conn))
                     {
-                        cmd.Parameters.AddWithValue("@Username", txtChangeUser.Text);
-                    }
-                    else
-                    {
-                        cmd.Parameters.AddWithValue("@Username", modifyUsername);
-                    }
-                    if (txtChangePassword.Text != "")
-                    {
-                        cmd.Parameters.AddWithValue("@Password", txtChangePassword.Text);
-                    }
-                    else
-                    {
-                        cmd.Parameters.AddWithValue("@Password", modifyPassword);
-                    }
-                    if(cbxChangeAdmin.Checked == true)
-                    {
-                        cmd.Parameters.AddWithValue("@IsAdmin", true);
-                    }
-                    else if(cbxChangeAdmin.Checked == false)
-                    {
-                        cmd.Parameters.AddWithValue("@IsAdmin", false);
-                    }
-                    cmd.Parameters.AddWithValue("@FirstName", modifyName);
-                    int rowsAffected = cmd.ExecuteNonQuery();
+                        if (txtChangeUser.Text != "")
+                        {
+                            cmd.Parameters.AddWithValue("@Username", txtChangeUser.Text);
+                        }
+                        else
+                        {
+                            cmd.Parameters.AddWithValue("@Username", modifyUsername);
+                        }
+                        if (txtChangePassword.Text != "")
+                        {
+                            cmd.Parameters.AddWithValue("@Password", txtChangePassword.Text);
+                        }
+                        else
+                        {
+                            cmd.Parameters.AddWithValue("@Password", modifyPassword);
+                        }
+                        if (cbxChangeAdmin.Checked == true)
+                        {
+                            cmd.Parameters.AddWithValue("@IsAdmin", true);
+                        }
+                        else if (cbxChangeAdmin.Checked == false)
+                        {
+                            cmd.Parameters.AddWithValue("@IsAdmin", false);
+                        }
+                        cmd.Parameters.AddWithValue("@FirstName", modifyName);
+                        int rowsAffected = cmd.ExecuteNonQuery();
 
-                    if (rowsAffected > 0)
-                    {
-                        conn.Close();
-                        return "Changes have been applied successfully";
-                    }
-                    else
-                    {
-                        conn.Close();
-                        return "User could not be found";
+                        if (rowsAffected > 0)
+                        {
+                            conn.Close();
+                            return "Changes have been applied successfully";
+                        }
+                        else
+                        {
+                            conn.Close();
+                            return "User could not be found";
+                        }
                     }
                 }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error occurred: " + ex);
+                return "Error!";
             }
         }
         private void btnClose_Click(object sender, EventArgs e)

@@ -54,13 +54,22 @@
     <StartupObject>Skreenkinikor_Master_Project.Program</StartupObject>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="BouncyCastle.Crypto, Version=1.8.9.0, Culture=neutral, PublicKeyToken=0e99375e54769942">
+      <HintPath>packages\BouncyCastle.1.8.9\lib\BouncyCastle.Crypto.dll</HintPath>
+    </Reference>
     <Reference Include="FontAwesome.Sharp, Version=6.3.0.0, Culture=neutral, PublicKeyToken=d16d1e4e568ec10f, processorArchitecture=MSIL">
       <HintPath>packages\FontAwesome.Sharp.6.3.0\lib\net472\FontAwesome.Sharp.dll</HintPath>
+    </Reference>
+    <Reference Include="itextsharp, Version=5.5.13.3, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <HintPath>packages\iTextSharp.5.5.13.3\lib\itextsharp.dll</HintPath>
     </Reference>
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
     <Reference Include="System.Xaml" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -146,8 +155,9 @@
     <Compile Include="Child Forms\frmTicket_Sale.Designer.cs">
       <DependentUpon>frmTicket_Sale.cs</DependentUpon>
     </Compile>
+    <Compile Include="Classes\ConfectionaryItems.cs" />
     <Compile Include="Classes\ConnectionStrings.cs" />
-    <Compile Include="Classes\ReportsClass.cs" />
+    <Compile Include="Classes\Reports_Class.cs" />
     <Compile Include="Classes\UserSession.cs" />
     <Compile Include="frmLogin.cs">
       <SubType>Form</SubType>
@@ -237,6 +247,7 @@
     <Content Include="Resources\New Tables.sql" />
     <Content Include="Resources\New_LoginDB.sql" />
     <Content Include="Resources\New_LoginTables.sql" />
+    <Content Include="Resources\Prepopulate Database.sql" />
     <Content Include="Sterkinikor.ico" />
   </ItemGroup>
   <ItemGroup>

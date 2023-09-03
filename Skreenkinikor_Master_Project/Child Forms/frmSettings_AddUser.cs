@@ -87,38 +87,53 @@ namespace Skreenkinikor_Master_Project.Child_Forms
 
         private bool checkIfUserExists(string user)
         {
-            using (SqlConnection connection = new SqlConnection(conString))
+            try
             {
-                connection.Open();
-
-                string query = "SELECT COUNT(*) FROM Login_Table WHERE Username = @Username";
-                using (SqlCommand command = new SqlCommand(query, connection))
+                using (SqlConnection connection = new SqlConnection(conString))
                 {
-                    command.Parameters.AddWithValue("@Username", user);
+                    connection.Open();
 
-                    int count = Convert.ToInt32(command.ExecuteScalar());
-                    return count > 0;
+                    string query = "SELECT COUNT(*) FROM Login_Table WHERE Username = @Username";
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    {
+                        command.Parameters.AddWithValue("@Username", user);
+
+                        int count = Convert.ToInt32(command.ExecuteScalar());
+                        return count > 0;
+                    }
                 }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error occurred: " + ex);
+                return false;
             }
         }
 
         private void addNewUser()
         {
-            string add = "INSERT INTO Login_Table(Username, Password, FirstName, LastName, IsAdmin) VALUES (@Username, @Password, @FirstName, @LastName, @IsAdmin)";
-            using (conn = new SqlConnection(conString))
-            {   
-                conn.Open();
-                using(cmd = new SqlCommand(add, conn))
+            try
+            {
+                string add = "INSERT INTO Login_Table(Username, Password, FirstName, LastName, IsAdmin) VALUES (@Username, @Password, @FirstName, @LastName, @IsAdmin)";
+                using (conn = new SqlConnection(conString))
                 {
-                    cmd.Parameters.AddWithValue("@Username", txtUser.Text);
-                    cmd.Parameters.AddWithValue("@Password", txtPass.Text);
-                    cmd.Parameters.AddWithValue("@FirstName", txtName.Text);
-                    cmd.Parameters.AddWithValue("@LastName", txtSurname.Text);
-                    cmd.Parameters.AddWithValue("@IsAdmin", cbxAdmin.Checked);
+                    conn.Open();
+                    using (cmd = new SqlCommand(add, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@Username", txtUser.Text);
+                        cmd.Parameters.AddWithValue("@Password", txtPass.Text);
+                        cmd.Parameters.AddWithValue("@FirstName", txtName.Text);
+                        cmd.Parameters.AddWithValue("@LastName", txtSurname.Text);
+                        cmd.Parameters.AddWithValue("@IsAdmin", cbxAdmin.Checked);
 
-                    cmd.ExecuteNonQuery();
+                        cmd.ExecuteNonQuery();
+                    }
+                    conn.Close();
                 }
-                conn.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error occurred: " + ex);
             }
         }
 

@@ -15,6 +15,15 @@ namespace Skreenkinikor_Master_Project
         public frmHome()
         {
             InitializeComponent();
+            lblTime.Text = DateTime.Now.ToString("HH:mm:ss");
+            lblDate.Text = DateTime.Now.ToString("dd MMMM, yyy");
+            timerMain.Enabled = true;
+        }
+
+        private void timerMain_Tick(object sender, EventArgs e)
+        {
+            lblTime.Text = DateTime.Now.ToString("HH:mm:ss");
+            lblDate.Text = DateTime.Now.ToString("dd MMMM, yyy");
         }
     }
 }
