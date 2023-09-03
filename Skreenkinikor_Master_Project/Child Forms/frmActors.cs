@@ -114,8 +114,6 @@ namespace Skreenkinikor_Master_Project
         {
             try
             {
-
-
                 connection.Open();
 
                 // Define the DELETE command
@@ -146,6 +144,50 @@ namespace Skreenkinikor_Master_Project
             catch (Exception ex)
             {
                 Console.WriteLine("Error: " + ex.Message);
+            }
+        }
+
+        private void btnRefresh_Click(object sender, EventArgs e)
+        {
+            dataGridView1.DataSource = null; // Clear the current data source
+            dataGridView1.DataSource = Actor_Info(); 
+        }
+
+        private void btnModify_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                // Open the connection
+                connection.Open();
+
+                // Define the SQL update query
+                string updateQuery = "UPDATE Actor_Info SET FirstName = @NewFirstName WHERE LastName = @LastName";
+
+                // Create a SqlCommand with the SQL query and the SqlConnection
+                using (SqlCommand command = new SqlCommand(updateQuery, connection))
+                {
+                    // Set parameters for the query
+                    command.Parameters.AddWithValue("@Param1", txtBxID.Text);
+                    command.Parameters.AddWithValue("@Param2", txtBxName.Text);
+                    command.Parameters.AddWithValue("@Param3", txtBxSurname.Text);
+                    command.Parameters.AddWithValue("@Param4", txtBxDescription.Text);
+
+                    // Execute the update query
+                    int rowsAffected = command.ExecuteNonQuery();
+
+                    if (rowsAffected > 0)
+                    {
+                        Console.WriteLine("Update successful.");
+                    }
+                    else
+                    {
+                        Console.WriteLine("No records were updated.");
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error: {ex.Message}");
             }
         }
     }

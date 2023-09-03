@@ -234,6 +234,7 @@
             this.btnModify.TabIndex = 8;
             this.btnModify.Text = "&Modify Actor";
             this.btnModify.UseVisualStyleBackColor = false;
+            this.btnModify.Click += new System.EventHandler(this.btnModify_Click);
             // 
             // btnDelete
             // 
