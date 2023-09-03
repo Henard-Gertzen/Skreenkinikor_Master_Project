@@ -16,10 +16,10 @@ namespace Skreenkinikor_Master_Project
 {
     public partial class frmActors : Form
     {
+        //Variables
         private string connectionString = ConnectionStrings.conSkreenMainStr;
         private SqlCommand cmd;
         private SqlDataAdapter adapter;
-
         public frmActors()
         {
             InitializeComponent();
