@@ -11,6 +11,7 @@ using System.Windows.Forms;
 using System.Data.Sql;
 using System.Data.SqlClient;
 using Skreenkinikor_Master_Project.Classes;
+using Skreenkinikor_Master_Project.Child_Forms;
 
 namespace Skreenkinikor_Master_Project
 {
@@ -275,6 +276,12 @@ namespace Skreenkinikor_Master_Project
             {
                 Console.WriteLine("Error: " + ex.Message);
             }
+        }
+
+        private void btnAdd_Actor_Click(object sender, EventArgs e)
+        {
+            var newFrm = new frmActor_Assign();
+            newFrm.ShowDialog();    
         }
     }
 }

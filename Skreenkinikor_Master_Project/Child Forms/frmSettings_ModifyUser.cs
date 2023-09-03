@@ -110,6 +110,11 @@ namespace Skreenkinikor_Master_Project.Child_Forms
             SendMessage(this.Handle, 0x112, 0xf012, 0);
         }
 
+        private void pnlControlBar_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
         private void panel2_Paint(object sender, PaintEventArgs e)
         {
             cbxCurrentAdmin.Enabled = false;   

@@ -40,6 +40,7 @@
             this.lblUsername = new System.Windows.Forms.Label();
             this.lblPassword = new System.Windows.Forms.Label();
             this.pnlCurrent = new System.Windows.Forms.Panel();
+            this.pnlSufferTop = new System.Windows.Forms.Panel();
             this.lblAdmin = new System.Windows.Forms.Label();
             this.cbxCurrentAdmin = new System.Windows.Forms.CheckBox();
             this.pnlContent = new System.Windows.Forms.Panel();
@@ -52,7 +53,6 @@
             this.pnlBorderRight = new System.Windows.Forms.Panel();
             this.lblChangePass = new System.Windows.Forms.Label();
             this.ttDisable = new System.Windows.Forms.ToolTip(this.components);
-            this.pnlSufferTop = new System.Windows.Forms.Panel();
             this.pnlControlBar.SuspendLayout();
             this.pnlTitle.SuspendLayout();
             this.pnlCurrent.SuspendLayout();
@@ -69,6 +69,7 @@
             this.pnlControlBar.Name = "pnlControlBar";
             this.pnlControlBar.Size = new System.Drawing.Size(340, 22);
             this.pnlControlBar.TabIndex = 11;
+            this.pnlControlBar.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlControlBar_Paint);
             this.pnlControlBar.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pnlControlBar_MouseDown);
             // 
             // btnClose
@@ -186,6 +187,15 @@
             this.pnlCurrent.Name = "pnlCurrent";
             this.pnlCurrent.Size = new System.Drawing.Size(340, 94);
             this.pnlCurrent.TabIndex = 20;
+            // 
+            // pnlSufferTop
+            // 
+            this.pnlSufferTop.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(19)))), ((int)(((byte)(41)))), ((int)(((byte)(61)))));
+            this.pnlSufferTop.Dock = System.Windows.Forms.DockStyle.Left;
+            this.pnlSufferTop.Location = new System.Drawing.Point(0, 0);
+            this.pnlSufferTop.Name = "pnlSufferTop";
+            this.pnlSufferTop.Size = new System.Drawing.Size(15, 94);
+            this.pnlSufferTop.TabIndex = 24;
             // 
             // lblAdmin
             // 
@@ -329,16 +339,7 @@
             this.ttDisable.IsBalloon = true;
             this.ttDisable.ReshowDelay = 100;
             // 
-            // pnlSufferTop
-            // 
-            this.pnlSufferTop.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(19)))), ((int)(((byte)(41)))), ((int)(((byte)(61)))));
-            this.pnlSufferTop.Dock = System.Windows.Forms.DockStyle.Left;
-            this.pnlSufferTop.Location = new System.Drawing.Point(0, 0);
-            this.pnlSufferTop.Name = "pnlSufferTop";
-            this.pnlSufferTop.Size = new System.Drawing.Size(15, 94);
-            this.pnlSufferTop.TabIndex = 24;
-            // 
-            // frmModifyUser
+            // frmSettings_ModifyUser
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -349,7 +350,7 @@
             this.Controls.Add(this.pnlTitle);
             this.Controls.Add(this.pnlControlBar);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "frmModifyUser";
+            this.Name = "frmSettings_ModifyUser";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmModifyUser";
             this.Load += new System.EventHandler(this.frmModifyUser_Load);

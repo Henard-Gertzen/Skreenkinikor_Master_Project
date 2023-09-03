@@ -34,6 +34,16 @@
             this.pnlRight = new System.Windows.Forms.Panel();
             this.pnlContent = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnCancel = new System.Windows.Forms.Button();
+            this.btnSubmit = new System.Windows.Forms.Button();
+            this.lblTitle = new System.Windows.Forms.Label();
+            this.txtModDesc = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.txtModSur = new System.Windows.Forms.TextBox();
+            this.txtModName = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.btnRefresh = new FontAwesome.Sharp.IconButton();
             this.dgwActor = new System.Windows.Forms.DataGridView();
             this.txtBxDescription = new System.Windows.Forms.TextBox();
             this.lblDescription = new System.Windows.Forms.Label();
@@ -47,16 +57,7 @@
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.pnlBorderRight = new System.Windows.Forms.Panel();
-            this.btnRefresh = new FontAwesome.Sharp.IconButton();
-            this.txtModDesc = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.txtModSur = new System.Windows.Forms.TextBox();
-            this.txtModName = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.lblTitle = new System.Windows.Forms.Label();
-            this.btnSubmit = new System.Windows.Forms.Button();
-            this.btnCancel = new System.Windows.Forms.Button();
+            this.btnAdd_Actor = new System.Windows.Forms.Button();
             this.pnlContent.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgwActor)).BeginInit();
@@ -84,6 +85,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(100)))), ((int)(((byte)(148)))));
+            this.panel1.Controls.Add(this.btnAdd_Actor);
             this.panel1.Controls.Add(this.btnCancel);
             this.panel1.Controls.Add(this.btnSubmit);
             this.panel1.Controls.Add(this.lblTitle);
@@ -109,6 +111,125 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(642, 602);
             this.panel1.TabIndex = 38;
+            // 
+            // btnCancel
+            // 
+            this.btnCancel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(19)))), ((int)(((byte)(41)))), ((int)(((byte)(61)))));
+            this.btnCancel.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.btnCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCancel.ForeColor = System.Drawing.Color.White;
+            this.btnCancel.Location = new System.Drawing.Point(375, 484);
+            this.btnCancel.Name = "btnCancel";
+            this.btnCancel.Size = new System.Drawing.Size(54, 40);
+            this.btnCancel.TabIndex = 49;
+            this.btnCancel.Text = "&Cancel";
+            this.btnCancel.UseVisualStyleBackColor = false;
+            this.btnCancel.Visible = false;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
+            // 
+            // btnSubmit
+            // 
+            this.btnSubmit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(19)))), ((int)(((byte)(41)))), ((int)(((byte)(61)))));
+            this.btnSubmit.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.btnSubmit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSubmit.ForeColor = System.Drawing.Color.White;
+            this.btnSubmit.Location = new System.Drawing.Point(275, 484);
+            this.btnSubmit.Name = "btnSubmit";
+            this.btnSubmit.Size = new System.Drawing.Size(103, 40);
+            this.btnSubmit.TabIndex = 48;
+            this.btnSubmit.Text = "&Submit";
+            this.btnSubmit.UseVisualStyleBackColor = false;
+            this.btnSubmit.Visible = false;
+            this.btnSubmit.Click += new System.EventHandler(this.btnSubmit_Click);
+            // 
+            // lblTitle
+            // 
+            this.lblTitle.AutoSize = true;
+            this.lblTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTitle.ForeColor = System.Drawing.Color.White;
+            this.lblTitle.Location = new System.Drawing.Point(27, 434);
+            this.lblTitle.Name = "lblTitle";
+            this.lblTitle.Size = new System.Drawing.Size(191, 25);
+            this.lblTitle.TabIndex = 47;
+            this.lblTitle.Text = "Enter Modification:";
+            this.lblTitle.Visible = false;
+            // 
+            // txtModDesc
+            // 
+            this.txtModDesc.Location = new System.Drawing.Point(148, 530);
+            this.txtModDesc.Name = "txtModDesc";
+            this.txtModDesc.Size = new System.Drawing.Size(100, 20);
+            this.txtModDesc.TabIndex = 46;
+            this.txtModDesc.Visible = false;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.White;
+            this.label1.Location = new System.Drawing.Point(28, 528);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(105, 20);
+            this.label1.TabIndex = 45;
+            this.label1.Text = "Description:";
+            this.label1.Visible = false;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.White;
+            this.label2.Location = new System.Drawing.Point(28, 493);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(86, 20);
+            this.label2.TabIndex = 44;
+            this.label2.Text = "Surname:";
+            this.label2.Visible = false;
+            // 
+            // txtModSur
+            // 
+            this.txtModSur.Location = new System.Drawing.Point(148, 495);
+            this.txtModSur.Name = "txtModSur";
+            this.txtModSur.Size = new System.Drawing.Size(100, 20);
+            this.txtModSur.TabIndex = 42;
+            this.txtModSur.Visible = false;
+            // 
+            // txtModName
+            // 
+            this.txtModName.Location = new System.Drawing.Point(148, 462);
+            this.txtModName.Name = "txtModName";
+            this.txtModName.Size = new System.Drawing.Size(100, 20);
+            this.txtModName.TabIndex = 41;
+            this.txtModName.Visible = false;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.White;
+            this.label3.Location = new System.Drawing.Point(28, 462);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(60, 20);
+            this.label3.TabIndex = 43;
+            this.label3.Text = "Name:";
+            this.label3.Visible = false;
+            // 
+            // btnRefresh
+            // 
+            this.btnRefresh.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(19)))), ((int)(((byte)(41)))), ((int)(((byte)(61)))));
+            this.btnRefresh.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.btnRefresh.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRefresh.IconChar = FontAwesome.Sharp.IconChar.ArrowsRotate;
+            this.btnRefresh.IconColor = System.Drawing.Color.White;
+            this.btnRefresh.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnRefresh.IconSize = 25;
+            this.btnRefresh.Location = new System.Drawing.Point(300, 332);
+            this.btnRefresh.Name = "btnRefresh";
+            this.btnRefresh.Size = new System.Drawing.Size(29, 40);
+            this.btnRefresh.TabIndex = 40;
+            this.btnRefresh.UseVisualStyleBackColor = false;
+            this.btnRefresh.Visible = false;
+            this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click_1);
             // 
             // dgwActor
             // 
@@ -280,124 +401,19 @@
             this.pnlBorderRight.Size = new System.Drawing.Size(24, 644);
             this.pnlBorderRight.TabIndex = 24;
             // 
-            // btnRefresh
+            // btnAdd_Actor
             // 
-            this.btnRefresh.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(19)))), ((int)(((byte)(41)))), ((int)(((byte)(61)))));
-            this.btnRefresh.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.btnRefresh.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnRefresh.IconChar = FontAwesome.Sharp.IconChar.ArrowsRotate;
-            this.btnRefresh.IconColor = System.Drawing.Color.White;
-            this.btnRefresh.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.btnRefresh.IconSize = 25;
-            this.btnRefresh.Location = new System.Drawing.Point(300, 332);
-            this.btnRefresh.Name = "btnRefresh";
-            this.btnRefresh.Size = new System.Drawing.Size(29, 40);
-            this.btnRefresh.TabIndex = 40;
-            this.btnRefresh.UseVisualStyleBackColor = false;
-            this.btnRefresh.Visible = false;
-            this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click_1);
-            // 
-            // txtModDesc
-            // 
-            this.txtModDesc.Location = new System.Drawing.Point(148, 530);
-            this.txtModDesc.Name = "txtModDesc";
-            this.txtModDesc.Size = new System.Drawing.Size(100, 20);
-            this.txtModDesc.TabIndex = 46;
-            this.txtModDesc.Visible = false;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(28, 528);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(105, 20);
-            this.label1.TabIndex = 45;
-            this.label1.Text = "Description:";
-            this.label1.Visible = false;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(28, 493);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(86, 20);
-            this.label2.TabIndex = 44;
-            this.label2.Text = "Surname:";
-            this.label2.Visible = false;
-            // 
-            // txtModSur
-            // 
-            this.txtModSur.Location = new System.Drawing.Point(148, 495);
-            this.txtModSur.Name = "txtModSur";
-            this.txtModSur.Size = new System.Drawing.Size(100, 20);
-            this.txtModSur.TabIndex = 42;
-            this.txtModSur.Visible = false;
-            // 
-            // txtModName
-            // 
-            this.txtModName.Location = new System.Drawing.Point(148, 462);
-            this.txtModName.Name = "txtModName";
-            this.txtModName.Size = new System.Drawing.Size(100, 20);
-            this.txtModName.TabIndex = 41;
-            this.txtModName.Visible = false;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(28, 462);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(60, 20);
-            this.label3.TabIndex = 43;
-            this.label3.Text = "Name:";
-            this.label3.Visible = false;
-            // 
-            // lblTitle
-            // 
-            this.lblTitle.AutoSize = true;
-            this.lblTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTitle.ForeColor = System.Drawing.Color.White;
-            this.lblTitle.Location = new System.Drawing.Point(27, 434);
-            this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(191, 25);
-            this.lblTitle.TabIndex = 47;
-            this.lblTitle.Text = "Enter Modification:";
-            this.lblTitle.Visible = false;
-            // 
-            // btnSubmit
-            // 
-            this.btnSubmit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(19)))), ((int)(((byte)(41)))), ((int)(((byte)(61)))));
-            this.btnSubmit.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.btnSubmit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSubmit.ForeColor = System.Drawing.Color.White;
-            this.btnSubmit.Location = new System.Drawing.Point(275, 484);
-            this.btnSubmit.Name = "btnSubmit";
-            this.btnSubmit.Size = new System.Drawing.Size(103, 40);
-            this.btnSubmit.TabIndex = 48;
-            this.btnSubmit.Text = "&Submit";
-            this.btnSubmit.UseVisualStyleBackColor = false;
-            this.btnSubmit.Visible = false;
-            this.btnSubmit.Click += new System.EventHandler(this.btnSubmit_Click);
-            // 
-            // btnCancel
-            // 
-            this.btnCancel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(19)))), ((int)(((byte)(41)))), ((int)(((byte)(61)))));
-            this.btnCancel.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.btnCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCancel.ForeColor = System.Drawing.Color.White;
-            this.btnCancel.Location = new System.Drawing.Point(375, 484);
-            this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(54, 40);
-            this.btnCancel.TabIndex = 49;
-            this.btnCancel.Text = "&Cancel";
-            this.btnCancel.UseVisualStyleBackColor = false;
-            this.btnCancel.Visible = false;
-            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
+            this.btnAdd_Actor.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(19)))), ((int)(((byte)(41)))), ((int)(((byte)(61)))));
+            this.btnAdd_Actor.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.btnAdd_Actor.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAdd_Actor.ForeColor = System.Drawing.Color.White;
+            this.btnAdd_Actor.Location = new System.Drawing.Point(528, 380);
+            this.btnAdd_Actor.Name = "btnAdd_Actor";
+            this.btnAdd_Actor.Size = new System.Drawing.Size(103, 40);
+            this.btnAdd_Actor.TabIndex = 50;
+            this.btnAdd_Actor.Text = "&Add Actor to Movie";
+            this.btnAdd_Actor.UseVisualStyleBackColor = false;
+            this.btnAdd_Actor.Click += new System.EventHandler(this.btnAdd_Actor_Click);
             // 
             // frmActors
             // 
@@ -448,5 +464,6 @@
         private System.Windows.Forms.TextBox txtModName;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button btnCancel;
+        private System.Windows.Forms.Button btnAdd_Actor;
     }
 }
