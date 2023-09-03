@@ -28,6 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.btnConfirm = new System.Windows.Forms.Button();
             this.btnReset = new System.Windows.Forms.Button();
             this.pnlMovieSeats = new System.Windows.Forms.Panel();
@@ -156,11 +159,14 @@
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.panel2 = new System.Windows.Forms.Panel();
             this.lblConfirmSeats = new System.Windows.Forms.Label();
+            this.dgwSchedule = new System.Windows.Forms.DataGridView();
+            this.lblDataTitle = new System.Windows.Forms.Label();
             this.pnlMovieSeats.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.pnlScreen.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgwSchedule)).BeginInit();
             this.SuspendLayout();
             // 
             // btnConfirm
@@ -206,7 +212,7 @@
             this.pnlMovieSeats.Controls.Add(this.lblRowC);
             this.pnlMovieSeats.Controls.Add(this.lblRowB);
             this.pnlMovieSeats.Controls.Add(this.lblRowA);
-            this.pnlMovieSeats.Location = new System.Drawing.Point(248, 91);
+            this.pnlMovieSeats.Location = new System.Drawing.Point(248, 43);
             this.pnlMovieSeats.Name = "pnlMovieSeats";
             this.pnlMovieSeats.Size = new System.Drawing.Size(422, 408);
             this.pnlMovieSeats.TabIndex = 4;
@@ -2005,7 +2011,7 @@
             this.panel1.Controls.Add(this.dateTimePicker1);
             this.panel1.Controls.Add(this.lblSelectMovie);
             this.panel1.Controls.Add(this.cbbSelectMovie);
-            this.panel1.Location = new System.Drawing.Point(12, 91);
+            this.panel1.Location = new System.Drawing.Point(12, 43);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(230, 197);
             this.panel1.TabIndex = 10;
@@ -2079,7 +2085,7 @@
             this.panel2.Controls.Add(this.lblConfirmSeats);
             this.panel2.Controls.Add(this.btnReset);
             this.panel2.Controls.Add(this.btnConfirm);
-            this.panel2.Location = new System.Drawing.Point(12, 294);
+            this.panel2.Location = new System.Drawing.Point(12, 246);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(230, 205);
             this.panel2.TabIndex = 11;
@@ -2095,12 +2101,73 @@
             this.lblConfirmSeats.TabIndex = 113;
             this.lblConfirmSeats.Text = "Finialise Ticket";
             // 
+            // dgwSchedule
+            // 
+            this.dgwSchedule.AllowUserToAddRows = false;
+            this.dgwSchedule.AllowUserToDeleteRows = false;
+            this.dgwSchedule.AllowUserToResizeColumns = false;
+            this.dgwSchedule.AllowUserToResizeRows = false;
+            this.dgwSchedule.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgwSchedule.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(67)))), ((int)(((byte)(90)))));
+            this.dgwSchedule.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dgwSchedule.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
+            this.dgwSchedule.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(67)))), ((int)(((byte)(90)))));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(241)))), ((int)(((byte)(242)))));
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(67)))), ((int)(((byte)(90)))));
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgwSchedule.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.dgwSchedule.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(67)))), ((int)(((byte)(90)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Gainsboro;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(144)))), ((int)(((byte)(194)))), ((int)(((byte)(231)))));
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgwSchedule.DefaultCellStyle = dataGridViewCellStyle2;
+            this.dgwSchedule.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.dgwSchedule.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
+            this.dgwSchedule.EnableHeadersVisualStyles = false;
+            this.dgwSchedule.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(241)))), ((int)(((byte)(242)))));
+            this.dgwSchedule.Location = new System.Drawing.Point(0, 487);
+            this.dgwSchedule.Name = "dgwSchedule";
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(144)))), ((int)(((byte)(194)))), ((int)(((byte)(231)))));
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgwSchedule.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            this.dgwSchedule.RowHeadersVisible = false;
+            this.dgwSchedule.RowTemplate.Height = 35;
+            this.dgwSchedule.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgwSchedule.Size = new System.Drawing.Size(686, 157);
+            this.dgwSchedule.TabIndex = 12;
+            // 
+            // lblDataTitle
+            // 
+            this.lblDataTitle.AutoSize = true;
+            this.lblDataTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDataTitle.ForeColor = System.Drawing.Color.White;
+            this.lblDataTitle.Location = new System.Drawing.Point(7, 459);
+            this.lblDataTitle.Name = "lblDataTitle";
+            this.lblDataTitle.Size = new System.Drawing.Size(110, 25);
+            this.lblDataTitle.TabIndex = 113;
+            this.lblDataTitle.Text = "&Schedule";
+            // 
             // frmTicket_Sale
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(19)))), ((int)(((byte)(41)))), ((int)(((byte)(61)))));
-            this.ClientSize = new System.Drawing.Size(967, 685);
+            this.ClientSize = new System.Drawing.Size(686, 644);
+            this.Controls.Add(this.lblDataTitle);
+            this.Controls.Add(this.dgwSchedule);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.pnlMovieSeats);
@@ -2118,7 +2185,9 @@
             this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgwSchedule)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -2252,5 +2321,7 @@
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label lblConfirmSeats;
         private System.Windows.Forms.Label lblStartDate;
+        private System.Windows.Forms.DataGridView dgwSchedule;
+        private System.Windows.Forms.Label lblDataTitle;
     }
 }
