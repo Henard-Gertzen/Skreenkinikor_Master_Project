@@ -257,7 +257,7 @@ namespace Skreenkinikor_Master_Project
 
             try
             {
-                // splits the selected item into their respective parts (item and amount)
+                //splits the selected item into their respective parts (item and amount)
 
                 var parts = tempItem.Split(new[] { " x " }, StringSplitOptions.None);
                 var item = parts[0];
