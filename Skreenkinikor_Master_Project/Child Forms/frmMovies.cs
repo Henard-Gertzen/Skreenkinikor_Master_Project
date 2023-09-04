@@ -204,11 +204,58 @@ namespace Skreenkinikor_Master_Project
            
 
             int movieID = GetMovieId();
+
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+
+                // SQL injection to delete the movie from the schedule
+                try
+                {
+                    conn.Open();
+                    string sql = $"DELETE FROM Movie_On_Schedule WHERE Movie_ID = '{movieID}'";
+                    using (SqlCommand command = new SqlCommand(sql, conn))
+                    {
+                        using (SqlDataAdapter adapter = new SqlDataAdapter())
+                        {
+                            adapter.DeleteCommand = command;
+                            adapter.DeleteCommand.ExecuteNonQuery();
+                        }
+                    }
+                }
+                catch (SqlException error)
+                {
+                    MessageBox.Show(error.Message);
+                }
+            }
+
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+
+                // SQL injection to delete the ticket correlated to the deleted movie
+                try
+                {
+                    conn.Open();
+                    string sql = $"DELETE FROM Ticket_Info WHERE Movie_ID = '{movieID}'";
+                    using (SqlCommand command = new SqlCommand(sql, conn))
+                    {
+                        using (SqlDataAdapter adapter = new SqlDataAdapter())
+                        {
+                            adapter.DeleteCommand = command;
+                            adapter.DeleteCommand.ExecuteNonQuery();
+                        }
+                    }
+                }
+                catch (SqlException error)
+                {
+                    MessageBox.Show(error.Message);
+                }
+            }
+
             // delete actor on movie
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
 
-                // SQL injection to delete the selected movie
+                // SQL injection to delete the actor and movie from Actor_On_Movie
                 try
                 {
                     conn.Open();
