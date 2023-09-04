@@ -292,12 +292,14 @@ namespace Skreenkinikor_Master_Project
 
         private void btnViewMovies_Click(object sender, EventArgs e)
         {
-            dgViewMovies.Visible = true;
-            lblTitle.Visible = true;
-            cancelMod();
-            lblTitle.Text = "Movies " + dgwActor.SelectedRows[0].Cells["First_Name"].Value.ToString() + " " + dgwActor.SelectedRows[0].Cells["Last_Name"].Value.ToString() + " stars in: ";
             try
             {
+                dgViewMovies.Visible = true;
+                lblTitle.Visible = true;
+                cancelMod();
+                lblTitle.Text = "Movies " + dgwActor.SelectedRows[0].Cells["First_Name"].Value.ToString() + " " + dgwActor.SelectedRows[0].Cells["Last_Name"].Value.ToString() + " stars in: ";
+
+
                 using (SqlConnection con = new SqlConnection(connectionString))
                 {
                     string view = @"SELECT Movie_Info.Movie_Name
