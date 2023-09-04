@@ -1,4 +1,5 @@
-﻿using Skreenkinikor_Master_Project.Classes;
+﻿using FontAwesome.Sharp;
+using Skreenkinikor_Master_Project.Classes;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -73,8 +74,34 @@ namespace Skreenkinikor_Master_Project
             }
         }
 
-      
+        private int GetMovieId()
+        {
+            try
+            {
+                string update = $"SELECT Movie_ID FROM Movie_Info WHERE Movie_Name = @Name";
+                int id = -1;
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();
+                    using (SqlCommand cmd = new SqlCommand(update, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@Name",MovieName);
 
+                        object result = cmd.ExecuteScalar();
+                        if (result != null)
+                        {
+                            id = Convert.ToInt32(result);
+                        }
+                        return id;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error has ocurred: " + ex);
+            }
+            return -1;
+        }
         private void btnAddMovie_Click(object sender, EventArgs e)
         {
             mName = txtMovieName.Text;
@@ -172,6 +199,33 @@ namespace Skreenkinikor_Master_Project
             {
                 MessageBox.Show("Please select a movie to delete");
                 return;
+            }
+
+           
+
+            int movieID = GetMovieId();
+            // delete actor on movie
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+
+                // SQL injection to delete the selected movie
+                try
+                {
+                    conn.Open();
+                    string sql = $"DELETE FROM Actor_On_Movie WHERE Movie_ID = '{movieID}'";
+                    using (SqlCommand command = new SqlCommand(sql, conn))
+                    {
+                        using (SqlDataAdapter adapter = new SqlDataAdapter())
+                        {
+                            adapter.DeleteCommand = command;
+                            adapter.DeleteCommand.ExecuteNonQuery();
+                        }
+                    }
+                }
+                catch (SqlException error)
+                {
+                    MessageBox.Show(error.Message);
+                }
             }
 
             using (SqlConnection conn = new SqlConnection(connectionString))
