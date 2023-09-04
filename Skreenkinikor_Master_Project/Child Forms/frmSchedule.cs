@@ -556,7 +556,8 @@ namespace Skreenkinikor_Master_Project
         {
             PopulateMovieComboBox();
             ShowUpcomingMoviesInDataGridView(dataGridView1);
-            lblStartDate.Text = dateTimePicker1.Value.ToString("MMM dd, yyyy");
+            //lblStartDate.Text = dateTimePicker1.Value.ToString("MMM dd, yyyy");
+            lblStartDate.Text = DateTime.Now.ToString("MMM dd, yyyy");
         }
 
         private void btnModify_Click(object sender, EventArgs e)

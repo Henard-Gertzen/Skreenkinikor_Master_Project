@@ -10,6 +10,8 @@ using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Forms.DataVisualization.Charting;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.Header;
 
 namespace Skreenkinikor_Master_Project
 {
@@ -90,8 +92,30 @@ namespace Skreenkinikor_Master_Project
 
                         cmd.ExecuteNonQuery();
                     }
+                    string formattedValue = ticketTotal.ToString("0.00");
 
-                    MessageBox.Show("Tickets Booked");
+                    string concatenatedString = ""; 
+
+                    if (SelectedTickets.Count > 1)
+                    {
+                        foreach (string item in SelectedTickets)
+                        {
+                            concatenatedString += item.Substring(3) + ", ";
+                        }
+                        if (!string.IsNullOrEmpty(concatenatedString))
+                        {
+                            concatenatedString = concatenatedString.Substring(0, concatenatedString.Length - 2);
+                        }
+                    }
+                    else
+                    {
+                        foreach (string item in SelectedTickets)
+                        {
+                            concatenatedString += item.Substring(3);
+                        }
+                    }
+
+                    MessageBox.Show("Tickets Booked. \nTotal: R" + formattedValue + "\nSeats: " + concatenatedString + ".");
                 }
                 catch (Exception ex)
                 {
@@ -151,6 +175,28 @@ namespace Skreenkinikor_Master_Project
             }
         }
 
+        //Confirm if seat is selected
+        private bool SeatSelected(Control control)
+        {
+            foreach (Control c in control.Controls)
+            {
+                if (c is CheckBox checkBox && checkBox.Checked)
+                {
+                    return true; 
+                }
+
+                if (c.HasChildren)
+                {
+                    if (SeatSelected(c))
+                    {
+                        return true; 
+                    }
+                }
+            }
+
+            return false; 
+        }
+
         //Uncheck selected seats
         private void UncheckAllCheckBoxes(Control control)
         {
@@ -194,9 +240,8 @@ namespace Skreenkinikor_Master_Project
 
             return seatPrice;
         }
-
         // Function to read seats from the database and disable checkboxes for a specific movie and date
-        private void DisableBookedSeats(string selectedMovieName, DateTime selectedDate)
+        private void DisableBookedSeats(string selectedMovieName)
         {
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
@@ -208,12 +253,10 @@ namespace Skreenkinikor_Master_Project
 
                     string selectQuery = "SELECT Seats FROM Ticket_Info TI " +
                                          "INNER JOIN Movie_Info MI ON TI.Movie_ID = MI.Movie_ID " +
-                                         "WHERE MI.Movie_Name = @MovieName " +
-                                         "AND TI.Movie_ID = @MovieId";
+                                         "WHERE TI.Movie_ID = @MovieId";
 
                     using (SqlCommand cmd = new SqlCommand(selectQuery, connection))
                     {
-                        cmd.Parameters.AddWithValue("@MovieName", selectedMovieName);
                         cmd.Parameters.AddWithValue("@MovieId", selectedMovieId);
 
                         using (SqlDataReader reader = cmd.ExecuteReader())
@@ -355,13 +398,18 @@ namespace Skreenkinikor_Master_Project
         private void frmTicket_Sale_Load(object sender, EventArgs e)
         {
             ShowUpcomingMoviesInDataGridView(dgwSchedule);
+            lblStartDate.Text = DateTime.Now.ToString("MMM dd, yyyy");
         }
 
         private void btnConfirm_Click(object sender, EventArgs e)
         {
             string selectedMovieName = cbbSelectMovie.SelectedItem as string;
 
-            if (!string.IsNullOrEmpty(selectedMovieName))
+            if (SeatSelected(this) == false)
+            {
+                MessageBox.Show("Please select at least one seat");
+            }
+            else if (!string.IsNullOrEmpty(selectedMovieName))
             {
                 ConfirmTickets();
                 InsertSelectedSeatsIntoDatabase(selectedMovieName);
@@ -370,7 +418,7 @@ namespace Skreenkinikor_Master_Project
             }
             else
             {
-                MessageBox.Show("Please select a movie from the ComboBox.");
+                MessageBox.Show("Please select a movie.");
             }
         }
 
@@ -386,7 +434,7 @@ namespace Skreenkinikor_Master_Project
             DateTime selectedDate = dateTimePicker1.Value;
             string selectedMovieName = cbbSelectMovie.SelectedItem as string;
             EnableAllCheckBoxes(this);
-            DisableBookedSeats(selectedMovieName, selectedDate);
+            DisableBookedSeats(selectedMovieName);
             lblShowTimeTime.Text = MovieShowTime(selectedMovieName, selectedDate);
         }
 
