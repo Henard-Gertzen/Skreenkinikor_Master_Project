@@ -394,7 +394,6 @@ namespace Skreenkinikor_Master_Project
                 }
             }
         }
-
         private void frmTicket_Sale_Load(object sender, EventArgs e)
         {
             ShowUpcomingMoviesInDataGridView(dgwSchedule);
